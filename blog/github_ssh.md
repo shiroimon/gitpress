@@ -19,8 +19,11 @@ excerpt: SSH接続？ 公開鍵? ってなったので備忘録
    なので、ここではかなり端折って、(むりくり)`３-STEP`にまとめて後で自分が見返せれるようにする。
 
 
-### ● STEP-1: (SSHの)鍵を作る🔐
-```linux
+### ● STEP-1: (SSHの)鍵と錠を作る🔐
+```
+STEP1では、鍵と、錠（公開鍵）の二つを作成。
+```
+```LINUX
 $ ssh-keygen -t ed25519 -C "my_example@gmail.com"
 ```
 カレントディレクトリはどこでもよいとのこと。（自分の場合はホーム直下に作成）<br>
@@ -67,7 +70,7 @@ $ ssh-add -K ~/.ssh/id_ed25519
 
 
 ### ● STEP-3: GitHubを公開鍵で施錠🔒
-```
+```LINUX
 $ pbcopy < ~/.ssh/id_ed25519.pub
 ```
 予め公開鍵をクリップボードにコピー <br>
@@ -96,7 +99,7 @@ $ git config remote.origin.url
 ```
 上記コマンドで接続URLを確認。
 
-```
+```LINUX
 $ git remote set-url origin git@github.com:[ユーザID]/[リポジトリ].git
 ```
 githubのリポジトリからSSH接続のPathをコピペで設定完了。
