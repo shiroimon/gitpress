@@ -1332,6 +1332,7 @@ FROM {テーブル名};
 #    #|9|www    |       5|       5|                              5|
 
 
+/********************************************************************/
 # ■ WINDOW_FRAME
 # eg. [ROWS] [BETWEEN] UNBOUNDED PRECEDING [AND] CURRENT ROW
 #
@@ -1343,7 +1344,9 @@ FROM {テーブル名};
 #    [int] FOLLOWING     : 現在の行から[int]だけ下の行
 
 
-# ■ [関数] 番号付け
+/**********************
+ * ■ [関数] 番号付け
+ **********************/
 # ※「OVER句」の中には最大３つ記述ができる。
 #    ①PARTITIONBY  [使用可]
 #    ②ORDERBY      [必須]
@@ -1357,6 +1360,7 @@ FROM {テーブル名};
 #    NTILE()       :
 #    PERCENT_RANK():
 
+/********************************************************************/
 # ■ RANK() -
 # eg. RANK() OVER(
 #           PARTION BY
@@ -1413,7 +1417,7 @@ FROM {テーブル名};
 -- ORDER BY user_id, ranking;
 -- # ∴ WHERE句は使用不可（分析関数では絞り込みできない ∵WHEREが先に実行され、その後にSELECTの為）
 
-
+/********************************************************************/
 # ■ ROW_NUMBER() - パーテションの中の行番号を返す。
 # eg. ROW_NUMBER() OVER(
 #           PARTITION BY [パーテションを宣言するカラム] (option)
@@ -1438,7 +1442,9 @@ FROM {テーブル名};
 -- #|4|ABC    |            1|/index.php     |        1|
 
 
-# ■ [関数] ナビゲーション
+/**************************
+ * ■ [関数] ナビゲーション
+ **************************/
 # ※ 様々なナビゲーション関数
 #    FIRST_VALUE()     : ウィンドウフレームの中の一番最初の値を返す
 #    LAST_VALUE()      : ウィンドウフレームの中の一番最後の値を返す
@@ -1448,6 +1454,7 @@ FROM {テーブル名};
 #    PERCENTILE_COUNT():
 #    PERCENTILE_DISC() :
 
+/********************************************************************/
 # ■ FIRST_VALUE() -
 # eg. FIRST_VALUE(値を取得する対象カラム) OVER(
 #           [PARTITION BY     (option)]境界宣言するカラム
@@ -1527,7 +1534,7 @@ FROM {テーブル名};
 -- -- ------------------------------------------------------------[PARTITION]
 -- #|6|ABC    |            2|/products/?id=7|//thanks/thanks.php|
 
-
+/********************************************************************/
 # ■ LEAD(), LAG() -
 # LEAD() - 自分の今いる行の１行下の行の値を取得
 # LAG()  - 自分の今いる行の１行下の上の値を取得
@@ -1587,8 +1594,9 @@ FROM {テーブル名};
 -- #|7|ABC    |            2|/thanks/thanks.php|2019-01-03 16:06:09 UTC|null              |null                   |        null| ←離脱
 
 
-
-# ■ [関数] 集計分析
+/**********************
+ * ■ [関数] 集計分析
+ **********************/
 # ※ 様々な集計分析関数
 #    SUM()  : パーテションの中の合計値を返す
 #    AVG()  : パーテションの中の平均値を返す
@@ -1673,8 +1681,8 @@ FROM {テーブル名};
 ### ● Section8
 ```SQL
 
+
 ```
-<!-- ----------- section8 END ----------- -->
 
 
 ### ● Section9
@@ -1707,7 +1715,7 @@ FROM {テーブル名};
 
 ## || 参考
 
-* [![img](https://img-c.udemycdn.com/course/240x135/2394060_adbb_4.jpg)](https://www.udemy.com/share/102kOc3@Jm55eXaV2GdLXwnNAoEOPHhXUleiQK0EG6JQboecG715rn2_tpL6jBbg8kL1nsqw/) <br>
+* ![img](https://img-c.udemycdn.com/course/240x135/2394060_adbb_4.jpg)
 [BigQuery で学ぶ非エンジニアのための SQL データ分析入門 - Udemy ](https://www.udemy.com/share/102kOc3@Jm55eXaV2GdLXwnNAoEOPHhXUleiQK0EG6JQboecG715rn2_tpL6jBbg8kL1nsqw/)
 
 * [BigQuery で INFORMATION_SCHEMA から CREATE TABLE 文が取得できるようになりました！ - DevelopersIO](https://dev.classmethod.jp/articles/bigquery-information-schema-get-create-table-ddl/)
