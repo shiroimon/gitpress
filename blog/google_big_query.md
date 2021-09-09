@@ -51,40 +51,82 @@ FROM {テーブル名};
  * ■ 各区の記述順序
  ********************************************************************/
 # 1. SELECT    ：取得する列の指定
-#    （集計関数）：
+#    （集計関数）
 # 2. FROM      ：取得するテーブルの指定
-# 3. WHERE     ：絞り込み条件の指定
-# 4. GROUP BY  ：グループ化項目の指定
-# 5. HAVING    ：グループ化された集計結果に対して絞り込み条件の指定
-# 6. ORDER BY  ：並び替え条件
-# 7. LIMIT     ：表示する行数の指定
+# 3. JOIN      ：テーブルの結合の処理
+#    ON / USING：結合に利用するキー指定
+# 4. WHERE     ：絞り込み条件の指定
+# 5. GROUP BY  ：グループ化項目の指定
+# 6. HAVING    ：グループ化された集計結果に対して絞り込み条件の指定
+# 7. ORDER BY  ：並び替え条件
+# 8. LIMIT     ：表示する行数の指定
 ```
 
 ```SQL
 /********************************************************************
  * ■ 各区の実行順序
  ********************************************************************/
-# 1. FROM
-# 2. WHERE
-# 3. GROUP BY
-# 4.   (集計関数)
-# 5. HAVING
-# 6. SELECT
-# 7. ORDER BY
-# 8. LIMIT
+#  1. FROM
+#  2. ON / USING
+#  3. JOIN
+#  4. WHERE
+#  5. GROUP BY
+#  6.   (集計関数)
+#  7. HAVING
+#  8. SELECT
+#  9. ORDER BY
+# 10. LIMIT
 ```
 
 
 ### ● 基本関数一覧
 ```SQL
-# |1| SUM()    |||
-# |2| AVR()    |||
-# |3| COUNT()  |||
-# |4| ()  |||
-# |5| ()  |||
-
+# ----------------------------
+# | 1| SUM()             |||
+# | 2| AVR()             |||
+# | 3| COUNT()           |||
+# | 4| MAX()             |||
+# | 5| MIN()             |||
+# | 6| STDDEV_POP()      |||
+# | 7| STDDEV_SAMP()     |||
+# | 8| ROOUND()          |||
+# | 9| CEIL()            |||
+# |10| FLOOR()           |||
+# |11| TRUNC()           |||
+# |12| ABS()             |||
+# |13| MOD()             |||
+# |14| CAST()            |||
+# |15| CONCAT()          |||
+# |16| LENGTH()          |||
+# |17| SUBSTR()          |||
+# |18| REPLACE()         |||
+# |19| TRIM()            |||
+# |20| REGEXP_CONTAINS() |||
+# |21| REGEXP_EXTRACT()  |||
+# |22| REGEXP_REPLACE()  |||
+# |22| DATE()            |||
+# |23| DATETIME()        |||
+# |24| CURRENT_DATE()    |||
+# |25| CURRENT_DATETIME()|||
+# |26| DATE_ADD()        |||
+# |27| DATETIME_ADD()    |||
+# |28| DATE_SUB()        |||
+# |29| DATETIME_SUB()    |||
+# |30| DATE_TRUNC()      |||
+# |31| DATETIME_TRUNC()  |||
+# |32| FORMAT_DATE()     |||
+# |33| FORMAT_DATETIME() |||
+# ----------------------------
 ```
-
+```SQL
+# | 1| IF()        |||
+# | 2| IFNULL()    |||
+# | 3| CASE        |||
+# | 4| CASE()      |||
+# | 5| OVER()      |||
+# | 5| OVER()      |||
+# | 5| OVER()      |||
+```
 
 ## || 学習メモ
 この章は、完全個人メモです。 <br>
@@ -93,15 +135,15 @@ FROM {テーブル名};
 どんな考え方（ロジック）でコードを書き上げたのか、どこに躓いたのか、<br>
 後に俯瞰したいためにお恥ずかしながら演習問題で間違えてしまったコードはそのまま記載してます。悪しからず...
 
-* Section4: 基本文法
-* Section5: 集計関数
-* Section6: 四則演算、条件分岐
-* Section7: 分析関数
-* Section8
-* Section9
-* Section10
-* Section11
-* Section12
+* Section4 : 基本文法
+* Section5 : 集計関数
+* Section6 : 四則演算、条件分岐
+* Section7 : 分析関数
+* Section8 : テーブル結合
+* Section9 : サブクエリ
+* Section10:
+* Section11:
+* Section12:
 
 
 ### ● Section4
@@ -113,36 +155,36 @@ FROM {テーブル名};
 
 # ■ SELECT句 - かラム指定
 # 【演習問題1】
--- SELECT purchase_id, user_id FROM bq_sample.shop_purchases;
+SELECT purchase_id, user_id FROM bq_sample.shop_purchases;
 
 # ■ DISTINCT句 - 重複除外
 # 【演習問題2】
--- SELECT DISTINCT user_id FROM bq_sample.shop_purchases;
--- SELECT DISTINCT user_id, shop_id FROM bq_sample.shop_purchases;
+SELECT DISTINCT user_id FROM bq_sample.shop_purchases;
+SELECT DISTINCT user_id, shop_id FROM bq_sample.shop_purchases;
 
 # ■ EXPECT() - かラム除外
 # 【演習問題3】
--- SELECT * FROM bq_sample.shop_purchases; #(70.1KB)
--- SELECT * EXCEPT(shop_id, product_id) FROM bq_sample.shop_purchases; #(50.1KB)
+SELECT * FROM bq_sample.shop_purchases; #(70.1KB)
+SELECT * EXCEPT(shop_id, product_id) FROM bq_sample.shop_purchases; --(50.1KB)
 
 /********************************************************************/
 # ■ ORDERBY句 - ソート機能(ASC:昇順 DESC:降順）
 
 # 【4.4 演習問題1(:)】
--- SELECT * FROM bq_sample.shop_purchases ORDER BY user_id;
--- SELECT user_id, quantity FROM bq_sample.shop_purchases ORDER BY quantity desc;
+SELECT * FROM bq_sample.shop_purchases ORDER BY user_id;
+SELECT user_id, quantity FROM bq_sample.shop_purchases ORDER BY quantity desc;
 
 # 【4.4 演習問題2(5:06)】
--- SELECT *
--- FROM bq_sample.shop_purchases
--- ORDER BY date, sales_amount desc, quantity desc; #日付順(昇順) ＋ 同日の場合売上高降順 + 数量降順
+SELECT *
+FROM bq_sample.shop_purchases
+ORDER BY date, sales_amount desc, quantity desc; --日付順(昇順) ＋ 同日の場合売上高降順 + 数量降順
 
 # 【4.4 演習問題3(8:20)】
 # eg. ORDER BY {カラム番号}指定可能。… [1]indexに注意
--- SELECT *
--- FROM bq_sample.shop_purchases
--- ORDER BY 3 desc, 7;
--- -- ORDER BY data desc, sales_amount;
+SELECT *
+FROM bq_sample.shop_purchases
+ORDER BY 3 desc, 7;
+-- ORDER BY data desc, sales_amount;
 
 
 /********************************************************************/
@@ -151,26 +193,25 @@ FROM {テーブル名};
 #   そのため発生料金に対して節約できるわけではない。
 
 # 【4.5 演習問題1 (0:55)】
--- SELECT *
--- FROM bq_sample.shop_purchases
--- LIMIT 5;
+SELECT *
+FROM bq_sample.shop_purchases
+LIMIT 5;
 
 # 【4.5 演習問題2 (2:23)】
--- SELECT *
--- FROM `prj-test3.bq_sample.shop_purchases`
--- ORDER BY date desc
--- LIMIT 10;
+SELECT *
+FROM `prj-test3.bq_sample.shop_purchases`
+ORDER BY date desc
+LIMIT 10;
 
 # 【4.5 演習問題3 (:)】取得制限
--- SELECT purchase_id, sales_amount
--- FROM `prj-test3.bq_sample.shop_purchases`
--- ORDER BY sales_amount desc
--- LIMIT 5 OFFSET 11;
+SELECT purchase_id, sales_amount
+FROM `prj-test3.bq_sample.shop_purchases`
+ORDER BY sales_amount desc
+LIMIT 5 OFFSET 11;
 
 
 /********************************************************************/
 # ■ WHERE句 - 絞り込み条件
-# 【4.6/4.7/4.8】
 # eg.「SELECT * FROM bq_sample.shop_purchases WHERE quantity > 3;」
 
 /***********
@@ -186,20 +227,20 @@ FROM {テーブル名};
 # eg. WHERE quantity NOT IN(3, 7, 11) -- 数量が「3」「7」「11」にに該当レコード以外
 
 # 【4.7 演習問題1(:)】
--- SELECT user_id, quantity
--- FROM bq_sample.shop_purchases
--- WHERE quantity > 3
--- ORDER BY 1;
+SELECT user_id, quantity
+FROM bq_sample.shop_purchases
+WHERE quantity > 3
+ORDER BY 1;
 
 # 【4.7 演習問題2(7:15)】
--- SELECT user_id, sales_amount
--- FROM bq_sample.shop_purchases
--- WHERE sales_amount BETWEEN 5000 AND 10000;
+SELECT user_id, sales_amount
+FROM bq_sample.shop_purchases
+WHERE sales_amount BETWEEN 5000 AND 10000;
 
 # 【4.7 演習問題3(8:15)】
--- SELECT user_id, date, sales_amount, shop_id
--- FROM `prj-test3.bq_sample.shop_purchases`
--- WHERE shop_id IN(1, 3, 4);
+SELECT user_id, date, sales_amount, shop_id
+FROM `prj-test3.bq_sample.shop_purchases`
+WHERE shop_id IN(1, 3, 4);
 
 
 /***********
@@ -217,20 +258,20 @@ FROM {テーブル名};
 # eg. WHERE first_name LIKE "__子"  -- 名前が「(2文字)子」のレコード eg.由香子
 
 # 【4.8 演習問題1(3:22)】
--- SELECT *
--- FROM bq_sample.customers
--- WHERE last_name = "前田";
+SELECT *
+FROM bq_sample.customers
+WHERE last_name = "前田";
 
 # 【4.8 演習問題2(4:15)】
--- SELECT *
--- FROM `prj-test3.bq_sample.customers`
--- WHERE first_name IN ("愛","愛子","愛美");
+SELECT *
+FROM `prj-test3.bq_sample.customers`
+WHERE first_name IN ("愛","愛子","愛美");
 
 # 【4.8 演習問題3(5:15)】
--- SELECT *
--- FROM `prj-test3.bq_sample.customers`
--- WHERE first_name NOT LIKE "%子"
--- ORDER BY gender desc;
+SELECT *
+FROM `prj-test3.bq_sample.customers`
+WHERE first_name NOT LIKE "%子"
+ORDER BY gender desc;
 
 
 /***********
@@ -242,16 +283,16 @@ FROM {テーブル名};
 # eg. WHERE timestamp BETWEEN "2017-07-01 00:09:00" AND "2017-07-01 18:00:00"
 
 # 【4.9 演習問題1(2:00)】
--- SELECT *
--- FROM bq_sample.shop_purchases
--- -- ORDER BY date
--- -- LIMIT 10
--- WHERE date <= "2018-06-01";
+SELECT *
+FROM bq_sample.shop_purchases
+-- ORDER BY date
+-- LIMIT 10
+WHERE date <= "2018-06-01";
 
 # 【4.9 演習問題1(5:00)】
--- SELECT *
--- FROM `prj-test3.bq_sample.shop_purchases`
--- WHERE date NOT BETWEEN "2018-04-29" AND "2018-05-06";
+SELECT *
+FROM `prj-test3.bq_sample.shop_purchases`
+WHERE date NOT BETWEEN "2018-04-29" AND "2018-05-06";
 
 
 /***********
@@ -263,9 +304,9 @@ FROM {テーブル名};
 # eg. WHERE is_premium IS NOT FALSE -- True
 
 # 【4.10 演習問題1(1:20)】
--- SELECT user_id, last_name
--- FROM bq_sample.customers
--- WHERE is_premium IS FALSE;
+SELECT user_id, last_name
+FROM bq_sample.customers
+WHERE is_premium IS FALSE;
 
 
 /********************************************************************/
@@ -275,11 +316,11 @@ FROM {テーブル名};
 # eg. WHERE (gender = 2 AND is_premium IS TRUE) OR prefecture = "北海道"
 
 # 【4.11 演習問題1(3:20)】
--- SELECT user_id, last_name, first_name
--- FROM `prj-test3.bq_sample.customers`
--- WHERE (is_premium IS FALSE AND gender = 1) OR birthday < "1970-12-31"
--- ORDER BY user_id
--- LIMIT 5;
+SELECT user_id, last_name, first_name
+FROM `prj-test3.bq_sample.customers`
+WHERE (is_premium IS FALSE AND gender = 1) OR birthday < "1970-12-31"
+ORDER BY user_id
+LIMIT 5;
 
 
 /********************************************************************/
@@ -287,9 +328,9 @@ FROM {テーブル名};
 # eg. WHERE gender = 2 AND birthday IS NOT NULL
 
 # 【4.12 演習問題1(2:00)】
--- SELECT user_id, last_name, first_name
--- FROM `prj-test3.bq_sample.customers`
--- WHERE first_name IS NULL;
+SELECT user_id, last_name, first_name
+FROM `prj-test3.bq_sample.customers`
+WHERE first_name IS NULL;
 
 
 /********************************************************************/
@@ -301,23 +342,23 @@ FROM {テーブル名};
 #         可読性の観点から、明記した方が親切。
 
 # 【4.13 演習問題1(1:50)】
--- SELECT user_id, sales_amount AS salse_in_JPY
--- FROM `prj-test3.bq_sample.shop_purchases`;
+SELECT user_id, sales_amount AS salse_in_JPY
+FROM `prj-test3.bq_sample.shop_purchases`;
 
 # 【4.13 演習問題2(3:00)】
--- SELECT user_id, sales_amount AS salse_in_JPY
--- FROM `prj-test3.bq_sample.shop_purchases`
--- ORDER BY salse_in_JPY desc
--- LIMIT 5;
+SELECT user_id, sales_amount AS salse_in_JPY
+FROM `prj-test3.bq_sample.shop_purchases`
+ORDER BY salse_in_JPY desc
+LIMIT 5;
 
 # （メモ）WHERE句の中ではAS句で指定したカラム名は使用できない。
 #         ∵ 実行順序の関係によるため。(Cf. 5.10)
 # 【4.13 演習問題2(5:00)】
--- SELECT user_id, sales_amount AS salse_in_JPY
--- FROM `prj-test3.bq_sample.shop_purchases`
--- WHERE salse_in_JPY > 10000 #error. Unrecognized name: salse_in_JPY
--- ORDER BY salse_in_JPY desc
--- LIMIT 5;
+SELECT user_id, sales_amount AS salse_in_JPY
+FROM `prj-test3.bq_sample.shop_purchases`
+WHERE salse_in_JPY > 10000 #error. Unrecognized name: salse_in_JPY
+ORDER BY salse_in_JPY desc
+LIMIT 5;
 
 ```
 
@@ -336,25 +377,24 @@ FROM {テーブル名};
 #      SELECT COUNT(*)
 #      FROM sample.shop_purchases
 #      WHERE quantity = 1;
-
 #【5.2 演習問題1(2:09)】
--- SELECT COUNT(*) AS gyou_su
--- FROM `prj-test3.bq_sample.customers`
--- WHERE gender = 2 AND birthday >= "1989-01-08";
+SELECT COUNT(*) AS gyou_su
+FROM `prj-test3.bq_sample.customers`
+WHERE gender = 2 AND birthday >= "1989-01-08";
 
 
 # ■ COUNT() - データ個数集計
 # eg. SELECT COUNT(かラム名)
-
+#
 # ■ カテゴリカル変数の分類集計
 # eg. SELECT COUNT(DISTONCT first_name)
-
+#
 #【5.2 演習問題2(6:50)】
--- SELECT COUNT(*) AS gyou_su,
---        COUNT(first_name) AS data_kosu,
---        COUNT(DISTINCT first_name) AS shurui_su
--- FROM `prj-test3.bq_sample.customers`
--- WHERE gender = 2;
+SELECT COUNT(*) AS gyou_su,
+       COUNT(first_name) AS data_kosu,
+       COUNT(DISTINCT first_name) AS shurui_su
+FROM `prj-test3.bq_sample.customers`
+WHERE gender = 2;
 
 
 /********************************************************************/
@@ -377,10 +417,10 @@ FROM {テーブル名};
 #     |3|      3|            87|
 
 #【5.4 演習問題1(3:30)】
--- SELECT product_id, COUNT(*) AS No_of_purchase
--- FROM `prj-test3.bq_sample.shop_purchases`
--- GROUP BY product_id
--- ORDER BY NO_of_purchase DESC;
+SELECT product_id, COUNT(*) AS No_of_purchase
+FROM `prj-test3.bq_sample.shop_purchases`
+GROUP BY product_id
+ORDER BY NO_of_purchase DESC;
 -- # | |product_id|No_of_purchase|
 -- # |1|        11|           102|
 -- # |2|        10|            98|
@@ -388,11 +428,11 @@ FROM {テーブル名};
 
 
 #【5.4 演習問題2(6:20)】
--- SELECT prefecture,
---        COUNT(*) AS no_of_menbers
--- FROM `prj-test3.bq_sample.customers`
--- GROUP BY 1
--- ORDER BY 2 DESC;
+SELECT prefecture,
+       COUNT(*) AS no_of_menbers
+FROM `prj-test3.bq_sample.customers`
+GROUP BY 1
+ORDER BY 2 DESC;
 -- # | |prefecture|no_of_menbers|
 -- # |1|Tokyo     |          582|
 -- # |2|Osaka     |           88|
@@ -409,12 +449,12 @@ FROM {テーブル名};
 -- ORDER BY 2 >= 3;
 
 #（重要）SELECTの順番が問われる。∴GROPBYの順番を変更しても同様の挙動。
--- SELECT shop_id,
---        product_id,
---        COUNT(*) AS NO_of_purchase
--- FROM `prj-test3.bq_sample.shop_purchases`
--- GROUP BY shop_id, product_id
--- ORDER BY shop_id, product_id;
+SELECT shop_id,
+       product_id,
+       COUNT(*) AS NO_of_purchase
+FROM `prj-test3.bq_sample.shop_purchases`
+GROUP BY shop_id, product_id
+ORDER BY shop_id, product_id;
 -- # | |shop_id|product_id|No_of_purchase|
 -- # |1|      1|         1|            17|
 -- # |2|      1|         2|            17|
@@ -428,10 +468,10 @@ FROM {テーブル名};
 #    |1|2895|
 
 #【5.5 演習問題1(1:56)】
--- SELECT shop_id, SUM(quantity) AS Total_quantity
--- FROM `prj-test3.bq_sample.shop_purchases`
--- GROUP BY 1
--- ORDER BY 2 DESC;
+SELECT shop_id, SUM(quantity) AS Total_quantity
+FROM `prj-test3.bq_sample.shop_purchases`
+GROUP BY 1
+ORDER BY 2 DESC;
 -- #| |shop_id|Taotal_quantity|
 -- #|1|      1|           1257|
 -- #|2|      2|           1063|
@@ -439,11 +479,11 @@ FROM {テーブル名};
 
 
 #【5.5 演習問題2(3:30)】
--- SELECT shop_id, SUM(sales_amount) AS Total_sales
--- FROM `prj-test3.bq_sample.shop_purchases`
--- WHERE product_id IN(1, 5, 11, 18)
--- GROUP BY shop_id
--- ORDER BY Total_sales DESC;
+SELECT shop_id, SUM(sales_amount) AS Total_sales
+FROM `prj-test3.bq_sample.shop_purchases`
+WHERE product_id IN(1, 5, 11, 18)
+GROUP BY shop_id
+ORDER BY Total_sales DESC;
 -- #| |shop_id|Total_salse|
 -- #|1|      1|    1789674|
 -- #|2|      2|    1422230|
@@ -482,20 +522,20 @@ FROM {テーブル名};
 #     #|1|    2.25|  12400.0|
 
 #【5.6 演習問題1(2:30)】
--- SELECT shop_id, AVG(quantity) AS avg_qty
--- FROM `prj-test3.bq_sample.shop_purchases`
--- GROUP BY shop_id
--- ORDER BY 2 DESC;
+SELECT shop_id, AVG(quantity) AS avg_qty
+FROM `prj-test3.bq_sample.shop_purchases`
+GROUP BY shop_id
+ORDER BY 2 DESC;
 -- #| |shop_id|avg_qty           |
 -- #|1|      5|               3.0|
 -- #|2|      3|2.4468085106382977|
 
 #【5.6 演習問題2(3:30)】
--- SELECT shop_id, AVG(sales_amount) AS avg_sales
--- FROM `prj-test3.bq_sample.shop_purchases`
--- WHERE date BETWEEN "2018-06-01" AND "2018-06-30"
--- GROUP BY shop_id
--- ORDER BY 2 DESC;
+SELECT shop_id, AVG(sales_amount) AS avg_sales
+FROM `prj-test3.bq_sample.shop_purchases`
+WHERE date BETWEEN "2018-06-01" AND "2018-06-30"
+GROUP BY shop_id
+ORDER BY 2 DESC;
 -- #| |shop_id|avg_sales        |
 -- #|1|      1|17558.62222222221|
 -- #|2|      2|12881.13043478261|
@@ -509,23 +549,23 @@ FROM {テーブル名};
 #    #|1|99000|1400|
 
 #【5.7 演習問題1(1:15)】
--- SELECT shop_id, MAX(sales_amount) AS max_sales
--- FROM `prj-test3.bq_sample.shop_purchases`
--- WHERE product_id = 15
--- GROUP BY shop_id
--- ORDER BY 1;
+SELECT shop_id, MAX(sales_amount) AS max_sales
+FROM `prj-test3.bq_sample.shop_purchases`
+WHERE product_id = 15
+GROUP BY shop_id
+ORDER BY 1;
 -- #| |shop_id|max_sales|
 -- #|1|      1|    19300|
 -- #|2|      2|    20000|
 
 #【5.7 演習問題2(3:15)】
--- SELECT date,
---        shop_id,
---        MIN(sales_amount)AS min_salse
--- FROM `prj-test3.bq_sample.shop_purchases`
--- WHERE product_id = 4 AND quantity = 1
--- GROUP BY 1, 2
--- ORDER BY 3;
+SELECT date,
+       shop_id,
+       MIN(sales_amount)AS min_salse
+FROM `prj-test3.bq_sample.shop_purchases`
+WHERE product_id = 4 AND quantity = 1
+GROUP BY 1, 2
+ORDER BY 3;
 -- #| |date      |shop_id|min_salse|
 -- #|1|2018-06-30|      3|    13260|
 -- #|2|2018-01-21|      3|    13650|
@@ -537,15 +577,15 @@ FROM {テーブル名};
 # 分析対象が標本（＝sample）     ：SELECT STDDEV_SAMP(カラム名)
 
 #【5.8 演習問題1(2:35)】
--- SELECT shop_id,
---        STDDEV_POP(sales_amount) AS std_sales
--- FROM `prj-test3.bq_sample.shop_purchases`
--- WHERE product_id = 15
--- GROUP BY shop_id
--- ORDER BY 2;
-#| |shop_id|std_sales         |
-#|1|      4|3664.3411301852543|
-#|2|      1| 4962.301658504852|
+SELECT shop_id,
+       STDDEV_POP(sales_amount) AS std_sales
+FROM `prj-test3.bq_sample.shop_purchases`
+WHERE product_id = 15
+GROUP BY shop_id
+ORDER BY 2;
+-- #| |shop_id|std_sales         |
+-- #|1|      4|3664.3411301852543|
+-- #|2|      1| 4962.301658504852|
 
 
 /********************************************************************/
@@ -569,52 +609,28 @@ FROM {テーブル名};
 #     (error) Aggregate function SUM not allowed in WHERE clause
 
 #【5.9 演習問題1(4:30)】
--- SELECT shop_id,
---        AVG(sales_amount) AS avg_salse
--- FROM `prj-test3.bq_sample.shop_purchases`
--- WHERE product_id = 18
--- GROUP BY shop_id
--- HAVING avg_salse > 15000
--- ORDER BY avg_salse DESC;
+SELECT shop_id,
+       AVG(sales_amount) AS avg_salse
+FROM `prj-test3.bq_sample.shop_purchases`
+WHERE product_id = 18
+GROUP BY shop_id
+HAVING avg_salse > 15000
+ORDER BY avg_salse DESC;
 -- #| |shop_id|avg_slse          |
 -- #|1|      4|           25090.0|
 -- #|1|      2|16971.185185185186|
 
 #【5.9 演習問題2(10:45)】
--- SELECT prefecture,
---        COUNT(user_id) AS users
--- FROM `prj-test3.bq_sample.customers`
--- WHERE Is_premium = true
--- GROUP BY 1
--- HAVING users <= 15
--- ORDER BY 2 DESC;
+SELECT prefecture,
+       COUNT(user_id) AS users
+FROM `prj-test3.bq_sample.customers`
+WHERE Is_premium = true
+GROUP BY 1
+HAVING users <= 15
+ORDER BY 2 DESC;
 -- #| |prefecture|users|
 -- #|1|Osaka     |   11|
 -- #|2|Kanagawa  |   11|
-
-
-/********************************************************************/
-# ■ 各区の記述順序
-# 1. SELECT    ：取得する列の指定
-#    （集計関数）：
-# 2. FROM      ：取得するテーブルの指定
-# 3. WHERE     ：絞り込み条件の指定
-# 4. GROUP BY  ：グループ化項目の指定
-# 5. HAVING    ：グループ化された集計結果に対して絞り込み条件の指定
-# 6. ORDER BY  ：並び替え条件
-# 7. LIMIT     ：表示する行数の指定
-
-
-/********************************************************************/
-# ■ 各区の実行順序
-# 1. FROM
-# 2. WHERE
-# 3. GROUP BY
-# 4. (集計関数)
-# 5. HAVING
-# 6. SELECT
-# 7. ORDER BY
-# 8. LIMIT
 
 
 ```
@@ -644,7 +660,7 @@ FROM {テーブル名};
 #     #|2|        388|       59400|64152.00000000001|
 
 #【6.2 演習問題1(2:40)】
--- (miss_code)
+# (miss_code)
 -- SELECT purchase_id,
 --        quantity,
 --        sales_amount,
@@ -652,19 +668,19 @@ FROM {テーブル名};
 -- FROM `prj-test3.bq_sample.shop_purchases`
 -- GROUP BY purchase_id
 -- ORDER BY 4 DESC;
-
--- SELECT purchase_id,
---        quantity,
---        sales_amount,
---        sales_amount/quantity AS avg_price
--- FROM `prj-test3.bq_sample.shop_purchases`
--- ORDER BY 4;
+# (collect_code)
+SELECT purchase_id,
+       quantity,
+       sales_amount,
+       sales_amount/quantity AS avg_price
+FROM `prj-test3.bq_sample.shop_purchases`
+ORDER BY 4;
 -- # | |purchase_id|quantity|sales_amount|avg_salse|
 -- # |1|        301|       2|        2660|   1330.0|
 -- # |2|       1040|       1|        1400|   1400.0|
 
 #【6.2 演習問題2(4:10)】
--- (miss code)
+#(miss_code)
 -- SELECT purchase_id,
 --        quantity,
 --        sales_amount,
@@ -672,14 +688,14 @@ FROM {テーブル名};
 -- FROM `prj-test3.bq_sample.shop_purchases`
 -- HAVING avg_sales > 5000　#[×]
 -- ORDER BY 4;
-
--- SELECT purchase_id,
---        quantity,
---        sales_amount,
---        sales_amount/quantity AS avg_sales
--- FROM `prj-test3.bq_sample.shop_purchases`
--- WHERE sales_amount/quantity > 5000
--- ORDER BY 4;
+#(collect_code)
+SELECT purchase_id,
+       quantity,
+       sales_amount,
+       sales_amount/quantity AS avg_sales
+FROM `prj-test3.bq_sample.shop_purchases`
+WHERE sales_amount/quantity > 5000
+ORDER BY 4;
 -- # | |purchase_id|quantity|sales_amount|avg_salse|
 -- # |1|       1196|       2|       10030|   5015.0|
 -- # |2|       1079|       1|        5015|   5015.0|
@@ -691,15 +707,15 @@ FROM {テーブル名};
 # ■ ROOUND() - 数字を丸める関数
 # ROUND(値、加算可能かラム名, 桁数)
 # 戻り値はのデータ型は浮動小数（float）
-
+#
 # eg. SELECT
 #         ROUND(154.249) AS basic,
 #         ROUND(154.249, 1) AS Plus1,
 #         ROUND(154.249, 2) AS Plus2,
 #         ROUND(154.249, -1) AS Minus1,
 #         ROUND(154.249, -2) AS Minus2;
-#     | |basic|Plus1|Plus2 |Minus1|Minus2|
-#     |1|154.0|154.2|154.25| 150.0| 200.0|
+#     #| |basic|Plus1|Plus2 |Minus1|Minus2|
+#     #|1|154.0|154.2|154.25| 150.0| 200.0|
 
 
 /********************************************************************/
@@ -708,39 +724,39 @@ FROM {テーブル名};
 #  切り捨て関数： FLOOR()
 # ※ いずれも戻り値が浮動小数点（float）
 #【6.3 演習問題1(4:00)】
--- SELECT purchase_id,
---        sales_amount,
---        sales_amount*1.08 AS Sales_w_tax,
---        ROUND(sales_amount*1.08, 1) AS Round,
---        CEIL(sales_amount*1.08) AS Ceil,
---        FLOOR(sales_amount*1.08) AS Floor
--- FROM `prj-test3.bq_sample.shop_purchases`
--- -- GROUP BY purchase_id, sales_amount    #[×]不要：but あっても同結果
--- ORDER BY purchase_id ASC
--- LIMIT 50;
+SELECT purchase_id,
+       sales_amount,
+       sales_amount*1.08 AS Sales_w_tax,
+       ROUND(sales_amount*1.08, 1) AS Round,
+       CEIL(sales_amount*1.08) AS Ceil,
+       FLOOR(sales_amount*1.08) AS Floor
+FROM `prj-test3.bq_sample.shop_purchases`
+-- GROUP BY purchase_id, sales_amount    #[×]不要：but あっても同結果
+ORDER BY purchase_id ASC
+LIMIT 50;
 -- #| |purchase_id|sales_id|Salse_w_tax|Round  |Ceil   |Floor  |
 -- #|1|          1|  112775|    13797.0|13797.0|13797.0|13797.0|
 -- #|2|          2|   11600|    12528.0|12528.0|12528.0|12528.0|
 
 #【6.3 演習問題2(6:30)】
--- SELECT purchase_id,
---        sales_amount,
---        ROUND(sales_amount*1.08, -2) AS Sales_w_tax #十の位で四捨五入
--- FROM `prj-test3.bq_sample.shop_purchases`
--- ORDER BY purchase_id
--- LIMIT 50;
+SELECT purchase_id,
+       sales_amount,
+       ROUND(sales_amount*1.08, -2) AS Sales_w_tax #十の位で四捨五入
+FROM `prj-test3.bq_sample.shop_purchases`
+ORDER BY purchase_id
+LIMIT 50;
 -- #| |purhase_id|salse_amount|Salse_w_tax|
 -- #|1|         1|       12775|    13800.0|
 -- #|2|         2|       11600|    12500.0|
 
 #【6.3 演習問題3(8:00)】
--- SELECT purchase_id,
---        sales_amount,
---     --    CEIL(ROUND(sales_amount*1.08, -2)) AS Salse_w_tax  #[×]
---       CEIL(sales_amount*1.08/100)*100 AS Salse_w_tax #十の位で切り上げ
--- FROM `prj-test3.bq_sample.shop_purchases`
--- ORDER BY purchase_id
--- LIMIT 50;
+SELECT purchase_id,
+       sales_amount,
+    --    CEIL(ROUND(sales_amount*1.08, -2)) AS Salse_w_tax  #[×]
+      CEIL(sales_amount*1.08/100)*100 AS Salse_w_tax #十の位で切り上げ
+FROM `prj-test3.bq_sample.shop_purchases`
+ORDER BY purchase_id
+LIMIT 50;
 -- #| |purhase_id|salse_amount|Salse_w_tax|
 -- #|1|         1|       12775|    13800.0|
 -- #|2|         2|       11600|    12600.0|
@@ -752,18 +768,18 @@ FROM {テーブル名};
 /********************************************************************/
 # ■ ABS() - 絶対値
 #【6.4 演習問題1(1:30)
--- SELECT ROUND(AVG(sales_amount), 1) AS avg_salse
--- FROM `prj-test3.bq_sample.shop_purchases`;
--- #| |avg_salse|
--- #|1|  15693.0|
+SELECT ROUND(AVG(sales_amount), 1) AS avg_salse
+FROM `prj-test3.bq_sample.shop_purchases`;
+#| |avg_salse|
+#|1|  15693.0|
 
--- SELECT shop_id,
---        AVG(sales_amount) AS avg_salse,
---        AVG(sales_amount)-15693 AS diff,
---        ABS(AVG(sales_amount)-15693) AS abs_diff
--- FROM `prj-test3.bq_sample.shop_purchases`
--- GROUP BY shop_id
--- ORDER BY shop_id;
+SELECT shop_id,
+       AVG(sales_amount) AS avg_salse,
+       AVG(sales_amount)-15693 AS diff,
+       ABS(AVG(sales_amount)-15693) AS abs_diff
+FROM `prj-test3.bq_sample.shop_purchases`
+GROUP BY shop_id
+ORDER BY shop_id;
 -- #| |shop_id|avg_salse         |diff               |abs_diff          |
 -- #|1|      1| 15810.55632582321|  117.5563258232105| 117.5563258232105|
 -- #|2|      2|15691.087794432557|-1.9122055674433796|1.9122055674433796|
@@ -773,10 +789,10 @@ FROM {テーブル名};
 # ■ MOD() - 割り算の余り
 #  MOD(割られる数, 割る数)
 #【6.4 演習問題2(4:30)】
--- SELECT *
--- FROM `prj-test3.bq_sample.shop_purchases`
--- WHERE MOD(purchase_id, 3)=0
--- ORDER BY purchase_id;
+SELECT *
+FROM `prj-test3.bq_sample.shop_purchases`
+WHERE MOD(purchase_id, 3)=0
+ORDER BY purchase_id;
 -- #| |purchase_id|user_id|date      |shop_id|product_id|quantity|salse_amount|
 -- #|1|          3| 876530|2018-01-01|      2|        19|       3|        4845|
 -- #|2|          6| 954830|2018-01-01|      1|        17|       3|       15488|
@@ -792,13 +808,13 @@ FROM {テーブル名};
 # eg. CAST({対象かラム} AS {変換先データ型})
 
 #【6.4 演習問題3(8:00)】
--- SELECT purchase_id,
---        sales_amount,
---        CAST(ROUND(sales_amount*1.08, -2) AS INT64) AS sales_w_tax
--- FROM `prj-test3.bq_sample.shop_purchases`
--- GROUP BY purchase_id, sales_amount
--- ORDER BY 2 DESC
--- LIMIT 5;
+SELECT purchase_id,
+       sales_amount,
+       CAST(ROUND(sales_amount*1.08, -2) AS INT64) AS sales_w_tax
+FROM `prj-test3.bq_sample.shop_purchases`
+GROUP BY purchase_id, sales_amount
+ORDER BY 2 DESC
+LIMIT 5;
 -- #| |purchase_id|sales_amount|sales_tax|
 -- #|1|       1203|       99000|   106900|
 -- #|2|        995|       99000|   106900|
@@ -810,22 +826,22 @@ FROM {テーブル名};
 # ■ CONCAT() - 文字列連結
 # eg. CONCAT({文字列}, {文字列}, {文字列}・・・)
 #【6.5 演習問題1(1:50)】
--- SELECT user_id,
---        CONCAT(last_name, " ", first_name) AS full_name
--- FROM `prj-test3.bq_sample.customers`
--- ORDER BY 1;
+SELECT user_id,
+       CONCAT(last_name, " ", first_name) AS full_name
+FROM `prj-test3.bq_sample.customers`
+ORDER BY 1;
 -- #|  |user_id|full_name|
--- #| 1| 496070|片桐 雅友 |
--- #| 2| 496070|才村 歩加 |
+-- #| 1| 496070|片桐 雅友|
+-- #| 2| 496070|才村 歩加|
 -- #|21| 613645|#N-A 守  |
 
 #【6.5 演習問題2(3:10)】
--- SELECT purchase_id,
---        CONCAT(CAST(user_id AS STRING), "-", CAST(shop_id AS STRING)) AS user_shop,
---        sales_amount
--- FROM `prj-test3.bq_sample.shop_purchases`
--- ORDER BY purchase_id
--- LIMIT 10;
+SELECT purchase_id,
+       CONCAT(CAST(user_id AS STRING), "-", CAST(shop_id AS STRING)) AS user_shop,
+       sales_amount
+FROM `prj-test3.bq_sample.shop_purchases`
+ORDER BY purchase_id
+LIMIT 10;
 -- #| |purchase_id|user_shop|sales_amount|
 -- #|1|          1|733995-2 |       12775|
 
@@ -833,11 +849,11 @@ FROM {テーブル名};
 /********************************************************************/
 # ■ LENGTH() - 文字列の文字数取得
 #【6.5 演習問題3(5:30)】
--- SELECT product_id,
---        prod_name,
---        LENGTH(prod_name) AS letters
--- FROM `prj-test3.bq_sample.products_master`
--- ORDER BY 3;
+SELECT product_id,
+       prod_name,
+       LENGTH(prod_name) AS letters
+FROM `prj-test3.bq_sample.products_master`
+ORDER BY 3;
 -- #| |product_id|pod_name     |letters|
 -- #|1|         9|ブラウス 半袖|      7|  ※半角スペースもカウント
 
@@ -847,11 +863,11 @@ FROM {テーブル名};
 # eg. SUBSTR(prod_name, 1, 5)
 #     = prod_nameの１番左から、5文字取得
 #【6.5 演習問題4(8:00)】
--- SELECT product_id,
---        prod_name,
---        SUBSTR(prod_name, -6, 6) AS right6 #右から6文字
--- FROM `prj-test3.bq_sample.products_master`
--- ORDER BY product_id;
+SELECT product_id,
+       prod_name,
+       SUBSTR(prod_name, -6, 6) AS right6 #右から6文字
+FROM `prj-test3.bq_sample.products_master`
+ORDER BY product_id;
 -- #| |product_id|prod_name                      |right6 |
 -- #|1|         1|オックスフォードシャツ 綿 100%|綿 100%|
 
@@ -861,11 +877,11 @@ FROM {テーブル名};
 # eg. REPLACE("creating", "ing", "ed")
 #     = ing(現在進行形) を ed(過去形) に置き換える
 #【6.5 演習問題5(10:10)】
--- SELECT product_id,
---        prod_name,
---        REPLACE(prod_name, "半袖", "七分袖") AS prod_name
--- FROM `prj-test3.bq_sample.products_master`
--- ORDER BY product_id;
+SELECT product_id,
+       prod_name,
+       REPLACE(prod_name, "半袖", "七分袖") AS prod_name
+FROM `prj-test3.bq_sample.products_master`
+ORDER BY product_id;
 -- #| |product_id|prod_name    |prod_name_1   |
 -- #|7|         7|ポロシャツ 半袖|ポロシャツ 七分袖|
 -- #|8|         8|ポロシャツ 長袖|ポロシャツ 長袖 |
@@ -877,12 +893,12 @@ FROM {テーブル名};
 #     文字列前後の＄マークを削除したい。
 #     ＝TRIM(文字列,"$")
 #【6.5 演習問題6(12:00)】
--- SELECT " 平成 ", TRIM("平成");
+SELECT " 平成 ", TRIM("平成");
 -- #| |f0_  |f1_|
 -- #|1| 平成 |平成|
 
--- SELECT "https://www.udemy.com",
---         TRIM("https://www.udemy.com", "https://");
+SELECT "https://www.udemy.com",
+        TRIM("https://www.udemy.com", "https://");
 -- #| |f0_                  |f1_          |
 -- #|1|https://www.udemy.com|www.udemy.com|
 
@@ -908,10 +924,10 @@ FROM {テーブル名};
 -- #| |prob_dir|PV  |
 -- #|1|false   | 653|
 -- #|2|true    |1945|
-#(collect code)
--- SELECT SUM(pageview) AS PV
--- FROM `prj-test3.bq_sample.web_usage`
--- WHERE REGEXP_CONTAINS(page, r"^/products/\?id=[0-9][0-9]?$") IS TRUE; #[0-9]:0~9数字が1つ、 ?：直前の文字があってもなくても良いの意味
+#(collect_code)
+SELECT SUM(pageview) AS PV
+FROM `prj-test3.bq_sample.web_usage`
+WHERE REGEXP_CONTAINS(page, r"^/products/\?id=[0-9][0-9]?$") IS TRUE; --[0-9]:0~9数字が1つ、 ?：直前の文字があってもなくても良いの意味
 -- #| |PV  |
 -- #|1|1944|
 
@@ -947,9 +963,9 @@ FROM {テーブル名};
 # eg. DATE(2021, 9, 30)#2021/09/30
 #     DATETIME(2021,9,30,12,35,15) #2021/09/30 12:35:15
 #【6.7 演習問題1(1:50)】
--- SELECT
---     DATE(2019, 4, 30) AS date,
---     DATETIME(2019, 4, 30, 13, 22, 15) AS datetime;
+SELECT
+    DATE(2019, 4, 30) AS date,
+    DATETIME(2019, 4, 30, 13, 22, 15) AS datetime;
 -- #| |date      |datetime           |
 -- #|1|2019-04-30|2019-04-30T13:22:15|
 
@@ -959,22 +975,22 @@ FROM {テーブル名};
 -- #|datetime  |DATETIME|NULLABLE|
 
 #【6.7 演習問題2(4:30)】
--- SELECT
---     purchase_id,
---     DATETIME(date) AS datetime
--- FROM `prj-test3.bq_sample.shop_purchases`
--- ORDER BY purchase_id
--- LIMIT 10;
+SELECT
+    purchase_id,
+    DATETIME(date) AS datetime
+FROM `prj-test3.bq_sample.shop_purchases`
+ORDER BY purchase_id
+LIMIT 10;
 -- #| |purchase_id|datetime           |
 -- #|1|          1|2018-01-01T00:00:00|
 
 #【6.7 演習問題3(5:30)】
--- SELECT
---     timestamp,
---     DATE(timestamp) AS date
--- FROM `prj-test3.bq_sample.web_usage`
--- ORDER BY 1
--- LIMIT 100;
+SELECT
+    timestamp,
+    DATE(timestamp) AS date
+FROM `prj-test3.bq_sample.web_usage`
+ORDER BY 1
+LIMIT 100;
 -- #| |timestamp          |date      |
 -- #|1|2018-01-01T13:12:57|2018-01-01|
 
@@ -986,9 +1002,9 @@ FROM {テーブル名};
 #        CURRENT_DATE("+09:00"),
 #        CURRENT_DATETIME("+09:00");
 #【6.7 演習問題5(9:15)】
--- SELECT
---     CURRENT_DATE("Asia/Tokyo"),
---     CURRENT_DATETIME("Asia/Tokyo");
+SELECT
+    CURRENT_DATE("Asia/Tokyo"),
+    CURRENT_DATETIME("Asia/Tokyo");
 
 
 /********************************************************************/
@@ -1001,13 +1017,13 @@ FROM {テーブル名};
 # ※ DATETIME: date_part = [yera, quarter, month, week, day]
 #                         +[hour, minute , second, milisecond, microsecond] 細かく指定が可能。
 #【6.8 演習問題1(2:15)】
--- SELECT DATE_ADD(CURRENT_DATE("Asia/Tokyo"), INTERVAL 3 month);
+SELECT DATE_ADD(CURRENT_DATE("Asia/Tokyo"), INTERVAL 3 month);
 -- #||f0_       |
 -- #|1|2021-12-6|
 # (memo) 例えば、3ヶ月前とかも取れる。その場合は「-3」
 
 #【6.8 演習問題2(3:50)】
--- SELECT DATETIME_ADD(CURRENT_DATETIME("+9:00"), INTERVAL 6 hour);
+SELECT DATETIME_ADD(CURRENT_DATETIME("+9:00"), INTERVAL 6 hour);
 -- #| |f0_                       |
 -- #|1|2021-09-07T04:21:28.704252|
 
@@ -1021,12 +1037,12 @@ FROM {テーブル名};
 # ■ DATE_DIFF()、DATETIME_DIFF() - 差分
 # eg. SELECT DATE_DIFF(date_expr, date_expr, date_part);
 #【6.8 演習問題3(6:30)】
--- SELECT DATE_DIFF(date"2019-04-30", date"1989-01-08", day);
+SELECT DATE_DIFF(date"2019-04-30", date"1989-01-08", day);
 -- #| |f0_  |
 -- #|1|11069|
 
 #【6.8 演習問題4(7:30)】
--- SELECT DATETIME_DIFF(datetime"2019-05-02T10:12:15", datetime"2019-05-02T09:45:23", second);
+SELECT DATETIME_DIFF(datetime"2019-05-02T10:12:15", datetime"2019-05-02T09:45:23", second);
 -- #| |f0_ |
 -- #|1|1612|
 
@@ -1043,12 +1059,12 @@ FROM {テーブル名};
 #      #|1|1989-05-02 0:00:00| ←日付以降は切り詰められている
 #
 #【6.9 演習問題1(2:10)】
--- SELECT
---     DATE_TRUNC(date, MONTH) AS month,
---     SUM(sales_amount) AS total_sales
--- FROM  `prj-test3.bq_sample.shop_purchases`
--- GROUP BY 1
--- ORDER BY 1;
+SELECT
+    DATE_TRUNC(date, MONTH) AS month,
+    SUM(sales_amount) AS total_sales
+FROM  `prj-test3.bq_sample.shop_purchases`
+GROUP BY 1
+ORDER BY 1;
 -- #| |month     |total_sales|
 -- #|1|2018-01-01|    2056764|
 -- #|2|2018-02-01|    1133128|
@@ -1088,17 +1104,17 @@ FROM {テーブル名};
 /********************************************************************/
 # ■ MAX()MIN() - 最大値、最小値
 #【6.9 演習問題2(4:00)】
--- SELECT
---     shop_id,
---     -- MIN(DATE_TRUNC(date, DAY)) AS oldest,
---     -- MAX(DATE_TRUNC(date, DAY)) AS newest,
---     -- MAX(DATE_TRUNC(date, DAY))-MIN(DATE_TRUNC(date, DAY)) AS days_diff
---     MIN(date) AS oldest,
---     MAX(date) AS newest,
---     DATE_DIFF(MAX(date), MIN(date), DAY) AS days_diff
--- FROM `prj-test3.bq_sample.shop_purchases`
--- WHERE shop_id = 4
--- GROUP BY shop_id;
+SELECT
+    shop_id,
+    -- MIN(DATE_TRUNC(date, DAY)) AS oldest,
+    -- MAX(DATE_TRUNC(date, DAY)) AS newest,
+    -- MAX(DATE_TRUNC(date, DAY))-MIN(DATE_TRUNC(date, DAY)) AS days_diff
+    MIN(date) AS oldest,
+    MAX(date) AS newest,
+    DATE_DIFF(MAX(date), MIN(date), DAY) AS days_diff
+FROM `prj-test3.bq_sample.shop_purchases`
+WHERE shop_id = 4
+GROUP BY shop_id;
 -- #| |shop_id|oldest    |newest    |days_diff|
 -- #|1|      4|2018-01-05|2018-12-19|      348|
 
@@ -1121,20 +1137,20 @@ FROM {テーブル名};
 --         MIN(DATETIME_TRUNC(timestamp, DAY)),
 --         DAY) > 1
 -- ORDER BY days_diff;
-#(collect code)
--- SELECT
---     user_id,
---     MIN(timestamp) AS oldest,
---     MAX(timestamp) AS newest,
---     DATETIME_DIFF(MAX(timestamp), MIN(timestamp), DAY) AS days_diff,
---     COUNT(DISTINCT session_count) AS visit_count, #[重複session数を除いて、ユニークなsession数を取得]
---     DATETIME_DIFF(MAX(timestamp), MIN(timestamp), DAY)/COUNT(DISTINCT session_count) AS avg_interval
--- FROM `prj-test3.bq_sample.web_usage`
--- GROUP BY user_id
--- HAVING
---     DATETIME_DIFF(MAX(timestamp), MIN(timestamp), DAY) <> 0
---     AND COUNT(DISTINCT session_count) <> 1
--- ORDER BY avg_interval;
+#(collect_code)
+SELECT
+    user_id,
+    MIN(timestamp) AS oldest,
+    MAX(timestamp) AS newest,
+    DATETIME_DIFF(MAX(timestamp), MIN(timestamp), DAY) AS days_diff,
+    COUNT(DISTINCT session_count) AS visit_count, --[重複session数を除いて、ユニークなsession数を取得]
+    DATETIME_DIFF(MAX(timestamp), MIN(timestamp), DAY)/COUNT(DISTINCT session_count) AS avg_interval
+FROM `prj-test3.bq_sample.web_usage`
+GROUP BY user_id
+HAVING
+    DATETIME_DIFF(MAX(timestamp), MIN(timestamp), DAY) <> 0
+    AND COUNT(DISTINCT session_count) <> 1
+ORDER BY avg_interval;
 -- #| |user_id|oldest             |newest             |days_diff|visit_count|avg_interval|
 -- #|1| 916550|2018-10-22T00:46:50|2018-10-23T14:34:55|        1|          8|       0.125|
 -- #|2|1011670|2018-10-04T18:37:15|2018-10-05T13:42:21|        1|          4|        0.25|
@@ -1154,11 +1170,11 @@ FROM {テーブル名};
 #    #|1 |         1|オックスフォードシャツ 綿 100%|それ以外 |
 #    #|11|        11|Tシャツ（デザイン） 半袖      |Tシャツ  |
 #【6.10 演習問題1(3:20)】
--- SELECT
---     IF(product_id >= 11, "Tシャツ", "Tシャツ以外") AS category,
---     SUM(quantity) AS total_pty
--- FROM `prj-test3.bq_sample.shop_purchases`
--- GROUP BY 1;
+SELECT
+    IF(product_id >= 11, "Tシャツ", "Tシャツ以外") AS category,
+    SUM(quantity) AS total_pty
+FROM `prj-test3.bq_sample.shop_purchases`
+GROUP BY 1;
 -- #| |category  |total_qty|
 -- #|1|Tシャツ以外 |     1156|
 -- #|2|Tシャツ    |     1739|
@@ -1169,11 +1185,11 @@ FROM {テーブル名};
 # eg. IFNULL(かラム名, nullの場合の返り値)
 # ※ 値がnullでないなら何もしない。
 #【6.10 演習問題2(5:20)】
--- SELECT
---     *,
---     IFNULL(gender, 3) AS gender_not_null
--- FROM `prj-test3.bq_sample.customers`
--- ORDER BY 1;
+SELECT
+    *,
+    IFNULL(gender, 3) AS gender_not_null
+FROM `prj-test3.bq_sample.customers`
+ORDER BY 1;
 -- #| |user_id||gender||gender_not_null|
 -- #|1| 496070||     1||              1|
 -- #|7| 596992||null  ||              3|
@@ -1237,17 +1253,17 @@ FROM {テーブル名};
 --     END AS round_sales
 -- FROM `prj-test3.bq_sample.shop_purchases`
 -- ORDER BY 1;
-#(collect code)
--- SELECT
---     purchase_id,
---     sales_amount,
---     CASE ROUND(sales_amount, -4)
---         WHEN 0 THEN "１万円未満"
---         WHEN 10000 THEN "１万円"
---         WHEN 20000 THEN "２万円"
---         ELSE "３万円以上"
---     END AS round_sales
--- FROM `prj-test3.bq_sample.shop_purchases`;
+#(collect_code)
+SELECT
+    purchase_id,
+    sales_amount,
+    CASE ROUND(sales_amount, -4)
+        WHEN 0 THEN "１万円未満"
+        WHEN 10000 THEN "１万円"
+        WHEN 20000 THEN "２万円"
+        ELSE "３万円以上"
+    END AS round_sales
+FROM `prj-test3.bq_sample.shop_purchases`;
 -- #|  |purchase_id|sales_amount|round_sales|
 -- #| 1|         22|       59400|３万円以上   |
 -- #| 5|         17|       19000|２万円      |
@@ -1268,17 +1284,17 @@ FROM {テーブル名};
 -- GROUP BY prod_category
 -- ORDER BY 2;
 #(colect code)
--- SELECT
---     CASE
---         WHEN product_id <= 6 THEN "男性衣類"
---         WHEN product_id <= 10 THEN "女性衣類"
---         WHEN product_id <= 18 THEN "Tシャツ"
---         ELSE "子供用Tシャツ"
---     END AS prod_category,
---     ROUND(AVG(sales_amount), 2)AS avg_amount
--- FROM `prj-test3.bq_sample.shop_purchases`
--- GROUP BY 1
--- ORDER BY 2 DESC;
+SELECT
+    CASE
+        WHEN product_id <= 6 THEN "男性衣類"
+        WHEN product_id <= 10 THEN "女性衣類"
+        WHEN product_id <= 18 THEN "Tシャツ"
+        ELSE "子供用Tシャツ"
+    END AS prod_category,
+    ROUND(AVG(sales_amount), 2)AS avg_amount
+FROM `prj-test3.bq_sample.shop_purchases`
+GROUP BY 1
+ORDER BY 2 DESC;
 -- #| |prod_category|avg_amount|
 -- #|1|男性衣類      |  30074.72|
 -- #|2|女性衣類      |  24052.13|
@@ -1367,15 +1383,15 @@ FROM {テーブル名};
 #           ORDER BY
 #     )
 #【7.4 演習問題1(2:20)】
--- SELECT
---     order_id,
---     user_id,
---     quantity,
---     RANK() OVER(
---         ORDER BY quantity DESC
---     ) AS ranking
--- FROM `prj-test3.bq_trial.pos`
--- ORDER BY ranking;
+SELECT
+    order_id,
+    user_id,
+    quantity,
+    RANK() OVER(
+        ORDER BY quantity DESC
+    ) AS ranking
+FROM `prj-test3.bq_trial.pos`
+ORDER BY ranking;
 -- #| |order_id|user_id|quantity|ranking|
 -- #|1|      12|STU    |      12|      1|
 -- #|2|       9|ABC    |      12|      1|
@@ -1383,16 +1399,16 @@ FROM {テーブル名};
 -- #|4|       3|ABC    |       8|      4|
 
 #【7.4 演習問題2(4:20)】
--- SELECT
---     order_id,
---     user_id,
---     quantity,
---     RANK() OVER(
---         PARTITION BY user_id
---         ORDER BY quantity DESC
---     ) AS ranking
--- FROM `prj-test3.bq_trial.pos`
--- ORDER BY user_id, ranking;
+SELECT
+    order_id,
+    user_id,
+    quantity,
+    RANK() OVER(
+        PARTITION BY user_id
+        ORDER BY quantity DESC
+    ) AS ranking
+FROM `prj-test3.bq_trial.pos`
+ORDER BY user_id, ranking;
 -- --           [asc]    [desc]   [asc]
 -- #| |order_id|user_id|quantity|ranking|
 -- #|1|       9|ABC    |      12|      1|
@@ -1404,17 +1420,17 @@ FROM {テーブル名};
 -- #|6|      12|STU    |      12|      1|
 
 #【7.4 演習問題3(6:20)】
--- SELECT
---     order_id,
---     user_id,
---     quantity,
---     RANK() OVER(
---         PARTITION BY user_id
---         ORDER BY quantity DESC
---     ) AS ranking
--- FROM `prj-test3.bq_trial.pos`
--- WHERE ranking <= 3
--- ORDER BY user_id, ranking;
+SELECT
+    order_id,
+    user_id,
+    quantity,
+    RANK() OVER(
+        PARTITION BY user_id
+        ORDER BY quantity DESC
+    ) AS ranking
+FROM `prj-test3.bq_trial.pos`
+WHERE ranking <= 3
+ORDER BY user_id, ranking;
 -- # ∴ WHERE句は使用不可（分析関数では絞り込みできない ∵WHEREが先に実行され、その後にSELECTの為）
 
 /********************************************************************/
@@ -1425,15 +1441,15 @@ FROM {テーブル名};
 #     )
 #
 #【7.4 演習問題4(9:00)】
--- SELECT
---     user_id,
---     session_count,
---     page,
---     ROW_NUMBER() OVER(
---         PARTITION BY session_count
---         ORDER BY timestamp ASC
---     ) AS hit_count
--- FROM `prj-test3.bq_trial.access_log`;
+SELECT
+    user_id,
+    session_count,
+    page,
+    ROW_NUMBER() OVER(
+        PARTITION BY session_count
+        ORDER BY timestamp ASC
+    ) AS hit_count
+FROM `prj-test3.bq_trial.access_log`;
 -- #| |user_id|session_count|page           |hit_count|
 -- #|1|ABC    |            2|/products/?id=7|        1|
 -- #|2|ABC    |            2|/cart/cart.php |        2|
@@ -1462,7 +1478,7 @@ FROM {テーブル名};
 #           [WINDOW FRAME     (option)]
 #     )
 #【7.5 演習問題1(1:30)】
-#(miss codd)
+#(miss_codd)
 -- SELECT
 --     user_id,
 --     product_id,
@@ -1473,14 +1489,14 @@ FROM {テーブル名};
 --         ORDER BY user_id
 --     )
 -- FROM `prj-test3.bq_trial.pos`;
-#(collect code)
--- SELECT
---     user_id,
---     FIRST_VALUE(product_id) OVER(
---         PARTITION BY user_id
---         ORDER BY order_id
---     ) AS first_purchase_item
--- FROM `prj-test3.bq_trial.pos`;
+#(collect_code)
+SELECT
+    user_id,
+    FIRST_VALUE(product_id) OVER(
+        PARTITION BY user_id
+        ORDER BY order_id
+    ) AS first_purchase_item
+FROM `prj-test3.bq_trial.pos`;
 -- #| |user_id|first_purchase_item|
 -- #|1|ABC    |                  1|
 -- #|2|ABC    |                  1|
@@ -1488,18 +1504,18 @@ FROM {テーブル名};
 -- #|9|www    |                  3|
 
 #【7.5 演習問題2(4:10)】
--- SELECT
---     user_id,
---     session_count,
---     FIRST_VALUE(page) OVER(
---         PARTITION BY session_count
---         ORDER BY timestamp ASC
---     ) AS landing_page,
---     LAST_VALUE(page) OVER(
---         PARTITION BY session_count
---         ORDER BY timestamp ASC
---     ) AS exit_page
--- FROM `prj-test3.bq_trial.access_log`;
+SELECT
+    user_id,
+    session_count,
+    FIRST_VALUE(page) OVER(
+        PARTITION BY session_count
+        ORDER BY timestamp ASC
+    ) AS landing_page,
+    LAST_VALUE(page) OVER(
+        PARTITION BY session_count
+        ORDER BY timestamp ASC
+    ) AS exit_page
+FROM `prj-test3.bq_trial.access_log`;
 -- #| |user_id|session_count|landing_page   |exit_page       |
 -- #|1|ABC    |            1|/index.php     |/index.php      |
 -- #|2|ABC    |            1|/index.php     |/special/       |
@@ -1514,19 +1530,19 @@ FROM {テーブル名};
 -- #            ウィンドウの中での最初の値、最後の値を取得している。
 
 #【7.5 演習問題3(4:10)】
--- SELECT
---     user_id,
---     session_count,
---     FIRST_VALUE(page) OVER(
---         PARTITION BY session_count
---         ORDER BY timestamp ASC
---     ) AS landing_page,
---     LAST_VALUE(page) OVER(
---         PARTITION BY session_count
---         ORDER BY timestamp ASC
---         ROWS BETWEEN UNBOUNDED PRECEDING  AND UNBOUNDED FOLLOWING
---     ) AS exit_page
--- FROM `prj-test3.bq_trial.access_log`;
+SELECT
+    user_id,
+    session_count,
+    FIRST_VALUE(page) OVER(
+        PARTITION BY session_count
+        ORDER BY timestamp ASC
+    ) AS landing_page,
+    LAST_VALUE(page) OVER(
+        PARTITION BY session_count
+        ORDER BY timestamp ASC
+        ROWS BETWEEN UNBOUNDED PRECEDING  AND UNBOUNDED FOLLOWING
+    ) AS exit_page
+FROM `prj-test3.bq_trial.access_log`;
 -- #| |user_id|session_count|landing_page   |exit_page          |
 -- #|1|ABC    |            1|/index.php     |/products/?id=10   |
 -- #|2|ABC    |            1|/index.php     |/products/?id=10   |
@@ -1559,30 +1575,30 @@ FROM {テーブル名};
 --         ),
 --         second) AS time_on_page
 -- FROM `prj-test3.bq_trial.access_log`;
-#(collect code)
--- SELECT
---     user_id,
---     session_count,
---     page,
---     timestamp,
---     LEAD(page) OVER(                --次の行のpageを取ってきて！
---         PARTITION BY session_count
---         ORDER BY timestamp
---     ) AS next_page,
---     LEAD(timestamp) OVER(           --次の行のtimestampを取ってきて！
---         PARTITION BY session_count
---         ORDER BY timestamp
---     ) AS next_hit_timestamp,
---     DATETIME_DIFF(
---         LEAD(timestamp) OVER(
---             PARTITION BY session_count
---             ORDER BY timestamp
---         ),
---         timestamp,
---         second
---     ) AS time_on_page
--- FROM `prj-test3.bq_trial.access_log`
--- ORDER BY timestamp;
+#(collect_code)
+SELECT
+    user_id,
+    session_count,
+    page,
+    timestamp,
+    LEAD(page) OVER(                --次の行のpageを取ってきて！
+        PARTITION BY session_count
+        ORDER BY timestamp
+    ) AS next_page,
+    LEAD(timestamp) OVER(           --次の行のtimestampを取ってきて！
+        PARTITION BY session_count
+        ORDER BY timestamp
+    ) AS next_hit_timestamp,
+    DATETIME_DIFF(
+        LEAD(timestamp) OVER(
+            PARTITION BY session_count
+            ORDER BY timestamp
+        ),
+        timestamp,
+        second
+    ) AS time_on_page
+FROM `prj-test3.bq_trial.access_log`
+ORDER BY timestamp;
 -- #| |user_id|session_count|page              |timestamp              |next_page         |next_hit_timestamp     |time_on_page|
 -- #|1|ABC    |            1|/index.php        |2018-12-30 14:51:18 UTC|/special/         |2018-12-30 14:53:05 UTC|         107|
 -- #|2|ABC    |            1|/special/         |2018-12-30 14:53:05 UTC|/products/?id=1   |2018-12-30 15:00:02 UTC|         417|
@@ -1609,16 +1625,16 @@ FROM {テーブル名};
 #        WINDOW FRAME (option)
 #    )
 #【7.6 演習問題1(1:20)】
--- SELECT
---     user_id,
---     order_id,
---     quantity,
---     SUM(quantity) OVER(
---         PARTITION BY user_id
---         ORDER BY order_id
---         -- (ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)
---     ) AS cumulative_ttl
--- FROM `prj-test3.bq_trial.pos`;
+SELECT
+    user_id,
+    order_id,
+    quantity,
+    SUM(quantity) OVER(
+        PARTITION BY user_id
+        ORDER BY order_id
+        -- (ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)
+    ) AS cumulative_ttl
+FROM `prj-test3.bq_trial.pos`;
 -- #| |user_id|order_id|quantity|cumulative_ttl|
 -- #|1|ABC    |       1|      10|            10|
 -- #|2|ABC    |       2|       5|            15|
@@ -1626,7 +1642,7 @@ FROM {テーブル名};
 -- #|4|ABC    |       9|      12|            35|
 
 #【7.6 演習問題2(3:10)】
-#(miss code)
+#(miss_code)
 -- SELECT
 --     user_id,
 --     unit_price,
@@ -1638,19 +1654,19 @@ FROM {テーブル名};
 -- FROM `prj-test3.bq_trial.pos`;
 
 -- -- SELECT (120+100+150)/3;
-#(collect code)
--- SELECT
---     user_id,
---     order_id,
---     quantity,
---     unit_price,
---     quantity * unit_price AS sales_amount,
---     ROUND(AVG(quantity * unit_price) OVER(
---         PARTITION BY user_id
---         ORDER BY order_id
---         ROWS BETWEEN 2 PRECEDING AND CURRENT ROW --2行行前から現在の行まで
---     ), 2) AS avg_amount_3moving
--- FROM `prj-test3.bq_trial.pos`;
+#(collect_code)
+SELECT
+    user_id,
+    order_id,
+    quantity,
+    unit_price,
+    quantity * unit_price AS sales_amount,
+    ROUND(AVG(quantity * unit_price) OVER(
+        PARTITION BY user_id
+        ORDER BY order_id
+        ROWS BETWEEN 2 PRECEDING AND CURRENT ROW --2行行前から現在の行まで
+    ), 2) AS avg_amount_3moving
+FROM `prj-test3.bq_trial.pos`;
 -- #| |user_id|order_id|quantity|unti_price|sales_amount|avg_amount_3moving|
 -- #|1|ABC    |       1|      10|       120|        1200|            1200.0|
 -- #|2|ABC    |       2|       5|       100|         500|             850.0| --(1200+500)/2
@@ -1659,15 +1675,15 @@ FROM {テーブル名};
 -- #|5|ABC    |      10|       6|       200|        1200|            1440.0| --(1200+1920+1200)/3
 
 #【7.6 演習問題3(6:50)】
--- SELECT
---     user_id, order_id, quantity,
---     unit_price * quantity AS total_price,
---     MAX(unit_price * quantity) OVER(
---         PARTITION BY user_id
---         ORDER BY order_id
---         -- ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
---     ) AS lagest_qty_ever
--- FROM `prj-test3.bq_trial.pos`;
+SELECT
+    user_id, order_id, quantity,
+    unit_price * quantity AS total_price,
+    MAX(unit_price * quantity) OVER(
+        PARTITION BY user_id
+        ORDER BY order_id
+        -- ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+    ) AS lagest_qty_ever
+FROM `prj-test3.bq_trial.pos`;
 -- #| |user_id|order_id|quantity|total_sales|lagest_qty_ever|
 -- #|1|ABC    |       1|      10|       1200|           1200|
 -- #|2|ABC    |       2|       5|        500|           1200|
@@ -1680,6 +1696,303 @@ FROM {テーブル名};
 
 ### ● Section8
 ```SQL
+/**************************************************************
+ * 【Uddemy】BigQueryで学ぶ非エンジニアのためのSQLデータ分析入門
+ *  section : 8
+ **************************************************************/
+# ■ ER図
+#  ER図（Entity-Relations）: テーブル同士の関係性を表した図表
+# そもそも、DBが複数のテーブルを持っているのは?
+# ∵ カスタマイズ性、メンテナンス性を高めることが重視されているため。
+
+# ■ キーの種類
+# 🔑 主キー(PK:PrimaryKey)   :
+# 🗝 外部キー(FK:ForeignKey) : 外部テーブルと結合するためのキー
+
+# ■ JOIN - 結合
+# ※ JOINの種類
+#    1. INNER JOIN       : 左右両方のテーブルに[FK=PK]が存在するレコードだけを結合（いずれにも該当しないレコードは弾かれる）
+#    2. LEFT OUTER JOIN  : 左右にあろうが、無かろうが、兎に角「左を優先して！」結合
+#    3. RIGHT OUTER JOIN : 左右にあろうが、無かろうが、兎に角「右を優先して！」結合
+#    4. FULL OUTER JOIN  : 左右にあるだけのレコードを「全部まとめて出してくれ！」結合
+#    5. CROSS JOIN       :
+#
+# eg. 書式
+#       SELECT
+#       FROM テーブルA AS A
+#       (INNER|LEFT[OUTER]|RIGHT[OUTER]|FULL[OUTER])JOIN テーブルB AS B
+#       → USING(FK-PKの両テーブルに共通するカラム)
+#       → ON A.FK = B.PK [AND 絞り込み条件]
+#
+#       ※ デフォルトINNER JOIN (INNERや、OUTERは省略可能)。
+#       ※ JOIN後は、USINGで共通キーを紐づける。更に詳細に設定する場合にON句を使用。
+#       ※ ON句の[AND 絞り込み条件]は省略可能。
+#
+# eg. USINGでの結合
+#      SELECT
+#            p.user_id,
+#            p.product_id,
+#            p.unit_price,
+#            sm.category,
+#            sm.prod_name
+#       FROM `prj-test3.bq_trial.pos` AS p
+#       LEFT JOIN `prj-test3.bq_trial.shohin_master` AS sm
+#       USING(product_id)
+#       ORDER BY p.product_id;
+#                     --[key]--
+#        #|  |user_id|product_id|unit_price|category|prob_name|
+#        #| 1|ABC    |         1|       120|くだもの |いちご   |
+#        #| 2|XYZ    |         2|       200|野菜    |白菜      |
+#        #| 3|STU    |         2|       200|野菜    |白菜      |
+#        #| 4|STU    |         3|       160|野菜    |人参      |
+#        #|15|www    |        11|       210|null    |null     | --[shohin_master.csv]には無い値なので、nullが返る
+#
+# eg. ON句による条件指定の結合
+#        SELECT
+#            p.user_id, p.product_id, p.unit_price, p.quantity,
+#            sm.category, sm.prod_name
+#        FROM `prj-test3.bq_trial.pos` AS p
+#        LEFT JOIN `prj-test3.bq_trial.shohin_master` AS sm
+#        ON p.product_id = sm.product_id AND p.user_id="ABC" -- ON句で詳細設定しての結合
+#        ORDER BY p.product_id;
+#          --[条件]-- --[key]--
+#        #| |user_id|product_id|unit_price|quantity|category|prod_name|
+#        #|1|ABC    |         1|       120|      10|くだもの |いちご  |
+#        #|2|XYZ    |         2|       200|       2|null    |null     |
+#        #|3|STU    |         2|       200|       3|null    |null     |
+#
+#        -- LEFT JOIN での結合のため、左側の全て取得しnullが返ってしまう。
+#        -- この場合は、INNER JOINを使用すると、意図する挙動になる。
+#        INNER JOIN `prj-test3.bq_trial.shohin_master` AS sm
+#        #| |user_id|product_id|unit_price|quantity|category|prod_name|
+#        #|1|ABC    |         1|       120|      10|くだもの |いちご  |
+#        #|2|ABC    |         4|       160|      12|魚       |アジ    |
+#        #|3|ABC    |         5|       100|       5|肉       |豚肉    |
+#
+#        -- 更にON句では AND で条件を追加もできる。
+#        ON p.product_id = sm.product_id AND p.user_id="ABC" AND sm.category="肉"
+#          --[条件]-- --[key]--                   --[条件]--
+#        #| |user_id|product_id|unit_price|quantity|category|prod_name|
+#        #|1|ABC    |         5|       100|       5|肉      |豚肉     |
+#        #|2|ABC    |        10|       150|       8|肉      |豚肉     |
+#
+# eg. 主キーの重複データにより要件を満たさないテーブルの結合
+#        SELECT
+#            p.user_id, p.product_id, p.unit_price, p.quantity,
+#            smb.category, smb.prod_name
+#        FROM `prj-test3.bq_trial.pos` AS p
+#        LEFT JOIN `prj-test3.bq_trial.shohin_master_bad` AS smb
+#        USING(product_id)
+#        WHERE p.product_id = 3
+#        ORDER BY P.product_id;
+#        #| |user_id|product_id|unit_price|qunantity|category|prod_name|
+#        #|1|STU    |         3|       160|        8|野菜     |人参     |
+#        #|2|STU    |         3|       160|        8|野菜     |人参     |
+#        #|3|WWW    |         3|       160|        5|野菜     |人参     |
+#        #|4|WWW    |         3|       160|        5|野菜     |人参     |
+#        #|5|XYZ    |         3|       160|        2|野菜     |人参     |
+#        #|6|XYZ    |         3|       160|        2|野菜     |人参     |
+#        -- pos.csv にはproduct_id３番は３レコード、shohin_master_bad.csvには本来PKは一意に存在しなくてはいけないところ、product_id３番が重複していた。
+#        -- その結果、結合後に3レコード取るはずが、倍の6レコード取得されてしまっていた。(重複分が招いた、問題点)
+#        -- 集計時に二重計上による誤差になりかねない💀
+
+#【8.5 演習問題1(0:20)】
+SELECT
+    -- sp.purchase_id, sp.date, sp.user_id,
+    -- c.gender,
+    CASE(c.gender)
+        WHEN 1 THEN "mele"
+        WHEN 2 THEN "female"
+        ELSE "unknow"
+    END AS gender,
+    -- CONCAT(c.last_name, " ", c.first_name) AS full_name,
+    COUNT(*) AS shop_count,
+    SUM(sp.quantity) AS shop_quantity,
+    SUM(sp.sales_amount) AS total_amount,
+    ROUND(SUM(sp.sales_amount)/SUM(sp.quantity)) AS avg_amount
+FROM `prj-test3.bq_sample.shop_purchases` AS sp
+LEFT JOIN `prj-test3.bq_sample.customers` AS c
+USING(user_id)
+GROUP BY gender
+ORDER BY total_amount DESC;
+-- #| |gender|shop_count|shop_quantity|total_amount|avg_amount|
+-- #|1|female|       792|         1819|    11456055|    6298.0|
+-- #|2|male  |       450|          984|     7969220|    8099.0|
+-- #|3|unknow|        40|           92|      693117|    7534.0|
+
+-- #Q1. female
+-- #Q2. female
+-- #Q3. female
+-- #Q4. male
+
+#【8.5 演習問題2(3:50)】
+#(miss_code)
+-- SELECT
+--     -- *,
+--     -- sp.user_id,
+--     -- ("2018-12-31"- c.birthday)/365 AS age,
+--     ROUND(DATE_DIFF(date"2018-12-31", c.birthday, DAY)/365) AS age,
+--     CASE(c.gender)
+--         WHEN 1 THEN "mele"
+--         WHEN 2 THEN "female"
+--         ELSE "unknow"
+--     END AS gender,
+--     ROUND(AVG(quantity),1) AS avg_quantity
+-- FROM `prj-test3.bq_sample.shop_purchases` AS sp
+-- LEFT JOIN `prj-test3.bq_sample.customers` AS c
+-- USING(user_id)
+-- GROUP BY gender, age
+-- HAVING gender != "unknow"
+-- ORDER BY 3 DESC
+-- LIMIT 3;
+-- #| |age |gender|avg_quantity|
+-- #|1|32.0|male  |         3.7|
+-- #|2|44.0|male  |         3.3|
+-- #|3|62.0|male  |         3.0|
+#(collect_code)
+SELECT
+    DATE_DIFF("2018-12-31", cu.birthday, YEAR) AS nenrei,
+    CASE cu.gender
+        WHEN 1 THEN "男性"
+        WHEN 2 THEN "女性"
+    END AS seibetsu,
+    ROUND(AVG(sp.quantity), 1) AS avg_aty
+FROM `prj-test3.bq_sample.shop_purchases` AS sp
+LEFT JOIN `prj-test3.bq_sample.customers` AS cu
+USING(user_id)
+WHERE gender <> 3
+GROUP BY nenrei, gender
+ORDER BY avg_aty DESC
+LIMIT 3;
+-- #| |nenrei |seibetsu|avg_qty|
+-- #|1|     31|男性    |     3.5|
+-- #|2|     66|女性    |     3.2|
+-- #|3|     62|男性    |     3.1|
+
+#【8.5 演習問題3(7:30)】
+SELECT
+    CONCAT(c.last_name, " ",c.first_name ) AS full_name,
+    SUM(sp.sales_amount) AS total_amount
+FROM `prj-test3.bq_sample.shop_purchases` AS sp
+LEFT JOIN `prj-test3.bq_sample.customers` AS c
+USING(user_id)
+WHERE
+     c.Is_premium = false  --プレミアム会員以外
+    AND c.first_name IS NOT NULL
+    AND c.last_name IS NOT NULL
+GROUP BY full_name
+ORDER BY total_amount DESC
+LIMIT 3;
+-- #| |full_name|total_amount|
+-- #|1|小杉 信貴 |      104500|
+-- #|2|宗村 良崇 |       60216|
+-- #|3|和栗 昇悟 |       59400|
+
+
+# ■ 複数テーブルの結合
+# eg. 書式
+#       SELECT
+#       FROM [テーブルA] AS A
+#       (INNER|LEFT[OUTER]|RIGHT[OUTER]|FULL[OUTER])JOIN [テーブルB] AS B
+#       → USING(FK-PKの両テーブルに共通するカラム)  若くは  → ON A.FK = B.PK [AND 絞り込み条件]
+#       (INNER|LEFT[OUTER]|RIGHT[OUTER]|FULL[OUTER])JOIN [テーブルC] AS C
+#       → USING(FK-PKの両テーブルに共通するカラム)  若くは  → ON A.FK = C.PK [AND 絞り込み条件]
+#
+#【8.6 演習問題1(2:10)】
+#(miss_code)
+-- SELECT
+--     s.shop_name,
+--     s.chief_name,
+--     SUM(sp.sales_amount) AS total_amount,
+--     CASE c.gender
+--         WHEN 1 THEN "male"
+--         WHEN 2 THEN "female"
+--         ELSE "unknow"
+--     END AS gender
+-- FROM `prj-test3.bq_sample.shop_purchases` AS sp
+-- LEFT JOIN `prj-test3.bq_sample.customers` AS c USING(user_id)
+-- LEFT JOIN `prj-test3.bq_sample.products_master` AS p USING(product_id)
+-- LEFT JOIN `prj-test3.bq_sample.shops_master` AS s USING(shop_id)
+-- GROUP BY s.shop_name, s.chief_name, gender
+-- HAVING gender = female
+-- ORDER BY 1, 3 DESC;
+#(collect_code)
+SELECT
+    sm.chief_name AS tencho,
+    sm.shop_name AS shop_name,
+    CASE cu.gender
+        WHEN 1 THEN "male"
+        WHEN 2 THEN "female"
+    END AS customer_gender,
+    COUNT(DISTINCT sp.user_id) AS kyakusuu,
+    SUM(sp.sales_amount) AS uriage
+FROM `prj-test3.bq_sample.shop_purchases` AS sp
+LEFT JOIN `prj-test3.bq_sample.customers` AS cu ON sp.user_id = cu.user_id
+LEFT JOIN `prj-test3.bq_sample.products_master` AS pm ON sp.product_id = pm.product_id
+LEFT JOIN `prj-test3.bq_sample.shops_master` AS sm ON sp.shop_id = sm.shop_id
+WHERE cu.gender <> 3
+GROUP BY tencho, sm.shop_name, customer_gender
+ORDER BY customer_gender, uriage DESC;
+-- #| |tencho    |shop_name|customer_gnder|kyakusuu|uriage |
+-- #|1|柳澤 華子  |自由が丘店 |female        |     306|4721503|
+-- #|2|山下 唐三郎|下北沢店   |female        |     258|4476825|
+-- #|5|柳澤 華子  |自由が丘店 |male          |     172|4004558|
+-- #|6|山下 唐三郎|下北沢店   |male          |     145|2713434|
+
+#【8.6 演習問題2(7:30)】
+SELECT
+    COUNT(*) AS sales_count,
+    SUM(sp.sales_amount) AS total_amount,
+    s.chief_name AS chief
+FROM `prj-test3.bq_sample.shop_purchases` AS sp
+LEFT JOIN `prj-test3.bq_sample.customers` AS c USING(user_id)
+LEFT JOIN `prj-test3.bq_sample.products_master` AS p USING(product_id)
+LEFT JOIN `prj-test3.bq_sample.shops_master` AS s USING(shop_id)
+WHERE
+    sp.date BETWEEN "2018-03-01" AND "2018-03-31"
+    -- DATE_TRUNC(sp.date, month) = "2018-03-01" #別解
+    AND c.prefecture != "Tokyo"
+    AND c.gender IS NOT NULL
+    AND p.prod_gender = "f"
+GROUP BY chief
+ORDER BY 2 DESC;
+-- #| |sales_count|total_amount|chief        |
+-- #|1|          3|      142276|大井谷 みすず|
+-- #|2|          4|      108905|山下 唐三郎  |
+-- #|3|          2|       80667|柳澤 華子    |
+
+#【8.6 演習問題3(10:20)】
+SELECT
+    -- s.shop_name AS shop_name,
+    p.prod_name AS product,
+    MAX(sp.sales_amount) AS max_amoount,
+    MIN(sp.sales_amount) AS min_amount,
+    MAX(sp.sales_amount)-MIN(sp.sales_amount) AS diff_amount
+FROM `prj-test3.bq_sample.shop_purchases` AS sp
+INNER JOIN `prj-test3.bq_sample.customers` AS c USING(user_id)
+INNER JOIN `prj-test3.bq_sample.products_master` AS p USING(product_id)
+INNER JOIN `prj-test3.bq_sample.shops_master` AS s ON sp.shop_id = s.shop_id AND chief_name = "大井谷　みすず"
+WHERE c.Is_premium = TRUE
+GROUP BY product
+ORDER BY diff_amount DESC
+limit 1;
+-- #| |product      |max_amoount|min_amount|diff_amount|
+-- #|1|ブラウス 長袖|      73000|     12775|      60225|
+
+#(other code)    
+FROM `prj-test3.bq_sample.shop_purchases` AS sp
+LEFT JOIN `prj-test3.bq_sample.customers` AS cu ON sp.user_id = cu.shop_id
+LEFT JOIN `prj-test3.bq_sample.products_master` AS pm ON sp.product_id = pm.product_id
+LEFT JOIN `prj-test3.bq_sample.shops_master` AS sm ON sp.shop_id = sm.shop_id
+WHERE
+    sm.chief_name LIKE "大井谷%"
+    AND cu.Is_premium IS TRUE
+GROUP BY pm.prod_name
+ORDER BY 4 DESC
+LIMIT 1;
+-- #| |product      |max_amoount|min_amount|diff_amount|
+-- #|1|ブラウス 長袖|      73000|     12775|      60225|
+
 
 
 ```
@@ -1689,7 +2002,6 @@ FROM {テーブル名};
 ```SQL
 
 ```
-<!-- ----------- section9 END ----------- -->
 
 
 ### ● Section10
