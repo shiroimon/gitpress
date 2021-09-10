@@ -1,7 +1,7 @@
 ---
 title: 【BigQuery】分析入門
 date: 2021-09-01
-tag: ["Google BigQuery", "SQL基本構文", "分析"]
+tags: ["Google BigQuery", "SQL基本構文", "分析"]
 excerpt: Google BigQueryについて。
 ---
 ## || はじめに
