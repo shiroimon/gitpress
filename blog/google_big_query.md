@@ -7,8 +7,10 @@ excerpt: Google BigQueryについて。
 ## || はじめに
 この記事は、Udemyにて学習をした際のメモです。
 
-コース受講したい場合は、ページ最下部に参考リンクとして掲載いたします。<br>
+コース受講したい場合は、ページ最下部に参考リンクとして掲載いたします。
+
 （アフィリエイトリンク等ではなく、純粋に学習を通して大変参考になったのでm(__)m ）
+
 
 初めてのBigQueryでしたが、これからSQLでガシガシ分析できると思うと楽しみです。
 
@@ -118,15 +120,57 @@ FROM {テーブル名};
 # |33| FORMAT_DATETIME() |||
 # ----------------------------
 ```
+
+
+### ● 便利な句
+```SQL
+IN()
+```
+
 ```SQL
 # | 1| IF()        |||
 # | 2| IFNULL()    |||
-# | 3| CASE        |||
-# | 4| CASE()      |||
-# | 5| OVER()      |||
-# | 5| OVER()      |||
-# | 5| OVER()      |||
 ```
+```SQL
+# | 3| CASE WHEN THEN ELSE END |||
+# | 4| CASE()          |||
+# |  |      WHEN THEN  |||
+# |  |      WHEN THEN  |||
+# |  |      ELSE       |||
+# |  | END)            |||
+```
+```SQL
+# | 5| []() OVER(                |||
+# |  |           PARTITION BY    |||
+# |  |           ORDER BY        |||
+# |  |           (WINDOW_FRAME)  |||
+# |  |          )                |||
+```
+
+```SQL
+# | 6| WITH                      |||
+# |  |  [] AS (SELECT FROM ),    |||
+# |  |  [] AS (SELECT FROM )     |||
+```
+
+
+### ● 結合
+```SQL
+INNER JOIN
+LEFT OUTER JOIN
+RIGHT OUTER JOIN
+FULL OUTER JOIN
+```
+```SQL
+FROM [table①] AS [t①]
+[結合句] [table②] AS [t②]
+→ USING [key]
+→ ON [t①.key = t②.key]
+```
+
+
+
+
 
 ## || 学習メモ
 この章は、完全個人メモです。 <br>
@@ -2506,9 +2550,227 @@ GROUP BY 1;
 
 ### ● Section10
 ```SQL
+/**************************************************************
+ * 【Uddemy】BigQueryで学ぶ非エンジニアのためのSQLデータ分析入門
+ *  section : 10
+ **************************************************************/
+
+ # ■ テーブル同士の集合演算
+ #
+ # 1. 和集合 A∩B（AかつB）
+ #    →重複を除外しないパターン、重複を除外するパターン
+ # 2. 積集合 A∪B（AまたはB）
+ #    →重複部分のみ
+ # 3. 差集合 A∩!B（AかつノットB）
+ #    →重複と該当データ以外を差し引く
+ #
+
+ # ■ UNION - 和集合
+ # eg. SELECT [column] FROM [table1]
+ #     UNION (ALL | DISTINCT)
+ #     SELECT [column] FROM [table2]
+ #
+ # ※ 同じ列数
+ # ※ 同じ列の順序で（同じ列名であっても順番まで問われる）
+ # ※ 重複を無視：UNION ALL（[table1]+[table2]の列数）
+ # ※ 重複を除外：UNION DISTINCT（[table1]+[table2]-[dist]の列数）
+ #
+ # 【10.3 演習問題1(5:30)】
+-- SELECT COUNT(*) FROM `prj-test3.bq_trial.event_jan`; --5record
+-- SELECT COUNT(*) FROM `prj-test3.bq_trial.event_feb`; --6record
+SELECT * FROM `prj-test3.bq_trial.event_jan`
+UNION ALL
+SELECT * FROM `prj-test3.bq_trial.event_feb`;
+--| |date      |place|last_name|first_name|gender|age|
+--|1|2019-02-15|渋谷  |山本     |大輔       |男性   |29 |
+--|2|2019-02-15|渋谷  |山田     |太郎       |男性   |28 |
+--|9|2019-01-15|池袋  |山田     |太郎       |男性   |28 |
+
+ # eg. 2つ以上のテーブルUNION
+ #     SELECT [column] FROM [table1]
+ #     UNION (ALL | DISTINCT)
+ #     SELECT [column] FROM [table2]
+ #     UNION (ALL | DISTINCT)
+ #     SELECT [column] FROM [table3]
+ #
+ # eg. UNIONタイプを複合
+ #     → ([table1]+[table2])+[table3]-[dist]
+ #     (SELECT [column] FROM [table1]
+ #     UNION ALL
+ #     SELECT [column] FROM [table2])
+ #     UNION DISTINCT
+ #     SELECT [column] FROM [table3]
+ #
+ #【10.3 演習問題2(8:50)
+SELECT * FROM `prj-test3.bq_trial.event_jan`
+UNION ALL
+SELECT * FROM `prj-test3.bq_trial.event_feb`
+UNION ALL
+SELECT * FROM `prj-test3.bq_trial.event_mar` ORDER BY age;
+--| |date      |place|last_name|first_name|gender|age|
+--|1|2019-02-15|渋谷  |高田     |みすず     |女性   |20 |
+--|2|2019-01-15|池袋  |山田     |華子       |女性   |25 |
+--|3|2019-02-15|渋谷  |山田     |太郎       |男性   |28 |
+
+
+# サブクエリを用いて、親クエリでフィルタリングする。
+SELECT * FROM
+(SELECT * FROM `prj-test3.bq_trial.event_jan`
+UNION ALL
+SELECT * FROM `prj-test3.bq_trial.event_feb`
+UNION ALL
+SELECT * FROM `prj-test3.bq_trial.event_mar`)
+WHERE gender="女性"
+ORDER BY age;
+--| |date      |place|last_name|first_name|gender|age|
+--|1|2019-02-15|渋谷  |高田     |みすず     |女性   |20 |
+--|2|2019-01-15|池袋  |山田     |華子       |女性   |25 |
+--|3|2019-03-15|品川  |高橋     |純子       |女性   |28 |
+
+
+ #【10.3 演習問題3(13:20)】
+ #(miss_code)
+SELECT * FROM `prj-test3.bq_trial.event_jan`
+UNION DISTINCT
+SELECT * FROM `prj-test3.bq_trial.event_feb`;
+--| |date      |place|last_name|first_name|gender|age|
+--|1|2019-02-15|渋谷  |山本     |大輔       |男性   |29 |
+--|2|2019-02-15|渋谷  |山田     |太郎       |男性   |28 |
+--|3|2019-02-15|渋谷  |本田     |健太郎     |男性   |35 |
+
+ #(collect_code)
+SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_jan`
+UNION DISTINCT
+SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_feb`;
+--| |last_name|first_na|gender|age|
+--|1|山本      |大輔    |男性   |29 |
+--|2|山田      |太郎    |男性   |28 |
+
+
+ #【10.3 演習問題4(17:20)】
+SELECT COUNT(*) FROM
+(SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_jan`
+UNION DISTINCT
+SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_feb`
+UNION DISTINCT
+SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_mar`);
+--| |f0_|
+--|1| 14|
+
+
+ # ■ INTERSECT - 積集合
+ # eg. SELECT [column] FROM [table1]
+ #     INTERSECT DISTINCT
+ #     SELECT [column] FROM [table2]
+ #
+ # ※ 同じ列数
+ # ※ 同じ列の順序で（同じ列名であっても順番まで問われる）
+ #
+ #【10.4 演習問題1(1:50)】
+SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_jan`
+INTERSECT DISTINCT
+SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_feb`;
+--| |last_name|first_name|gender|age|
+--|1|山田      |太郎      |男性   | 28|
+
+ #【10.4 演習問題1(1:50)】
+SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_jan`
+INTERSECT DISTINCT
+SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_feb`
+INTERSECT DISTINCT
+SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_mar`;
+--| |last_name|first_name|gender|age|
+--|1|山田      |太郎      |男性   | 28|
+
+#【10.4 演習問題3(5:20)】
+(SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_jan`
+UNION DISTINCT
+SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_feb`)
+INTERSECT DISTINCT
+SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_mar`;
+--| |last_name|first_name|gender|age|
+--|1|山田      |太郎      |男性   | 28|
+--|2|高橋      |純子      |女性   | 28|
+
+
+# ■ EXCEPT - 差集合
+# eg. SELECT [column] FROM [table1]
+#     EXCEPT DISTINCT
+#     SELECT [column] FROM [table2]
+#
+# ※ 同じ列数
+# ※ 同じ列の順序で（同じ列名であっても順番まで問われる）
+# ※ テーブルの順序によって引き算した場合結果は異なる。（eg. 5行-2行=2行, 2行-5行=-2行）
+#
+#【10.5 演習問題1(2:40)】
+SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_feb`
+EXCEPT DISTINCT
+SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_jan`;
+--| |last_name|first_name|gender|age|
+--|1|山本      |大輔      |男性   | 29|
+--|2|本田      |健太郎    |男性   | 35|
+
+#【10.5 演習問題2(4:50)】
+SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_mar`
+EXCEPT DISTINCT
+(SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_jan`
+UNION DISTINCT
+SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_feb`);
+--| |last_name|first_name|gender|age|
+--|1|鈴木      |輝夫      |男性   | 30|
+--|2|橋田      |睦        |男性   | 30|
+-- 計4名
+
+#【10.5 演習問題3(6:50)】
+#(miss_code)
+(SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_mar`
+UNION DISTINCT
+SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_jan`)
+EXCEPT DISTINCT
+SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_feb`;
+--| |last_name|first_name|gender|age|
+--|1|鈴木      |輝夫      |男性   | 30|
+--|2|橋田      |睦        |男性   | 30|
+-- 計8名
+#(collect_code)
+(SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_mar`
+INTERSECT DISTINCT
+SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_jan`)
+EXCEPT DISTINCT
+SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_feb`;
+--| |last_name|first_name|gender|age|
+--|1|高橋      |純子      |女性   | 28|
 
 ```
-<!-- ----------- section10 END ----------- -->
+```SQL
+# ■ ビュー
+# ある程度複雑化した、SQLを呼び出せる形で保存ができる便利機能。
+# テーブルの様な振る舞いではあるが、実際ではSQLである。
+#
+# eg. SELECT *
+#     FROM `prj-test3.bq_sample.shop_purchases` AS sp
+#     INNER JOIN `prj-test3.bq_sample.products_master` AS pm USING(product_id);
+```
+
+
+■ ビューの保存（作成）
+![img](https://i.gyazo.com/1df5f397b46f95b369f57ad92b592957.png)
+```
+記載したSQLを保存のメニューバーから、「ビューを保存」を選択。
+```
+![img](https://i.gyazo.com/e6c369473d2b6c0fc020e836c003e587.png)
+```
+保存先や、テーブル名を設定。
+（ここでは、`joined_sp_pm`とする。）
+```
+![img](https://i.gyazo.com/b8ac13d91a7b5ec9798445272955f62e.png)
+```
+左側のプロジェクト一覧から、ドリルダウンしていくと、指定したビューが作成されている。
+```
+■ ビューの呼び出し
+```SQL
+SELECT * FROM  `prj-test3.bq_sample.joined_sp_pm`;
+```
 
 
 ### ● Section11
