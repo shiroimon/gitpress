@@ -454,7 +454,6 @@ WHERE gender = 2;
 #     GROUP BY shop_id       ←店舗IDでまとめる(※SELECTに書いてないかラム名だとerror)
 #     ORDER BY shop_id
 #     LIMIT 5;
-#
 #     | |shop_id|No_of_purchase|
 #     |1|      1|           265|
 #     |2|      2|           207|
@@ -465,10 +464,10 @@ SELECT product_id, COUNT(*) AS No_of_purchase
 FROM `prj-test3.bq_sample.shop_purchases`
 GROUP BY product_id
 ORDER BY NO_of_purchase DESC;
--- # | |product_id|No_of_purchase|
--- # |1|        11|           102|
--- # |2|        10|            98|
--- # |3|        13|            93|
+-- | |product_id|No_of_purchase|
+-- |1|        11|           102|
+-- |2|        10|            98|
+-- |3|        13|            93|
 
 
 #【5.4 演習問題2(6:20)】
@@ -477,10 +476,10 @@ SELECT prefecture,
 FROM `prj-test3.bq_sample.customers`
 GROUP BY 1
 ORDER BY 2 DESC;
--- # | |prefecture|no_of_menbers|
--- # |1|Tokyo     |          582|
--- # |2|Osaka     |           88|
--- # |3|Kanagawa  |           72|
+-- | |prefecture|no_of_menbers|
+-- |1|Tokyo     |          582|
+-- |2|Osaka     |           88|
+-- |3|Kanagawa  |           72|
 
 
 #【5.4 演習問題3(8:00)】
@@ -499,10 +498,10 @@ SELECT shop_id,
 FROM `prj-test3.bq_sample.shop_purchases`
 GROUP BY shop_id, product_id
 ORDER BY shop_id, product_id;
--- # | |shop_id|product_id|No_of_purchase|
--- # |1|      1|         1|            17|
--- # |2|      1|         2|            17|
--- # |1|      1|         3|            10|
+-- | |shop_id|product_id|No_of_purchase|
+-- |1|      1|         1|            17|
+-- |2|      1|         2|            17|
+-- |3|      1|         3|            10|
 
 
 /********************************************************************/
@@ -2815,7 +2814,7 @@ ORDER BY 2 DESC;
 -- (1.6s 22KB)
 ```
 ```SQL
-# ■ practice 11.2(難易度:低)
+# ■ practice 11.3(難易度:低)
 #(goal_image)
 --| |pref|avg_age|
 
@@ -2843,9 +2842,10 @@ ORDER BY 2 DESC;
 #    ROUND(AVG(DATE_DIFF("2018-12-31", birthday, YEAR))) AS avg_age,
 #    COUNT(user_id) AS users
 
+
 ```
 ```SQL
-# ■ practice 11.3(難易度:低)
+# ■ practice 11.4(難易度:低)
 #(goal_image)
 --| |prob_category|total_qty|
 --|1|Tシャツ      |         |
@@ -2886,9 +2886,11 @@ GROUP BY t_shirts_or_not;
 --|1|Non-Tシャツ  |     1156|
 --|2|Tシャツ      |     1739|
 --(0.5s 20.8KB)
+
+
 ```
 ```SQL
-# ■ practice 11.4(難易度:低)
+# ■ practice 11.5(難易度:低)
 SELECT
     COUNT(user_id)
 FROM(SELECT user_id
@@ -2902,7 +2904,7 @@ FROM(SELECT user_id
 
 
 -- answer -----------------------------------------------------
-SELECT COUNT(DISTINCT user_id) AS users
+SELECT COUNT(user_id) AS users
 FROM(
     (SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE DATE_TRUNC(date, MONTH)="2018-01-01")
     INTERSECT DISTINCT
@@ -2912,36 +2914,10 @@ FROM(
 -- |1|    4|
 -- (0.8s 20KB)
 
-```
-```SQL
-# ■ practice 11.4(難易度:低)
--- SELECT
---     COUNT(user_id)
--- FROM(SELECT user_id
---      FROM(SELECT * FROM `prj-test3.bq_sample.shop_purchases` WHERE date BETWEEN "2018-01-01" AND "2018-01-31")
---      INTERSECT DISTINCT
---      SELECT user_id
---      FROM(SELECT * FROM `prj-test3.bq_sample.shop_purchases` WHERE date BETWEEN "2018-02-01" AND "2018-02-28"));
--- | |f0_|
--- |1|  4|
--- (1.0s 20KB)
-
-
--- answer -----------------------------------------------------
--- SELECT COUNT(user_id) AS users
--- FROM(
---     (SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE DATE_TRUNC(date, MONTH)="2018-01-01")
---     INTERSECT DISTINCT
---     (SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE DATE_TRUNC(date, MONTH)="2018-02-01")
--- );
--- | |users|
--- |1|    4|
--- (0.8s 20KB)
 
 ```
-
 ```SQL
-# ■ practice 11.5(難易度:低)
+# ■ practice 11.6(難易度:低)
 -- ||term |min_sales_amount|max_sales_amount|diff_sales_amount|
 -- ||term1|
 -- ||term2|
@@ -2994,24 +2970,209 @@ ORDER BY 4 DESC;
 -- |2|2018-07-01|     1600|    90710|89110|
 -- (0.7s 20KB)
 
+
 ```
 ---------------------------------------------------------------
 
 ```SQL
+# ■ practice 11.7(難易度:中)
+--||階級 |度数（階級の個数）|相対度数（構成比）|
+--||class|frequency|relative_frequency|
+SELECT
+    class,
+    COUNT(class) AS frequency,
+    ROUND(COUNT(class)/1282, 3) AS relative_frequency
+FROM(SELECT
+        CASE
+            WHEN sales_amount < 10000 THEN "class_1"
+            WHEN sales_amount < 20000 THEN "class_2"
+            WHEN sales_amount < 30000 THEN "class_3"
+            WHEN sales_amount < 40000 THEN "class_4"
+            WHEN sales_amount < 50000 THEN "class_5"
+            WHEN sales_amount < 60000 THEN "class_6"
+            WHEN sales_amount < 70000 THEN "class_7"
+            WHEN sales_amount < 80000 THEN "class_8"
+            WHEN sales_amount < 90000 THEN "class_9"
+            WHEN sales_amount < 100000 THEN "class_10"
+            ELSE "other"
+        END AS class
+     FROM `prj-test3.bq_sample.shop_purchases`
+)
+GROUP BY
+     1
+ORDER BY
+     3 DESC;
+-- | |class   |frequency|relative_frequency|
+-- |1|class_1 |      590|              0.46|
+-- |2|class_2 |      388|             0.303|
+-- |3|class_3 |      130|             0.101|
+-- |8|class_10|        7|             0.005|
+-- (0.4s 10KB)
+
+
+-- answer -----------------------------------------------------
+SELECT
+    kaikyu,
+    dosuu,
+    ROUND(dosuu/(SELECT COUNT(*) FROM `prj-test3.bq_sample.shop_purchases`), 3) AS soutai_dosuu
+FROM(SELECT
+        CASE
+            WHEN sales_amount < 10000 THEN "0-10000"
+            WHEN sales_amount < 20000 THEN "10000-20000"
+            WHEN sales_amount < 30000 THEN "20000-30000"
+            WHEN sales_amount < 40000 THEN "30000-40000"
+            WHEN sales_amount < 50000 THEN "40000-50000"
+            WHEN sales_amount < 60000 THEN "50000-60000"
+            WHEN sales_amount < 70000 THEN "60000-70000"
+            WHEN sales_amount < 80000 THEN "70000-80000"
+            WHEN sales_amount < 90000 THEN "80000-90000"
+            WHEN sales_amount < 100000 THEN "90000-100000"
+            ELSE "100000-"
+        END AS kaikyu,
+     COUNT(*) AS dosuu
+     FROM `prj-test3.bq_sample.shop_purchases`
+     GROUP BY kaikyu)
+ORDER BY 1;
+-- | |kaikyu      |dosuu|soutai_dossu|
+-- |1|0-10000     |  590|        0.46|
+-- |2|10000-20000 |  388|       0.303|
+-- (1.1s 10KB)
+
 
 ```
 ```SQL
+# ■ practice 11.8(難易度:中)
+#(miss_codd)
+-- SELECT
+--     prod_name,
+--     avg_sales_amount - list_price AS diff
+-- FROM(SELECT
+--          product_id,
+--          ROUND(AVG(sales_amount), 2) AS avg_sales_amount
+--      FROM `prj-test3.bq_sample.shop_purchases`
+--      GROUP BY 1
+--      ORDER BY 1) AS avg_prod
+-- LEFT OUTER JOIN `prj-test3.bq_sample.products_master` AS pm USING(product_id);
+-- | |prod_name                      |diff    |
+-- |1|オックスフォードシャツ 綿 100% |22885.28|
+-- |2|オックスフォードシャツ 麻混    |19281.67|
+
+
+-- answer -----------------------------------------------------
+SELECT
+    pm.prod_name,
+    ROUND(ttl_amouont/ttl_qty, 2) AS aov,
+    list_price,
+    ROUND((list_price - (ttl_amouont/ttl_qty))*100 / list_price, 3) AS discount_rate
+FROM(SELECT
+        product_id,
+        SUM(quantity) AS ttl_qty,
+        SUM(sales_amount) AS ttl_amouont
+     FROM `prj-test3.bq_sample.shop_purchases`
+     GROUP BY product_id
+     --| |product_id|ttl_qty|ttl_amouont|
+     --|1|         1|     82|    1536670|
+     --|2|         2|     76|    1370940|
+) AS sp
+JOIN `prj-test3.bq_sample.products_master` AS pm
+USING(product_id)
+ORDER BY 4 DESC;
+-- | |prod_name                            |aov   |list_price|discount_rate|
+-- |1|Tシャツ（キャラクター・子供用） 長袖|1848.4|      2000|         7.58|
+-- |2|ポロシャツ 長袖                     |8204.5|      8800|        6.767|
+
 
 ```
 ```SQL
+# ■ practice 11.10(難易度:中)
+SELECT
+    CASE
+        WHEN cu.age <= 20 THEN "20歳以下"
+        WHEN cu.age <= 40 THEN "21歳~40歳"
+        WHEN cu.age <= 60 THEN "41歳~60歳"
+        WHEN cu.age <= 80 THEN "61歳~80歳"
+        ELSE "81歳以上"
+    END AS age_category,
+    SUM(sp.sales_amount) AS total_amount
+FROM `prj-test3.bq_sample.shop_purchases` AS sp
+LEFT OUTER JOIN
+    (SELECT
+         user_id,
+         DATE_DIFF("2018-12-31", birthday, YEAR) AS age
+     FROM `prj-test3.bq_sample.customers`) AS cu
+USING(user_id)
+GROUP BY 1
+ORDER BY 2;
+-- | |age_category|total_amount|
+-- |1|81歳以上    |      441141|
+-- |2|20歳以下    |      770006|
+-- (0.9s 34.6KB)
+
+
+-- answer -----------------------------------------------------
+SELECT
+    cu.age_group,
+    SUM(sp.sales_amount) AS sales
+FROM(SELECT
+        user_id,
+        CASE
+            WHEN DATE_DIFF("2018-12-31", birthday, YEAR) <= 20 THEN "20歳以下"
+            WHEN DATE_DIFF("2018-12-31", birthday, YEAR) <= 40 THEN "21歳~40歳"
+            WHEN DATE_DIFF("2018-12-31", birthday, YEAR) <= 60 THEN "41歳~60歳"
+            WHEN DATE_DIFF("2018-12-31", birthday, YEAR) <= 80 THEN "61歳~80歳"
+            WHEN DATE_DIFF("2018-12-31", birthday, YEAR) > 80 THEN "81歳以上"
+            ELSE "年齢不明"
+        END AS age_group
+    FROM `prj-test3.bq_sample.customers`) AS cu
+RIGHT JOIN `prj-test3.bq_sample.shop_purchases` AS sp
+USING(user_id)
+GROUP BY 1
+ORDER BY 2 DESC;
+-- | |age_group|sales  |
+-- |1|21歳~40歳|8985952|
+-- |2|41歳~60歳|6321162|
+-- |4|20歳以下 | 770006|
+-- (1.0s 34.6KB)
+
 
 ```
 ```SQL
+# ■ practice 11.11(難易度:中)
+SELECT product_id
+FROM `prj-test3.bq_sample.shop_purchases`
+WHERE shop_id = 2 AND DATE_TRUNC(date, MONTH) = "2018-02-01"
+GROUP BY 1
+EXCEPT DISTINCT
+SELECT product_id
+FROM `prj-test3.bq_sample.shop_purchases`
+WHERE shop_id = 2 AND DATE_TRUNC(date, MONTH) = "2018-01-01"
+GROUP BY 1;
+-- | |product_id|
+-- |1|         8|
+-- (0.9s 30KB)
+
+-- answer -----------------------------------------------------
+WITH jan_sales AS (
+         SELECT shop_id, product_id
+         FROM `prj-test3.bq_sample.shop_purchases`
+         WHERE DATE_TRUNC(date, MONTH)="2018-01-01" AND shop_id=2
+         GROUP BY 1, 2),
+     feb_sales AS (
+         SELECT shop_id, product_id
+         FROM `prj-test3.bq_sample.shop_purchases`
+         WHERE DATE_TRUNC(date, MONTH)="2018-02-01" AND shop_id=2
+         GROUP BY 1, 2)
+
+SELECT shop_id, product_id FROM feb_sales
+EXCEPT DISTINCT
+SELECT shop_id, product_id FROM jan_sales;
+-- | |shop_id|product_id|
+-- |1|      2|         8|
+-- (1.1s 30KB)
+
 
 ```
-```SQL
 
-```
 ---------------------------------------------------------------
 
 ```SQL
@@ -3048,6 +3209,6 @@ ORDER BY 4 DESC;
 
 * [[初心者向け] Google BigQueryの基礎を理解してGoogle Cloud Consoleから触ってみた - DevelopersIO](https://dev.classmethod.jp/articles/google-bigquery-debut/)
 
-* [API とリファレンス - Google Cloud](https://cloud.google.com/bigquery/docs/reference?hl=ja
+* [API とリファレンス - Google Cloud](https://cloud.google.com/bigquery/docs/reference?hl=ja)
 
 * [入門ガイド - Google Cloud](https://cloud.google.com/bigquery/docs/how-to)
