@@ -137,7 +137,7 @@ IN()
 # |  |      WHEN THEN  |||
 # |  |      WHEN THEN  |||
 # |  |      ELSE       |||
-# |  | END)            |||
+# |  | END             |||
 ```
 ```SQL
 # | 5| []() OVER(                |||
@@ -2564,7 +2564,12 @@ GROUP BY 1;
  # 3. 差集合 A∩!B（AかつノットB）
  #    →重複と該当データ以外を差し引く
  #
+```
 
+![img](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Venn_A_union_B.png/220px-Venn_A_union_B.png)
+* Cf. [和集合 - Wikipedia](https://ja.wikipedia.org/wiki/%E5%92%8C%E9%9B%86%E5%90%88)
+
+```SQL
  # ■ UNION - 和集合
  # eg. SELECT [column] FROM [table1]
  #     UNION (ALL | DISTINCT)
@@ -2656,8 +2661,13 @@ UNION DISTINCT
 SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_mar`);
 --| |f0_|
 --|1| 14|
+```
 
+![img](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Interseccion.svg/250px-Interseccion.svg.png)
+* Cf. [共通部分（数学） - Wikipedia](https://ja.wikipedia.org/wiki/%E5%85%B1%E9%80%9A%E9%83%A8%E5%88%86_(%E6%95%B0%E5%AD%A6))
+* Cf. [ド・モルガンの法則 - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%BB%E3%83%A2%E3%83%AB%E3%82%AC%E3%83%B3%E3%81%AE%E6%B3%95%E5%89%87)
 
+```SQL
  # ■ INTERSECT - 積集合
  # eg. SELECT [column] FROM [table1]
  #     INTERSECT DISTINCT
@@ -2691,8 +2701,12 @@ SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_mar`;
 --| |last_name|first_name|gender|age|
 --|1|山田      |太郎      |男性   | 28|
 --|2|高橋      |純子      |女性   | 28|
+```
 
+![img](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Venn0100.svg/220px-Venn0100.svg.png)
+* Cf. [差集合 - Wikipedia](https://ja.wikipedia.org/wiki/%E5%B7%AE%E9%9B%86%E5%90%88)
 
+```SQL
 # ■ EXCEPT - 差集合
 # eg. SELECT [column] FROM [table1]
 #     EXCEPT DISTINCT
@@ -2753,21 +2767,26 @@ SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_feb`;
 ```
 
 
-■ ビューの保存（作成）
+1. ビューの保存（作成）
 ![img](https://i.gyazo.com/1df5f397b46f95b369f57ad92b592957.png)
 ```
 記載したSQLを保存のメニューバーから、「ビューを保存」を選択。
 ```
+
+2. 保存名設定
 ![img](https://i.gyazo.com/e6c369473d2b6c0fc020e836c003e587.png)
 ```
 保存先や、テーブル名を設定。
 （ここでは、`joined_sp_pm`とする。）
 ```
+
+3. ビューの確認
 ![img](https://i.gyazo.com/b8ac13d91a7b5ec9798445272955f62e.png)
 ```
 左側のプロジェクト一覧から、ドリルダウンしていくと、指定したビューが作成されている。
 ```
-■ ビューの呼び出し
+
+4. ビューの呼び出し
 ```SQL
 SELECT * FROM  `prj-test3.bq_sample.joined_sp_pm`;
 ```
@@ -2775,9 +2794,242 @@ SELECT * FROM  `prj-test3.bq_sample.joined_sp_pm`;
 
 ### ● Section11
 ```SQL
+# ■ practice 11.2(難易度:低)
+#(goal_image)
+--| |first_name|count|rank|
+SELECT
+    first_name,
+    COUNT(*) AS count,
+    RANK () OVER(
+        ORDER BY COUNT(*) DESC
+        ) AS rank
+FROM `prj-test3.bq_sample.customers`
+WHERE
+    gender=1 --男性
+    AND
+    birthday BETWEEN "1989-01-08" AND "2019-04-30" -- 平成産まれ
+GROUP BY 1
+ORDER BY 2 DESC;
+--| |first_name|count|rank|
+--|1|匠        |    2|   1|
+-- (1.6s 22KB)
+```
+```SQL
+# ■ practice 11.2(難易度:低)
+#(goal_image)
+--| |pref|avg_age|
+
+SELECT
+    prefecture AS pref,
+    ROUND(
+        AVG(
+            -- CAST(FORMAT_DATE("%Y" ,DATE_TRUNC(CURRENT_DATE("Asia/Tokyo"), MONTH)) AS INT64)
+            CAST(FORMAT_DATE("%Y" ,DATE_TRUNC("2018-12-31", MONTH)) AS INT64)
+          - CAST(FORMAT_DATE("%Y", (DATE_TRUNC(birthday, MONTH))) AS INT64)
+          )
+        ) AS avg_age,
+FROM `prj-test3.bq_sample.customers`
+WHERE prefecture IS NOT NULL
+GROUP BY 1
+HAVING COUNT(prefecture) > 5
+ORDER BY 2 DESC;
+-- | |pref     |avg_age|
+-- |1|Miyagi|   51.0|
+-- (0.5s 13.9KB)
+
+
+# SELECT
+#    prefecture,
+#    ROUND(AVG(DATE_DIFF("2018-12-31", birthday, YEAR))) AS avg_age,
+#    COUNT(user_id) AS users
 
 ```
-<!-- ----------- section11 END ----------- -->
+```SQL
+# ■ practice 11.3(難易度:低)
+#(goal_image)
+--| |prob_category|total_qty|
+--|1|Tシャツ      |         |
+--|2|Non-Tシャツ  |         |
+
+SELECT
+    prob_category,
+    SUM(qty) AS total_qty
+FROM(SELECT
+          -- CASE
+          --     WHEN REGEXP_CONTAINS(pm.prod_name, r"%Tシャツ%") THEN "Tシャツ"
+          --     ELSE "Non-Tシャツ"
+          -- END AS prob_category,
+          IF(pm.product_id>=11, "Tシャツ", "Non-Tシャツ") AS prob_category,
+          sp.quantity AS qty
+    FROM `prj-test3.bq_sample.shop_purchases` AS sp
+    LEFT OUTER JOIN `prj-test3.bq_sample.products_master` AS pm USING(product_id))
+GROUP BY 1
+ORDER BY 2 DESC;
+--| |prob_category|total_qty|
+--|1|Tシャツ      |     1739|
+--|2|Non-Tシャツ  |     1156|
+--(0.8s 20.2KB)
+
+
+-- answer -----------------------------------------------------
+SELECT
+    CASE prod_name LIKE "%Tシャツ%"
+        WHEN TRUE THEN "Tシャツ"
+        ELSE "Non-Tシャツ"
+    END AS t_shirts_or_not,
+    SUM(quantity) AS ttl_qty
+FROM `prj-test3.bq_sample.shop_purchases`
+LEFT JOIN `prj-test3.bq_sample.products_master`
+USING(product_id)
+GROUP BY t_shirts_or_not;
+--| |prob_category|total_qty|
+--|1|Non-Tシャツ  |     1156|
+--|2|Tシャツ      |     1739|
+--(0.5s 20.8KB)
+```
+```SQL
+# ■ practice 11.4(難易度:低)
+SELECT
+    COUNT(user_id)
+FROM(SELECT user_id
+     FROM(SELECT * FROM `prj-test3.bq_sample.shop_purchases` WHERE date BETWEEN "2018-01-01" AND "2018-01-31")
+     INTERSECT DISTINCT
+     SELECT user_id
+     FROM(SELECT * FROM `prj-test3.bq_sample.shop_purchases` WHERE date BETWEEN "2018-02-01" AND "2018-02-28"));
+-- | |f0_|
+-- |1|  4|
+-- (1.0s 20KB)
+
+
+-- answer -----------------------------------------------------
+SELECT COUNT(DISTINCT user_id) AS users
+FROM(
+    (SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE DATE_TRUNC(date, MONTH)="2018-01-01")
+    INTERSECT DISTINCT
+    (SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE DATE_TRUNC(date, MONTH)="2018-02-01")
+);
+-- | |users|
+-- |1|    4|
+-- (0.8s 20KB)
+
+```
+```SQL
+# ■ practice 11.4(難易度:低)
+-- SELECT
+--     COUNT(user_id)
+-- FROM(SELECT user_id
+--      FROM(SELECT * FROM `prj-test3.bq_sample.shop_purchases` WHERE date BETWEEN "2018-01-01" AND "2018-01-31")
+--      INTERSECT DISTINCT
+--      SELECT user_id
+--      FROM(SELECT * FROM `prj-test3.bq_sample.shop_purchases` WHERE date BETWEEN "2018-02-01" AND "2018-02-28"));
+-- | |f0_|
+-- |1|  4|
+-- (1.0s 20KB)
+
+
+-- answer -----------------------------------------------------
+-- SELECT COUNT(user_id) AS users
+-- FROM(
+--     (SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE DATE_TRUNC(date, MONTH)="2018-01-01")
+--     INTERSECT DISTINCT
+--     (SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE DATE_TRUNC(date, MONTH)="2018-02-01")
+-- );
+-- | |users|
+-- |1|    4|
+-- (0.8s 20KB)
+
+```
+
+```SQL
+# ■ practice 11.5(難易度:低)
+-- ||term |min_sales_amount|max_sales_amount|diff_sales_amount|
+-- ||term1|
+-- ||term2|
+-- ||term3|
+#(miss_code)
+SELECT *
+FROM((SELECT
+            DATE_TRUNC(date, MONTH) AS month,
+            MIN(sales_amount) AS min_sales_amount,
+            MAX(sales_amount) AS max_sales_amount,
+            MAX(sales_amount)-MIN(sales_amount) AS diff_sales_amount,
+            COUNT(purchase_id) AS count_purchase
+      FROM `prj-test3.bq_sample.shop_purchases`
+      WHERE DATE_TRUNC(date, MONTH) IN ("2018-01-01", "2018-02-01", "2018-03-01", "2018-04-01")
+      GROUP BY 1)
+      UNION ALL
+      (SELECT
+            DATE_TRUNC(date, MONTH) AS month,
+            MIN(sales_amount) AS min_sales_amount,
+            MAX(sales_amount) AS max_sales_amount,
+            MAX(sales_amount)-MIN(sales_amount) AS diff_sales_amount,
+            COUNT(purchase_id) AS count_purchase
+       FROM `prj-test3.bq_sample.shop_purchases`
+       WHERE DATE_TRUNC(date, MONTH) IN ("2018-05-01", "2018-06-01", "2018-07-01", "2018-08-01")
+       GROUP BY 1)
+       UNION ALL
+      (SELECT
+            DATE_TRUNC(date, MONTH) AS month,
+            MIN(sales_amount) AS min_sales_amount,
+            MAX(sales_amount) AS max_sales_amount,
+            MAX(sales_amount)-MIN(sales_amount) AS diff_sales_amount,
+            COUNT(purchase_id) AS count_purchase
+       FROM `prj-test3.bq_sample.shop_purchases`
+       WHERE DATE_TRUNC(date, MONTH) IN ("2018-09-01", "2018-10-01", "2018-11-01", "2018-12-01")
+       GROUP BY 1)
+) ORDER BY month;
+
+
+-- answer -----------------------------------------------------
+SELECT
+    DATE_TRUNC(date, QUARTER) AS quarter,
+    MIN(sales_amount) AS min_sales,
+    MAX(sales_amount) AS max_sales,
+    MAX(sales_amount)-MIN(sales_amount) AS diff
+FROM `prj-test3.bq_sample.shop_purchases`
+GROUP BY 1
+ORDER BY 4 DESC;
+-- | |quarter   |min_sales|max_sales|diff |
+-- |1|2018-10-01|     1400|    99000|97600|
+-- |2|2018-07-01|     1600|    90710|89110|
+-- (0.7s 20KB)
+
+```
+---------------------------------------------------------------
+
+```SQL
+
+```
+```SQL
+
+```
+```SQL
+
+```
+```SQL
+
+```
+```SQL
+
+```
+---------------------------------------------------------------
+
+```SQL
+
+```
+```SQL
+
+```
+```SQL
+
+```
+```SQL
+
+```
+```SQL
+
+```
+
 
 
 ### ● Section12
@@ -2796,4 +3048,6 @@ SELECT * FROM  `prj-test3.bq_sample.joined_sp_pm`;
 
 * [[初心者向け] Google BigQueryの基礎を理解してGoogle Cloud Consoleから触ってみた - DevelopersIO](https://dev.classmethod.jp/articles/google-bigquery-debut/)
 
-* [API とリファレンス - Google Cloud](https://cloud.google.com/bigquery/docs/reference?hl=ja)
+* [API とリファレンス - Google Cloud](https://cloud.google.com/bigquery/docs/reference?hl=ja
+
+* [入門ガイド - Google Cloud](https://cloud.google.com/bigquery/docs/how-to)
