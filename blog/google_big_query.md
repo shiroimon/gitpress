@@ -19,24 +19,29 @@ excerpt: Google BigQueryについて。
 ![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
 
 
+
 ## || BigQuery環境構築
 ![project](https://i.gyazo.com/edac850c69d81a2eccfa28c349bd5e09.png)
 
-![finaly](https://i.gyazo.com/45e5e6f63178156c3edc62d5f53c44a2.png) <br>
+
+![finaly](https://i.gyazo.com/45e5e6f63178156c3edc62d5f53c44a2.png)
 Cf.完成図
 
 
-### ●プロジェクトを作成
+1. プロジェクトを作成
 ![make project](https://i.gyazo.com/98551e2f0aea93e9506d6d018c2ace9f.png)
+```
+```
 
-
-### ●データセットを作成
+2. データセットを作成
 ![make_ds](https://i.gyazo.com/592db3e492533ab6c672ee8ac172720a.png)
+```
+```
 
-
-### ●テーブルを作成
+3. テーブルを作成
 ![make_table](https://i.gyazo.com/a321a6ed34a70f197338198ec69ddcd5.png)
-
+```
+```
 
 ## || SQL
 ### ● 基本文法
@@ -82,23 +87,26 @@ FROM {テーブル名};
 
 
 ### ● 基本関数一覧
+
+- [x] `SUM()`
+- [x] `AVG()`
+- [x] `COUNT()`
+- [x] `MIN()`
+- [x] `MAX()`
+- [x] `STDDEV_POP()`
+- [ ] `STDDEV_SAMP()`
+- [x] `ROUND()`
+- [ ] `CEIL()`
+- [ ] `FLOOR()`
+- [ ] `TRUNC()`
+- [ ] `ABS()`
+- [ ] `MOD()`
+- [x] `CAST()`
+- [x] `CONCAT()`
+
+
 ```SQL
 # ----------------------------
-# | 1| SUM()             |||
-# | 2| AVR()             |||
-# | 3| COUNT()           |||
-# | 4| MAX()             |||
-# | 5| MIN()             |||
-# | 6| STDDEV_POP()      |||
-# | 7| STDDEV_SAMP()     |||
-# | 8| ROOUND()          |||
-# | 9| CEIL()            |||
-# |10| FLOOR()           |||
-# |11| TRUNC()           |||
-# |12| ABS()             |||
-# |13| MOD()             |||
-# |14| CAST()            |||
-# |15| CONCAT()          |||
 # |16| LENGTH()          |||
 # |17| SUBSTR()          |||
 # |18| REPLACE()         |||
@@ -156,10 +164,11 @@ IN()
 
 ### ● 結合
 ```SQL
-INNER JOIN
-LEFT OUTER JOIN
-RIGHT OUTER JOIN
-FULL OUTER JOIN
+# ■ 結合句
+# INNER JOIN
+# LEFT OUTER JOIN
+# RIGHT OUTER JOIN
+# FULL OUTER JOIN
 ```
 ```SQL
 FROM [table①] AS [t①]
@@ -173,11 +182,11 @@ FROM [table①] AS [t①]
 
 
 ## || 学習メモ
-この章は、完全個人メモです。 <br>
-（後に自分で見返すようになっております。） <br>
+<p>この章は、完全個人メモです。</br>
+（後に自分で見返すようになっております。）</p>
 
-どんな考え方（ロジック）でコードを書き上げたのか、どこに躓いたのか、<br>
-後に俯瞰したいためにお恥ずかしながら演習問題で間違えてしまったコードはそのまま記載してます。悪しからず...
+<p>どんな考え方（ロジック）でコードを書き上げたのか、どこに躓いたのか、</br>
+後に俯瞰したいためにお恥ずかしながら演習問題で間違えてしまったコードはそのまま記載してます。悪しからず...</p>
 
 * Section4 : 基本文法
 * Section5 : 集計関数
@@ -185,8 +194,8 @@ FROM [table①] AS [t①]
 * Section7 : 分析関数
 * Section8 : テーブル結合
 * Section9 : サブクエリ
-* Section10:
-* Section11:
+* Section10: 集合演算、ビュー
+* Section11: 練習問題
 * Section12:
 
 
@@ -3176,9 +3185,166 @@ SELECT shop_id, product_id FROM jan_sales;
 ---------------------------------------------------------------
 
 ```SQL
+# ■ practice 11.12(難易度:高)
+-- |prod_id|prod_name|first_by_sel_qty|rank|
+SELECT
+    product_id,
+    prod_name,
+    COUNT(product_id)
+FROM(SELECT
+        *,
+        RANK() OVER(
+            PARTITION BY user_id --購入者別
+            ORDER BY purchase_id --購入ID昇順
+        ) AS ranking
+     FROM `prj-test3.bq_sample.shop_purchases`
+     ORDER BY user_id) AS rk
+     -- ||||user_id|||rank|
+     -- |||| 733995|||   1|
+LEFT OUTER JOIN `prj-test3.bq_sample.products_master` AS pm
+USING(product_id)
+WHERE ranking = 1
+GROUP BY 1,2
+ORDER BY 3 DESC
+LIMIT 3;
+-- | |product_id|prod_name                    |f0_|
+-- |1|        10|ブラウス 長袖                | 69|
+-- |2|        11|Tシャツ（デザイン） 半袖     | 66|
+-- |3|        13|Tシャツ（キャラクター） 半袖 | 65|
+-- (1.2s 30.9KB)
+
+-- answer -----------------------------------------------------
+SELECT
+    pm.prod_name AS first_purchase_item_name,
+    COUNT(*) AS number_of_users
+FROM(SELECT
+         user_id,
+         MAX(first_purchase_item) AS first_purchase_id
+     FROM(SELECT
+             user_id,
+             first_value(product_id) OVER(
+                 PARTITION BY user_id
+                 ORDER BY purchase_id
+             ) AS first_purchase_item
+         FROM `prj-test3.bq_sample.shop_purchases`)
+            -- | |user_id|first_purchase_item|
+            -- |1| 496070|                  2|
+     GROUP BY user_id) AS fp
+        -- | |user_id|first_purchase_id|
+        -- |1| 496070|                2|
+JOIN `prj-test3.bq_sample.products_master` AS pm
+ON fp.first_purchase_id = pm.product_id
+GROUP BY first_purchase_item_name
+ORDER BY 2 DESC
+LIMIT 3;
+-- | |first_purchase_item_name      |number_of_users|
+-- |1|ブラウス 長袖                 |             69|
+-- |2|Tシャツ（デザイン） 半袖      |             66|
+-- |3|Tシャツ（キャラクター） 半袖  |             65|
+-- (1.2s 30.9KB)
+
 
 ```
 ```SQL
+# ■ practice 11.13(難易度:高)
+-- ||product_id|count_item|
+
+-- SELECT
+--     product_id,
+--     COUNT() AS count_item
+-- FROM
+-- ;
+
+-- id20を買った人リスト
+-- SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE product_id=20;
+
+-- id20しか買ってない人リスト
+-- SELECT user_id
+-- FROM (SELECT *, RANK() OVER( PARTITION BY user_id ORDER BY product_id) AS ranking FROM `prj-test3.bq_sample.shop_purchases`)
+-- WHERE
+-- user_id IN (SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE product_id=20)
+-- AND
+-- rank=1 AND product_id=20
+
+-- ランキングテーブル
+-- SELECT *, RANK() OVER( PARTITION BY user_id ORDER BY product_id) AS ranking FROM `prj-test3.bq_sample.shop_purchases`;
+
+-- id20 かっ複数買った人テーブル
+-- SELECT *
+-- FROM(SELECT *, RANK() OVER( PARTITION BY user_id ORDER BY product_id) AS ranking FROM `prj-test3.bq_sample.shop_purchases`)
+-- WHERE user_id IN (SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE product_id=20);
+
+
+WITH
+ranking AS (
+    SELECT *,
+    RANK() OVER(
+        PARTITION BY user_id --購入者別
+        ORDER BY product_id --商品ID昇順∵
+    ) AS rank
+    FROM `prj-test3.bq_sample.shop_purchases`)
+
+SELECT
+    pm.prod_name,
+    market_basket.count_prod
+FROM(SELECT
+        product_id,
+        COUNT(product_id) AS count_prod
+     FROM ranking
+     WHERE
+        -- id20 買った人リスト
+        user_id IN (SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE product_id=20)
+        AND
+        -- id20 しか買ってない人リスト
+        user_id NOT IN (SELECT user_id
+                        FROM ranking
+                        WHERE
+                            user_id IN (SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE product_id=20)
+                            AND
+                            rank=1 AND product_id=20)
+        AND
+        product_id != 20
+     GROUP BY 1) AS market_basket
+LEFT JOIN `prj-test3.bq_sample.products_master` AS pm USING(product_id)
+ORDER BY 2 DESC;
+-- | |product_id|prod_name              |count_prod|
+-- |1|        17|Tシャツ（コラボ） 半袖 |         7|
+-- |2|         8|ポロシャツ 長袖        |         6|
+-- (2.6s 20.8KB)
+
+
+-- answer -----------------------------------------------------
+
+WITH purchase_master AS (
+    SELECT user_id, prodcut_id, COUNT(*) AS kisu
+    FROM `prj-test3.bq_sample.shop_purchases`
+    GROUP BY 1, 2
+)
+SELECT
+    prod1,
+    prod2,
+    COUNT(*) AS kaisu
+FROM(SELECT
+         pos1.product_id AS prod1,
+         pos2.product_id AS prod2
+     FROM purchase_master AS pos1
+     JOIN purchase_master AS pos2
+     ON pos1.user_id = pos2.user_id AND pos1.product_id != pos2.product_id
+      --【 SELF JOIN 】
+      -- | |prod1|prod2|
+      -- |1|    1|    2|
+      -- |2|    1|    2|
+      -- |3|    1|    2|
+      -- |4|    1|    3|
+    )
+WHERE prod1 = 20
+GROUP BY prod1, prod2
+ORDER BY 3 DESC;
+-- | |prod1|prod2|kaisu|
+-- |1|   20|   17|    7|
+-- |2|   20|    8|    6|
+-- (0.6s 20KB)
+
 
 ```
 ```SQL
@@ -3197,7 +3363,6 @@ SELECT shop_id, product_id FROM jan_sales;
 ```SQL
 
 ```
-<!-- ----------- section12 END ----------- -->
 
 
 ## || 参考
