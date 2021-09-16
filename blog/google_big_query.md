@@ -1,8 +1,8 @@
 ---
 title: 【BigQuery】分析入門
 date: 2021-09-01
-tags: ["Google BigQuery", "SQL基本構文", "分析"]
-excerpt: Google BigQueryについて。
+tags: ["Google BigQuery", "SQL基本", "分析基本"]
+excerpt: Google BigQuery基本の「き」について。
 ---
 ## || はじめに
 この記事は、Udemyにて学習をした際のメモです。
@@ -3517,11 +3517,99 @@ ORDER BY 4 DESC;
 ```
 Cf.[日付と時刻を取得する(date関数, time関数, datetime関数, julianday関数, strftime関数)](https://www.dbonline.jp/sqlite/function/index6.html)
 
-
-### ● Section12
 ```SQL
+# ■ practice 11.16(難易度:高)
+WITH transaction_user AS(
+    --ネット購入者リスト
+    SELECT
+        user_id,
+        MIN(transaction_product) AS transaction_product
+    FROM(
+        SELECT
+            user_id,
+            transaction_product
+        FROM `prj-test3.bq_sample.web_usage`
+        WHERE transaction_id IS NOT NULL
+    )
+    GROUP BY user_id
+)
+
+SELECT
+    user_id,
+    last_name,
+    first_name,
+    shop_name,
+    product_id,
+    prod_name
+FROM(
+    SELECT
+        *
+    FROM(
+        SELECT
+            *
+        FROM(
+            --リアル店舗購入者
+            SELECT
+                *
+            FROM `prj-test3.bq_sample.shop_purchases` AS sp
+            LEFT JOIN transaction_user AS cv USING(user_id)
+            WHERE
+                cv.transaction_product IS NOT NULL
+                AND
+                sp.product_id = cv.transaction_product
+        )
+        LEFT JOIN `prj-test3.bq_sample.shops_master` USING(shop_id)
+    )
+    LEFT JOIN `prj-test3.bq_sample.customers` USING(user_id)
+)
+LEFT JOIN `prj-test3.bq_sample.products_master` USING(product_id);
+-- | |user_id|last_name|first_name|shop_name   |product_id|prod_name          |
+-- |1|1000380|浅井      |忠        |自由が丘店|         3|開襟シャツ 綿 100%  |
+-- |2|1011670|度會      |咲耶      |下北沢店  |        16|Tシャツ（漢字） 長袖|
+-- (0.9s 78.7KB)
+
+-- answer -----------------------------------------------------
 
 ```
+
+
+### ● Section12 : おまけ（可視化）
+![Google DataPortal](https://i.gyazo.com/625fcf38f301105c0dbc76da5b9951ff.png)
+
+これまでのsectionで学んできたデータを、
+
+テーブルデータとしてではなく視覚的に伝えやすくする方法が可視化です。
+
+1. SQLをBigQueryに書く。
+```SQL
+SELECT
+    sp.year_month,
+    sm.shop_name,
+    sp.ttl_sales
+FROM(
+    SELECT
+        DATE_TRUNC(date, MONTH) AS year_month,
+        shop_id,
+        SUM(sales_amount) AS ttl_sales
+    FROM `prj-test3.bq_sample.shop_purchases`
+    GROUP BY date, shop_id) AS sp
+LEFT JOIN `prj-test3.bq_sample.shops_master` AS sm
+USING(shop_id);
+```
+2. BigQuery上で、求めたいデータを抽出する。
+![biqquery_editer](https://i.gyazo.com/d672afedd1bcc9c0678bbba6ff5bb9dd.png)
+```
+表示画面の上部のナビゲーションから、「データを探索」をプルダウン。
+そのまま、データポータルへ遷移。
+```
+
+3. Google DataPortal
+![Google DataPortal](https://i.gyazo.com/625fcf38f301105c0dbc76da5b9951ff.png)
+よかったら以下にリンクを貼っておきますので、覗いてみてください。
+
+こんな感じにお洒落になりました。
+
+https://datastudio.google.com/reporting/fa043ba1-256c-49a9-8f1b-bf12bf5295fa
 
 
 ## || 参考
