@@ -1461,7 +1461,7 @@ SELECT
     ) AS ranking
 FROM `prj-test3.bq_trial.pos`
 ORDER BY user_id, ranking;
--- --           [asc]    [desc]   [asc]
+-- --                     [desc]
 -- #| |order_id|user_id|quantity|ranking|
 -- #|1|       9|ABC    |      12|      1|
 -- #|2|       1|ABC    |      10|      2|
@@ -3348,15 +3348,174 @@ ORDER BY 3 DESC;
 
 ```
 ```SQL
+# ■ practice 11.14(難易度:高)
+#(miss_code)
+-- WITH
+-- -- cv uu
+-- cv_uu AS(
+--     SELECT
+--         DISTINCT user_id
+--     FROM `prj-test3.bq_sample.shop_purchases`),
+-- -- logging
+-- logging AS (
+--     SELECT
+--         *,
+--         RANK() OVER(
+--             PARTITION BY user_id
+--             ORDER BY timestamp ASC
+--             ) AS user_logging
+--     FROM `prj-test3.bq_sample.web_usage`)
+
+-- SELECT
+-- user_id,
+-- COUNT(user_id) AS uu
+-- FROM(SELECT
+--             *,
+--             REGEXP_CONTAINS(lg.page, r"\?") AS pd
+--      FROM cv_uu AS cv
+--      LEFT OUTER JOIN logging AS lg USING(user_id)
+--      WHERE lg.session_count IS NOT NULL)
+-- WHERE pd IS TRUE
+-- GROUP BY 1;
+
+-- answer -----------------------------------------------------
+SELECT
+    COUNT(DISTINCT user_id) AS target_user
+FROM(
+    SELECT
+            sp.user_id,
+            sp.first_date,
+            sp.first_product_id,
+            DATE(DATETIME_TRUNC(wu.timestamp, DAY)) AS hit_date,
+            REGEXP_EXTRACT(wu.page, r"\d+$") AS viewd_product_id
+    FROM(
+        -- ユーザー別、初回購入商品ID一覧（重複除去）
+        SELECT
+                user_id,
+                MIN(date) AS first_date,
+                MIN(first_product_id) AS first_product_id
+        FROM(
+            -- ユーザー別、初回購入商品ID一覧
+            SELECT
+                    user_id,
+                    date,
+                    FIRST_VALUE(product_id) OVER(
+                            PARTITION BY user_id
+                            ORDER BY purchase_id
+                    ) AS first_product_id
+            FROM `prj-test3.bq_sample.shop_purchases`
+            --| |user_id|date      |first_product_id|
+            --|1| 496070|2018-12-29|               2|
+        )
+        GROUP BY user_id
+        --| |user_id|first_date |first_product_id|
+        --|1| 496070|2018-12-29|               2|
+    ) AS sp
+    JOIN `prj-test3.bq_sample.web_usage` AS wu USING(user_id)
+    WHERE
+            DATE(DATETIME_TRUNC(wu.timestamp, DAY)) < sp.first_date
+            AND
+            REGEXP_EXTRACT(wu.page, r"\d+$") = CAST(sp.first_product_id AS STRING)
+    --| |user_id|first_date|first_product_id|hit_date  |viewd_product_id|
+    --|1| 597427|2018-10-20|              17|2018-01-20|17             |
+);
+--| |target_user|
+--|1|        20|
+
 
 ```
 ```SQL
+# ■ practice 11.15(難易度:高)
+--<A>
+-- SELECT
+--     medium,
+--     COUNT(session_count) AS ss
+-- FROM `prj-test3.bq_sample.web_usage`
+-- GROUP BY medium
+-- ORDER BY ss DESC;
+
+--<B>
+-- SELECT
+--     user_id,
+--     medium,
+--     MIN(first_landing) AS first_landing,
+--     MAX(landing_exit) AS landing_exit,
+--     MIN(ss_time) AS ss_time
+-- FROM(
+    -- SELECT
+    --     user_id,
+    --     medium,
+    --     yyyy_mm_dd ,
+    --     FIRST_VALUE(hh_mm_ss) OVER(
+    --         PARTITION BY user_id
+    --         ORDER BY timestamp ASC
+    --         ) AS first_landing_time,
+    --     LAST_VALUE(hh_mm_ss) OVER(
+    --         PARTITION BY user_id
+    --         ORDER BY timestamp ASC
+    --         ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+    --         ) AS landing_exit_time,
+    --
+    --     -- AS ss_time
+    -- FROM(
+    --     SELECT
+    --         user_id,
+    --         medium,
+    --         timestamp,
+    --         DATE(DATETIME_TRUNC(timestamp, DAY)) AS yyyy_mm_dd,
+    --         TIME(DATETIME_TRUNC(timestamp, SECOND)) AS hh_mm_ss
+    --     FROM  `prj-test3.bq_sample.web_usage`
+    -- );
+-- )
+-- GROUP BY 1, 2;
+
+
+-- answer -----------------------------------------------------
+SELECT
+    medium,
+    SUM(session) AS session,
+    SUM(session_duration) AS session_duration,
+    ROUND((SUM(session_duration)/SUM(session))/60, 2) AS avg_session_duration_minute
+FROM(
+    SELECT
+        user_id,
+        session_count,
+        medium,
+        COUNT(DISTINCT CONCAT(CAST(user_id AS STRING), "_", CAST(session_count AS STRING))) AS session,
+        MIN(session_duration) AS session_duration
+    FROM(
+        SELECT
+            user_id,
+            session_count,
+            medium,
+            FIRST_VALUE(timestamp) OVER(PARTITION BY user_id, session_count ORDER BY timestamp ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING ) AS session_start_time,
+            LAST_VALUE(timestamp) OVER(PARTITION BY user_id, session_count ORDER BY timestamp ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING ) AS session_end_time,
+            DATETIME_DIFF(
+                LAST_VALUE(timestamp) OVER(PARTITION BY user_id, session_count ORDER BY timestamp ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING ),
+                FIRST_VALUE(timestamp) OVER(PARTITION BY user_id, session_count ORDER BY timestamp ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING ),
+                SECOND) AS session_duration
+        FROM `prj-test3.bq_sample.web_usage`
+        GROUP BY user_id, session_count, medium, timestamp
+        --| |user_id|session_count|medium  |session_start_time |session_end_time   |session_duration|
+        --|1| 855650|            8|referral|2018-08-08T18:48:48|2018-08-08T18:48:48|               0|
+        --|2| 916550|            1|organic |2018-10-22T00:46:50|2018-10-22T00:47:31|              41|
+    )
+    GROUP BY user_id ,session_count, medium
+    -- | |user_id|session_count|medium |session|session_duration|
+    -- |1| 989072|            1|organic|      1|             289|
+    -- |2| 995450|            4|organic|      1|               0|
+    -- |3|1064305|            3|(none) |      1|            2179|
+)
+GROUP BY medium
+ORDER BY 4 DESC;
+-- | |medium  |session|session_duration|avg_session_duration_minute|
+-- |1|social  |     15|            3262|                       3.62|
+-- |2|organic |    556|          112432|                       3.37|
+-- |3|referral|     84|           13741|                       2.73|
+
 
 ```
-```SQL
-
-```
-
+Cf.[日付と時刻を取得する(date関数, time関数, datetime関数, julianday関数, strftime関数)](https://www.dbonline.jp/sqlite/function/index6.html)
 
 
 ### ● Section12
