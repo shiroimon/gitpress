@@ -1,8 +1,8 @@
 ---
-title: 【BigQuery】分析入門
-date: 2021-09-01
-tags: ["Google BigQuery", "SQL基本", "分析基本"]
+date   : 2021-09-01
+title  : 【BigQuery】分析入門
 excerpt: Google BigQuery基本の「き」について。
+tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 ---
 ## || はじめに
 この記事は、Udemyにて学習をした際のメモです。
@@ -12,12 +12,10 @@ excerpt: Google BigQuery基本の「き」について。
 （アフィリエイトリンク等ではなく、純粋に学習を通して大変参考になったのでm(__)m ）
 
 
-初めてのBigQueryでしたが、これからSQLでガシガシ分析できると思うと楽しみです。
-
-
 ## || Google BigQueryとは？
 ![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
 
+ざっくり、Googleが提供するGoogle Cloud Platform上で動作するSQLを書くことができる機能です。
 
 
 ## || BigQuery環境構築
@@ -182,12 +180,15 @@ FROM [table①] AS [t①]
 
 
 ## || 学習メモ
-<p>この章は、完全個人メモです。</br>
-（後に自分で見返すようになっております。）</p>
+この章は、完全個人メモです。
+（後に自分で見返すようになっております。）
 
-<p>どんな考え方（ロジック）でコードを書き上げたのか、どこに躓いたのか、</br>
-後に俯瞰したいためにお恥ずかしながら演習問題で間違えてしまったコードはそのまま記載してます。悪しからず...</p>
+どんな考え方（ロジック）でコードを書き上げたのか、どこで躓いたのか、
 
+後に俯瞰したいためにお恥ずかしながら演習問題で間違えてしまったコードはそのまま記載してます。
+悪しからず...
+
+■ セクションの構成
 * Section4 : 基本文法
 * Section5 : 集計関数
 * Section6 : 四則演算、条件分岐
@@ -196,7 +197,7 @@ FROM [table①] AS [t①]
 * Section9 : サブクエリ
 * Section10: 集合演算、ビュー
 * Section11: 練習問題
-* Section12:
+* Section12: おまけ
 
 
 ### ● Section4
@@ -3583,19 +3584,20 @@ LEFT JOIN `prj-test3.bq_sample.products_master` USING(product_id);
 1. SQLをBigQueryに書く。
 ```SQL
 SELECT
-    sp.year_month,
-    sm.shop_name,
-    sp.ttl_sales
+        sp.year_month,
+        sm.shop_name,
+        sp.ttl_sales
 FROM(
-    SELECT
-        DATE_TRUNC(date, MONTH) AS year_month,
-        shop_id,
-        SUM(sales_amount) AS ttl_sales
-    FROM `prj-test3.bq_sample.shop_purchases`
-    GROUP BY date, shop_id) AS sp
+        SELECT
+                DATE_TRUNC(date, MONTH) AS year_month,
+                shop_id,
+                SUM(sales_amount) AS ttl_sales
+        FROM `prj-test3.bq_sample.shop_purchases`
+        GROUP BY date, shop_id) AS sp
 LEFT JOIN `prj-test3.bq_sample.shops_master` AS sm
 USING(shop_id);
 ```
+
 2. BigQuery上で、求めたいデータを抽出する。
 ![biqquery_editer](https://i.gyazo.com/d672afedd1bcc9c0678bbba6ff5bb9dd.png)
 ```
@@ -3605,11 +3607,25 @@ USING(shop_id);
 
 3. Google DataPortal
 ![Google DataPortal](https://i.gyazo.com/625fcf38f301105c0dbc76da5b9951ff.png)
+```
 よかったら以下にリンクを貼っておきますので、覗いてみてください。
-
 こんな感じにお洒落になりました。
+```
+[🔗 作成したデータポータルはこちら >](https://datastudio.google.com/reporting/fa043ba1-256c-49a9-8f1b-bf12bf5295fa)
 
-https://datastudio.google.com/reporting/fa043ba1-256c-49a9-8f1b-bf12bf5295fa
+
+## ||おわりに
+はじめて BigQueryに触れましたが、
+
+標準SQLの奥の深さ、データを抽出することの難しさに新たな課題感を感じております。
+
+ですが、本講座を通して、BigQueryの仕様や、SQLの基本的な文法は体得したのではないのかな？と思います。
+（自分でも手が動くのに驚きを隠せませんでした。）
+
+前半は、基礎文法と地道ではありましたが、
+
+後半はパズルゲームを解く感覚に近くとても楽しんで取り組むことができました。
+
 
 
 ## || 参考
