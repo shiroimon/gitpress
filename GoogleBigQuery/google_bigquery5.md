@@ -176,7 +176,7 @@ GROUP BY 1;
 |1|新宿     |      5|    27800|
 |2|渋谷     |      4|    21800|
 
-### AVG() - 平均値
+### ■ AVG() - 平均値
 eg.
 ```SQL
 SELECT AVG(quantity) FROM `prj-test3.bq_sample.shop_purchases`;
