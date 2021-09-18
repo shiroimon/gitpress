@@ -1,5 +1,5 @@
 ---
-date   : 2021-09-01
+date   : 2021-09-03
 title  : 【BigQuery】分析入門
 excerpt: Google BigQuery基本の「き」について。
 tags   : ["Google BigQuery", "SQL基本", "分析基本"]
@@ -13,17 +13,26 @@ tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 （アフィリエイトリンク等ではなく、純粋に学習を通して大変参考になったのでm(__)m ）
 
 ---
-## 各 Section
-- [Section2~3]()
-- [Section4]()
-- [Section5]()
-- [Section6]()
-- [Section7]()
-- [Section8]()
-- [Section9]()
-- [Section10]()
-- [Section11]()
-- [Section12]()
+## || 学習メモ
+この章は、完全個人メモです。
+（後に自分で見返すようになっております。）
+
+どんな考え方（ロジック）でコードを書き上げたのか、どこで躓いたのか、
+
+後に俯瞰したいためにお恥ずかしながら演習問題で間違えてしまったコードはそのまま記載してます。
+悪しからず...
+
+■ セクションの構成
+* Section2~3: 基本設定
+* Section4  : 基本文法
+* Section5  : 集計関数
+* Section6  : 四則演算、条件分岐
+* Section7  : 分析関数
+* Section8  : テーブル結合
+* Section9  : サブクエリ
+* Section10 : 集合演算、ビュー
+* Section11 : 練習問題
+* Section12 : おまけ
 
 ---
 ## ||おわりに
