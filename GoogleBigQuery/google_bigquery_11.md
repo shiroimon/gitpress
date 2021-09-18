@@ -1,3 +1,10 @@
+---
+date   : 2021-09-18
+title  : 【BigQuery】分析入門 - Section11
+excerpt: Google BigQuery基本の「き」について。
+tags   : ["Google BigQuery", "SQL基本", "分析基本"]
+---
+
 ```SQL
 # ■ practice 11.2(難易度:低)
 #(goal_image)
@@ -42,14 +49,12 @@ ORDER BY 2 DESC;
 -- |1|Miyagi|   51.0|
 -- (0.5s 13.9KB)
 
-
 # SELECT
 #    prefecture,
 #    ROUND(AVG(DATE_DIFF("2018-12-31", birthday, YEAR))) AS avg_age,
 #    COUNT(user_id) AS users
-
-
 ```
+
 ```SQL
 # ■ practice 11.4(難易度:低)
 #(goal_image)
@@ -178,7 +183,7 @@ ORDER BY 4 DESC;
 
 
 ```
----------------------------------------------------------------
+---
 
 ```SQL
 # ■ practice 11.7(難易度:中)
@@ -379,7 +384,7 @@ SELECT shop_id, product_id FROM jan_sales;
 
 ```
 
----------------------------------------------------------------
+---
 
 ```SQL
 # ■ practice 11.12(難易度:高)

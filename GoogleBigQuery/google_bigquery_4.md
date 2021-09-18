@@ -13,7 +13,7 @@ ex.
 # 【演習問題1】
 SELECT purchase_id, user_id FROM bq_sample.shop_purchases;
 ```
----
+
 ### ■ DISTINCT句 - 重複除外
 ex.
 ```SQL
@@ -21,7 +21,7 @@ ex.
 SELECT DISTINCT user_id FROM bq_sample.shop_purchases;
 SELECT DISTINCT user_id, shop_id FROM bq_sample.shop_purchases;
 ```
----
+
 ### ■ EXCEPT() - かラム除外
 ex.
 ```SQL
@@ -29,7 +29,7 @@ ex.
 SELECT * FROM bq_sample.shop_purchases; #(70.1KB)
 SELECT * EXCEPT(shop_id, product_id) FROM bq_sample.shop_purchases; --(50.1KB)
 ```
----
+
 ### ■ ORDERBY句 - ソート機能(ASC:昇順 DESC:降順）
 ```
 eg. ORDER BY {カラム番号}指定可能。… [1]indexに注意
@@ -51,7 +51,7 @@ FROM bq_sample.shop_purchases
 ORDER BY 3 desc, 7;
 -- ORDER BY data desc, sales_amount;
 ```
----
+
 ### ■ LIMIT句 - レコード制限
 ```
 ※ 表示レコード数を制限するだけで、後ろの計算は全行行われている。
@@ -76,7 +76,7 @@ FROM `prj-test3.bq_sample.shop_purchases`
 ORDER BY sales_amount desc
 LIMIT 5 OFFSET 11;
 ```
----
+
 ### ■ WHERE句 - 絞り込み条件
 e.g.
 ```SQL
@@ -215,7 +215,7 @@ SELECT user_id, last_name
 FROM bq_sample.customers
 WHERE is_premium IS FALSE;
 ```
----
+
 ### ■ WHERE句 - 複数条件（論理演算子）
 e.g.
 ```sql
@@ -232,7 +232,7 @@ WHERE (is_premium IS FALSE AND gender = 1) OR birthday < "1970-12-31"
 ORDER BY user_id
 LIMIT 5;
 ```
----
+
 ### ■ WHERE句 - NULLの振る舞い
 e.g.
 ```SQL
@@ -245,7 +245,7 @@ SELECT user_id, last_name, first_name
 FROM `prj-test3.bq_sample.customers`
 WHERE first_name IS NULL;
 ```
----
+
 ### ■ AS句 - かラム名上書き
 e.g.
 ```SQL

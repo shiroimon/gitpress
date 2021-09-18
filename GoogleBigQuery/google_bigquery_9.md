@@ -1,48 +1,55 @@
-```SQL
-/**************************************************************
- * 【Uddemy】BigQueryで学ぶ非エンジニアのためのSQLデータ分析入門
- *  section : 9
- **************************************************************/
+---
+date   : 2021-09-18
+title  : 【BigQuery】分析入門 - Section9
+excerpt: Google BigQuery基本の「き」について。
+tags   : ["Google BigQuery", "SQL基本", "分析基本"]
+---
 
-# ■ サブクエリ（=副問い合わせ）
+### ■ サブクエリ（= 副問い合わせ）
+
+```
 # ※ 何ができるの？
 #   ・「全体」と「個別」の対比。（全体の売上を100%とした時、特定の売上は○%を占める。）
 #   ・JOINを用いずとも、他のテーブルデータ利用。（JOINをせずにある属性の顧客から売上合計金額データを取得。）
 #   ・一度集計したデータの利用。（日別に売上を合算したえ上でそれらの平均を取得できるようになる。）...etc.
 #
 # ※ 実行順序は、「サブクエリ（子クエリ）」>「親クエリ」
-#
-# eg. ①
-#        SELECT SUM(quantity) AS ttl_qty FROM `prj-test3.bq_trial.pos`;
-#        #| |ttl_qty|
-#        #|1|     90|
-#
-# eg. ②
-#        SELECT
-#            user_id,
-#            SUM(quantity) AS qty_by_user
-#        FROM `prj-test3.bq_trial.pos`
-#        GROUP BY  user_id
-#        ORDER BY  2 DESC;
-#        #| |user_id|qty_by_user|
-#        #|1|ABC    |         41|
-#        #|3|XYZ    |         19|
-#        #|4|WWW    |          7|
-#
+```
+e.g.
+```SQL
+# ①
+SELECT SUM(quantity) AS ttl_qty
+FROM `prj-test3.bq_trial.pos`;
+-- | |ttl_qty|
+-- |1|     90|
+
+# ②
+SELECT
+    user_id,
+    SUM(quantity) AS qty_by_user
+FROM `prj-test3.bq_trial.pos`
+GROUP BY  user_id
+ORDER BY  2 DESC;
+-- | |user_id|qty_by_user|
+-- |1|ABC    |         41|
+-- |3|XYZ    |         19|
+-- |4|WWW    |          7|
+
 # eg. ①+②
-#        SELECT
-#            user_id,
-#            SUM(quantity) AS qty_by_user,
-#            (SELECT SUM(quantity) FROM `prj-test3.bq_trial.pos`) AS ttl_qty
-#        FROM `prj-test3.bq_trial.pos`
-#        GROUP BY  user_id
-#        ORDER BY  2 DESC;
-#        #| |user_id|qty_by_user|ttl_qty|
-#        #|1|ABC    |         41|     90|
-#        #|2|STU    |         23|     90|
-#        #|3|XYZ    |         19|     90|
-#        #|4|WWW    |          7|     90|
-#
+SELECT
+    user_id,
+    SUM(quantity) AS qty_by_user,
+    (SELECT SUM(quantity) FROM `prj-test3.bq_trial.pos`) AS ttl_qty
+FROM `prj-test3.bq_trial.pos`
+GROUP BY  user_id
+ORDER BY  2 DESC;
+-- | |user_id|qty_by_user|ttl_qty|
+-- |1|ABC    |         41|     90|
+-- |2|STU    |         23|     90|
+-- |3|XYZ    |         19|     90|
+-- |4|WWW    |          7|     90|
+```
+```SQL
 # 【9.2 演習問題1 (6:20)】
 SELECT
     user_id,
@@ -51,15 +58,15 @@ SELECT
     ROUND(SUM(quantity)/(SELECT SUM(quantity) FROM `prj-test3.bq_trial.pos`),3)*100 AS pctg_by_user
 FROM `prj-test3.bq_trial.pos`
 GROUP BY 1;
--- #| |user_id|qty_by_user|ttl_qty|pctg_by_yser|
--- #|1|ABC    |         41|     90|        45.6|
--- #|2|STU    |         23|     90|        25.6|
--- #|3|XYZ    |         19|     90|         7.8|
--- #|4|WWW    |          7|     90|        21.0|
+-- | |user_id|qty_by_user|ttl_qty|pctg_by_yser|
+-- |1|ABC    |         41|     90|        45.6|
+-- |2|STU    |         23|     90|        25.6|
+-- |3|XYZ    |         19|     90|         7.8|
+-- |4|WWW    |          7|     90|        21.0|
+```
 
-
-/********************************************************************/
- # ■ サブクエリの戻り値の型
+### ■ サブクエリの戻り値の型
+```SQL
  #   1. スカラー    :単一の値 [n]
  #   2. ベクター    :リストの値 [n行×1列]
  #   3. マトリックス :表の値[n行×m列]
@@ -68,7 +75,8 @@ GROUP BY 1;
  #    SELECT句|   ●   |        |            |
  #    FROM句  |        |   ●   |     ●     |
  #    WHERE句 |   ●   |   ●   |            |
-
+```
+```SQL
  # 【9.3 演習問題1 (2:10)】(WHERE句 × スカラー)
  SELECT
      order_id,
@@ -77,11 +85,11 @@ GROUP BY 1;
  FROM `prj-test3.bq_trial.pos`
  WHERE quantity >= (SELECT ROUND(AVG(quantity)) FROM `prj-test3.bq_trial.pos`)
  ORDER BY 2 DESC;
- #| |order_id|quantity|avg_aty|
- #|1|       9|      12|    6.0|
- #|2|      12|      12|    6.0|
- #|3|       1|      10|    6.0|
- #|4|       3|       8|    6.0|
+-- | |order_id|quantity|avg_aty|
+-- |1|       9|      12|    6.0|
+-- |2|      12|      12|    6.0|
+-- |3|       1|      10|    6.0|
+-- |4|       3|       8|    6.0|
 
  # 【9.4 演習問題1 (1:10)】(SELECT句 × スカラー)
  SELECT
@@ -89,9 +97,9 @@ GROUP BY 1;
      (SELECT SUM(quantity) FROM `prj-test3.bq_trial.pos`)AS ttl_qty
  FROM `prj-test3.bq_trial.pos`
  ORDER BY order_id;
- #| |order_id|user_id|product_id|quantity|ttl_qty|
- #|1|       1|ABC    |         1|      10|     90|
- #|2|       2|ABC    |         5|       5|     90|
+-- | |order_id|user_id|product_id|quantity|ttl_qty|
+-- |1|       1|ABC    |         1|      10|     90|
+-- |2|       2|ABC    |         5|       5|     90|
 
  # 【9.4 演習問題2 (4:20)】(SELECT句 × スカラー)
  # (miss_code)
@@ -114,10 +122,10 @@ GROUP BY 1;
  FROM `prj-test3.bq_trial.pos`
  GROUP BY user_id
  ORDER BY 2 DESC;
- -- #| |user_id|sales_by_user|ttl_sales|sales_share_by_user|
- -- #|1|ABC    |         6020|    14240|               42.3|
- -- #|2|XYZ    |         3920|    14240|               27.5|
- -- #|3|STU    |         3080|    14240|               21.6|
+-- | |user_id|sales_by_user|ttl_sales|sales_share_by_user|
+-- |1|ABC    |         6020|    14240|               42.3|
+-- |2|XYZ    |         3920|    14240|               27.5|
+-- |3|STU    |         3080|    14240|               21.6|
 
  # 【9.4 演習問題3 (7:20)】(SELECT句 × スカラー)
  SELECT
@@ -130,10 +138,10 @@ GROUP BY 1;
  FROM `prj-test3.bq_sample.shop_purchases`
  GROUP BY month
  ORDER BY month;
- -- #| |month     |sales_by_month|ttl_sales|sales_ratio|
- -- #|1|2018-01-01|       2056764| 20118392|       10.2|
- -- #|2|2018-02-01|       1133128| 20118392|        5.6|
- -- #|3|2018-03-01|       1296473| 20118392|        6.4|
+-- | |month     |sales_by_month|ttl_sales|sales_ratio|
+-- |1|2018-01-01|       2056764| 20118392|       10.2|
+-- |2|2018-02-01|       1133128| 20118392|        5.6|
+-- |3|2018-03-01|       1296473| 20118392|        6.4|
 
  # 【9.5 演習問題1 (0:40)】(WHERE句 × スカラー)
  SELECT
@@ -236,26 +244,30 @@ GROUP BY 1;
  -- | |user_id|fullname    |prefecture|birthday  |
  -- |1|1033150|羽諸 一未  |Tokyo      |1947-08-14|
  -- |2|1089412|巴山 かのこ|Tokyo      |1951-03-31|
+```
 
-/********************************************************************/
- # ■ FROM句 × ベクター
- # eg. 日別の販売数量平均を知りたい場合。等
- #   ①:
- #    SELECT SUM(quantity) AS sum_of_qty_by_day
- #    FROM `prj-test3.bq_trial.pos`
- #    GROUP BY date;
- #    -- | |sum_of_qty_by_day|
- #    -- |1|               45|
- #    -- |2|               45|
- #   ②: ①をサブクエリとして利用。
- #    SELECT
- #        AVG(sum_of_qty_by_day) AS avg_qty_by_day
- #    FROM (SELECT SUM(quantity) AS sum_of_qty_by_day
- #        FROM `prj-test3.bq_trial.pos`
- #        GROUP BY date);
- #    -- | |avg_qty_by_day|
- #    -- |1|          45.0|
+### ■ FROM句 × ベクター
+eg. 日別の販売数量平均を知りたい場合。等
+```SQL
+#①:
+ SELECT SUM(quantity) AS sum_of_qty_by_day
+ FROM `prj-test3.bq_trial.pos`
+ GROUP BY date;
+ -- | |sum_of_qty_by_day|
+ -- |1|               45|
+ -- |2|               45|
 
+#②: ①をサブクエリとして利用。
+ SELECT
+     AVG(sum_of_qty_by_day) AS avg_qty_by_day
+ FROM (SELECT SUM(quantity) AS sum_of_qty_by_day
+     FROM `prj-test3.bq_trial.pos`
+     GROUP BY date);
+ -- | |avg_qty_by_day|
+ -- |1|          45.0|
+```
+
+```SQL
  #【9.7 演習問題1 (3:20)】(FROM句 × ベクター)
  SELECT
      AVG(sold_by_day) AS avg_number_of__prob_sold_by_day
@@ -328,22 +340,23 @@ GROUP BY 1;
  --|1|ABC    |      12|   1|
  --|2|ABC    |      10|   2|
  --|3|ABC    |       8|   3|
+```
+### ■ サブクエリとJOINの併用
+eg.
+```SQL
+SELECT
+     date,
+     user_id,
+     category,
+     quantity
+FROM (SELECT * FROM `prj-test3.bq_trial.pos` WHERE user_id="ABC") AS pos
+INNER JOIN `prj-test3.bq_trial.shohin_master` AS sm ON pos.product_id = sm.product_id;
+-- | |date      |user_id|category|quantity|
+-- |1|2019-01-01|ABC    |くだもの|      10|
+-- |2|2019-01-01|ABC    |肉      |       5|
+```
 
-
- /********************************************************************/
- # ■ サブクエリとJOINの併用
- # eg.
- #    SELECT
- #        date,
- #        user_id,
- #        category,
- #        quantity
- #    FROM (SELECT * FROM `prj-test3.bq_trial.pos` WHERE user_id="ABC") AS pos
- #    INNER JOIN `prj-test3.bq_trial.shohin_master` AS sm ON pos.product_id = sm.product_id;
- #    -- | |date      |user_id|category|quantity|
- #    -- |1|2019-01-01|ABC    |くだもの  |     10|
- #    -- |1|2019-01-01|ABC    |肉       |      5|
-
+```SQL
  #【9.9 演習問題1 (2:30)】
  #(miss_code)
  -- SELECT
@@ -375,6 +388,7 @@ GROUP BY 1;
  --|1|肉      |     13|
  --|2|野菜    |     30|
  --|3|魚      |     24|
+
 
  #【9.9 演習問題2 (6:50)】
  #(miss_code)
@@ -415,12 +429,13 @@ GROUP BY 1;
  --|3|Aichi     |       535|       43800|   2|
  --|1|Aomori    |       206|       22000|   1|
 
- #【9.9 演習問題 (11:10)】
- --|pref |prodcut_id|ttl_sales_amount|rank|
- --|Tokyo|       120|         5000000|   1|
 
- SELECT *
- FROM (SELECT
+ #【9.9 演習問題 (11:10)】
+--|pref |prodcut_id|ttl_sales_amount|rank|
+--|Tokyo|       120|         5000000|   1|
+
+SELECT *
+FROM (SELECT
            cu.prefecture AS pref,
            sp.product_id,
            SUM(sp.sales_amount) AS total_sales,
@@ -433,17 +448,17 @@ GROUP BY 1;
        GROUP BY 1, 2
        ORDER BY 1
        )
- WHERE pref IS NOT NULL AND rank<=3
- ORDER BY pref, rank;
- --| |pref  |prodcut_id|total_sales|rank|
- --|1|Aichi |        9|      111360|   1|
- --|2|Aichi |       10|      102200|   2|
- --|3|Aichi |        4|       90324|   3|
- --|1|Aomori|        6|       22000|   1|
+WHERE pref IS NOT NULL AND rank<=3
+ORDER BY pref, rank;
+--| |pref  |prodcut_id|total_sales|rank|
+--|1|Aichi |        9|      111360|   1|
+--|2|Aichi |       10|      102200|   2|
+--|3|Aichi |        4|       90324|   3|
+--|1|Aomori|        6|       22000|   1|
 
 
- SELECT *
- FROM (SELECT
+SELECT *
+FROM (SELECT
            prefecture,
            product_id,
            sales,
@@ -460,44 +475,44 @@ GROUP BY 1;
              GROUP BY cu.prefecture, sp.product_id
             )
       )
- WHERE prefecture IS NOT NULL AND sales_rank <=3
- ORDER BY 1, 4;
- --| |pref  |prodcut_id|total_sales|rank|
- --|1|Aichi |        9|      111360|   1|
- --|2|Aichi |       10|      102200|   2|
- --|3|Aichi |        4|       90324|   3|
+WHERE prefecture IS NOT NULL AND sales_rank <=3
+ORDER BY 1, 4;
+--| |pref  |prodcut_id|total_sales|rank|
+--|1|Aichi |        9|      111360|   1|
+--|2|Aichi |       10|      102200|   2|
+--|3|Aichi |        4|       90324|   3|
+```
 
+### ■ WITH句 - サブクエリの可読性を高める
+```
+※書式
+    WITH
+    [後から参照する名前1] AS (SELECT句から始まるサブクエリ1),
+    [後から参照する名前2] AS (SELECT句から始まるサブクエリ2)
 
- /********************************************************************/
- # ■ WITH句 - サブクエリの可読性を高める
- # ※書式
- #    WITH
- #    [後から参照する名前1] AS (SELECT句から始まるサブクエリ1),
- #    [後から参照する名前2] AS (SELECT句から始まるサブクエリ2)
- #
- #    あたかも予め用意された様なテーブルデータとして結合させたり、利用できたりする。
+あたかも予め用意された様なテーブルデータとして
+結合させたり、利用できたりする。
+```
+e.g.
+```SQL
+WITH agg AS (
+    SELECT
+        DATE_TRUNC(date, month) AS month,
+        shop_id,
+        SUM(sales_amount) AS total_sales
+    FROM `prj-test3.bq_sample.shop_purchases`
+    GROUP BY 1, 2)
+    --| |month     |shop_id|total_sales|
 
- # eg. WITH agg AS (
- #        SELECT
- #            DATE_TRUNC(date, month) AS month,
- #            shop_id,
- #            SUM(sales_amount) AS total_sales
- #        FROM `prj-test3.bq_sample.shop_purchases`
- #        GROUP BY 1, 2)
- #        --| |month     |shop_id|total_sales|
- #
- #    SELECT
- #        agg.month,
- #        sm.chief_name,
- #        SUM(agg.total_sales) AS sales
- #    FROM `prj-test3.bq_sample.shops_master` AS sm
- #    INNER JOIN agg ON agg.shop_id = sm.shop_id
- #    GROUP BY 1, 2
- #    ORDER BY 1, 3;
- #    -- | |month     |chief_name |sales |
- #    -- |1|2018-01-01|大井谷 みすず|435091|
- #    -- |2|2018-01-01|山下　唐三郎 |723369|
- #
-
-
+SELECT
+     agg.month,
+     sm.chief_name,
+     SUM(agg.total_sales) AS sales
+FROM `prj-test3.bq_sample.shops_master` AS sm
+INNER JOIN agg ON agg.shop_id = sm.shop_id
+GROUP BY 1, 2
+ORDER BY 1, 3;
+-- | |month     |chief_name   |sales |
+-- |1|2018-01-01|大井谷 みすず|435091|
+-- |2|2018-01-01|山下  唐三郎 |723369|
 ```

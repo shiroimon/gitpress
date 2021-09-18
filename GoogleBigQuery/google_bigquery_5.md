@@ -24,7 +24,7 @@ SELECT COUNT(*) AS gyou_su
 FROM `prj-test3.bq_sample.customers`
 WHERE gender = 2 AND birthday >= "1989-01-08";
 ```
----
+
 ### ■ COUNT() - データ個数集計
 e.g.
 ```SQL
@@ -42,7 +42,7 @@ SELECT COUNT(*) AS gyou_su,
 FROM `prj-test3.bq_sample.customers`
 WHERE gender = 2;
 ```
----
+
 ### ■ GROUPBY句 - グループ化
 ```
 データから意味を読み取るには。
@@ -115,7 +115,7 @@ ORDER BY shop_id, product_id;
 グルーピングにはSELECT内に記載した順番が問われる。
 ∴GROPBYの順番を変更したとしても問題はない。
 ```
----
+
 ### ■ SUM() - 合計値
 e.g.
 ```SQL
@@ -136,7 +136,6 @@ ORDER BY 2 DESC;
 -- #|1|      1|           1257|
 -- #|2|      2|           1063|
 -- #|3|      3|            460|
-
 
 #【5.5 演習問題2(3:30)】
 SELECT shop_id, SUM(sales_amount) AS Total_sales
@@ -176,7 +175,7 @@ GROUP BY 1;
 |1|新宿     |      5|    27800|
 |2|渋谷     |      4|    21800|
 
----
+
 ### ■ AVG() - 平均値
 eg.
 ```SQL
@@ -218,7 +217,6 @@ ORDER BY 2 DESC;
 -- #|2|      2|12881.13043478261|
 ```
 
----
 ### ■ MAX(), MIN() - 最大値、最小値
 e.g.
 ```SQL
@@ -256,7 +254,6 @@ ORDER BY 3;
 -- #|2|2018-01-21|      3|    13650|
 ```
 
----
 ### ■ 標準偏差（=standard deviation）
 ```
 分析対象が母集団（= population）：STDDEV_POP(カラム名)
@@ -276,7 +273,6 @@ ORDER BY 2;
 -- #|2|      1| 4962.301658504852|
 ```
 
----
 ### ■ HAVING句 - 集計結果にフィルタリング
 e.g.
 ```SQL

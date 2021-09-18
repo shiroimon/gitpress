@@ -6,65 +6,62 @@ tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 ---
 
 ## || Section7
+### ■ 分析関数
+
+### ■ OVER句 - 分析関数の書式
 ```SQL
-/**************************************************************
- * 【Uddemy】BigQueryで学ぶ非エンジニアのためのSQLデータ分析入門
- *  section : 7
- **************************************************************/
+※分析において最も重要な句。内側で3つの(option)がある。
+   [関数]() OVER(
+      PARTITION BY [分析を行うグループを作る対象のカラム名] (option)
+      ORDER BY [パーテション中での並べ替えを行うカラム名] ASC|DESC (option)
+      WINDOW_FRAME (option)
+   ) AS 別名
+```
+e.g.
+```SQL
+SELECT
+    user_id,
+    order_id,
+    quantity,
+    SUM(quantity)OVER(
+        --PARTITION BY句： user_id別にまとめる
+        PARTITION BY user_id
+        --ORDER BY句：patation内でquantityが多い順
+        ORDER BY quantity DESC
+        --WINDOW_FRAME句: ROWSを指定（他にもRANGEがある）
+        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+    ) AS cumlative_quantity_till_the_row
+FROM `prj-test3.bq_trial.pos`
+GROUP BY user_id, order_id, quantity;
+                  〈desc〉--
+-- | |user_id|order_id|quantity|cumlative_quantity_till_the_row| --境界の無い当該行までの累計数量取得
+-- |1|ABC    |       9|      12|                             12|
+-- |2|ABC    |       1|      10|                             22|←(12+10)
+-- |3|ABC    |       3|       8|                             30|←(12+10+8)
+-- |4|ABC    |      10|       6|                             36|←(12+10+8+6)
+-- |5|ABC    |       2|       5|                             41|←(12+10+8+6+5)
+---------------------------------------------------------------------〈patition〉
+-- |6|STU    |      12|      12|                             12|
+-- |7|STU    |       4|       8|                             20|←(12+8)
+-- |8|STU    |      11|       3|                             23|←(12+8+3)
+---------------------------------------------------------------------〈patition〉
+-- |9|www    |       5|       5|                              5|
+```
+### ■ WINDOW_FRAME
+eg.
+```
+[ROWS] [BETWEEN] UNBOUNDED PRECEDING [AND] CURRENT ROW
 
-/**************************************************************
-# 分析関数
-**************************************************************/
+※ BETWEEN句の始値、終値には様々な指定ができる。
+   CURRENT ROW         : 現在の行
+   UNBOUNDED PRECEDING : パーテションで定義された境界の、最も上の方
+   UNBOUNDED FOLLOWING : パーテションで定義された境界の、最も下の方
+   [int] PRECEDING     : 現在の行から[int]だけ上の行
+   [int] FOLLOWING     : 現在の行から[int]だけ下の行
+```
 
-# ■ OVER句 - 分析関数の書式
-# ※分析において最も重要な句。内側で3つの(option)がある。
-#    [関数]() OVER(
-#       PARTITION BY [分析を行うグループを作る対象のカラム名] (option)
-#       ORDER BY [パーテション中での並べ替えを行うカラム名] ASC|DESC (option)
-#       WINDOW_FRAME (option)
-#    ) AS 別名
-#
-# eg. SELECT
-#         user_id,
-#         order_id,
-#         quantity,
-#         SUM(quantity)OVER(
-#             PARTITION BY user_id         --PARTITION BY句： user_id別にまとめる
-#             ORDER BY quantity DESC       --ORDER BY句：patation内でquantityが多い順
-#             ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW    --WINDOW_FRAME句: ROWSを指定（他にもRANGEがある）
-#         ) AS cumlative_quantity_till_the_row
-#     FROM `prj-test3.bq_trial.pos`
-#     GROUP BY user_id, order_id, quantity;
-#                       --〈desc〉--
-#    #| |user_id|order_id|quantity|cumlative_quantity_till_the_row| --境界の無い当該行までの累計数量取得
-#    #|1|ABC    |       9|      12|                             12|
-#    #|2|ABC    |       1|      10|                             22|←(12+10)
-#    #|3|ABC    |       3|       8|                             30|←(12+10+8)
-#    #|4|ABC    |      10|       6|                             36|←(12+10+8+6)
-#    #|5|ABC    |       2|       5|                             41|←(12+10+8+6+5)
-#    #-----------------------------------------------------------------------〈patition〉
-#    #|6|STU    |      12|      12|                             12|
-#    #|7|STU    |       4|       8|                             20|←(12+8)
-#    #|8|STU    |      11|       3|                             23|←(12+8+3)
-#    #-----------------------------------------------------------------------〈patition〉
-#    #|9|www    |       5|       5|                              5|
-
-
-/********************************************************************/
-# ■ WINDOW_FRAME
-# eg. [ROWS] [BETWEEN] UNBOUNDED PRECEDING [AND] CURRENT ROW
-#
-# ※ BETWEEN句の始値、終値には様々な指定ができる。
-#    CURRENT ROW         : 現在の行
-#    UNBOUNDED PRECEDING : パーテションで定義された境界の、最も上の方
-#    UNBOUNDED FOLLOWING : パーテションで定義された境界の、最も下の方
-#    [int] PRECEDING     : 現在の行から[int]だけ上の行
-#    [int] FOLLOWING     : 現在の行から[int]だけ下の行
-
-
-/**********************
- * ■ [関数] 番号付け
- **********************/
+*  ■ [関数] 番号付け
+```SQL
 # ※「OVER句」の中には最大３つ記述ができる。
 #    ①PARTITIONBY  [使用可]
 #    ②ORDERBY      [必須]
@@ -77,13 +74,18 @@ tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 #    DENSE_RANK()  :
 #    NTILE()       :
 #    PERCENT_RANK():
+```
 
-/********************************************************************/
-# ■ RANK() -
-# eg. RANK() OVER(
-#           PARTION BY
-#           ORDER BY
-#     )
+### ■ RANK() -
+e.g.
+```SQL
+RANK() OVER(
+      PARTION BY
+      ORDER BY
+)
+```
+ex.
+```SQL
 #【7.4 演習問題1(2:20)】
 SELECT
     order_id,
@@ -99,6 +101,7 @@ ORDER BY ranking;
 -- #|2|       9|ABC    |      12|      1|
 -- #|3|       1|ABC    |      10|      3|
 -- #|4|       3|ABC    |       8|      4|
+
 
 #【7.4 演習問題2(4:20)】
 SELECT
@@ -121,6 +124,7 @@ ORDER BY user_id, ranking;
 -- -- ------------------------------------[partitin]
 -- #|6|      12|STU    |      12|      1|
 
+
 #【7.4 演習問題3(6:20)】
 SELECT
     order_id,
@@ -134,14 +138,18 @@ FROM `prj-test3.bq_trial.pos`
 WHERE ranking <= 3
 ORDER BY user_id, ranking;
 -- # ∴ WHERE句は使用不可（分析関数では絞り込みできない ∵WHEREが先に実行され、その後にSELECTの為）
+```
 
-/********************************************************************/
-# ■ ROW_NUMBER() - パーテションの中の行番号を返す。
-# eg. ROW_NUMBER() OVER(
-#           PARTITION BY [パーテションを宣言するカラム] (option)
-#           ORDER BY [行番号を取得する対象の指標カラム] ASC|DESC(必須)
-#     )
-#
+### ■ ROW_NUMBER() - パーテションの中の行番号を返す。
+e.g.
+```SQL
+ROW_NUMBER() OVER(
+      PARTITION BY [パーテションを宣言するカラム] (option)
+      ORDER BY [行番号を取得する対象の指標カラム] ASC|DESC(必須)
+)
+```
+ex.
+```SQL
 #【7.4 演習問題4(9:00)】
 SELECT
     user_id,
@@ -158,11 +166,10 @@ FROM `prj-test3.bq_trial.access_log`;
 -- #|3|ABC    |            2|/products/?id=7|        3|
 -- -- --------------------------------------------------[partition]
 -- #|4|ABC    |            1|/index.php     |        1|
+```
 
-
-/**************************
  * ■ [関数] ナビゲーション
- **************************/
+```SQL
 # ※ 様々なナビゲーション関数
 #    FIRST_VALUE()     : ウィンドウフレームの中の一番最初の値を返す
 #    LAST_VALUE()      : ウィンドウフレームの中の一番最後の値を返す
@@ -171,14 +178,19 @@ FROM `prj-test3.bq_trial.access_log`;
 #    NTH_VALUE()       :
 #    PERCENTILE_COUNT():
 #    PERCENTILE_DISC() :
+```
 
-/********************************************************************/
-# ■ FIRST_VALUE() -
+### ■ FIRST_VALUE() -
+e.g.
+```SQL
 # eg. FIRST_VALUE(値を取得する対象カラム) OVER(
 #           [PARTITION BY     (option)]境界宣言するカラム
 #           [ORDER BY(option) ASC|DESC]順序を決める対象カラム
 #           [WINDOW FRAME     (option)]
 #     )
+```
+ex.
+```SQL
 #【7.5 演習問題1(1:30)】
 #(miss_codd)
 -- SELECT
@@ -251,17 +263,22 @@ FROM `prj-test3.bq_trial.access_log`;
 -- #|5|ABC    |            1|/index.php     |/products/?id=10   |
 -- -- ------------------------------------------------------------[PARTITION]
 -- #|6|ABC    |            2|/products/?id=7|//thanks/thanks.php|
+```
 
-/********************************************************************/
-# ■ LEAD(), LAG() -
-# LEAD() - 自分の今いる行の１行下の行の値を取得
-# LAG()  - 自分の今いる行の１行下の上の値を取得
+### ■ LEAD(), LAG() -
+```
+LEAD() - 自分の今いる行の１行下の行の値を取得
+LAG()  - 自分の今いる行の１行下の上の値を取得
+```
+e.g.
+```SQL
 # eg. [関数](値を取得する対象カラム, [int]行後, 値がな場合のデフォルト値) OVER(
 #        [PARTITION BY]
 #        [ORDER BY]
 #        [WINDOW FRAME]
 #    )
-#
+```
+```SQL
 #【7.5 演習問題4(13:20)】
 #(miss code)
 -- SELECT
@@ -310,22 +327,28 @@ ORDER BY timestamp;
 -- #|6|ABC    |            2|/products/?id=7   |2019-01-03 16:04:32 UTC|/cart/cart.php    |2019-01-03 16:05:11 UTC|          39|
 -- #|7|ABC    |            2|/cart/cart.php    |2019-01-03 16:05:11 UTC|/thanks/thanks.php|2019-01-03 16:06:09 UTC|          58|
 -- #|7|ABC    |            2|/thanks/thanks.php|2019-01-03 16:06:09 UTC|null              |null                   |        null| ←離脱
+```
 
-
-/**********************
  * ■ [関数] 集計分析
- **********************/
+```SQL
 # ※ 様々な集計分析関数
 #    SUM()  : パーテションの中の合計値を返す
 #    AVG()  : パーテションの中の平均値を返す
 #    COUNT(): パーテションの中の値の個数を返す
 #    MAX()  : パーテションの中の最大値を返す
 #    MIN()  : パーテションの中の最小値を返す
+```
+
+e.g.
+```SQL
 # eg. [関数](値を取得する対象カラム) OVER(
 #        PARTITION BY (option)
 #        ORDER BY     (option)
 #        WINDOW FRAME (option)
 #    )
+```
+ex.
+```SQL
 #【7.6 演習問題1(1:20)】
 SELECT
     user_id,

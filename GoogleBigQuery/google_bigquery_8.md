@@ -1,104 +1,123 @@
+---
+date   : 2021-09-18
+title  : 【BigQuery】分析入門 - Section8
+excerpt: Google BigQuery基本の「き」について。
+tags   : ["Google BigQuery", "SQL基本", "分析基本"]
+---
+
+## || Session8
+### ■ ER図
+```
+ER図（Entity-Relations）:
+テーブル同士の関係性を表した図表
+
+そもそも、DBが複数のテーブルを持っているのは?
+→∵ カスタマイズ性、メンテナンス性を高めることが重視されているため。
+```
+
+### ■ キーの種類
+```
+🔑 主キー(PK:PrimaryKey)   :
+🗝 外部キー(FK:ForeignKey) : 外部テーブルと結合するためのキー
+```
+
+### ■ JOIN - 結合
+※ JOINの種類
 ```SQL
-/**************************************************************
- * 【Uddemy】BigQueryで学ぶ非エンジニアのためのSQLデータ分析入門
- *  section : 8
- **************************************************************/
-# ■ ER図
-#  ER図（Entity-Relations）: テーブル同士の関係性を表した図表
-# そもそも、DBが複数のテーブルを持っているのは?
-# ∵ カスタマイズ性、メンテナンス性を高めることが重視されているため。
+1. INNER JOIN       : 左右両方のテーブルに[FK=PK]が存在するレコードだけを結合（いずれにも該当しないレコードは弾かれる）
+2. LEFT OUTER JOIN  : 左右にあろうが、無かろうが、兎に角「左を優先して！」結合
+3. RIGHT OUTER JOIN : 左右にあろうが、無かろうが、兎に角「右を優先して！」結合
+4. FULL OUTER JOIN  : 左右にあるだけのレコードを「全部まとめて出してくれ！」結合
+5. CROSS JOIN       :
+```
+eg. 書式
+```SQL
+SELECT
+FROM テーブルA AS A
+(INNER|LEFT[OUTER]|RIGHT[OUTER]|FULL[OUTER])JOIN テーブルB AS B
+→ USING(FK-PKの両テーブルに共通するカラム)
+→ ON A.FK = B.PK [AND 絞り込み条件]
 
-# ■ キーの種類
-# 🔑 主キー(PK:PrimaryKey)   :
-# 🗝 外部キー(FK:ForeignKey) : 外部テーブルと結合するためのキー
+※ デフォルトINNER JOIN (INNERや、OUTERは省略可能)。
+※ JOIN後は、USINGで共通キーを紐づける。更に詳細に設定する場合にON句を使用。
+※ ON句の[AND 絞り込み条件]は省略可能。
+```
 
-# ■ JOIN - 結合
-# ※ JOINの種類
-#    1. INNER JOIN       : 左右両方のテーブルに[FK=PK]が存在するレコードだけを結合（いずれにも該当しないレコードは弾かれる）
-#    2. LEFT OUTER JOIN  : 左右にあろうが、無かろうが、兎に角「左を優先して！」結合
-#    3. RIGHT OUTER JOIN : 左右にあろうが、無かろうが、兎に角「右を優先して！」結合
-#    4. FULL OUTER JOIN  : 左右にあるだけのレコードを「全部まとめて出してくれ！」結合
-#    5. CROSS JOIN       :
-#
-# eg. 書式
-#       SELECT
-#       FROM テーブルA AS A
-#       (INNER|LEFT[OUTER]|RIGHT[OUTER]|FULL[OUTER])JOIN テーブルB AS B
-#       → USING(FK-PKの両テーブルに共通するカラム)
-#       → ON A.FK = B.PK [AND 絞り込み条件]
-#
-#       ※ デフォルトINNER JOIN (INNERや、OUTERは省略可能)。
-#       ※ JOIN後は、USINGで共通キーを紐づける。更に詳細に設定する場合にON句を使用。
-#       ※ ON句の[AND 絞り込み条件]は省略可能。
-#
-# eg. USINGでの結合
-#      SELECT
-#            p.user_id,
-#            p.product_id,
-#            p.unit_price,
-#            sm.category,
-#            sm.prod_name
-#       FROM `prj-test3.bq_trial.pos` AS p
-#       LEFT JOIN `prj-test3.bq_trial.shohin_master` AS sm
-#       USING(product_id)
-#       ORDER BY p.product_id;
-#                     --[key]--
-#        #|  |user_id|product_id|unit_price|category|prob_name|
-#        #| 1|ABC    |         1|       120|くだもの |いちご   |
-#        #| 2|XYZ    |         2|       200|野菜    |白菜      |
-#        #| 3|STU    |         2|       200|野菜    |白菜      |
-#        #| 4|STU    |         3|       160|野菜    |人参      |
-#        #|15|www    |        11|       210|null    |null     | --[shohin_master.csv]には無い値なので、nullが返る
-#
-# eg. ON句による条件指定の結合
-#        SELECT
-#            p.user_id, p.product_id, p.unit_price, p.quantity,
-#            sm.category, sm.prod_name
-#        FROM `prj-test3.bq_trial.pos` AS p
-#        LEFT JOIN `prj-test3.bq_trial.shohin_master` AS sm
-#        ON p.product_id = sm.product_id AND p.user_id="ABC" -- ON句で詳細設定しての結合
-#        ORDER BY p.product_id;
-#          --[条件]-- --[key]--
-#        #| |user_id|product_id|unit_price|quantity|category|prod_name|
-#        #|1|ABC    |         1|       120|      10|くだもの |いちご  |
-#        #|2|XYZ    |         2|       200|       2|null    |null     |
-#        #|3|STU    |         2|       200|       3|null    |null     |
-#
-#        -- LEFT JOIN での結合のため、左側の全て取得しnullが返ってしまう。
-#        -- この場合は、INNER JOINを使用すると、意図する挙動になる。
-#        INNER JOIN `prj-test3.bq_trial.shohin_master` AS sm
-#        #| |user_id|product_id|unit_price|quantity|category|prod_name|
-#        #|1|ABC    |         1|       120|      10|くだもの |いちご  |
-#        #|2|ABC    |         4|       160|      12|魚       |アジ    |
-#        #|3|ABC    |         5|       100|       5|肉       |豚肉    |
-#
-#        -- 更にON句では AND で条件を追加もできる。
-#        ON p.product_id = sm.product_id AND p.user_id="ABC" AND sm.category="肉"
-#          --[条件]-- --[key]--                   --[条件]--
-#        #| |user_id|product_id|unit_price|quantity|category|prod_name|
-#        #|1|ABC    |         5|       100|       5|肉      |豚肉     |
-#        #|2|ABC    |        10|       150|       8|肉      |豚肉     |
-#
-# eg. 主キーの重複データにより要件を満たさないテーブルの結合
-#        SELECT
-#            p.user_id, p.product_id, p.unit_price, p.quantity,
-#            smb.category, smb.prod_name
-#        FROM `prj-test3.bq_trial.pos` AS p
-#        LEFT JOIN `prj-test3.bq_trial.shohin_master_bad` AS smb
-#        USING(product_id)
-#        WHERE p.product_id = 3
-#        ORDER BY P.product_id;
-#        #| |user_id|product_id|unit_price|qunantity|category|prod_name|
-#        #|1|STU    |         3|       160|        8|野菜     |人参     |
-#        #|2|STU    |         3|       160|        8|野菜     |人参     |
-#        #|3|WWW    |         3|       160|        5|野菜     |人参     |
-#        #|4|WWW    |         3|       160|        5|野菜     |人参     |
-#        #|5|XYZ    |         3|       160|        2|野菜     |人参     |
-#        #|6|XYZ    |         3|       160|        2|野菜     |人参     |
-#        -- pos.csv にはproduct_id３番は３レコード、shohin_master_bad.csvには本来PKは一意に存在しなくてはいけないところ、product_id３番が重複していた。
-#        -- その結果、結合後に3レコード取るはずが、倍の6レコード取得されてしまっていた。(重複分が招いた、問題点)
-#        -- 集計時に二重計上による誤差になりかねない💀
+eg. USINGでの結合
+```SQL
+SELECT
+      p.user_id,
+      p.product_id,
+      p.unit_price,
+      sm.category,
+      sm.prod_name
+FROM `prj-test3.bq_trial.pos` AS p
+LEFT JOIN `prj-test3.bq_trial.shohin_master` AS sm
+USING(product_id)
+ORDER BY p.product_id;
+               --[key]--
+-- |  |user_id|product_id|unit_price|category|prob_name|
+-- | 1|ABC    |         1|       120|くだもの|いちご   |
+-- | 2|XYZ    |         2|       200|野菜    |白菜     |
+-- | 3|STU    |         2|       200|野菜    |白菜     |
+-- | 4|STU    |         3|       160|野菜    |人参     |
+-- |15|www    |        11|       210|null    |null     |
+-- [shohin_master.csv]には無い値なので、nullが返る
+```
+eg. ON句による条件指定の結合
+```SQL
+SELECT
+    p.user_id, p.product_id, p.unit_price, p.quantity,
+    sm.category, sm.prod_name
+FROM `prj-test3.bq_trial.pos` AS p
+LEFT JOIN `prj-test3.bq_trial.shohin_master` AS sm
+ON p.product_id = sm.product_id AND p.user_id="ABC" -- ON句で詳細設定しての結合
+ORDER BY p.product_id;
+   --[条件]-- --[key]--
+-- | |user_id|product_id|unit_price|quantity|category|prod_name|
+-- |1|ABC    |         1|       120|      10|くだもの |いちご  |
+-- |2|XYZ    |         2|       200|       2|null    |null     |
+-- |3|STU    |         2|       200|       3|null    |null     |
 
+-- LEFT JOIN での結合のため、左側の全て取得しnullが返ってしまう。
+-- この場合は、INNER JOINを使用すると、意図する挙動になる。
+INNER JOIN `prj-test3.bq_trial.shohin_master` AS sm
+-- | |user_id|product_id|unit_price|quantity|category|prod_name|
+-- |1|ABC    |         1|       120|      10|くだもの |いちご  |
+-- |2|ABC    |         4|       160|      12|魚       |アジ    |
+-- |3|ABC    |         5|       100|       5|肉       |豚肉    |
+
+-- 更にON句では AND で条件を追加もできる。
+ON p.product_id = sm.product_id AND p.user_id="ABC" AND sm.category="肉"
+     --[条件]-- --[key]--                   --[条件]--
+-- | |user_id|product_id|unit_price|quantity|category|prod_name|
+-- |1|ABC    |         5|       100|       5|肉      |豚肉     |
+-- |2|ABC    |        10|       150|       8|肉      |豚肉     |
+```
+eg. 主キーの重複データにより要件を満たさないテーブルの結合
+```SQL
+SELECT
+    p.user_id, p.product_id, p.unit_price, p.quantity,
+    smb.category, smb.prod_name
+FROM `prj-test3.bq_trial.pos` AS p
+LEFT JOIN `prj-test3.bq_trial.shohin_master_bad` AS smb
+USING(product_id)
+WHERE p.product_id = 3
+ORDER BY P.product_id;
+-- | |user_id|product_id|unit_price|qunantity|category|prod_name |
+-- |1|STU    |         3|       160|        8|野菜     |人参     |
+-- |2|STU    |         3|       160|        8|野菜     |人参     |
+-- |3|WWW    |         3|       160|        5|野菜     |人参     |
+-- |4|WWW    |         3|       160|        5|野菜     |人参     |
+-- |5|XYZ    |         3|       160|        2|野菜     |人参     |
+-- |6|XYZ    |         3|       160|        2|野菜     |人参     |
+
+-- pos.csv にはproduct_id３番は３レコード、shohin_master_bad.csvには本来PKは一意に存在しなくてはいけないところ、product_id３番が重複していた。
+-- その結果、結合後に3レコード取るはずが、倍の6レコード取得されてしまっていた。(重複分が招いた、問題点)
+-- 集計時に二重計上による誤差になりかねない💀
+```
+ex.
+```SQL
 #【8.5 演習問題1(0:20)】
 SELECT
     -- sp.purchase_id, sp.date, sp.user_id,
@@ -128,6 +147,7 @@ ORDER BY total_amount DESC;
 -- #Q3. female
 -- #Q4. male
 
+
 #【8.5 演習問題2(3:50)】
 #(miss_code)
 -- SELECT
@@ -152,6 +172,7 @@ ORDER BY total_amount DESC;
 -- #|1|32.0|male  |         3.7|
 -- #|2|44.0|male  |         3.3|
 -- #|3|62.0|male  |         3.0|
+
 #(collect_code)
 SELECT
     DATE_DIFF("2018-12-31", cu.birthday, YEAR) AS nenrei,
@@ -172,6 +193,7 @@ LIMIT 3;
 -- #|2|     66|女性    |     3.2|
 -- #|3|     62|男性    |     3.1|
 
+
 #【8.5 演習問題3(7:30)】
 SELECT
     CONCAT(c.last_name, " ",c.first_name ) AS full_name,
@@ -190,17 +212,21 @@ LIMIT 3;
 -- #|1|小杉 信貴 |      104500|
 -- #|2|宗村 良崇 |       60216|
 -- #|3|和栗 昇悟 |       59400|
+```
 
-
-# ■ 複数テーブルの結合
-# eg. 書式
-#       SELECT
-#       FROM [テーブルA] AS A
-#       (INNER|LEFT[OUTER]|RIGHT[OUTER]|FULL[OUTER])JOIN [テーブルB] AS B
-#       → USING(FK-PKの両テーブルに共通するカラム)  若くは  → ON A.FK = B.PK [AND 絞り込み条件]
-#       (INNER|LEFT[OUTER]|RIGHT[OUTER]|FULL[OUTER])JOIN [テーブルC] AS C
-#       → USING(FK-PKの両テーブルに共通するカラム)  若くは  → ON A.FK = C.PK [AND 絞り込み条件]
-#
+### ■ 複数テーブルの結合
+eg. 書式
+```SQL
+SELECT
+FROM [テーブルA] AS A
+(INNER|LEFT[OUTER]|RIGHT[OUTER]|FULL[OUTER])JOIN [テーブルB] AS B
+→ USING(FK-PKの両テーブルに共通するカラム)
+→ ON A.FK = B.PK [AND 絞り込み条件]
+(INNER|LEFT[OUTER]|RIGHT[OUTER]|FULL[OUTER])JOIN [テーブルC] AS C
+→ USING(FK-PKの両テーブルに共通するカラム)
+→ ON A.FK = C.PK [AND 絞り込み条件]
+```
+```SQL
 #【8.6 演習問題1(2:10)】
 #(miss_code)
 -- SELECT
@@ -219,6 +245,7 @@ LIMIT 3;
 -- GROUP BY s.shop_name, s.chief_name, gender
 -- HAVING gender = female
 -- ORDER BY 1, 3 DESC;
+
 #(collect_code)
 SELECT
     sm.chief_name AS tencho,
@@ -242,6 +269,7 @@ ORDER BY customer_gender, uriage DESC;
 -- #|5|柳澤 華子  |自由が丘店 |male          |     172|4004558|
 -- #|6|山下 唐三郎|下北沢店   |male          |     145|2713434|
 
+
 #【8.6 演習問題2(7:30)】
 SELECT
     COUNT(*) AS sales_count,
@@ -263,6 +291,7 @@ ORDER BY 2 DESC;
 -- #|1|          3|      142276|大井谷 みすず|
 -- #|2|          4|      108905|山下 唐三郎  |
 -- #|3|          2|       80667|柳澤 華子    |
+
 
 #【8.6 演習問題3(10:20)】
 SELECT
@@ -295,5 +324,4 @@ ORDER BY 4 DESC
 LIMIT 1;
 -- #| |product      |max_amoount|min_amount|diff_amount|
 -- #|1|ブラウス 長袖|      73000|     12775|      60225|
-
 ```
