@@ -1,8 +1,8 @@
 ---
-title: 【Python】 参照渡し、値渡し
-date: 2021-02-21
-tag: ["Python3", "参照渡し", "値渡し"]
+date   : 2021-02-21
+title  : 【Python】 参照渡し、値渡し
 excerpt:
+tags   : ["Python3", "参照渡し", "値渡し"]
 ---
 
 ## 結論
