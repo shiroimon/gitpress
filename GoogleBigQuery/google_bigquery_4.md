@@ -10,14 +10,14 @@ tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 ### ■ SELECT句 - かラム指定
 ex.
 ```SQL
-# 【演習問題1】
+# 【4.2 演習問題1(1:00)】
 SELECT purchase_id, user_id FROM bq_sample.shop_purchases;
 ```
 
 ### ■ DISTINCT句 - 重複除外
 ex.
 ```SQL
-# 【演習問題2】
+# 【4.2 演習問題2(3:45)】
 SELECT DISTINCT user_id FROM bq_sample.shop_purchases;
 SELECT DISTINCT user_id, shop_id FROM bq_sample.shop_purchases;
 ```
@@ -25,25 +25,32 @@ SELECT DISTINCT user_id, shop_id FROM bq_sample.shop_purchases;
 ### ■ EXCEPT() - かラム除外
 ex.
 ```SQL
-# 【演習問題3】
-SELECT * FROM bq_sample.shop_purchases; #(70.1KB)
+# 【4.3 演習問題1(1:50)】
+SELECT * FROM bq_sample.shop_purchases; -- (70.1KB)
+
+# 【4.3 演習問題2(3:20)】
 SELECT * EXCEPT(shop_id, product_id) FROM bq_sample.shop_purchases; --(50.1KB)
 ```
 
 ### ■ ORDERBY句 - ソート機能(ASC:昇順 DESC:降順）
+e.g.
 ```
-eg. ORDER BY {カラム番号}指定可能。… [1]indexに注意
+ORDER BY {カラム番号}指定可能。… [1]indexに注意
 ```
 ex.
 ```SQL
 # 【4.4 演習問題1(:)】
 SELECT * FROM bq_sample.shop_purchases ORDER BY user_id;
-SELECT user_id, quantity FROM bq_sample.shop_purchases ORDER BY quantity desc;
+
+SELECT user_id, quantity
+FROM bq_sample.shop_purchases
+ORDER BY quantity desc;
 
 # 【4.4 演習問題2(5:06)】
 SELECT *
 FROM bq_sample.shop_purchases
-ORDER BY date, sales_amount desc, quantity desc; --日付順(昇順) ＋ 同日の場合売上高降順 + 数量降順
+ORDER BY date, sales_amount desc, quantity desc;
+--日付順(昇順) ＋ 同日の場合売上高降順 + 数量降順
 
 # 【4.4 演習問題3(8:20)】
 SELECT *
