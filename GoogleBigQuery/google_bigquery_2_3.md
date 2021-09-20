@@ -8,14 +8,21 @@ tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 ## || Google BigQueryとは？
 ![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
 
-ざっくり、Googleが提供するGoogle Cloud Platform上で動作するSQLを書くことができる機能です。
+ざっくり、Googleが提供するSaaS（Softwear as a Service）のこと。
 
+* データベース
+ * OSS
+
+   MySQL、PostgreSQL、SQLitte...etc.
+ * SaaS
+
+   Google BigQuery、Amazon AWS、TreasureData...etc.
 
 ## || BigQuery環境構築
 ![project](https://i.gyazo.com/edac850c69d81a2eccfa28c349bd5e09.png)
 
 
-![finaly](https://i.gyazo.com/45e5e6f63178156c3edc62d5f53c44a2.png)
+![finaly](https://i.gyazo.com/4ad2aaf572a3e100a4dc2aa008df32e4.png)
 Cf.完成図
 
 
@@ -35,6 +42,21 @@ Cf.完成図
 ```
 
 ## || SQL
+* SQL
+
+  SQLとは、Structured Query Language（直訳：構造化された検索言語）の略。
+
+  古くはIBM社が1970年台に開発していたデータベース管理システムの制御用の言語、SEQUEL（Structured English Query Language）が元になっている。
+
+  SQLの構成としてDCL、DDL、DML等の総称。
+```
+DCL(Data Control Language):データへのアクセス権等を制御する言語
+DDL(Data Definition Language):データを格納する構造定義する言語
+DML(Data Manipulation Language):データを操作するための言語
+```
+
+
+
 ### ● 基本文法
 ```SQL
 SELECT {カラム名}
@@ -44,10 +66,8 @@ FROM {テーブル名};
 
 
 ### ● 記述、実行順序
+* 各区の記述順序
 ```SQL
-/********************************************************************
- * ■ 各区の記述順序
- ********************************************************************/
 # 1. SELECT    ：取得する列の指定
 #    （集計関数）
 # 2. FROM      ：取得するテーブルの指定
@@ -60,10 +80,8 @@ FROM {テーブル名};
 # 8. LIMIT     ：表示する行数の指定
 ```
 
+* 各区の実行順序
 ```SQL
-/********************************************************************
- * ■ 各区の実行順序
- ********************************************************************/
 #  1. FROM
 #  2. ON / USING
 #  3. JOIN
@@ -94,73 +112,82 @@ FROM {テーブル名};
 - [ ] `MOD()`
 - [x] `CAST()`
 - [x] `CONCAT()`
-
-
-```SQL
-# ----------------------------
-# |16| LENGTH()          |||
-# |17| SUBSTR()          |||
-# |18| REPLACE()         |||
-# |19| TRIM()            |||
-# |20| REGEXP_CONTAINS() |||
-# |21| REGEXP_EXTRACT()  |||
-# |22| REGEXP_REPLACE()  |||
-# |22| DATE()            |||
-# |23| DATETIME()        |||
-# |24| CURRENT_DATE()    |||
-# |25| CURRENT_DATETIME()|||
-# |26| DATE_ADD()        |||
-# |27| DATETIME_ADD()    |||
-# |28| DATE_SUB()        |||
-# |29| DATETIME_SUB()    |||
-# |30| DATE_TRUNC()      |||
-# |31| DATETIME_TRUNC()  |||
-# |32| FORMAT_DATE()     |||
-# |33| FORMAT_DATETIME() |||
-# ----------------------------
-```
+- [ ] `LENGTH()`
+- [ ] `SUBSTR()`
+- [ ] `REPLACE()`
+- [ ] `TRIM()`
+- [ ] `REGEXP_CONTAINS()`
+- [ ] `REGEXP_EXTRACT()`
+- [ ] `REGEXP_REPLACE()`
+- [ ] `DATE()`
+- [ ] `DATETIME()`
+- [ ] `CURRENT_DATE()`
+- [ ] `CURRENR_DATETIME()`
+- [ ] `DATE_ADD()`
+- [ ] `DATETIME_ADD()`
+- [ ] `DATE_SUB()`
+- [ ] `DATETIME_SUB()`
+- [ ] `DATE_TRUNC()`
+- [ ] `DATETIME_TRUNC()`
+- [ ] `FORMAT_DATE()`
+- [ ] `FORMAT_DATETIME()`
 
 
 ### ● 便利な句
 ```SQL
+LIKE
+```
+
+```SQL
 IN()
 ```
 
+条件分岐
 ```SQL
-# | 1| IF()        |||
-# | 2| IFNULL()    |||
+IF()
+IFNULL()
 ```
 ```SQL
-# | 3| CASE WHEN THEN ELSE END |||
-# | 4| CASE()          |||
-# |  |      WHEN THEN  |||
-# |  |      WHEN THEN  |||
-# |  |      ELSE       |||
-# |  | END             |||
-```
-```SQL
-# | 5| []() OVER(                |||
-# |  |           PARTITION BY    |||
-# |  |           ORDER BY        |||
-# |  |           (WINDOW_FRAME)  |||
-# |  |          )                |||
+-- Bool型の分類
+CASE
+    WHEN THEN
+    ELSE
+END
+
+-- カラム毎の値の分類
+CASE()
+    WHEN THEN
+    ELSE
+END
 ```
 
+分析関数 OVER句
 ```SQL
-# | 6| WITH                      |||
-# |  |  [] AS (SELECT FROM ),    |||
-# |  |  [] AS (SELECT FROM )     |||
+[]() OVER(
+        PARTITION BY
+        ORDER BY
+        (WINDOW_FRAME)
+    )
+```
+
+関数化 WITH句
+```SQL
+WITH
+[] AS (SELECT FROM ),
+[] AS (SELECT FROM )
 ```
 
 
 ### ● 結合
-```SQL
-# ■ 結合句
-# INNER JOIN
-# LEFT OUTER JOIN
-# RIGHT OUTER JOIN
-# FULL OUTER JOIN
-```
+
+
+- [ ] `INNER JOIN`
+    - [ ] `self JOIN`
+- [ ] `LEFT OUTER JOIN`
+- [ ] `RIGHT OUTER JOIN`
+- [ ] `FULL OUTER JOIN`
+- [ ] ``
+
 ```SQL
 FROM [table①] AS [t①]
 [結合句] [table②] AS [t②]
