@@ -1,5 +1,5 @@
 ---
-data   : 2021-01-05
+date   : 2021-01-05
 title  : 【Github】GitPress
 excerpt:
 tags   : ["GitPress", "Blog"]
