@@ -1,2 +1,2 @@
-# gitpress
-Spell out memorandums using Gitpress.
+# GitPress
+📖 Spell out memorandums using Gitpress.🪶
