@@ -1,8 +1,8 @@
 ---
-date   : 2021-02-11
-title  : 【Github】 SSH接続git
-excerpt: SSH接続？ 公開鍵? ってなったので備忘録
-tags   : ["Github", "SSH接続"]
+date    : 2021-02-11
+title   : 【Github】 SSH接続git
+excerpt : SSH接続？ 公開鍵? ってなったので備忘録
+tags    : ["Github", "SSH接続"]
 ---
 
 ## || ことの発端

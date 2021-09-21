@@ -17,8 +17,8 @@ tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 ```
 
 ### ■ UNION - 和集合
-![img](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Venn_A_union_B.png/220px-Venn_A_union_B.png)
-* Cf. [和集合 - Wikipedia](https://ja.wikipedia.org/wiki/%E5%92%8C%E9%9B%86%E5%90%88)
+> ![img](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Venn_A_union_B.png/220px-Venn_A_union_B.png)
+> * Cf. [和集合 - Wikipedia](https://ja.wikipedia.org/wiki/%E5%92%8C%E9%9B%86%E5%90%88)
 
 e.g.
 ```SQL
@@ -121,9 +121,9 @@ SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_mar`);
 ```
 
 ### ■ INTERSECT - 積集合
-![img](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Interseccion.svg/250px-Interseccion.svg.png)
-* Cf. [共通部分（数学） - Wikipedia](https://ja.wikipedia.org/wiki/%E5%85%B1%E9%80%9A%E9%83%A8%E5%88%86_(%E6%95%B0%E5%AD%A6))
-* Cf. [ド・モルガンの法則 - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%BB%E3%83%A2%E3%83%AB%E3%82%AC%E3%83%B3%E3%81%AE%E6%B3%95%E5%89%87)
+> ![img](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Interseccion.svg/250px-Interseccion.svg.png)
+> * Cf. [共通部分（数学） - Wikipedia](https://ja.wikipedia.org/wiki/%E5%85%B1%E9%80%9A%E9%83%A8%E5%88%86_(%E6%95%B0%E5%AD%A6))
+> * Cf. [ド・モルガンの法則 - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%BB%E3%83%A2%E3%83%AB%E3%82%AC%E3%83%B3%E3%81%AE%E6%B3%95%E5%89%87)
 
 ex.
 ```SQL
@@ -165,9 +165,8 @@ SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_mar`;
 ```
 
 ### ■ EXCEPT - 差集合
-
-![img](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Venn0100.svg/220px-Venn0100.svg.png)
-* Cf. [差集合 - Wikipedia](https://ja.wikipedia.org/wiki/%E5%B7%AE%E9%9B%86%E5%90%88)
+> ![img](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Venn0100.svg/220px-Venn0100.svg.png)
+> * Cf. [差集合 - Wikipedia](https://ja.wikipedia.org/wiki/%E5%B7%AE%E9%9B%86%E5%90%88)
 
 eg.
 ```SQL

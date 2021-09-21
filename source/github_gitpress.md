@@ -1,8 +1,8 @@
 ---
-date   : 2021-01-05
-title  : 【Github】How to GitPress
-excerpt: GitPressの初めての投稿記事。
-tags   : ["GitPress", "Blog", "HowTo"]
+date    : 2021-01-05
+title   : 【Github】How to GitPress
+excerpt : GitPressの初めての投稿記事。
+tags    : ["GitPress", "Blog", "HowTo"]
 ---
 
 ## || GitPressってなに
