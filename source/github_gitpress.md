@@ -16,7 +16,11 @@ tags   : ["GitPress", "Blog", "HowTo"]
 ## || 記事投稿
 ### - 記事
 
-* マークダウン形式で記事を書くこと。 e.g. `test.md`
+* .md 拡張子でファイルを保存。 e.g. `test.md`
+* マークダウン形式で記事を書くこと。
+
+    Cf. [FRONT MATTER SPECIFICATIONS - GitPress](https://gitpress.io/c/helps/front-matter) - 書き方お作法
+
 * 冒頭に以下のおまじないを書くこと。
 
 ```markdown
@@ -38,8 +42,9 @@ excerpt: GitPressの初めての投稿記事。
 tags   : ["GitPress", "Blog", "HowTo"]
 ---
 ```
+![img](https://i.gyazo.com/ff7176d907fad48d4fd9da7cc8c99d9b.png)
+ページ上部にある黒いところ (`<div class='article-featured-block'>` )が、勝手に更新される。
 
-Cf. [FRONT MATTER SPECIFICATIONS - GitPress](https://gitpress.io/c/helps/front-matter) - 書き方お作法
 
 
 ### - 投稿
