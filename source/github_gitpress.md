@@ -72,7 +72,8 @@ LaTeXがかける
 
 
 ---
-## ||Cf.
+## || Cf.
 * [MARKDOWN FOR GITPRESS - GitPress](https://gitpress.io/c/helps/markdown)
 * [FRONT MATTER SPECIFICATIONS - GitPress](https://gitpress.io/c/helps/front-matter)書き方お作法
 * https://gitpress.io/@gitpress/latex
+* [What'sGitPress? - GitPress](https://gitpress.io/)
