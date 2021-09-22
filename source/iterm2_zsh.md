@@ -2,7 +2,7 @@
 date    : 2021-09-22
 title   : 【iTerm2】 zshでいい感じにしてみたい
 excerpt :
-tags    : ["iTeram2", "zsh", "ターミナル"]
+tags    : ["iTeram2", "zsh", "ターミナル", "shell"]
 ---
 
 自分の `iTeram2` を以下のような感じにするまでのあれこれです。
@@ -41,12 +41,12 @@ Cf.
 
 
 ## || zsh
-![img](https://ohmyz.sh/img/OMZLogo_BnW.png)
 > Z shell（ズィーシェル、zsh）は、Unixのコマンドシェルの1つである。対話的なログインコマンドシェルとしても、強力なシェルスクリプトコマンドのインタープリターとしても使うことができる。 zsh は数多くの改良を含んだBourne Shellの拡張版という見方もできる。
 >
 > ー [Z Shell - Wikipedia](https://ja.wikipedia.org/wiki/Z_Shell)
 
-
+### oh-my-zsh
+![img](https://ohmyz.sh/img/OMZLogo_BnW.png)
 Cf.
 * [Oh My Zsh - a delightful & open source framework for Zsh](https://ohmyz.sh/)
 * [Become a Command Line Power User with Oh My ZSH and Z - SMASHING](https://www.smashingmagazine.com/2015/07/become-command-line-power-user-oh-my-zsh-z/)
@@ -68,47 +68,48 @@ $ echo $SHELL
 ```
 
 ■oh-my-zshのインストール
+```shell
+$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
 
-    $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-
-iTerm2ではFontとNon-ASCII Fontを分けて設定ができる。
-* Fontでは文字の可読性が優れるRicty for Powerlineを設定
-* Non-ASCII FontではDroid Sans Nerd Font Completeを設定する。
+    iTerm2ではFontとNon-ASCII Fontを分けて設定ができる。
+        → Fontでは文字の可読性が優れるRicty for Powerlineを設定
+        → Non-ASCII FontではDroid Sans Nerd Font Completeを設定する。
 
 ■ [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts#font-installation) のインストール
-
-    $ brew tap homebrew/cask-fonts
-    $ brew cask install font-hack-nerd-font
-    $ brew list --cask
-
+```Shell
+$ brew tap homebrew/cask-fonts
+$ brew cask install font-hack-nerd-font
+$ brew list --cask
+```
 
 ■Rictyのインストール
-
-    $ brew tap sanemat/font
-    $ brew install ricty
+```shell
+$ brew tap sanemat/font
+$ brew install ricty
+```
 
 インストール後、インストールファイル、インストール仕方が表示(以下参照)
 
+
+    ***************************************************
+    Generated files:
+      /usr/local/opt/ricty/share/fonts/RictyDiscord-Regular.ttf
+          ~略~
+          /usr/local/opt/ricty/share/fonts/RictyDiscord-Bold.ttf
+          /usr/local/opt/ricty/share/fonts/RictyDiscord-BoldOblique.ttf
+    ***************************************************
+    To install Ricty:
+      $ cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
+      $ fc-cache -vf
+    ***************************************************
+
+```shell
+$ cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
+$ fc-cache -vf
 ```
-***************************************************
-Generated files:
-  /usr/local/opt/ricty/share/fonts/RictyDiscord-Regular.ttf
-      ~略~
-      /usr/local/opt/ricty/share/fonts/RictyDiscord-Bold.ttf
-      /usr/local/opt/ricty/share/fonts/RictyDiscord-BoldOblique.ttf
-***************************************************
-To install Ricty:
-  $ cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
-  $ fc-cache -vf
-***************************************************
-```
-
-    $ cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
-    $ fc-cache -vf
 
 
----
 oh-my-zshのテーマ変更
 
 ■ [powerlevel9k](https://github.com/Powerlevel9k/powerlevel9k#prompt-customization) のインストール
