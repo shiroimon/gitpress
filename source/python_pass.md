@@ -1,6 +1,6 @@
 ---
 date    : 2021-02-21
-title   : 【Python】 参照渡し、値渡し
+title   : 【🐍 Python】 参照渡し、値渡し
 excerpt :
 tags    : ["Python3", "参照渡し", "値渡し"]
 ---

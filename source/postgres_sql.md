@@ -1,7 +1,7 @@
 ---
 date    : 2021-09-18
-title   : 【PostgreSQL】環境設定からDB作成まで
-excerpt : 🐘
+title   : 【🐘 PostgreSQL】環境設定からDB作成まで
+excerpt :
 tags    : ["PostgresSQL", "SQL", "環境設定", "iTearm2"]
 ---
 
