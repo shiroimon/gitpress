@@ -1,8 +1,8 @@
 ---
 date    : 2021-09-18
-title   : 【🐘 PostgreSQL】環境設定からDB作成まで
-excerpt :
-tags    : ["PostgresSQL", "SQL", "環境設定", "iTearm2"]
+title   : 【🐘 PostgreSQL】環境構築
+excerpt : CUI操作による、PostgreSQLのインストールから、データベースへアクセスまで。
+tags    : ["PostgresSQL", "SQL", "環境構築", "iTearm2"]
 ---
 
 ## || PostgreSQLって
@@ -90,6 +90,8 @@ postgres=# \q
 
 Cf. [PostgreSQLへの接続と切断 - DBOnline](https://www.dbonline.jp/postgresql/connect/index2.html)
 
+---
+(番外編)
 
 ## || データベースアクセス
 ```SHELL
