@@ -6,7 +6,8 @@ tags    : ["PostgresSQL", "SQL", "環境設定", "iTearm2"]
 ---
 
 ## || PostgreSQLって
-![img](http://road-to-tennis.sakura.ne.jp/circles/wp-content/uploads/2018/01/postgresql-logo.png)
+![img](https://i.gyazo.com/8bb756a9d2e944bba0e29344976093bd.jpg)
+
 > PostgreSQLは、拡張性とSQL準拠を強調するフリーでオープンソースの関係データベース管理システムである。Postgresとしても知られている。もともとは、カリフォルニア大学バークレー校で開発されたIngresデータベースの後継としてその起源を根拠としたPOSTGRESという名前であった。1996年に、プロジェクトはSQLのサポートを反映してPostgreSQLに改名された。2007年の検討の結果、開発チームはPostgreSQLという名前とPostgresという別名を維持することを決定した。
 >PostgreSQLは、原子性、整合性、独立性、耐久性 (ACID)プロパティを持つトランザクション、自動更新可能なビュー、マテリアライズドビュー、トリガ、外部キー、ストアドプロシージャを特徴としている。単一マシンからデータウェアハウスや多数の同時使用ユーザを持つWebサービスまで、さまざまなワークロードを扱えるように設計されている。macOS Serverのデフォルトデータベースであり、Linux、FreeBSD、OpenBSD、Windowsでも利用可能である。
 >
