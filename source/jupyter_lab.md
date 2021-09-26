@@ -4,13 +4,14 @@ title   : 【🪐 Jupyter Lab】 構築から設定まで
 excerpt :
 tags    : ["JupyterLab", "iTearm2","ML", "Python"]
 ---
-## || JupyterLabとは
-![img](https://i.gyazo.com/a4eff2226c81f4d5ec6e181e890c25ba.png)
->
-
 
 e.g. カスタマイズするとこんな風になるよ
 ![img](https://i.gyazo.com/b7016b12af41535a8cf2776804697717.png)
+
+
+## || JupyterLabとは
+![img](https://i.gyazo.com/a4eff2226c81f4d5ec6e181e890c25ba.png)
+>
 
 
 

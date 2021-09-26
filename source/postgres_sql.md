@@ -18,20 +18,8 @@ tags    : ["PostgresSQL", "SQL", "環境構築", "iTearm2"]
 そこまで人気高いわけではないのかな？イメージではぶっち切り！なのかと思っていたのに。
 
 ![img](https://i.gyazo.com/a66bc0163661bc9eeb63a9e634c37301.png)
-```html
-<script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2674_RC03/embed_loader.js"></script>
-<script type="text/javascript">
-     trends.embed.renderExploreWidget("TIMESERIES",
-         {"comparisonItem":[
-              {"keyword":"PostgreSQL","geo":"JP","time":"today 3-m"},
-              {"keyword":"SQLite","geo":"JP","time":"today 3-m"},
-              {"keyword":"MySQL","geo":"JP","time":"today 3-m"},
-              {"keyword":"Oracle Database","geo":"JP","time":"today 3-m"}
-          ],"category":0,"property":""},
-          {"exploreQuery":"date=today%203-m&geo=JP&q=PostgreSQL,SQLite,MySQL,Oracle%20Database","guestPath":"https://trends.google.co.jp:443/trends/embed/"}
-      );
-</script>
-```
+
+
 
 ## || 環境構築
 早速、環境構築するとして、お決まりの黒い画面（ターミナル or iTear2）を使っていく。
@@ -209,7 +197,6 @@ mydb＝♯ CREATE TABLE mytbl1 (id integer, name varchar(80), location point);
 CREATE TABLE
 mydb＝♯ \dt
 
-
 # 作成済みスキーマ確認
 mydb＝♯ \dn
 
@@ -221,6 +208,7 @@ CREATE TABLE
 mydb＝♯ \dt myschema.*
 
 ```
+
       ※ point型は、PostgreSQL独自のデータ型
 
 |||
@@ -242,6 +230,7 @@ mydb＝♯ \dt myschema.*
 **e.g.**
 システムカタログから、現在接続しているデータベースに含まれるスキーマの一覧を取得。
 ( `pg_` で始まるスキーマ、`information_schema`は、PostgreSQL のシステムが使用しているもの)
+
 ```SHELL
 postres＝♯ SELECT * FROM pg_namespace;
 
@@ -282,6 +271,7 @@ pg_read_all_settings      | f        | t          | f             | f           
 pg_stat_scan_tables       | f        | t          | f             | f           | f           | f              |           -1 | ********    |               | f            |           | 3377
 (9 rows)
 ```
+
 |カラム|型|説明|
 |-|-|-|
 |rolname|	name|	ロール名|
