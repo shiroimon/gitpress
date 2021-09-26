@@ -193,35 +193,50 @@ mydb＝♯ \dn
 
 ## || テーブル
 
-* テーブル作成（e.g. 都市と地理的な位置情報を格納）
 ```shell
-CREATE TABLE {TB名: cities} (
-    name      varchar(80),
-    location  point
-);
+$ psql -U postgres -d mydb
+Password: 🗝
+psql (12.3)
+# 現在のスキーム確認（デフォルトのpublicにテーブル作成）
+mydb＝♯ select current_schema;
+current_schema
+--------------
+public
+(1 row)
+
+# テーブル作成（e.g. 都市と地理的な位置情報を格納）
+mydb＝♯ CREATE TABLE mytbl1 (id integer, name varchar(80), location point);
+CREATE TABLE
+mydb＝♯ \dt
+
+
+# 作成済みスキーマ確認
+mydb＝♯ \dn
+
+# 指定スキーマ内にテーブル作成
+mydb＝♯ CREATE TABLE myschema.mytbl2 (id integer, name varchar(10));
+CREATE TABLE
+
+# スキーマ内のテーブル一覧
+mydb＝♯ \dt myschema.*
+
 ```
       ※ point型は、PostgreSQL独自のデータ型
 
-* テーブル削除
-```shell
-$ DROP TABLE {TB名};
-```
+|||
+|-|-|
+|テーブル作成|`CREATE TABLE {}();`|
+|テーブル削除|`DROP TABLE {tb名};`|
+|テーブル一覧|`{TB名}=# \dt`|
+| |``|
 
-```shell
-$ psql -U postgres -d {TB名}
-```
-
-* 作成済みのテーブル一覧
-```shell
-{TB名}=# \dt
-```
 
 
 ## || pg_{ } システムカタログ
 
     システムカタログとは PostgreSQL の管理システムが使用するテーブルで、
     データベースやテーブルなどの情報を管理するために使用。
-    (pg_namespace, pg_authid, pg_roles...etc.)
+    (pg_namespace, pg_authid, pg_roles, pg_tables...etc.)
 
 
 **e.g.**
@@ -285,8 +300,37 @@ pg_stat_scan_tables       | f        | t          | f             | f           
 
 → デフォのロールを除いて、作成したロールの一覧を取得する方法。
 ```SQL
-SELECT rolname, rolsuper, rolcanlogin FROM  pg_roles WHERE rolname NOT LIKE "PG_%";
+SELECT rolname, rolsuper, rolcanlogin
+FROM  pg_roles
+WHERE rolname NOT LIKE "PG_%";
 ```
+
+**e.g.**
+```SHELL
+postgres＝♯ SELECT * FROM pg_tables;
+
+```
+|名前|	データ型|	参照先|	説明|
+|-|-|-|-|
+|schemaname|	name|	pg_namespace.nspname|	スキーマ名|
+|tablename|	name|	pg_class.relname|	テーブル名|
+|tableowner|	name|	pg_authid.rolname|	所有者|
+|tablespace|	name|	pg_tablespace.spcname	テーブルを含むテーブル空間の名前（データベースのデフォルトの場合はNULL）|
+|hasindexes|	boolean|	pg_class.relhasindex|	テーブルがインデックスを持っている（もしくは最近まで持っていた）なら真|
+|hasrules|	boolean|	pg_class.relhasrules|	テーブルにルールがある（もしくは以前あった）時は真|
+|hastriggers|	boolean|	pg_class.relhastriggers|	テーブルにトリガがある（もしくは以前あった）時は真|
+|rowsecurity|	boolean|	pg_class.relrowsecurity|	テーブルの行セキュリティが有効なら真|
+
+```SQL
+SELECT schemaname, tablename,tableowner
+FROM pg_tables
+WHERE
+    schemaname NOT LIKE "pg_%"
+    AND
+    schemaname != "information_schema";
+```
+
+
 
 ## || ロール
 ```shell
@@ -309,9 +353,13 @@ msdb＝＞
 ```
 |||
 |-|-|
+|ロール一覧|`\du`|
 |ロール新規作成|`CREATE ROLE {ロール名} WITH LOGIN PASSWORD {password};`|
 |ロール新規作成(オプション指定)|`CREATE ROLE {ロール名} WITH {Option} LOGIN PASSWORD {password};`|
-|ロール一覧|`\du`|
+|ロール変更（名前）|`ALTER ROLE {ロール名} RENAME TO {New_ロール名}`|
+|ロール変更（属性）|`ALTER ROLE {ロール名} WITH {Option}`|
+|ロール設定（パス有効期限）|`CREATE ROLE {ロール名} WITH LOGIN PASSWORD {password}` `VALID UNITIL "timestamp(or"infinity
+|テーブル、カラム権限一覧|`\dp`|
 
 
 
