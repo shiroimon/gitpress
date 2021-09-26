@@ -1,5 +1,5 @@
 ---
-date    : 2021-09-22
+date    : 2021-03-22
 title   : 【🐚 iTerm2】 zshでいい感じにしてみたい
 excerpt :
 tags    : ["iTeram2", "zsh", "ターミナル", "shell"]
