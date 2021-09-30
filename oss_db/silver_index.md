@@ -25,7 +25,9 @@ tags   : ["OSS-DB", "Silver", "PostgreSQL"]
 ## || 0. 概要
 ### | OSS-DBとは
  ![img](https://lpi.or.jp/assets/img/common/ossdb_logo.png)
+
  * [OSS-DB Silver Ver.2.0 - OSS-DB](https://oss-db.jp/outline/silver)
+
        下記のスキルと知識を持つエンジニアであることを証明する。
        RDBMSとSQLに関する知識を有する。
         ・オープンソースデータベースに関する基礎的な知識を有する。
@@ -35,15 +37,19 @@ tags   : ["OSS-DB", "Silver", "PostgreSQL"]
         ・PostgreSQLを利用した開発でデータベース部分を担当することができる。
 
  * [LPI-Japna - official](https://lpi.or.jp/)
+
        LPI-Japanは、日本での Linuxの技術力認定試験の普及とITプロフェッショナルの育成のため2000年7月に設立され、
        現在は対象を広げOSSのデータベースソフトウェア、クラウドソフトウェアであるCloudStackやOpenStack、
        更にはHTML5のプロフェッショナルのための認定試験を実施するNPO法人です。
 
 #### OSS-DB silver - （公式）無料問題集+α
-  + http://oss-db-taisaku.net/
-  + https://oss-db.jp/sample/silver_knowledge_01
-  + https://oss-db.jp/sample/silver_management_01
-  + https://oss-db.jp/sample/silver_development_01
+ + [Silverの例題解説「一般知識」 - OSS DB](https://oss-db.jp/sample/silver_knowledge_01)
+ + [Silverの例題解説「運用管理」 - OSS DB](https://oss-db.jp/sample/silver_management_01)
+ + [Silverの例題解説「開発/SQL」 - OSS DB](https://oss-db.jp/sample/silver_development_01)
+
+
+#### OSS-DB silver - リファレンス(Blog)
+ + [OSS-DB Silver対策問題集](http://oss-db-taisaku.net/)
 
 #### OSS-DB silver - リファレンス(Youtube)
  + [【Part1】OSS DB Exam Silver 技術解説セミナー ～ 試験の概要、PostgreSQLとは ～ - SRA OSS, inc.](https://www.youtube.com/watch?v=3iR6FiCSTKM)
@@ -55,11 +61,12 @@ tags   : ["OSS-DB", "Silver", "PostgreSQL"]
  + [【Part7】OSS DB Exam Silver 技術解説セミナー ～ PostgreSQL バックアップ・リストア PITR ② ～ - SRA OSS, inc.](https://www.youtube.com/watch?v=gP-ripEm4yo)
  + [【Part8】OSS DB Exam Silver 技術解説セミナー ～ Q&A～ - SRA OSS, inc.](https://www.youtube.com/watch?v=WRAjfbHwJ04)
 
+#### PostgreSQL - リファレンス(Blog)
+ + [PostgreSQLの使い方 - DBOnline](https://www.dbonline.jp/postgresql/)
+
 #### PostgreSQL - リファレンス(Youtube)
  + [【Part1】PostgreSQL再入門 ～ PostgreSQLの全体像 ～ - SRA OSS, inc.](https://www.youtube.com/watch?v=zIH1dTNPL0A)
 
-#### PostgreSQL - リファレンス(Blog)
- [PostgreSQLの使い方 - DBOnline](https://www.dbonline.jp/postgresql/)
 
 #### OSS-DB silver - 合格体験記
  + https://marketingengineercareer.com/oss-db-silver
