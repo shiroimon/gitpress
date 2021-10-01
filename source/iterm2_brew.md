@@ -1,7 +1,7 @@
 ---
 date    : 2021-10-01
 title   : 【🍺 Homebrew】
-excerpt : 
+excerpt :
 tags    : ["🍺", "Homebrew", "環境構築", "iTearm2"]
 ---
 ## || 🍺 Homebrew
@@ -20,14 +20,32 @@ tags    : ["🍺", "Homebrew", "環境構築", "iTearm2"]
 #### ■ Homebrew official
 [macOS（またはLinux）用パッケージマネージャー](https://brew.sh/index_ja) — Homebrew
 ```SHELL
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
+上記コマンドは、公式に記載のコマンド。
 
-#### ■ Github
-[Homebrew/brew](https://github.com/Homebrew/brew) - Github
+もしも、上記コマンドでインストール開始されない場合は以下も試してみるとイケるかも。
+
+1. 事前確認（バージョン）
+    ```shell
+    $ brew -v
+    ```
+2. インスートール
+    ```shell
+    $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ```
+3. 事後確認（バージョン）
+    ```shell
+    $ brew -v
+    Homebrew 1.6.2
+    ```
+    バージョン番号が返ってきたら完了。
+
+    Cf.[MySQLの開発環境を用意しよう（macOS） - MySQLの開発環境を用意しよう（macOS）](https://prog-8.com/docs/mysql-env#document-page--2) - Progate
 
 
 ## || 🔗 参考
+* [Homebrew/brew](https://github.com/Homebrew/brew) - Github
 + [Homebrew Caskを使うとき、「brew cask search」は効かないので「brew search」を使うようにする](https://webrandum.net/homebrew-cask-search/) - Webrandum
 + [macOS（またはLinux）用パッケージマネージャー — Homebrew](https://blog.ottijp.com/2020/05/23/homebrew/) - ottijp.blog
 + [MacのHomebrewとは？仕組み・使い方と用語整理](https://blog.mothule.com/mac/homebrew/mac-homebrew-basic) - もちゅろぐ
