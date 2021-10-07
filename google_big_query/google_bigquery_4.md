@@ -102,7 +102,7 @@ ORDER BY date DESC
 LIMIT 10;
 ```
 
-#### OFFSET
+#### | OFFSET
 e.g.
 ```
 LIMIT [取得したい行数] OFFSET [取得をずらす行数];
@@ -112,20 +112,41 @@ ex.【4.5 演習問題3 (:)】取得制限
 
 shop_purchasesテーブルから、purchase_id、sales_amountを取得。その際sales_amont降順に並べた上で11位から5レコードだけを取得。
 ```SQL
-SELECT purchase_id, sales_amount
+SELECT
+    purchase_id,
+    sales_amount
 FROM `prj-test3.bq_sample.shop_purchases`
 ORDER BY sales_amount DESC
-LIMIT 5 OFFSET 11;
+LIMIT 5 OFFSET 10;
 ```
+|行|purchase_id|sales_amont|
+|-|-:|-:|
+|1|233|73000|
+|2|286|72568|
+
+    ※ 上位10行から、上位5行（＝5位）まで取得している
+
 
 ### | WHERE句 - 絞り込み条件
 e.g.
+
+shop_purchasesテーブルからquantity列の３より大きい行を取得。
 ```SQL
-SELECT * FROM bq_sample.shop_purchases WHERE quantity > 3;
+SELECT * FROM 'bq_sample.shop_purchases' WHERE quantity > 3;
 ```
+
+    ※ WHERE句はFROM句の直後に記述する。
+    ※ 絞り込みをしてもBigQueryの費用抑制にはならない。
 
 #### ■ 数字型
 ##### | 比較演算子
+|||
+|-|-|
+|=|同値|
+|!= , <>|否定|
+|> , >=|超える（大きい）、以上|
+|< , <=|未満（小さい）、以下|
+
 e.g.
 ```SQL
 -- 売上高¥10,000以上のレコード
@@ -133,12 +154,6 @@ WHERE sales-amount > 10000
 -- 数量3以下のレコード
 WHERE quantity <= 3
 ```
-|||
-|-|-|
-|=||
-|!= , <>|否定|
-|> , >=|以上、より|
-|< , <=|以下、未満|
 
 ##### | BETWEEN句
 e.g.
@@ -156,26 +171,42 @@ WHERE quantity IN(3, 7, 11)
 -- 数量が「3」「7」「11」にに該当レコード以外
 WHERE quantity NOT IN(3, 7, 11)
 ```
+ex.【4.7 演習問題1(3:11)】
 
-ex.【4.7 演習問題1(:)】
-
+shop_purchasesテーブルから、quantityが3以上のuser_idをレコード単位で取得。
 ```SQL
-SELECT user_id, quantity
+SELECT
+    user_id,
+    quantity
 FROM bq_sample.shop_purchases
-WHERE quantity > 3
+WHERE quantity >= 3
 ORDER BY 1;
 ```
+|行|user_id|quantity|
+|-|-:|-:|
+|1|956425|3|
+|2|937162|3|
+
 ex.【4.7 演習問題2(7:15)】
 
+shop_purchasesテーブルから、user_id、sales_amont列を取得。但、sales_amontが5000~10000の間のレコードだけを取得対象。
 ```SQL
-SELECT user_id, sales_amount
+SELECT
+    user_id,
+    sales_amount
 FROM bq_sample.shop_purchases
 WHERE sales_amount BETWEEN 5000 AND 10000;
 ```
 ex. 【4.7 演習問題3(8:15)】
 
+shop_purchasesテーブルから、user_id、date、sales_amont、shop_id列を取得。
+但、shop_idが１、３、４のいずれかのレコードだけを対象。
 ```SQL
-SELECT user_id, date, sales_amount, shop_id
+SELECT
+    user_id,
+    date,
+    sales_amount,
+    shop_id
 FROM `prj-test3.bq_sample.shop_purchases`
 WHERE shop_id IN(1, 3, 4);
 ```
@@ -204,8 +235,13 @@ WHERE first_name LIKE "%美%"
 -- 名前が「(2文字)子」のレコード eg.由香子
 WHERE first_name LIKE "__子"
 ```
+
+    ※ % :任意の文字数
+    ※ _ :一文字
+
 ex.【4.8 演習問題1(3:22)】
 
+customersテーブルから、last_nameが"前田"に一致するレコードを全カラム取得。
 ```SQL
 SELECT *
 FROM bq_sample.customers
@@ -213,6 +249,7 @@ WHERE last_name = "前田";
 ```
 ex.【4.8 演習問題2(4:15)】
 
+customersテーブルから、first_nameが"愛"、"愛子"、"愛美"に一致するレコードを全カラム取得してください。
 ```SQL
 SELECT *
 FROM `prj-test3.bq_sample.customers`
@@ -220,11 +257,12 @@ WHERE first_name IN ("愛","愛子","愛美");
 ```
 ex.【4.8 演習問題3(5:15)】
 
+customersテーブルから、first_nameが"子"で終わらないレコードを全カラム取得。
 ```SQL
 SELECT *
 FROM `prj-test3.bq_sample.customers`
 WHERE first_name NOT LIKE "%子"
-ORDER BY gender desc;
+ORDER BY gender DESC;
 ```
 
 #### ■ 日付型
@@ -238,6 +276,7 @@ WHERE timestamp BETWEEN "2017-07-01 00:09:00" AND "2017-07-01 18:00:00"
 
 ex.【4.9 演習問題1(2:00)】
 
+shop_purchasesテーブルから、dateが2018年6月1日より前のレコードを全カラム取得。
 ```SQL
 SELECT *
 FROM bq_sample.shop_purchases
