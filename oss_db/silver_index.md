@@ -327,6 +327,18 @@ tags   : ["OSS-DB", "Silver", "PostgreSQL"]
   ```
 
 ### | 2-4. バックアップ方法 (14.0%)
+    PostgreSQLにバックアップの開始・終了を通知する関数は、pg_start_backup()とpg_stop_backup()。
+    PITRにおいてベースバックアップの取得を行う際に使用。
+
+    (ベースバックアップの取得はPostgreSQLを稼働したままで行うことができる。）
+
+    PostgreSQLの稼働中にバックアップを行う場合は、バックアップ中もデータが更新される可能性がある。
+    そのため、バックアップ時にはバックアップ中に作成されたWALも自動でアーカイブされ、リカバリ時にWALアーカイブから更新内容が反映される。
+    ベースバックアップはpg_basebackupコマンドを用いても取得できる。
+
+ 1. `SELECT pg_start_backup('ラベル名');` SELECT文でpg_start_backup()関数を呼び出す
+ 2. データベースクラスタ全体の物理バックアップを取得する
+ 3. `SELECT pg_stop_backup();` SELECT文でpg_stop_backup()関数を呼び出す
 
 
 ### | 2-5. 基本的な運用管理作業 (14.0%)
