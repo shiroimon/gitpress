@@ -47,7 +47,7 @@ $ jupyter lab
 * [データサイエンス初学者のための実践的な学習環境 「データサイエンス100本ノック（構造化データ加工編）」をGitHubに無料公開](https://digitalpr.jp/r/39499) - Digital PR Platform
 * [Macでデータサイエンス100本ノックを動かす方法](https://qiita.com/karaage0703/items/1b18b1f4ab65d35afb5f) - Qiita
 * [Docker入門して機械学習環境構築](https://karaage.hatenadiary.jp/entry/2019/05/17/073000) - からあげ
-* []() -
+* [【データサイエンス】データサイエンス100本ノック！実装までの道程](https://www.youtube.com/watch?v=mh8Z5d0-0PU) - Youtube
 * []() -
 * []() -
 * []() -
