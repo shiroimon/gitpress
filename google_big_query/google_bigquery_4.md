@@ -284,6 +284,7 @@ WHERE date <= "2018-06-01";
 ```
 ex.【4.9 演習問題1(5:00)】
 
+shop_purchasesテーブルから、dateが2018年4月29日から2018年5月6日の間にないレコード全カラム取得。
 ```SQL
 SELECT *
 FROM `prj-test3.bq_sample.shop_purchases`
@@ -298,10 +299,13 @@ WHERE is_premium IS FALSE
 WHERE is_premium IS NOT TRUE  -- False
 WHERE is_premium IS NOT FALSE -- True
 ```
-ex.
+ex.【4.10 演習問題1(1:20)】
+
+customersテーブルからuser_id、last_nameを取得。但、is_premiumがfalseのレコードのみ取得。
 ```SQL
-# 【4.10 演習問題1(1:20)】
-SELECT user_id, last_name
+SELECT
+    user_id,
+    last_name
 FROM bq_sample.customers
 WHERE is_premium IS FALSE;
 ```
@@ -309,13 +313,16 @@ WHERE is_premium IS FALSE;
 ### | WHERE句 - 複数条件（論理演算子）
 e.g.
 ```sql
+-- AND条件
 WHERE gender = 2 AND is_premium IS TRUE
 WHERE gender = 2 AND is_premium IS TRUE AND prefecture = "北海道"
+-- (AND条件)＋OR条件
 WHERE (gender = 2 AND is_premium IS TRUE) OR prefecture = "北海道"
-
 ```
 ex.【4.11 演習問題1(3:20)】
 
+customersテーブルからuser_id、last_name、first_nameを取得。
+但、「is_premiumがfalseで、genderが1」もしくは「birthdayが1970年12月31日以前」のレコードのみを取得。user_idの昇順に５レコード表示。
 ```SQL
 SELECT
     user_id,
@@ -333,12 +340,17 @@ LIMIT 5;
 ### | WHERE句 - NULLの振る舞い
 e.g.
 ```SQL
+-- genderが2でbirthdayがnull値でない条件
 WHERE gender = 2 AND birthday IS NOT NULL
 ```
 ex.【4.12 演習問題1(2:00)】
 
+customersテーブルからuser_id last_name first_nameを取得。但、first_nameがnullい該当レコードだけを取得。
 ```SQL
-SELECT user_id, last_name, first_name
+SELECT
+    user_id,
+    last_name,
+    first_name
 FROM `prj-test3.bq_sample.customers`
 WHERE first_name IS NULL;
 ```
@@ -353,12 +365,16 @@ FROM bq_sample.customers;
 ```
 ```
 （メモ）
-AS句は、「AS」と記載しなくとも半角スペースでも同様の挙動となる。
-可読性の観点から、明記した方が親切。
+・AS句は、「AS」と記載しなくとも半角スペースでも同様の挙動となる。
+  可読性の観点から、明記した方が親切。
+・半角英数（大文字、小文字）とアンダーバー（_）使用可能。
+・スペース、日本語は使用不可。
 ```
 
 ex.【4.13 演習問題1(1:50)】
 
+shop_purchasesテーブルからuser_id sales_amontを取得。
+sales_amontはsales_in_JPYという列名で表示。
 ```SQL
 SELECT
     user_id,
@@ -367,6 +383,8 @@ FROM `prj-test3.bq_sample.shop_purchases`;
 ```
 ex.【4.13 演習問題2(3:00)】
 
+shop_purchasesテーブルからuser_id sales_amontを取得。
+sales_amontはsales_in_JPYという列名で、更に降順で５レコード表示。
 ```SQL
 SELECT
     user_id,
