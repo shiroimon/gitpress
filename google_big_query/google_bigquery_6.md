@@ -38,7 +38,7 @@ ex.【6.2 演習問題1(2:40)】
 -- SELECT purchase_id,
 --        quantity,
 --        sales_amount,
---        AVR(sales_amount) AS avg_price　#[×]
+--        AVR(sales_amount) AS avg_price
 -- FROM `prj-test3.bq_sample.shop_purchases`
 -- GROUP BY purchase_id
 -- ORDER BY 4 DESC;

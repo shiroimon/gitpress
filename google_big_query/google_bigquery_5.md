@@ -12,14 +12,15 @@ e.g.
 ```SQL
 # SELECT COUNT(*) FROM sample.shop_purchases;
 
-/*「個数が１のレコード数をカウントしたい」※行数のカウントであってデータ個数ではない*/
-SELECT COUNT(*)
+/*「個数が１のレコード数をカウントしたい」
+※行数のカウントであってデータ個数ではない*/
+SELECT COUNT(*) AS No_of_record
 FROM sample.shop_purchases
 WHERE quantity = 1;
 ```
 ex.【5.2 演習問題1(2:09)】
 
-customersテーブルから、1989年1月8日以降の女性の人数を取得。
+customersテーブルから、gender=2、かつ、birthdayが1989年1月8日以降のレコード数を取得（平成生まれの女性の顧客数）。列名gyou_suとする。
 ```SQL
 SELECT COUNT(*) AS gyou_su
 FROM `prj-test3.bq_sample.customers`
@@ -42,7 +43,7 @@ SELECT COUNT(DISTONCT first_name)
 ```
 ex.【5.2 演習問題2(6:50)】
 
-
+customersテーブルから、女性の行数、女性のfirst_nameの個数、女性のfirst_nameの種類数を取得。列名は其々、gyou_su、data_kosu、shurui_su。
 ```SQL
 SELECT
     COUNT(*) AS gyou_su,
@@ -52,7 +53,7 @@ FROM `prj-test3.bq_sample.customers`
 WHERE gender = 2;
 
 -- | |gyou_su|data_kosu|shurui_su|
--- |1|       |         |         |
+-- |1|    592|      588|      565|
 ```
 
 ### | GROUPBY句 - グループ化
@@ -80,7 +81,8 @@ LIMIT 5;
 
 ex.【5.4 演習問題1(3:30)】
 
-
+shop_purchasesテーブルから、product_idごとの販売件数（＝レコード数）を取得。
+販売件数はNo_of_purchaseと別名にする。出力はNo_of_purchase降順。
 ```SQL
 SELECT
     product_id,
@@ -96,6 +98,7 @@ ORDER BY NO_of_purchase DESC;
 ```
 ex.【5.4 演習問題2(6:20)】
 
+customersテーブルから、prefectureごとの会員数を求める。結果は会員数の多い順に並べ替える。ただし、ORDERBY、GROUPBY何も列番号指定で記述。
 ```SQL
 SELECT
     prefecture,
@@ -111,6 +114,7 @@ ORDER BY 2 DESC;
 ```
 ex.【5.4 演習問題3(8:00)】
 
+shop_purchasesテーブルで、第一項目をshop_id第二項目をproduct_idとしてグループ化した販売件数（＝レコード数）をまとめ、shop_idの昇順、product_idの昇順の優先順位でソートして出力する。
 ```SQL
 # (miss_code)
 -- SELECT shop_id,
