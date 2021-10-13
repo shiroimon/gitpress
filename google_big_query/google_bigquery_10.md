@@ -5,6 +5,7 @@ excerpt: Google BigQuery基本の「き」について。
 tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 ---
 
+## || Section10
 ### ■ テーブル同士の集合演算
 
 ```

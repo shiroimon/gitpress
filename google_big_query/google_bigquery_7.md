@@ -7,6 +7,9 @@ tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 
 ## || Section7
 ### | 分析関数(ウィンドウ関数)
+分析関数（ウィンドウ関数）とは、行レベル関数、集計関数よりも、複雑で高度な計算ができる関数の種類。
+「番号付け関数」「ナビゲーション関数」「集計関数」の3つに大別することができる。
+
 どんな時に使うの？
 
     ・店舗ごとに販売されたそれぞれの商品が、売上順で何位にランキングされるか求めたい。
@@ -15,7 +18,7 @@ tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 
 ### | OVER句 - 分析関数の書式
 ※ SQLでの分析において最も重要な句。内側で3つの` (option)`がある。
-  ウィンドウ関数は、数式やWHERE句で使用知ることができない。
+  ウィンドウ関数は、数式やWHERE句で用いることができない。
   これは、ウィンドウ関数がWHERE句やGROUPBY句などの処理が終わった結果に対して作用する為。
 
 ```SQL
@@ -38,7 +41,7 @@ SELECT
         PARTITION BY user_id
         --ORDER BY句：patation内でquantityが多い順
         ORDER BY quantity DESC
-        --WINDOW_FRAME句: ROWSを指定（他にもRANGEがある）
+        --WINDOW_FRAME句: 境界の最上の値から現在の行まで
         ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
     ) AS cumlative_quantity_till_the_row
 FROM `prj-test3.bq_trial.pos`
@@ -62,17 +65,47 @@ GROUP BY
 -- |9|www    |       5|       5|                              5|
 ```
 
-### | PARTITION BY句
+### | (option.1) PARTITION BY句
 SELECT句における、GROUPBYのようにグループ分けを行う。
+GRUOPBY句に似ているが、PARTITIONBY句では行の「集約」は行われない。
 
-### | ORDER BY句
+PARTIONによって分割されたまとまりを其々ウィンドウと呼ぶ。
+
+e.g.
+```sql
+SELECT
+    item_name,
+    item_category,
+    price,
+    SUM(price) OVER(PARTITION BY item_category) AS sum_category
+FROM
+    item_purchase_log
+;
+```
+|item_name|item_category|price|sum_category|
+|-        |-            |-:   |-:          |
+|コーヒー |beverrage    |280  |1780        |
+|コーヒー |beverrage    |750  |1780        |
+|コーヒー |beverrage    |750  |1780        |
+|紅茶     |food         |280  |1860        |
+|緑茶     |food         |200  |1860        |
+|砂糖     |food         |200  |1860        |
+|メイプル |food         |450  |1860        |
+|メイプル |food         |450  |1860        |
+|砂糖     |food         |280  |1860        |
+
+
+### | (option.2) ORDER BY句
 (割愛)
 
-### | WINDOW FRAME句
-eg.
-```
-[ROWS] [BETWEEN] UNBOUNDED PRECEDING [AND] CURRENT ROW
+### | (option.3) WINDOW FRAME句
 
+```sql
+ROWS BETWEEN {UNBOUNDED PRECEDING} AND {CURRENT ROW}
+
+-- ※ 未指定の場合上記がデフォで入る。
+```
+```
 ※ BETWEEN句の始値、終値には様々な指定ができる。
    CURRENT ROW         : 現在の行
    UNBOUNDED PRECEDING : パーテションで定義された境界の、最も上の方
@@ -80,24 +113,59 @@ eg.
    [int] PRECEDING     : 現在の行から[int]だけ上の行
    [int] FOLLOWING     : 現在の行から[int]だけ下の行
 ```
+e.g.
+```SQL
+-- パーティション全体
+BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+-- パーティションの最上部から現在の行まで。（sumと併用すると、累計を取得可）
+BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+-- 現在行を含む、直上７レコード。（ORDERBYを日付順にし、avg併用すると直近7日間の移動平均が取得可能）
+BETWEEN 6 PRECEDING AND CURRENT ROW
+```
+
+※ ROWS以外の指定もできる。(本コースでは扱わないとのこと)
+```sql
+RANGE BETWEEN {UNBOUNDED PRECEDING} AND {CURRENT ROW}
+```
 
 ### | [関数]（）
 #### ■  番号付け [関数]（）
-使える`option`
+使える`option`:
 ```
-①PARTITIONBY  [使用可]
-②ORDERBY      [必須]
-③WINDOWFRAME  [使用不可]
+① PARTITIONBY  [使用可]
+② ORDERBY      [必須]
+③ WINDOWFRAME  [使用不可]
 ```
-
+e.g.
+```SQL
+SELECT
+    item_name,
+    item_category,
+    price,
+    RANK() OVER(ORDER BY price) AS ranking,
+    DENSE_RANK() OVER(ORDER BY price) AS dense_ranking,
+    ROW_NUMBER() OVER(ORDER BY price) AS row_num,
+FROM
+    item_purchase_log
+;
+-- | |item_name|item_category|price|ranking|dense_ranking|row_num|
+-- |1|緑茶     |food         |  200|      1|            1|      1|
+-- |2|砂糖     |food         |  200|      1|            1|      2|
+-- |3|コーヒー |beverrage    |  280|      3|            2|      3|
+-- |4|緑茶     |food         |  280|      3|            2|      4|
+-- |5|砂糖     |food         |  200|      3|            2|      5|
+-- |6|メイプル |food         |  450|      6|            3|      6|
+-- |7|メイプル |food         |  450|      6|            3|      7|
+-- |8|コーヒー |beverrage    |  750|      8|            4|      8
+```
 ※ 番号付け関数には様々用意されている。
 ```
-RANK()        : パーテションの中の順位を返す
-ROW_NUMBER()  : パーテションの中の行数を返す
-CUME_DIST()   :
-DENSE_RANK()  :
-NTILE()       :
-PERCENT_RANK():
+▷RANK()        : パーテションの中の順位を返す（同率は飛ばす）
+  DENSE_RANK()  : パーテションの中の順位を返す（同率は飛ばさない）
+  PERCENT_RANK():
+▷ROW_NUMBER()  : パーテションの中の行数を返す
+  CUME_DIST()   :
+  NTILE()       :
 ```
 
 ##### | RANK() - ランキング
@@ -111,26 +179,27 @@ RANK() OVER(
 
 ex.【7.4 演習問題1(2:20)】
 
-
+trialデータセットのposテーブルに対し、パーティションを宣言しないで、order_id、user_id、qquantity及び、qunantity降順に基づくランクを取得。ランキングは昇順に並べ替えた結果を返す。（ランキングを表示するカラムは別名でrankを付与）
 ```SQL
 SELECT
     order_id,
     user_id,
     quantity,
-    RANK() OVER(
-        ORDER BY quantity DESC
-    ) AS ranking
+    RANK() OVER(ORDER BY quantity DESC) AS rank
 FROM `prj-test3.bq_trial.pos`
-ORDER BY ranking;
+ORDER BY rank;
 
--- | |order_id|user_id|quantity|ranking|
--- |1|      12|STU    |      12|      1|
--- |2|       9|ABC    |      12|      1|
--- |3|       1|ABC    |      10|      3|
--- |4|       3|ABC    |       8|      4|
+-- | |order_id|user_id|quantity|rank|
+-- |1|      12|STU    |      12|   1|
+-- |2|       9|ABC    |      12|   1|
+-- |3|       1|ABC    |      10|   3|
+-- |4|       4|STU    |       8|   4|
+-- |5|       3|ABC    |       8|   4|
+```
+ex.【7.4 演習問題2(4:20)】
 
 
-#【7.4 演習問題2(4:20)】
+```SQL
 SELECT
     order_id,
     user_id,
@@ -141,6 +210,7 @@ SELECT
     ) AS ranking
 FROM `prj-test3.bq_trial.pos`
 ORDER BY user_id, ranking;
+
 -- --                     [desc]
 -- | |order_id|user_id|quantity|ranking|
 -- |1|       9|ABC    |      12|      1|
@@ -150,9 +220,11 @@ ORDER BY user_id, ranking;
 -- |5|       2|ABC    |       5|      5|
 -- -- ------------------------------------[partitin]
 -- |6|      12|STU    |      12|      1|
+```
+ex.【7.4 演習問題3(6:20)】
 
 
-#【7.4 演習問題3(6:20)】
+```SQL
 SELECT
     order_id,
     user_id,
@@ -164,7 +236,9 @@ SELECT
 FROM `prj-test3.bq_trial.pos`
 WHERE ranking <= 3
 ORDER BY user_id, ranking;
--- # ∴ WHERE句は使用不可（分析関数では絞り込みできない ∵WHEREが先に実行され、その後にSELECTの為）
+
+-- ∴ WHERE句は使用不可（分析関数では絞り込みできない
+-- ∵WHEREが先に実行され、その後にSELECTの為）
 ```
 
 ##### | ROW_NUMBER() - パーテションの中の行番号を返す。
@@ -175,9 +249,10 @@ ROW_NUMBER() OVER(
       ORDER BY {fuga} ASC|DESC
 ) AS {hage}
 ```
-ex.
+ex.【7.4 演習問題4(9:00)】
+
+
 ```SQL
-#【7.4 演習問題4(9:00)】
 SELECT
     user_id,
     session_count,
@@ -187,6 +262,7 @@ SELECT
         ORDER BY timestamp ASC
     ) AS hit_count
 FROM `prj-test3.bq_trial.access_log`;
+
 -- | |user_id|session_count|page           |hit_count|
 -- |1|ABC    |            2|/products/?id=7|        1|
 -- |2|ABC    |            2|/cart/cart.php |        2|
@@ -241,6 +317,7 @@ ex.【7.5 演習問題1(1:30)】
 --         ORDER BY user_id
 --     )
 -- FROM `prj-test3.bq_trial.pos`;
+
 #(collect_code)
 SELECT
     user_id,
@@ -249,13 +326,17 @@ SELECT
         ORDER BY order_id
     ) AS first_purchase_item
 FROM `prj-test3.bq_trial.pos`;
+
 -- | |user_id|first_purchase_item|
 -- |1|ABC    |                  1|
 -- |2|ABC    |                  1|
 -- |6|STU    |                  3|
 -- |9|www    |                  3|
+```
+ex.【7.5 演習問題2(4:10)】
 
-#【7.5 演習問題2(4:10)】
+
+```SQL
 SELECT
     user_id,
     session_count,
@@ -268,20 +349,26 @@ SELECT
         ORDER BY timestamp ASC
     ) AS exit_page
 FROM `prj-test3.bq_trial.access_log`;
+
 -- | |user_id|session_count|landing_page   |exit_page       |
 -- |1|ABC    |            1|/index.php     |/index.php      |
 -- |2|ABC    |            1|/index.php     |/special/       |
 -- |5|ABC    |            1|/index.php     |/products/?id=10|
--- -- ---------------------------------------------------------[PARTITION]
+-- -----------------------------------------------------------[PARTITION]
 -- |6|ABC    |            2|/products/?id=7|/products/?id=7 |
--- #
--- # ※（問題）exit_pageの項目がバラバラ問題
--- #          ∵ [WINDOW FRAME]がデフォルトの値が入ってしまっているから。（設定しないと入ってしまう。）
--- #            [ROWS] [BETWEEN] UNBOUNDED PRECEDING [AND] CURRENT ROW
--- #            その為、パーテションの中での最初と最後の値を取得しているのではなく、
--- #            ウィンドウの中での最初の値、最後の値を取得している。
 
-#【7.5 演習問題3(4:10)】
+-- ※（問題）exit_pageの項目がバラバラ問題
+--   ∵ [WINDOW FRAME]がデフォルトの値が入ってしまっているから。（設定しないと入ってしまう。）
+--
+--   [ROWS] [BETWEEN] UNBOUNDED PRECEDING [AND] CURRENT ROW
+--
+--   その為、パーテションの中での最初と最後の値を取得しているのではなく、
+--   ウィンドウの中での最初の値、最後の値を取得している。
+```
+ex.【7.5 演習問題3(4:10)】
+
+
+```SQL
 SELECT
     user_id,
     session_count,
@@ -295,6 +382,7 @@ SELECT
         ROWS BETWEEN UNBOUNDED PRECEDING  AND UNBOUNDED FOLLOWING
     ) AS exit_page
 FROM `prj-test3.bq_trial.access_log`;
+
 -- | |user_id|session_count|landing_page   |exit_page          |
 -- |1|ABC    |            1|/index.php     |/products/?id=10   |
 -- |2|ABC    |            1|/index.php     |/products/?id=10   |
@@ -343,25 +431,17 @@ SELECT
     page,
     timestamp,
     --次の行のpageを取ってきて！
-    LEAD(page) OVER(
-        PARTITION BY session_count
-        ORDER BY timestamp
-    ) AS next_page,
+    LEAD(page) OVER(PARTITION BY session_count ORDER BY timestamp) AS next_page,
     --次の行のtimestampを取ってきて！
-    LEAD(timestamp) OVER(
-        PARTITION BY session_count
-        ORDER BY timestamp
-    ) AS next_hit_timestamp,
+    LEAD(timestamp) OVER(PARTITION BY session_count ORDER BY timestamp) AS next_hit_timestamp,
     DATETIME_DIFF(
-        LEAD(timestamp) OVER(
-            PARTITION BY session_count
-            ORDER BY timestamp
-        ),
+        LEAD(timestamp) OVER(PARTITION BY session_count ORDER BY timestamp),
         timestamp,
         second
     ) AS time_on_page
 FROM `prj-test3.bq_trial.access_log`
 ORDER BY timestamp;
+
 -- | |user_id|session_count|page              |timestamp              |next_page         |next_hit_timestamp     |time_on_page|
 -- |1|ABC    |            1|/index.php        |2018-12-30 14:51:18 UTC|/special/         |2018-12-30 14:53:05 UTC|         107|
 -- |2|ABC    |            1|/special/         |2018-12-30 14:53:05 UTC|/products/?id=1   |2018-12-30 15:00:02 UTC|         417|
@@ -414,6 +494,7 @@ FROM `prj-test3.bq_trial.pos`;
 -- |4|ABC    |       9|      12|            35|
 ```
 ex.【7.6 演習問題2(3:10)】
+
 
 ```SQL
 #(miss_code)

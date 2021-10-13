@@ -5,23 +5,23 @@ excerpt: Google BigQuery基本の「き」について。
 tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 ---
 
-## || Session8
-### ■ ER図
+## || Section8
+### | ER図
 ```
-ER図（Entity-Relations）:
-テーブル同士の関係性を表した図表
-
+ER図（Entity-Relations）: テーブル同士の関係性を表した図表
+```
+```
 そもそも、DBが複数のテーブルを持っているのは?
-→∵ カスタマイズ性、メンテナンス性を高めることが重視されているため。
+∵ カスタマイズ性、メンテナンス性を高めることが重視されているため。
 ```
 
-### ■ キーの種類
+### | キーの種類
 ```
 🔑 主キー(PK:PrimaryKey)   :
 🗝 外部キー(FK:ForeignKey) : 外部テーブルと結合するためのキー
 ```
 
-### ■ JOIN - 結合
+### | JOIN - 結合
 ※ JOINの種類
 ```SQL
 1. INNER JOIN       : 左右両方のテーブルに[FK=PK]が存在するレコードだけを結合（いずれにも該当しないレコードは弾かれる）
@@ -30,7 +30,7 @@ ER図（Entity-Relations）:
 4. FULL OUTER JOIN  : 左右にあるだけのレコードを「全部まとめて出してくれ！」結合
 5. CROSS JOIN       :
 ```
-eg. 書式
+e.g. 書式
 ```SQL
 SELECT
 FROM テーブルA AS A
@@ -43,7 +43,7 @@ FROM テーブルA AS A
 ※ ON句の[AND 絞り込み条件]は省略可能。
 ```
 
-eg. USINGでの結合
+e.g. USINGでの結合
 ```SQL
 SELECT
       p.user_id,
@@ -55,6 +55,7 @@ FROM `prj-test3.bq_trial.pos` AS p
 LEFT JOIN `prj-test3.bq_trial.shohin_master` AS sm
 USING(product_id)
 ORDER BY p.product_id;
+
                --[key]--
 -- |  |user_id|product_id|unit_price|category|prob_name|
 -- | 1|ABC    |         1|       120|くだもの|いちご   |
@@ -62,17 +63,21 @@ ORDER BY p.product_id;
 -- | 3|STU    |         2|       200|野菜    |白菜     |
 -- | 4|STU    |         3|       160|野菜    |人参     |
 -- |15|www    |        11|       210|null    |null     |
+
 -- [shohin_master.csv]には無い値なので、nullが返る
 ```
-eg. ON句による条件指定の結合
+e.g. ON句による条件指定の結合
 ```SQL
 SELECT
     p.user_id, p.product_id, p.unit_price, p.quantity,
     sm.category, sm.prod_name
-FROM `prj-test3.bq_trial.pos` AS p
-LEFT JOIN `prj-test3.bq_trial.shohin_master` AS sm
+FROM
+    `prj-test3.bq_trial.pos` AS p
+LEFT JOIN
+    `prj-test3.bq_trial.shohin_master` AS sm
 ON p.product_id = sm.product_id AND p.user_id="ABC" -- ON句で詳細設定しての結合
 ORDER BY p.product_id;
+
    --[条件]-- --[key]--
 -- | |user_id|product_id|unit_price|quantity|category|prod_name|
 -- |1|ABC    |         1|       120|      10|くだもの |いちご  |
@@ -94,7 +99,7 @@ ON p.product_id = sm.product_id AND p.user_id="ABC" AND sm.category="肉"
 -- |1|ABC    |         5|       100|       5|肉      |豚肉     |
 -- |2|ABC    |        10|       150|       8|肉      |豚肉     |
 ```
-eg. 主キーの重複データにより要件を満たさないテーブルの結合
+e.g. 主キーの重複データにより要件を満たさないテーブルの結合
 ```SQL
 SELECT
     p.user_id, p.product_id, p.unit_price, p.quantity,
@@ -104,6 +109,7 @@ LEFT JOIN `prj-test3.bq_trial.shohin_master_bad` AS smb
 USING(product_id)
 WHERE p.product_id = 3
 ORDER BY P.product_id;
+
 -- | |user_id|product_id|unit_price|qunantity|category|prod_name |
 -- |1|STU    |         3|       160|        8|野菜     |人参     |
 -- |2|STU    |         3|       160|        8|野菜     |人参     |
@@ -116,9 +122,10 @@ ORDER BY P.product_id;
 -- その結果、結合後に3レコード取るはずが、倍の6レコード取得されてしまっていた。(重複分が招いた、問題点)
 -- 集計時に二重計上による誤差になりかねない💀
 ```
-ex.
+ex.【8.5 演習問題1(0:20)】
+
+
 ```SQL
-#【8.5 演習問題1(0:20)】
 SELECT
     -- sp.purchase_id, sp.date, sp.user_id,
     -- c.gender,
@@ -137,18 +144,21 @@ LEFT JOIN `prj-test3.bq_sample.customers` AS c
 USING(user_id)
 GROUP BY gender
 ORDER BY total_amount DESC;
--- #| |gender|shop_count|shop_quantity|total_amount|avg_amount|
--- #|1|female|       792|         1819|    11456055|    6298.0|
--- #|2|male  |       450|          984|     7969220|    8099.0|
--- #|3|unknow|        40|           92|      693117|    7534.0|
+
+-- | |gender|shop_count|shop_quantity|total_amount|avg_amount|
+-- |1|female|       792|         1819|    11456055|    6298.0|
+-- |2|male  |       450|          984|     7969220|    8099.0|
+-- |3|unknow|        40|           92|      693117|    7534.0|
 
 -- #Q1. female
 -- #Q2. female
 -- #Q3. female
 -- #Q4. male
+```
+ex.【8.5 演習問題2(3:50)】
 
 
-#【8.5 演習問題2(3:50)】
+```SQL
 #(miss_code)
 -- SELECT
 --     -- *,
@@ -168,10 +178,10 @@ ORDER BY total_amount DESC;
 -- HAVING gender != "unknow"
 -- ORDER BY 3 DESC
 -- LIMIT 3;
--- #| |age |gender|avg_quantity|
--- #|1|32.0|male  |         3.7|
--- #|2|44.0|male  |         3.3|
--- #|3|62.0|male  |         3.0|
+-- | |age |gender|avg_quantity|
+-- |1|32.0|male  |         3.7|
+-- |2|44.0|male  |         3.3|
+-- |3|62.0|male  |         3.0|
 
 #(collect_code)
 SELECT
@@ -188,13 +198,16 @@ WHERE gender <> 3
 GROUP BY nenrei, gender
 ORDER BY avg_aty DESC
 LIMIT 3;
--- #| |nenrei |seibetsu|avg_qty|
--- #|1|     31|男性    |     3.5|
--- #|2|     66|女性    |     3.2|
--- #|3|     62|男性    |     3.1|
+
+-- | |nenrei |seibetsu|avg_qty|
+-- |1|     31|男性    |     3.5|
+-- |2|     66|女性    |     3.2|
+-- |3|     62|男性    |     3.1|
+```
+ex.【8.5 演習問題3(7:30)】
 
 
-#【8.5 演習問題3(7:30)】
+```SQL
 SELECT
     CONCAT(c.last_name, " ",c.first_name ) AS full_name,
     SUM(sp.sales_amount) AS total_amount
@@ -208,14 +221,15 @@ WHERE
 GROUP BY full_name
 ORDER BY total_amount DESC
 LIMIT 3;
--- #| |full_name|total_amount|
--- #|1|小杉 信貴 |      104500|
--- #|2|宗村 良崇 |       60216|
--- #|3|和栗 昇悟 |       59400|
+
+-- | |full_name|total_amount|
+-- |1|小杉 信貴 |      104500|
+-- |2|宗村 良崇 |       60216|
+-- |3|和栗 昇悟 |       59400|
 ```
 
-### ■ 複数テーブルの結合
-eg. 書式
+### | 複数テーブルの結合
+e.g. 書式
 ```SQL
 SELECT
 FROM [テーブルA] AS A
@@ -226,8 +240,10 @@ FROM [テーブルA] AS A
 → USING(FK-PKの両テーブルに共通するカラム)
 → ON A.FK = C.PK [AND 絞り込み条件]
 ```
+ex.【8.6 演習問題1(2:10)】
+
+
 ```SQL
-#【8.6 演習問題1(2:10)】
 #(miss_code)
 -- SELECT
 --     s.shop_name,
@@ -256,21 +272,28 @@ SELECT
     END AS customer_gender,
     COUNT(DISTINCT sp.user_id) AS kyakusuu,
     SUM(sp.sales_amount) AS uriage
-FROM `prj-test3.bq_sample.shop_purchases` AS sp
-LEFT JOIN `prj-test3.bq_sample.customers` AS cu ON sp.user_id = cu.user_id
-LEFT JOIN `prj-test3.bq_sample.products_master` AS pm ON sp.product_id = pm.product_id
-LEFT JOIN `prj-test3.bq_sample.shops_master` AS sm ON sp.shop_id = sm.shop_id
+FROM
+    `prj-test3.bq_sample.shop_purchases` AS sp
+LEFT JOIN
+    `prj-test3.bq_sample.customers` AS cu ON sp.user_id = cu.user_id
+LEFT JOIN
+    `prj-test3.bq_sample.products_master` AS pm ON sp.product_id = pm.product_id
+LEFT JOIN
+    `prj-test3.bq_sample.shops_master` AS sm ON sp.shop_id = sm.shop_id
 WHERE cu.gender <> 3
 GROUP BY tencho, sm.shop_name, customer_gender
 ORDER BY customer_gender, uriage DESC;
--- #| |tencho    |shop_name|customer_gnder|kyakusuu|uriage |
--- #|1|柳澤 華子  |自由が丘店 |female        |     306|4721503|
--- #|2|山下 唐三郎|下北沢店   |female        |     258|4476825|
--- #|5|柳澤 華子  |自由が丘店 |male          |     172|4004558|
--- #|6|山下 唐三郎|下北沢店   |male          |     145|2713434|
+
+-- | |tencho     |shop_name  |customer_gnder|kyakusuu|uriage |
+-- |1|柳澤 華子  |自由が丘店 |female        |     306|4721503|
+-- |2|山下 唐三郎|下北沢店   |female        |     258|4476825|
+-- |5|柳澤 華子  |自由が丘店 |male          |     172|4004558|
+-- |6|山下 唐三郎|下北沢店   |male          |     145|2713434|
+```
+ex.【8.6 演習問題2(7:30)】
 
 
-#【8.6 演習問題2(7:30)】
+```SQL
 SELECT
     COUNT(*) AS sales_count,
     SUM(sp.sales_amount) AS total_amount,
@@ -287,13 +310,16 @@ WHERE
     AND p.prod_gender = "f"
 GROUP BY chief
 ORDER BY 2 DESC;
--- #| |sales_count|total_amount|chief        |
--- #|1|          3|      142276|大井谷 みすず|
--- #|2|          4|      108905|山下 唐三郎  |
--- #|3|          2|       80667|柳澤 華子    |
+
+-- | |sales_count|total_amount|chief        |
+-- |1|          3|      142276|大井谷 みすず|
+-- |2|          4|      108905|山下 唐三郎  |
+-- |3|          2|       80667|柳澤 華子    |
+```
+ex.【8.6 演習問題3(10:20)】
 
 
-#【8.6 演習問題3(10:20)】
+```SQL
 SELECT
     -- s.shop_name AS shop_name,
     p.prod_name AS product,
@@ -308,10 +334,11 @@ WHERE c.Is_premium = TRUE
 GROUP BY product
 ORDER BY diff_amount DESC
 limit 1;
--- #| |product      |max_amoount|min_amount|diff_amount|
--- #|1|ブラウス 長袖|      73000|     12775|      60225|
 
-#(other code)    
+-- | |product      |max_amoount|min_amount|diff_amount|
+-- |1|ブラウス 長袖|      73000|     12775|      60225|
+
+#(other code)
 FROM `prj-test3.bq_sample.shop_purchases` AS sp
 LEFT JOIN `prj-test3.bq_sample.customers` AS cu ON sp.user_id = cu.shop_id
 LEFT JOIN `prj-test3.bq_sample.products_master` AS pm ON sp.product_id = pm.product_id
@@ -322,6 +349,7 @@ WHERE
 GROUP BY pm.prod_name
 ORDER BY 4 DESC
 LIMIT 1;
--- #| |product      |max_amoount|min_amount|diff_amount|
--- #|1|ブラウス 長袖|      73000|     12775|      60225|
+
+-- | |product      |max_amoount|min_amount|diff_amount|
+-- |1|ブラウス 長袖|      73000|     12775|      60225|
 ```

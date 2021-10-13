@@ -5,15 +5,15 @@ excerpt: Google BigQuery基本の「き」について。
 tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 ---
 
-### ■ サブクエリ（= 副問い合わせ）
-
+## || Section9
+### | サブクエリ（= 副問い合わせ）
+何ができるの？
 ```
-# ※ 何ができるの？
-#   ・「全体」と「個別」の対比。（全体の売上を100%とした時、特定の売上は○%を占める。）
-#   ・JOINを用いずとも、他のテーブルデータ利用。（JOINをせずにある属性の顧客から売上合計金額データを取得。）
-#   ・一度集計したデータの利用。（日別に売上を合算したえ上でそれらの平均を取得できるようになる。）...etc.
-#
-# ※ 実行順序は、「サブクエリ（子クエリ）」>「親クエリ」
+・「全体」と「個別」の対比。（全体の売上を100%とした時、特定の売上は○%を占める。）
+・JOINを用いずとも、他のテーブルデータ利用。（JOINをせずにある属性の顧客から売上合計金額データを取得。）
+・一度集計したデータの利用。（日別に売上を合算したえ上でそれらの平均を取得できるようになる。）...etc.
+
+※ 実行順序は、「サブクエリ（子クエリ）」>「親クエリ」
 ```
 e.g.
 ```SQL
@@ -35,7 +35,7 @@ ORDER BY  2 DESC;
 -- |3|XYZ    |         19|
 -- |4|WWW    |          7|
 
-# eg. ①+②
+# ①+②
 SELECT
     user_id,
     SUM(quantity) AS qty_by_user,
@@ -49,8 +49,10 @@ ORDER BY  2 DESC;
 -- |3|XYZ    |         19|     90|
 -- |4|WWW    |          7|     90|
 ```
+ex.【9.2 演習問題1 (6:20)】
+
+
 ```SQL
-# 【9.2 演習問題1 (6:20)】
 SELECT
     user_id,
     SUM(quantity) AS qty_by_user,
@@ -58,6 +60,7 @@ SELECT
     ROUND(SUM(quantity)/(SELECT SUM(quantity) FROM `prj-test3.bq_trial.pos`),3)*100 AS pctg_by_user
 FROM `prj-test3.bq_trial.pos`
 GROUP BY 1;
+
 -- | |user_id|qty_by_user|ttl_qty|pctg_by_yser|
 -- |1|ABC    |         41|     90|        45.6|
 -- |2|STU    |         23|     90|        25.6|
@@ -65,19 +68,21 @@ GROUP BY 1;
 -- |4|WWW    |          7|     90|        21.0|
 ```
 
-### ■ サブクエリの戻り値の型
-```SQL
- #   1. スカラー    :単一の値 [n]
- #   2. ベクター    :リストの値 [n行×1列]
- #   3. マトリックス :表の値[n行×m列]
- #
- #            |スカラー|ベクター|マトリックス|
- #    SELECT句|   ●   |        |            |
- #    FROM句  |        |   ●   |     ●     |
- #    WHERE句 |   ●   |   ●   |            |
+### | サブクエリの戻り値の型
 ```
+1. スカラー    :単一の値 [n]
+2. ベクター    :リストの値 [n行×1列]
+3. マトリックス :表の値[n行×m列]
+
+          |スカラー|ベクター|マトリックス|
+  SELECT句|   ●   |        |            |
+  FROM句  |        |   ●   |     ●     |
+  WHERE句 |   ●   |   ●   |            |
+```
+ex.【9.3 演習問題1 (2:10)】(WHERE句 × スカラー)
+
+
 ```SQL
- # 【9.3 演習問題1 (2:10)】(WHERE句 × スカラー)
  SELECT
      order_id,
      quantity,
@@ -85,23 +90,30 @@ GROUP BY 1;
  FROM `prj-test3.bq_trial.pos`
  WHERE quantity >= (SELECT ROUND(AVG(quantity)) FROM `prj-test3.bq_trial.pos`)
  ORDER BY 2 DESC;
+
 -- | |order_id|quantity|avg_aty|
 -- |1|       9|      12|    6.0|
 -- |2|      12|      12|    6.0|
 -- |3|       1|      10|    6.0|
 -- |4|       3|       8|    6.0|
+```
+ex.【9.4 演習問題1 (1:10)】(SELECT句 × スカラー)
 
- # 【9.4 演習問題1 (1:10)】(SELECT句 × スカラー)
+```SQL
  SELECT
      order_id, user_id, product_id, quantity,
      (SELECT SUM(quantity) FROM `prj-test3.bq_trial.pos`)AS ttl_qty
  FROM `prj-test3.bq_trial.pos`
  ORDER BY order_id;
+
 -- | |order_id|user_id|product_id|quantity|ttl_qty|
 -- |1|       1|ABC    |         1|      10|     90|
 -- |2|       2|ABC    |         5|       5|     90|
+```
+ex.【9.4 演習問題2 (4:20)】(SELECT句 × スカラー)
 
- # 【9.4 演習問題2 (4:20)】(SELECT句 × スカラー)
+
+```SQL
  # (miss_code)
  -- SELECT
  --     user_id,
@@ -111,6 +123,7 @@ GROUP BY 1;
  -- FROM `prj-test3.bq_trial.pos`
  -- GROUP BY user_id
  -- ORDER BY 2 DESC;
+
  # (colect_code)
  SELECT
      user_id,
@@ -122,12 +135,16 @@ GROUP BY 1;
  FROM `prj-test3.bq_trial.pos`
  GROUP BY user_id
  ORDER BY 2 DESC;
+
 -- | |user_id|sales_by_user|ttl_sales|sales_share_by_user|
 -- |1|ABC    |         6020|    14240|               42.3|
 -- |2|XYZ    |         3920|    14240|               27.5|
 -- |3|STU    |         3080|    14240|               21.6|
+```
+ex.【9.4 演習問題3 (7:20)】(SELECT句 × スカラー)
 
- # 【9.4 演習問題3 (7:20)】(SELECT句 × スカラー)
+
+```SQL
  SELECT
      DATE_TRUNC(date, month) AS month,
      SUM(sales_amount) AS sales_by_month,
@@ -138,12 +155,16 @@ GROUP BY 1;
  FROM `prj-test3.bq_sample.shop_purchases`
  GROUP BY month
  ORDER BY month;
+
 -- | |month     |sales_by_month|ttl_sales|sales_ratio|
 -- |1|2018-01-01|       2056764| 20118392|       10.2|
 -- |2|2018-02-01|       1133128| 20118392|        5.6|
 -- |3|2018-03-01|       1296473| 20118392|        6.4|
+```
+ex.【9.5 演習問題1 (0:40)】(WHERE句 × スカラー)
 
- # 【9.5 演習問題1 (0:40)】(WHERE句 × スカラー)
+
+```SQL
  SELECT
      -- *,
      purchase_id,
@@ -152,11 +173,15 @@ GROUP BY 1;
  WHERE sales_amount > (SELECT AVG(sales_amount)
                        FROM `prj-test3.bq_sample.shop_purchases`)
  ORDER BY sales_amount DESC;
+
  -- | |purchase-id|sales_amount|
  -- |1|        995|       99000|
  -- |2|       1203|       99000|
+ ```
+ ex.【9.5 演習問題2 (3:15)】(WHERE句 × スカラー)
 
- # 【9.5 演習問題2 (3:15)】(WHERE句 × スカラー)
+
+```SQL
  SELECT
      -- *
      user_id,
@@ -176,12 +201,15 @@ GROUP BY 1;
                                                                                              FROM `prj-test3.bq_sample.customers`)
  -- age BETWEEN (avg_age + std_age) AND (avg_age - std_age) #(別解)
  ORDER BY age DESC;
+
  -- |   |user_id|fullname   |birthday   |age|avg_age|stddev_age|
  -- |  1|1105505|松元 陽彦  |1960-05-02| 58|   43.0|      15.0|
  -- |  2|1105505|秋山 充康  |1960-09-26| 58|   43.0|      15.0|
  -- |529| 962102|井ノ口 京香|1989-05-16| 29|   43.0|      15.0|
+```
+ex.【9.5 演習問題3 (11:10)】(WHERE句 × スカラー)
 
- #【9.5 演習問題3 (11:10)】(WHERE句 × スカラー)
+```SQL
  SELECT
      COUNT(user_id) AS user_in_target,
      (SELECT COUNT(*) FROM `prj-test3.bq_sample.customers`) AS total_user_count,
@@ -194,10 +222,14 @@ GROUP BY 1;
        AND
          (SELECT AVG(DATE_DIFF("2018-12-31", birthday, year)) FROM `prj-test3.bq_sample.customers`)
         +(SELECT STDDEV_POP(DATE_DIFF("2018-12-31", birthday, year)) FROM `prj-test3.bq_sample.customers`);
+
  -- | |user_in_target|total_user_count|percentage|
  -- |1|           529|             944|      56.0|
+```
+ex.【9.6 演習問題1 (1:12)】(WHERE句 × ベクター)
 
- #【9.6 演習問題1 (1:12)】(WHERE句 × ベクター)
+
+```SQL
  #(other_code...34.58 KB)
  SELECT
      sp.user_id,
@@ -207,6 +239,7 @@ GROUP BY 1;
  WHERE c.gender = 2
  GROUP BY 1
  ORDER BY 1;
+
  -- | |user_id|sales_by_users|
  -- |1| 497520|         31518|
  -- |2| 529565|          3860|
@@ -226,11 +259,15 @@ GROUP BY 1;
  WHERE user_id IN(SELECT user_id FROM `prj-test3.bq_sample.customers` WHERE gender=2)
  GROUP BY user_id
  ORDER BY user_id;
+
  -- | |user_id|sales_by_users|
  -- |1| 497520|         31518|
  -- |2| 529565|          3860|
+```
+ex.【9.6 演習問題2 (4:25)】(WHERE句 × ベクター)
 
- #【9.6 演習問題2 (4:25)】(WHERE句 × ベクター)
+
+```SQL
  SELECT
      user_id,
      CONCAT(last_name, " ", first_name) AS fullname,
@@ -241,12 +278,13 @@ GROUP BY 1;
        AND prefecture="Tokyo"
        AND gender=2
  ORDER BY CURRENT_DATE("Asia/Tokyo")-birthday DESC;
+
  -- | |user_id|fullname    |prefecture|birthday  |
  -- |1|1033150|羽諸 一未  |Tokyo      |1947-08-14|
  -- |2|1089412|巴山 かのこ|Tokyo      |1951-03-31|
 ```
 
-### ■ FROM句 × ベクター
+### | FROM句 × ベクター
 eg. 日別の販売数量平均を知りたい場合。等
 ```SQL
 #①:
@@ -341,7 +379,7 @@ eg. 日別の販売数量平均を知りたい場合。等
  --|2|ABC    |      10|   2|
  --|3|ABC    |       8|   3|
 ```
-### ■ サブクエリとJOINの併用
+### | サブクエリとJOINの併用
 eg.
 ```SQL
 SELECT
@@ -483,7 +521,7 @@ ORDER BY 1, 4;
 --|3|Aichi |        4|       90324|   3|
 ```
 
-### ■ WITH句 - サブクエリの可読性を高める
+### | WITH句 - サブクエリの可読性を高める
 ```
 ※書式
     WITH
