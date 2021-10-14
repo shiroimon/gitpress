@@ -38,7 +38,8 @@ ORDER BY  2 DESC;
 # ①+②
 SELECT
     user_id,
-    SUM(quantity) AS qty_by_user,
+    SUM(quantity) AS qty_by_user
+    -- ①をttl_qtyとして使用可
     (SELECT SUM(quantity) FROM `prj-test3.bq_trial.pos`) AS ttl_qty
 FROM `prj-test3.bq_trial.pos`
 GROUP BY  user_id
@@ -57,7 +58,9 @@ SELECT
     user_id,
     SUM(quantity) AS qty_by_user,
     (SELECT SUM(quantity) FROM `prj-test3.bq_trial.pos`) AS ttl_aty,
-    ROUND(SUM(quantity)/(SELECT SUM(quantity) FROM `prj-test3.bq_trial.pos`),3)*100 AS pctg_by_user
+    ROUND(
+        SUM(quantity)/(SELECT SUM(quantity) FROM `prj-test3.bq_trial.pos`)
+        ,3)*100 AS pctg_by_user
 FROM `prj-test3.bq_trial.pos`
 GROUP BY 1;
 
@@ -70,15 +73,16 @@ GROUP BY 1;
 
 ### | サブクエリの戻り値の型
 ```
-1. スカラー    :単一の値 [n]
-2. ベクター    :リストの値 [n行×1列]
-3. マトリックス :表の値[n行×m列]
+1. スカラー     : 単一の値    [n]
+2. ベクター     : リストの値  [n行×1列]
+3. マトリックス : 表の値      [n行×m列]
 
           |スカラー|ベクター|マトリックス|
   SELECT句|   ●   |        |            |
   FROM句  |        |   ●   |     ●     |
   WHERE句 |   ●   |   ●   |            |
 ```
+#### ■ スカラー
 ex.【9.3 演習問題1 (2:10)】(WHERE句 × スカラー)
 
 
@@ -128,10 +132,10 @@ ex.【9.4 演習問題2 (4:20)】(SELECT句 × スカラー)
  SELECT
      user_id,
      SUM(quantity*unit_price) AS sales_by_user,
-     (SELECT SUM(quantity*unit_price)
-      FROM `prj-test3.bq_trial.pos`) AS ttl_sales,
-     ROUND(SUM(quantity*unit_price) / (SELECT SUM(quantity*unit_price)
-                                 FROM `prj-test3.bq_trial.pos`),3)*100 AS sales_share_by_user
+     (SELECT SUM(quantity*unit_price) FROM `prj-test3.bq_trial.pos`) AS ttl_sales,
+     ROUND(
+         SUM(quantity*unit_price) / (SELECT SUM(quantity*unit_price) FROM `prj-test3.bq_trial.pos`)
+         ,3)*100 AS sales_share_by_user
  FROM `prj-test3.bq_trial.pos`
  GROUP BY user_id
  ORDER BY 2 DESC;
@@ -148,10 +152,10 @@ ex.【9.4 演習問題3 (7:20)】(SELECT句 × スカラー)
  SELECT
      DATE_TRUNC(date, month) AS month,
      SUM(sales_amount) AS sales_by_month,
-     (SELECT SUM(sales_amount)
-      FROM `prj-test3.bq_sample.shop_purchases`) AS ttl_sales,
-     ROUND((SUM(sales_amount)*100) / (SELECT SUM(sales_amount)
-                                     FROM `prj-test3.bq_sample.shop_purchases`),1) AS sales_ratio,
+     (SELECT SUM(sales_amount) FROM `prj-test3.bq_sample.shop_purchases`) AS ttl_sales,
+     ROUND(
+         (SUM(sales_amount)*100) / (SELECT SUM(sales_amount)FROM `prj-test3.bq_sample.shop_purchases`)
+         ,1) AS sales_ratio,
  FROM `prj-test3.bq_sample.shop_purchases`
  GROUP BY month
  ORDER BY month;
@@ -170,8 +174,8 @@ ex.【9.5 演習問題1 (0:40)】(WHERE句 × スカラー)
      purchase_id,
      sales_amount
  FROM `prj-test3.bq_sample.shop_purchases`
- WHERE sales_amount > (SELECT AVG(sales_amount)
-                       FROM `prj-test3.bq_sample.shop_purchases`)
+ WHERE
+    sales_amount > (SELECT AVG(sales_amount) FROM `prj-test3.bq_sample.shop_purchases`)
  ORDER BY sales_amount DESC;
 
  -- | |purchase-id|sales_amount|
@@ -188,18 +192,19 @@ ex.【9.5 演習問題1 (0:40)】(WHERE句 × スカラー)
      CONCAT(last_name, " ", first_name) AS fullname,
      birthday,
      DATE_DIFF("2018-12-31", birthday, year) AS age,
-     (SELECT ROUND(AVG(DATE_DIFF("2018-12-31", birthday, year)))
-      FROM `prj-test3.bq_sample.customers`) AS avg_age,
-     (SELECT ROUND(STDDEV_POP(DATE_DIFF("2018-12-31", birthday, year)))
-      FROM `prj-test3.bq_sample.customers`)AS stddev_age
+     (SELECT ROUND(AVG(DATE_DIFF("2018-12-31", birthday, year))) FROM `prj-test3.bq_sample.customers`) AS avg_age,
+     (SELECT ROUND(STDDEV_POP(DATE_DIFF("2018-12-31", birthday, year))) FROM `prj-test3.bq_sample.customers`)AS stddev_age
  FROM `prj-test3.bq_sample.customers`
- WHERE DATE_DIFF("2018-12-31", birthday, year) > (SELECT AVG(DATE_DIFF("2018-12-31", birthday, year))
-                                                  FROM `prj-test3.bq_sample.customers`)-(SELECT STDDEV_POP(DATE_DIFF("2018-12-31", birthday, year))
-                                                                                         FROM `prj-test3.bq_sample.customers`)
-       AND DATE_DIFF("2018-12-31", birthday, year) < (SELECT AVG(DATE_DIFF("2018-12-31", birthday, year))
-                                                      FROM `prj-test3.bq_sample.customers`)+(SELECT STDDEV_POP(DATE_DIFF("2018-12-31", birthday, year))
-                                                                                             FROM `prj-test3.bq_sample.customers`)
- -- age BETWEEN (avg_age + std_age) AND (avg_age - std_age) #(別解)
+ WHERE
+    DATE_DIFF("2018-12-31", birthday, year)
+    > (SELECT AVG(DATE_DIFF("2018-12-31", birthday, year)) FROM `prj-test3.bq_sample.customers`)
+    - (SELECT STDDEV_POP(DATE_DIFF("2018-12-31", birthday, year)) FROM `prj-test3.bq_sample.customers`)
+    AND
+    DATE_DIFF("2018-12-31", birthday, year)
+    < (SELECT AVG(DATE_DIFF("2018-12-31", birthday, year)) FROM `prj-test3.bq_sample.customers`)
+    + (SELECT STDDEV_POP(DATE_DIFF("2018-12-31", birthday, year)) FROM `prj-test3.bq_sample.customers`)
+
+    -- age BETWEEN (avg_age + std_age) AND (avg_age - std_age) #(別解)
  ORDER BY age DESC;
 
  -- |   |user_id|fullname   |birthday   |age|avg_age|stddev_age|
@@ -213,37 +218,28 @@ ex.【9.5 演習問題3 (11:10)】(WHERE句 × スカラー)
  SELECT
      COUNT(user_id) AS user_in_target,
      (SELECT COUNT(*) FROM `prj-test3.bq_sample.customers`) AS total_user_count,
-     ROUND(COUNT(user_id)*100/(SELECT COUNT(*) FROM `prj-test3.bq_sample.customers`),1) AS percentage
+     ROUND(
+         COUNT(user_id)*100/(SELECT COUNT(*) FROM `prj-test3.bq_sample.customers`)
+         ,1) AS percentage
  FROM `prj-test3.bq_sample.customers`
- WHERE DATE_DIFF("2018-12-31", birthday, year)
-       BETWEEN
-         (SELECT AVG(DATE_DIFF("2018-12-31", birthday, year)) FROM `prj-test3.bq_sample.customers`)
+ WHERE
+    DATE_DIFF("2018-12-31", birthday, year)
+    BETWEEN
+        (SELECT AVG(DATE_DIFF("2018-12-31", birthday, year)) FROM `prj-test3.bq_sample.customers`)
         -(SELECT STDDEV_POP(DATE_DIFF("2018-12-31", birthday, year)) FROM `prj-test3.bq_sample.customers`)
-       AND
-         (SELECT AVG(DATE_DIFF("2018-12-31", birthday, year)) FROM `prj-test3.bq_sample.customers`)
-        +(SELECT STDDEV_POP(DATE_DIFF("2018-12-31", birthday, year)) FROM `prj-test3.bq_sample.customers`);
+    AND
+        (SELECT AVG(DATE_DIFF("2018-12-31", birthday, year)) FROM `prj-test3.bq_sample.customers`)
+        +(SELECT STDDEV_POP(DATE_DIFF("2018-12-31", birthday, year)) FROM `prj-test3.bq_sample.customers`)
+ ;
 
  -- | |user_in_target|total_user_count|percentage|
  -- |1|           529|             944|      56.0|
 ```
+#### ■ ベクター
 ex.【9.6 演習問題1 (1:12)】(WHERE句 × ベクター)
 
 
 ```SQL
- #(other_code...34.58 KB)
- SELECT
-     sp.user_id,
-     SUM(sp.sales_amount )AS sales_by_users
- FROM `prj-test3.bq_sample.shop_purchases` AS sp
- INNER JOIN `prj-test3.bq_sample.customers` AS c USING(user_id)
- WHERE c.gender = 2
- GROUP BY 1
- ORDER BY 1;
-
- -- | |user_id|sales_by_users|
- -- |1| 497520|         31518|
- -- |2| 529565|          3860|
-
  #(miss_code)
  -- SELECT
  --     user_id,
@@ -256,9 +252,24 @@ ex.【9.6 演習問題1 (1:12)】(WHERE句 × ベクター)
      user_id,
      SUM(sales_amount) AS sales_by_users
  FROM `prj-test3.bq_sample.shop_purchases`
- WHERE user_id IN(SELECT user_id FROM `prj-test3.bq_sample.customers` WHERE gender=2)
+ WHERE
+    user_id IN(SELECT user_id FROM `prj-test3.bq_sample.customers` WHERE gender=2)
  GROUP BY user_id
  ORDER BY user_id;
+
+ -- | |user_id|sales_by_users|
+ -- |1| 497520|         31518|
+ -- |2| 529565|          3860|
+
+ #(other_code...34.58 KB)
+ SELECT
+     sp.user_id,
+     SUM(sp.sales_amount )AS sales_by_users
+ FROM `prj-test3.bq_sample.shop_purchases` AS sp
+ INNER JOIN `prj-test3.bq_sample.customers` AS c USING(user_id)
+ WHERE c.gender = 2
+ GROUP BY 1
+ ORDER BY 1;
 
  -- | |user_id|sales_by_users|
  -- |1| 497520|         31518|
@@ -274,9 +285,10 @@ ex.【9.6 演習問題2 (4:25)】(WHERE句 × ベクター)
      prefecture,
      birthday
  FROM `prj-test3.bq_sample.customers`
- WHERE user_id IN(SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE product_id =11)
-       AND prefecture="Tokyo"
-       AND gender=2
+ WHERE
+     user_id IN(SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE product_id =11)
+     AND prefecture="Tokyo"
+     AND gender=2
  ORDER BY CURRENT_DATE("Asia/Tokyo")-birthday DESC;
 
  -- | |user_id|fullname    |prefecture|birthday  |
@@ -298,44 +310,60 @@ eg. 日別の販売数量平均を知りたい場合。等
 #②: ①をサブクエリとして利用。
  SELECT
      AVG(sum_of_qty_by_day) AS avg_qty_by_day
- FROM (SELECT SUM(quantity) AS sum_of_qty_by_day
+ FROM
+    (SELECT SUM(quantity) AS sum_of_qty_by_day
      FROM `prj-test3.bq_trial.pos`
-     GROUP BY date);
+     GROUP BY date)
+ ;
  -- | |avg_qty_by_day|
  -- |1|          45.0|
 ```
 
+ex.【9.7 演習問題1 (3:20)】(FROM句 × ベクター)
+
+
 ```SQL
- #【9.7 演習問題1 (3:20)】(FROM句 × ベクター)
  SELECT
      AVG(sold_by_day) AS avg_number_of__prob_sold_by_day
- FROM (SELECT
-         COUNT(product_id) AS sold_by_day
-       FROM `prj-test3.bq_trial.pos`
-       GROUP BY date);
+ FROM
+    (SELECT
+        COUNT(product_id) AS sold_by_day
+     FROM `prj-test3.bq_trial.pos`
+     GROUP BY date)
+;
+
  -- | |avg_number_of__prob_sold_by_day|
  -- |1|                            7.5|
+```
+ex.【9.7 演習問題2 (6:10)】(FROM句 × ベクター)
 
- #【9.7 演習問題2 (6:10)】(FROM句 × ベクター)
+
+```sql
  SELECT
      MAX(month_of_pv) AS max_month_of_pv,
      MIN(month_of_pv) AS min_month_of_pv,
      AVG(month_of_pv) AS avg_month_of_pv,
      STDDEV_POP(month_of_pv) AS std_month_of_pv
- FROM (SELECT
-           DATETIME_TRUNC(timestamp, month) AS month,
-           SUM(pageview) AS month_of_pv
-       FROM `prj-test3.bq_sample.web_usage`
-       GROUP BY 1
-       ORDER BY 1);
-       -- | |month              |month_of_pv|
-       -- |1|2018-01-01T00:00:00|        175|
-       -- |1|2018-02-01T00:00:00|        233|
+ FROM
+    (SELECT
+        DATETIME_TRUNC(timestamp, month) AS month,
+        SUM(pageview) AS month_of_pv
+    FROM `prj-test3.bq_sample.web_usage`
+    GROUP BY 1
+    ORDER BY 1)
+;
+     -- | |month              |month_of_pv|
+     -- |1|2018-01-01T00:00:00|        175|
+     -- |1|2018-02-01T00:00:00|        233|
 
  -- | |max_month_of_pv|min_month_of_pv|avg_month_of_pv|std_month_of_pv  |
  -- |1|            320|            118|          216.5|53.40958091329058|
+```
+#### ■ マトリックス
+ex.【9.8 演習問題1 (3:30)】(FROM句 × マトリックス)
 
- #【9.8 演習問題1 (3:30)】(FROM句 × マトリックス)
+
+```sql
  SELECT
      shop_id,
      ROUND(AVG(day_of_total_amount)) AS avg_sales_amount
@@ -353,9 +381,11 @@ eg. 日別の販売数量平均を知りたい場合。等
  --| |shop_id|avg_sales_amount|
  --|1|      1|         32236.0|
  --|2|      2|         28963.0|
+```
+ex.【9.8 演習問題2 (5:10)】(FROM句 × マトリックス)
 
- #【9.8 演習問題2 (5:10)】(FROM句 × マトリックス)
- # (※ 7.4でerrorとなった演習をサブクエリを用いて改修。）
+(※ 7.4でerrorとなった演習をサブクエリを用いて改修。）
+```sql
  SELECT
      user_id,
      quantity,
@@ -387,15 +417,22 @@ SELECT
      user_id,
      category,
      quantity
-FROM (SELECT * FROM `prj-test3.bq_trial.pos` WHERE user_id="ABC") AS pos
-INNER JOIN `prj-test3.bq_trial.shohin_master` AS sm ON pos.product_id = sm.product_id;
+FROM
+    (SELECT * FROM `prj-test3.bq_trial.pos` WHERE user_id="ABC") AS pos
+INNER JOIN
+    `prj-test3.bq_trial.shohin_master` AS sm
+ON pos.product_id = sm.product_id
+;
+
 -- | |date      |user_id|category|quantity|
 -- |1|2019-01-01|ABC    |くだもの|      10|
 -- |2|2019-01-01|ABC    |肉      |       5|
 ```
 
+ex.【9.9 演習問題1 (2:30)】
+
+
 ```SQL
- #【9.9 演習問題1 (2:30)】
  #(miss_code)
  -- SELECT
  --     sm.category,
@@ -426,9 +463,11 @@ INNER JOIN `prj-test3.bq_trial.shohin_master` AS sm ON pos.product_id = sm.produ
  --|1|肉      |     13|
  --|2|野菜    |     30|
  --|3|魚      |     24|
+```
+ex.【9.9 演習問題2 (6:50)】
 
 
- #【9.9 演習問題2 (6:50)】
+```sql
  #(miss_code)
  -- SELECT
  --   c.prefecture
@@ -466,9 +505,11 @@ INNER JOIN `prj-test3.bq_trial.shohin_master` AS sm ON pos.product_id = sm.produ
  --|2|Aichi     |       247|       43800|   2|
  --|3|Aichi     |       535|       43800|   2|
  --|1|Aomori    |       206|       22000|   1|
+```
+ex.【9.9 演習問題 (11:10)】
 
 
- #【9.9 演習問題 (11:10)】
+```sql
 --|pref |prodcut_id|ttl_sales_amount|rank|
 --|Tokyo|       120|         5000000|   1|
 
@@ -488,6 +529,7 @@ FROM (SELECT
        )
 WHERE pref IS NOT NULL AND rank<=3
 ORDER BY pref, rank;
+
 --| |pref  |prodcut_id|total_sales|rank|
 --|1|Aichi |        9|      111360|   1|
 --|2|Aichi |       10|      102200|   2|
@@ -515,6 +557,7 @@ FROM (SELECT
       )
 WHERE prefecture IS NOT NULL AND sales_rank <=3
 ORDER BY 1, 4;
+
 --| |pref  |prodcut_id|total_sales|rank|
 --|1|Aichi |        9|      111360|   1|
 --|2|Aichi |       10|      102200|   2|
@@ -550,6 +593,7 @@ FROM `prj-test3.bq_sample.shops_master` AS sm
 INNER JOIN agg ON agg.shop_id = sm.shop_id
 GROUP BY 1, 2
 ORDER BY 1, 3;
+
 -- | |month     |chief_name   |sales |
 -- |1|2018-01-01|大井谷 みすず|435091|
 -- |2|2018-01-01|山下  唐三郎 |723369|

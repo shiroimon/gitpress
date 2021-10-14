@@ -5,6 +5,9 @@ excerpt: Google BigQuery基本の「き」について。
 tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 ---
 
+## | Section11
+### | 難易度：低
+
 ```SQL
 # ■ practice 11.2(難易度:低)
 #(goal_image)
@@ -180,10 +183,8 @@ ORDER BY 4 DESC;
 -- |1|2018-10-01|     1400|    99000|97600|
 -- |2|2018-07-01|     1600|    90710|89110|
 -- (0.7s 20KB)
-
-
 ```
----
+### | 難易度：低
 
 ```SQL
 # ■ practice 11.7(難易度:中)
@@ -248,9 +249,9 @@ ORDER BY 1;
 -- |1|0-10000     |  590|        0.46|
 -- |2|10000-20000 |  388|       0.303|
 -- (1.1s 10KB)
-
-
 ```
+### | 難易度：中
+
 ```SQL
 # ■ practice 11.8(難易度:中)
 #(miss_codd)
@@ -383,8 +384,7 @@ SELECT shop_id, product_id FROM jan_sales;
 
 
 ```
-
----
+### | 難易度：高
 
 ```SQL
 # ■ practice 11.12(難易度:高)
