@@ -7,9 +7,11 @@ tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 
 ## || Section8
 ### | ER図
-```
-ER図（Entity-Relations）: テーブル同士の関係性を表した図表
-```
+
+    ER図（Entity-Relations）: テーブル同士の関係性を表した図表
+
+![img](https://i.gyazo.com/14de2286b6d4ee7163677735cc745f61.png)
+
 ```
 そもそも、DBが複数のテーブルを持っているのは?
 ∵ カスタマイズ性、メンテナンス性を高めることが重視されているため。
@@ -43,7 +45,8 @@ FROM テーブルA AS A
 ※ ON句の[AND 絞り込み条件]は省略可能。
 ```
 
-e.g. USINGでの結合
+#### ■ USINGでの結合
+e.g.
 ```SQL
 SELECT
       p.user_id,
@@ -51,12 +54,14 @@ SELECT
       p.unit_price,
       sm.category,
       sm.prod_name
-FROM `prj-test3.bq_trial.pos` AS p
-LEFT JOIN `prj-test3.bq_trial.shohin_master` AS sm
+FROM
+    `prj-test3.bq_trial.pos` AS p
+LEFT JOIN
+    `prj-test3.bq_trial.shohin_master` AS sm
 USING(product_id)
 ORDER BY p.product_id;
 
-               --[key]--
+--                [key]
 -- |  |user_id|product_id|unit_price|category|prob_name|
 -- | 1|ABC    |         1|       120|くだもの|いちご   |
 -- | 2|XYZ    |         2|       200|野菜    |白菜     |
@@ -66,11 +71,16 @@ ORDER BY p.product_id;
 
 -- [shohin_master.csv]には無い値なので、nullが返る
 ```
-e.g. ON句による条件指定の結合
+#### ■ ON句による条件指定の結合
+e.g.
 ```SQL
 SELECT
-    p.user_id, p.product_id, p.unit_price, p.quantity,
-    sm.category, sm.prod_name
+    p.user_id,
+    p.product_id,
+    p.unit_price,
+    p.quantity,
+    sm.category,
+    sm.prod_name
 FROM
     `prj-test3.bq_trial.pos` AS p
 LEFT JOIN
@@ -78,7 +88,7 @@ LEFT JOIN
 ON p.product_id = sm.product_id AND p.user_id="ABC" -- ON句で詳細設定しての結合
 ORDER BY p.product_id;
 
-   --[条件]-- --[key]--
+--     [条件]    [key]
 -- | |user_id|product_id|unit_price|quantity|category|prod_name|
 -- |1|ABC    |         1|       120|      10|くだもの |いちご  |
 -- |2|XYZ    |         2|       200|       2|null    |null     |
@@ -99,13 +109,20 @@ ON p.product_id = sm.product_id AND p.user_id="ABC" AND sm.category="肉"
 -- |1|ABC    |         5|       100|       5|肉      |豚肉     |
 -- |2|ABC    |        10|       150|       8|肉      |豚肉     |
 ```
-e.g. 主キーの重複データにより要件を満たさないテーブルの結合
+#### ■結合例外処理（注意）
+e.g. 主キー(PK)の重複により要件を満たさないテーブルの結合
 ```SQL
 SELECT
-    p.user_id, p.product_id, p.unit_price, p.quantity,
-    smb.category, smb.prod_name
-FROM `prj-test3.bq_trial.pos` AS p
-LEFT JOIN `prj-test3.bq_trial.shohin_master_bad` AS smb
+    p.user_id,
+    p.product_id,
+    p.unit_price,
+    p.quantity,
+    smb.category,
+    smb.prod_name
+FROM
+    `prj-test3.bq_trial.pos` AS p
+LEFT JOIN
+    `prj-test3.bq_trial.shohin_master_bad` AS smb
 USING(product_id)
 WHERE p.product_id = 3
 ORDER BY P.product_id;
@@ -118,10 +135,15 @@ ORDER BY P.product_id;
 -- |5|XYZ    |         3|       160|        2|野菜     |人参     |
 -- |6|XYZ    |         3|       160|        2|野菜     |人参     |
 
--- pos.csv にはproduct_id３番は３レコード、shohin_master_bad.csvには本来PKは一意に存在しなくてはいけないところ、product_id３番が重複していた。
--- その結果、結合後に3レコード取るはずが、倍の6レコード取得されてしまっていた。(重複分が招いた、問題点)
--- 集計時に二重計上による誤差になりかねない💀
+/****************************************************************
+ * (問題点)
+ * pos.csvには、product_id＝３番は３レコード存在している。
+ * shohin_master_bad.csvには本来PKは一意に存在しなくてはいけないところ、product_id３番が重複していた。
+ * その結果、結合後に3レコード取るはずが、倍の6レコード取得されてしまっていた。(重複分が招いた、問題点)
+ * 集計時に二重計上による誤差になりかねない💀
+ ****************************************************************/
 ```
+
 ex.【8.5 演習問題1(0:20)】
 
 
@@ -281,8 +303,14 @@ LEFT JOIN
 LEFT JOIN
     `prj-test3.bq_sample.shops_master` AS sm ON sp.shop_id = sm.shop_id
 WHERE cu.gender <> 3
-GROUP BY tencho, sm.shop_name, customer_gender
-ORDER BY customer_gender, uriage DESC;
+GROUP BY
+    tencho,
+    sm.shop_name,
+    customer_gender
+ORDER BY
+    customer_gender,
+    uriage DESC
+;
 
 -- | |tencho     |shop_name  |customer_gnder|kyakusuu|uriage |
 -- |1|柳澤 華子  |自由が丘店 |female        |     306|4721503|

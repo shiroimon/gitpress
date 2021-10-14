@@ -198,7 +198,8 @@ ORDER BY rank;
 ```
 ex.【7.4 演習問題2(4:20)】
 
-
+trialデータセットのposテーブルに対し、user_id別にquantityの多い順にランク値を取得。
+並べ替えは、user_id、ランク値の順にどちらも昇順で行う。取得カラムはorder_id、user_id、quantityランク値（別名をrankとする）。
 ```SQL
 SELECT
     order_id,
@@ -207,23 +208,24 @@ SELECT
     RANK() OVER(
         PARTITION BY user_id
         ORDER BY quantity DESC
-    ) AS ranking
+    ) AS rank
 FROM `prj-test3.bq_trial.pos`
-ORDER BY user_id, ranking;
+ORDER BY user_id, rank;
 
--- --                     [desc]
+--                       [desc]
 -- | |order_id|user_id|quantity|ranking|
 -- |1|       9|ABC    |      12|      1|
 -- |2|       1|ABC    |      10|      2|
 -- |3|       3|ABC    |       8|      3|
 -- |4|      10|ABC    |       6|      4|
 -- |5|       2|ABC    |       5|      5|
--- -- ------------------------------------[partitin]
+-- -------------------------------------- [partitin]
 -- |6|      12|STU    |      12|      1|
+-- |7|       4|STU    |       8|      2|
 ```
 ex.【7.4 演習問題3(6:20)】
 
-
+更に、rankが3位以内という絞り込みを行う。
 ```SQL
 SELECT
     order_id,
@@ -232,13 +234,14 @@ SELECT
     RANK() OVER(
         PARTITION BY user_id
         ORDER BY quantity DESC
-    ) AS ranking
+    ) AS rank
 FROM `prj-test3.bq_trial.pos`
-WHERE ranking <= 3
-ORDER BY user_id, ranking;
+WHERE rank <= 3
+ORDER BY user_id, rank;
 
--- ∴ WHERE句は使用不可（分析関数では絞り込みできない
--- ∵WHEREが先に実行され、その後にSELECTの為）
+-- ∴WHERE句は使用不可（分析関数では絞り込みできない）
+-- ∵WHEREが先に実行され、その後にSELECTの為
+-- (解決)サブクエリを用いる
 ```
 
 ##### | ROW_NUMBER() - パーテションの中の行番号を返す。
@@ -251,7 +254,8 @@ ROW_NUMBER() OVER(
 ```
 ex.【7.4 演習問題4(9:00)】
 
-
+access_logテーブルから、user_idsession_countpage、セッション中のヒットカウント列を取得。
+ヒットカウントは同一セッションにおける、何番目のヒットだったか？を表す整数。
 ```SQL
 SELECT
     user_id,
@@ -263,12 +267,16 @@ SELECT
     ) AS hit_count
 FROM `prj-test3.bq_trial.access_log`;
 
--- | |user_id|session_count|page           |hit_count|
--- |1|ABC    |            2|/products/?id=7|        1|
--- |2|ABC    |            2|/cart/cart.php |        2|
--- |3|ABC    |            2|/products/?id=7|        3|
+-- | |user_id|session_count|page            |hit_count|
+-- |1|ABC    |            2|/products/?id=7 |        1|
+-- |2|ABC    |            2|/cart/cart.php  |        2|
+-- |3|ABC    |            2|/products/?id=7 |        3|
 -- -- --------------------------------------------------[partition]
--- |4|ABC    |            1|/index.php     |        1|
+-- |4|ABC    |            1|/index.php      |        1|
+-- |5|ABC    |            1|/special/       |        2|
+-- |6|ABC    |            1|/products/?id=1 |        3|
+-- |7|ABC    |            1|/products/?id=7 |        4|
+-- |8|ABC    |            1|/products/?id=10|        5|
 ```
 
 #### ■ ナビゲーション [関数]（）
@@ -304,7 +312,7 @@ FIRST_VALUE(値を取得する対象カラム) OVER(
 
 ex.【7.5 演習問題1(1:30)】
 
-
+分析関数first_value()を利用して、trialデータセットのposテーブルから、「ユーザー別に初回購入した商品」を取得。購入の順番は、order_idが小さいほど早い。
 ```SQL
 #(miss_codd)
 -- SELECT
@@ -335,7 +343,7 @@ FROM `prj-test3.bq_trial.pos`;
 ```
 ex.【7.5 演習問題2(4:10)】
 
-
+trailデータセットのaccess_logテーブルを利用して、user_id、session_count、landing_page（セッション中のヒットを時系列的に並べた時の最初のページ）、exit_page（セッション中のヒットを時系列に並べた時の最後のページ）を取得。
 ```SQL
 SELECT
     user_id,
@@ -357,17 +365,22 @@ FROM `prj-test3.bq_trial.access_log`;
 -- -----------------------------------------------------------[PARTITION]
 -- |6|ABC    |            2|/products/?id=7|/products/?id=7 |
 
--- ※（問題）exit_pageの項目がバラバラ問題
---   ∵ [WINDOW FRAME]がデフォルトの値が入ってしまっているから。（設定しないと入ってしまう。）
---
---   [ROWS] [BETWEEN] UNBOUNDED PRECEDING [AND] CURRENT ROW
---
---   その為、パーテションの中での最初と最後の値を取得しているのではなく、
---   ウィンドウの中での最初の値、最後の値を取得している。
+
+/***************************************************************
+ * ※（問題点）exit_pageの項目がバラバラ問題
+ *    ∵ [WINDOW FRAME]がデフォルトの値が入ってしまっているから。
+ *       （設定しないと入ってしまう。）
+ *
+ *  [ROWS] [BETWEEN] UNBOUNDED PRECEDING [AND] CURRENT ROW
+ *
+ *  その為、パーテションの中での最初と最後の値を取得しているのではなく、
+ *  ウィンドウの中での最初の値、最後の値を取得している。
+ ***************************************************************/
 ```
 ex.【7.5 演習問題3(4:10)】
 
-
+前問では、WINDOWFRAMがデフォルトの状態で取得してしまっている。
+正しいexit_pageを取得。
 ```SQL
 SELECT
     user_id,
@@ -375,12 +388,13 @@ SELECT
     FIRST_VALUE(page) OVER(
         PARTITION BY session_count
         ORDER BY timestamp ASC
-    ) AS landing_page,
+        -- ROWS BETWEEN UNBOUNDED PRECEDING  AND UNBOUNDED FOLLOWING
+        ) AS landing_page,
     LAST_VALUE(page) OVER(
         PARTITION BY session_count
         ORDER BY timestamp ASC
         ROWS BETWEEN UNBOUNDED PRECEDING  AND UNBOUNDED FOLLOWING
-    ) AS exit_page
+        ) AS exit_page
 FROM `prj-test3.bq_trial.access_log`;
 
 -- | |user_id|session_count|landing_page   |exit_page          |
@@ -392,7 +406,7 @@ FROM `prj-test3.bq_trial.access_log`;
 ```
 
 ##### | LEAD()、 LAG()
-```
+```sql
 LEAD() - 自分の今いる行の１行下の行の値を取得
 LAG()  - 自分の今いる行の１行下の上の値を取得
 ```
@@ -407,7 +421,8 @@ e.g.
 
 ex.【7.5 演習問題4(13:20)】
 
-
+access_logテーブルから、ページ毎の滞在時間（秒数）を、time_on_pageとして取得。
+time_on_pageは、あるページがヒットされたdatetimeから、次のページがヒットされたdatetimeを差し引くことで求まる。
 ```SQL
 #(miss code)
 -- SELECT
@@ -430,15 +445,16 @@ SELECT
     session_count,
     page,
     timestamp,
-    --次の行のpageを取ってきて！
+    --次の行のpageを取得
     LEAD(page) OVER(PARTITION BY session_count ORDER BY timestamp) AS next_page,
-    --次の行のtimestampを取ってきて！
+    --次の行のtimestampを取得
     LEAD(timestamp) OVER(PARTITION BY session_count ORDER BY timestamp) AS next_hit_timestamp,
     DATETIME_DIFF(
+        --次の行のtimestampを取得
         LEAD(timestamp) OVER(PARTITION BY session_count ORDER BY timestamp),
         timestamp,
         second
-    ) AS time_on_page
+        ) AS time_on_page
 FROM `prj-test3.bq_trial.access_log`
 ORDER BY timestamp;
 
@@ -453,7 +469,7 @@ ORDER BY timestamp;
 -- |7|ABC    |            2|/thanks/thanks.php|2019-01-03 16:06:09 UTC|null              |null                   |        null| ←離脱
 ```
 
-### | 集計分析 [関数]（）
+#### ■ 集計分析 [関数]（）
 ※ 様々な集計分析関数
 ```
 SUM()  : パーテションの中の合計値を返す
@@ -474,7 +490,8 @@ e.g.
 
 ex.【7.6 演習問題1(1:20)】
 
-
+集計分析関数sum()を利用して、productsテーブルから、「ユーザー別の購入順累計quantity」を求めcumlative_ttlという別名を付与。購入の順番は、order_idが小さいほど早い。
+（Aさんが、購入順に、２個、５個、６個と購入した場合、２、７、１３という累計値を取得したい。）
 ```SQL
 SELECT
     user_id,
@@ -492,10 +509,14 @@ FROM `prj-test3.bq_trial.pos`;
 -- |2|ABC    |       2|       5|            15|
 -- |3|ABC    |       3|       8|            23|
 -- |4|ABC    |       9|      12|            35|
+-- |5|ABC    |      10|       6|            41|
+-- |6|STU    |       4|       8|             8|
+-- |7|STU    |      11|       3|            11|
 ```
 ex.【7.6 演習問題2(3:10)】
 
-
+集計分析関数avg()を利用して、productsテーブルから、「ユーザー別の直近3回の購入金額の平均」を求めave_amount_3movingという別名を付与。購入順は、order_idが小さいほど早い。
+（Aさんが、購入順に、２個、５個、６個、１個と購入した場合、2.0、3.5、4.3、4.0という移動平均値を取得したい。）
 ```SQL
 #(miss_code)
 -- SELECT
@@ -517,32 +538,36 @@ SELECT
     quantity,
     unit_price,
     quantity * unit_price AS sales_amount,
-    ROUND(AVG(quantity * unit_price) OVER(
-        PARTITION BY user_id
-        ORDER BY order_id
-        ROWS BETWEEN 2 PRECEDING AND CURRENT ROW --2行行前から現在の行まで
-    ), 2) AS avg_amount_3moving
+    ROUND(
+        AVG(quantity * unit_price) OVER(
+            PARTITION BY user_id
+            ORDER BY order_id
+            ROWS BETWEEN 2 PRECEDING AND CURRENT ROW --2行前から現在の行まで
+            ), 2) AS avg_amount_3moving
 FROM `prj-test3.bq_trial.pos`;
 
 -- | |user_id|order_id|quantity|unti_price|sales_amount|avg_amount_3moving|
 -- |1|ABC    |       1|      10|       120|        1200|            1200.0|
--- |2|ABC    |       2|       5|       100|         500|             850.0| --(1200+500)/2
--- |3|ABC    |       3|       8|       150|        1200|            966.77| --(1200+500+1200)/3
--- |4|ABC    |       9|      12|       160|        1920|           1206.67| --(500+1200+1920)/3
--- |5|ABC    |      10|       6|       200|        1200|            1440.0| --(1200+1920+1200)/3
+-- |2|ABC    |       2|       5|       100|         500|             850.0| (1200+500)/2
+-- |3|ABC    |       3|       8|       150|        1200|            966.77| (1200+500+1200)/3
+-- |4|ABC    |       9|      12|       160|        1920|           1206.67| (500+1200+1920)/3
+-- |5|ABC    |      10|       6|       200|        1200|            1440.0| (1200+1920+1200)/3
 ```
 ex.【7.6 演習問題3(6:50)】
 
-
+集計分析関数max()を利用して、posテーブルから、「ユーザー別に1回の買い物での過去最大のquantity」を取得し、lagest_qty_everという別名を付与。購入順番はorder_idが小さいほど早い。
+（Aさんが、購入回数順に２個、５個、６個、４個と購入した場合、２、５、６、６という数値を取得したい。）
 ```SQL
 SELECT
-    user_id, order_id, quantity,
+    user_id,
+    order_id,
+    quantity,
     unit_price * quantity AS total_price,
     MAX(unit_price * quantity) OVER(
         PARTITION BY user_id
         ORDER BY order_id
         -- ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-    ) AS lagest_qty_ever
+        ) AS lagest_qty_ever
 FROM `prj-test3.bq_trial.pos`;
 
 -- | |user_id|order_id|quantity|total_sales|lagest_qty_ever|
