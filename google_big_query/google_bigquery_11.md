@@ -8,16 +8,15 @@ tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 ## | Section11
 ### | 難易度：低
 
+■ practice 11.2 (難易度:低)
 ```SQL
-# ■ practice 11.2(難易度:低)
 #(goal_image)
 --| |first_name|count|rank|
+
 SELECT
     first_name,
     COUNT(*) AS count,
-    RANK () OVER(
-        ORDER BY COUNT(*) DESC
-        ) AS rank
+    RANK () OVER(ORDER BY COUNT(*) DESC) AS rank
 FROM `prj-test3.bq_sample.customers`
 WHERE
     gender=1 --男性
@@ -25,12 +24,14 @@ WHERE
     birthday BETWEEN "1989-01-08" AND "2019-04-30" -- 平成産まれ
 GROUP BY 1
 ORDER BY 2 DESC;
+
 --| |first_name|count|rank|
 --|1|匠        |    2|   1|
 -- (1.6s 22KB)
 ```
+
+■ practice 11.3 (難易度:低)
 ```SQL
-# ■ practice 11.3(難易度:低)
 #(goal_image)
 --| |pref|avg_age|
 
@@ -42,24 +43,26 @@ SELECT
             CAST(FORMAT_DATE("%Y" ,DATE_TRUNC("2018-12-31", MONTH)) AS INT64)
           - CAST(FORMAT_DATE("%Y", (DATE_TRUNC(birthday, MONTH))) AS INT64)
           )
-        ) AS avg_age,
+        ) AS avg_age
 FROM `prj-test3.bq_sample.customers`
 WHERE prefecture IS NOT NULL
 GROUP BY 1
 HAVING COUNT(prefecture) > 5
 ORDER BY 2 DESC;
+
 -- | |pref     |avg_age|
 -- |1|Miyagi|   51.0|
 -- (0.5s 13.9KB)
 
+# (other-code)
 # SELECT
 #    prefecture,
 #    ROUND(AVG(DATE_DIFF("2018-12-31", birthday, YEAR))) AS avg_age,
 #    COUNT(user_id) AS users
 ```
 
+■ practice 11.4 (難易度:低)
 ```SQL
-# ■ practice 11.4(難易度:低)
 #(goal_image)
 --| |prob_category|total_qty|
 --|1|Tシャツ      |         |
@@ -79,11 +82,11 @@ FROM(SELECT
     LEFT OUTER JOIN `prj-test3.bq_sample.products_master` AS pm USING(product_id))
 GROUP BY 1
 ORDER BY 2 DESC;
+
 --| |prob_category|total_qty|
 --|1|Tシャツ      |     1739|
 --|2|Non-Tシャツ  |     1156|
 --(0.8s 20.2KB)
-
 
 -- answer -----------------------------------------------------
 SELECT
@@ -96,22 +99,29 @@ FROM `prj-test3.bq_sample.shop_purchases`
 LEFT JOIN `prj-test3.bq_sample.products_master`
 USING(product_id)
 GROUP BY t_shirts_or_not;
+
 --| |prob_category|total_qty|
 --|1|Non-Tシャツ  |     1156|
 --|2|Tシャツ      |     1739|
 --(0.5s 20.8KB)
-
-
 ```
+
+■ practice 11.5 (難易度:低)
 ```SQL
-# ■ practice 11.5(難易度:低)
 SELECT
     COUNT(user_id)
-FROM(SELECT user_id
-     FROM(SELECT * FROM `prj-test3.bq_sample.shop_purchases` WHERE date BETWEEN "2018-01-01" AND "2018-01-31")
+FROM
+    (SELECT
+        user_id
+     FROM
+        (SELECT * FROM `prj-test3.bq_sample.shop_purchases` WHERE date BETWEEN "2018-01-01" AND "2018-01-31")
      INTERSECT DISTINCT
-     SELECT user_id
-     FROM(SELECT * FROM `prj-test3.bq_sample.shop_purchases` WHERE date BETWEEN "2018-02-01" AND "2018-02-28"));
+     SELECT
+        user_id
+     FROM
+        (SELECT * FROM `prj-test3.bq_sample.shop_purchases` WHERE date BETWEEN "2018-02-01" AND "2018-02-28")
+    )
+;
 -- | |f0_|
 -- |1|  4|
 -- (1.0s 20KB)
@@ -124,14 +134,14 @@ FROM(
     INTERSECT DISTINCT
     (SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE DATE_TRUNC(date, MONTH)="2018-02-01")
 );
+
 -- | |users|
 -- |1|    4|
 -- (0.8s 20KB)
-
-
 ```
+
+■ practice 11.6 (難易度:低)
 ```SQL
-# ■ practice 11.6(難易度:低)
 -- ||term |min_sales_amount|max_sales_amount|diff_sales_amount|
 -- ||term1|
 -- ||term2|
@@ -179,17 +189,19 @@ SELECT
 FROM `prj-test3.bq_sample.shop_purchases`
 GROUP BY 1
 ORDER BY 4 DESC;
+
 -- | |quarter   |min_sales|max_sales|diff |
 -- |1|2018-10-01|     1400|    99000|97600|
 -- |2|2018-07-01|     1600|    90710|89110|
 -- (0.7s 20KB)
 ```
-### | 難易度：低
+### | 難易度：中
 
+■ practice 11.7(難易度:中)
 ```SQL
-# ■ practice 11.7(難易度:中)
 --||階級 |度数（階級の個数）|相対度数（構成比）|
---||class|frequency|relative_frequency|
+--||class|frequency         |relative_frequency|
+
 SELECT
     class,
     COUNT(class) AS frequency,
@@ -213,7 +225,9 @@ FROM(SELECT
 GROUP BY
      1
 ORDER BY
-     3 DESC;
+     3 DESC
+;
+
 -- | |class   |frequency|relative_frequency|
 -- |1|class_1 |      590|              0.46|
 -- |2|class_2 |      388|             0.303|
@@ -244,16 +258,16 @@ FROM(SELECT
      COUNT(*) AS dosuu
      FROM `prj-test3.bq_sample.shop_purchases`
      GROUP BY kaikyu)
-ORDER BY 1;
+ORDER BY 1
+;
 -- | |kaikyu      |dosuu|soutai_dossu|
 -- |1|0-10000     |  590|        0.46|
 -- |2|10000-20000 |  388|       0.303|
 -- (1.1s 10KB)
 ```
-### | 難易度：中
 
+■ practice 11.8(難易度:中)
 ```SQL
-# ■ practice 11.8(難易度:中)
 #(miss_codd)
 -- SELECT
 --     prod_name,
@@ -288,15 +302,15 @@ FROM(SELECT
 ) AS sp
 JOIN `prj-test3.bq_sample.products_master` AS pm
 USING(product_id)
-ORDER BY 4 DESC;
+ORDER BY 4 DESC
+;
 -- | |prod_name                            |aov   |list_price|discount_rate|
 -- |1|Tシャツ（キャラクター・子供用） 長袖|1848.4|      2000|         7.58|
 -- |2|ポロシャツ 長袖                     |8204.5|      8800|        6.767|
-
-
 ```
+
+■ practice 11.10(難易度:中)
 ```SQL
-# ■ practice 11.10(難易度:中)
 SELECT
     CASE
         WHEN cu.age <= 20 THEN "20歳以下"
@@ -314,12 +328,12 @@ LEFT OUTER JOIN
      FROM `prj-test3.bq_sample.customers`) AS cu
 USING(user_id)
 GROUP BY 1
-ORDER BY 2;
+ORDER BY 2
+;
 -- | |age_category|total_amount|
 -- |1|81歳以上    |      441141|
 -- |2|20歳以下    |      770006|
 -- (0.9s 34.6KB)
-
 
 -- answer -----------------------------------------------------
 SELECT
@@ -345,11 +359,10 @@ ORDER BY 2 DESC;
 -- |2|41歳~60歳|6321162|
 -- |4|20歳以下 | 770006|
 -- (1.0s 34.6KB)
-
-
 ```
+
+■ practice 11.11(難易度:中)
 ```SQL
-# ■ practice 11.11(難易度:中)
 SELECT product_id
 FROM `prj-test3.bq_sample.shop_purchases`
 WHERE shop_id = 2 AND DATE_TRUNC(date, MONTH) = "2018-02-01"
@@ -359,6 +372,7 @@ SELECT product_id
 FROM `prj-test3.bq_sample.shop_purchases`
 WHERE shop_id = 2 AND DATE_TRUNC(date, MONTH) = "2018-01-01"
 GROUP BY 1;
+
 -- | |product_id|
 -- |1|         8|
 -- (0.9s 30KB)
@@ -378,6 +392,7 @@ WITH jan_sales AS (
 SELECT shop_id, product_id FROM feb_sales
 EXCEPT DISTINCT
 SELECT shop_id, product_id FROM jan_sales;
+
 -- | |shop_id|product_id|
 -- |1|      2|         8|
 -- (1.1s 30KB)
@@ -386,9 +401,10 @@ SELECT shop_id, product_id FROM jan_sales;
 ```
 ### | 難易度：高
 
+■ practice 11.12(難易度:高)
 ```SQL
-# ■ practice 11.12(難易度:高)
 -- |prod_id|prod_name|first_by_sel_qty|rank|
+
 SELECT
     product_id,
     prod_name,
@@ -409,6 +425,7 @@ WHERE ranking = 1
 GROUP BY 1,2
 ORDER BY 3 DESC
 LIMIT 3;
+
 -- | |product_id|prod_name                    |f0_|
 -- |1|        10|ブラウス 長袖                | 69|
 -- |2|        11|Tシャツ（デザイン） 半袖     | 66|
@@ -439,16 +456,16 @@ ON fp.first_purchase_id = pm.product_id
 GROUP BY first_purchase_item_name
 ORDER BY 2 DESC
 LIMIT 3;
+
 -- | |first_purchase_item_name      |number_of_users|
 -- |1|ブラウス 長袖                 |             69|
 -- |2|Tシャツ（デザイン） 半袖      |             66|
 -- |3|Tシャツ（キャラクター） 半袖  |             65|
 -- (1.2s 30.9KB)
-
-
 ```
+
+■ practice 11.13(難易度:高)
 ```SQL
-# ■ practice 11.13(難易度:高)
 -- ||product_id|count_item|
 
 -- SELECT
@@ -478,13 +495,14 @@ LIMIT 3;
 
 
 WITH
-ranking AS (
-    SELECT *,
-    RANK() OVER(
-        PARTITION BY user_id --購入者別
-        ORDER BY product_id --商品ID昇順∵
-    ) AS rank
-    FROM `prj-test3.bq_sample.shop_purchases`)
+    ranking AS (
+        SELECT
+            *,
+            RANK() OVER(
+                PARTITION BY user_id --購入者別
+                ORDER BY product_id ASC --商品ID昇順∵
+                ) AS rank
+        FROM `prj-test3.bq_sample.shop_purchases`)
 
 SELECT
     pm.prod_name,
@@ -503,12 +521,14 @@ FROM(SELECT
                         WHERE
                             user_id IN (SELECT user_id FROM `prj-test3.bq_sample.shop_purchases` WHERE product_id=20)
                             AND
-                            rank=1 AND product_id=20)
+                            rank=1
+                            AND product_id=20)
         AND
         product_id != 20
      GROUP BY 1) AS market_basket
 LEFT JOIN `prj-test3.bq_sample.products_master` AS pm USING(product_id)
 ORDER BY 2 DESC;
+
 -- | |product_id|prod_name              |count_prod|
 -- |1|        17|Tシャツ（コラボ） 半袖 |         7|
 -- |2|         8|ポロシャツ 長袖        |         6|
@@ -518,7 +538,7 @@ ORDER BY 2 DESC;
 -- answer -----------------------------------------------------
 
 WITH purchase_master AS (
-    SELECT user_id, prodcut_id, COUNT(*) AS kisu
+    SELECT user_id, prodcut_id, COUNT(*) AS kaisu
     FROM `prj-test3.bq_sample.shop_purchases`
     GROUP BY 1, 2
 )
@@ -542,15 +562,15 @@ FROM(SELECT
 WHERE prod1 = 20
 GROUP BY prod1, prod2
 ORDER BY 3 DESC;
+
 -- | |prod1|prod2|kaisu|
 -- |1|   20|   17|    7|
 -- |2|   20|    8|    6|
 -- (0.6s 20KB)
-
-
 ```
+
+■ practice 11.14(難易度:高)
 ```SQL
-# ■ practice 11.14(難易度:高)
 #(miss_code)
 -- WITH
 -- -- cv uu
@@ -621,13 +641,13 @@ FROM(
     --| |user_id|first_date|first_product_id|hit_date  |viewd_product_id|
     --|1| 597427|2018-10-20|              17|2018-01-20|17             |
 );
+
 --| |target_user|
 --|1|        20|
-
-
 ```
+
+■ practice 11.15(難易度:高)
 ```SQL
-# ■ practice 11.15(難易度:高)
 --<A>
 -- SELECT
 --     medium,
@@ -710,17 +730,17 @@ FROM(
 )
 GROUP BY medium
 ORDER BY 4 DESC;
+
 -- | |medium  |session|session_duration|avg_session_duration_minute|
 -- |1|social  |     15|            3262|                       3.62|
 -- |2|organic |    556|          112432|                       3.37|
 -- |3|referral|     84|           13741|                       2.73|
-
-
 ```
 Cf.[日付と時刻を取得する(date関数, time関数, datetime関数, julianday関数, strftime関数)](https://www.dbonline.jp/sqlite/function/index6.html)
 
+
+■ practice 11.16(難易度:高)
 ```SQL
-# ■ practice 11.16(難易度:高)
 WITH transaction_user AS(
     --ネット購入者リスト
     SELECT
@@ -765,6 +785,7 @@ FROM(
     LEFT JOIN `prj-test3.bq_sample.customers` USING(user_id)
 )
 LEFT JOIN `prj-test3.bq_sample.products_master` USING(product_id);
+
 -- | |user_id|last_name|first_name|shop_name   |product_id|prod_name          |
 -- |1|1000380|浅井      |忠        |自由が丘店|         3|開襟シャツ 綿 100%  |
 -- |2|1011670|度會      |咲耶      |下北沢店  |        16|Tシャツ（漢字） 長袖|
