@@ -46,10 +46,10 @@ SELECT * FROM `prj-test3.bq_trial.event_jan`
 UNION ALL
 SELECT * FROM `prj-test3.bq_trial.event_feb`;
 
---| |date      |place|last_name|first_name|gender|age|
---|1|2019-02-15|渋谷  |山本     |大輔       |男性   |29 |
---|2|2019-02-15|渋谷  |山田     |太郎       |男性   |28 |
---|9|2019-01-15|池袋  |山田     |太郎       |男性   |28 |
+-- | |date      |place|last_name|first_name|gender|age|
+-- |1|2019-02-15|渋谷 |山本     |大輔      |男性  | 29|
+-- |2|2019-02-15|渋谷 |山田     |太郎      |男性  | 28|
+-- |9|2019-01-15|池袋 |山田     |太郎      |男性  | 28|
 ```
 
 eg. 2つ以上のテーブルUNION
@@ -80,9 +80,9 @@ UNION ALL
 SELECT * FROM `prj-test3.bq_trial.event_mar` ORDER BY age;
 
 --| |date      |place|last_name|first_name|gender|age|
---|1|2019-02-15|渋谷 |高田     |みすず    |女性  |20 |
---|2|2019-01-15|池袋 |山田     |華子      |女性  |25 |
---|3|2019-02-15|渋谷 |山田     |太郎      |男性  |28 |
+--|1|2019-02-15|渋谷 |高田     |みすず    |女性  | 20|
+--|2|2019-01-15|池袋 |山田     |華子      |女性  | 25|
+--|3|2019-02-15|渋谷 |山田     |太郎      |男性  | 28|
 
 # サブクエリを用いて、親クエリでフィルタリングする。
 SELECT *
@@ -96,9 +96,9 @@ WHERE gender="女性"
 ORDER BY age;
 
 --| |date      |place|last_name|first_name|gender|age|
---|1|2019-02-15|渋谷  |高田    |みすず    |女性  |20 |
---|2|2019-01-15|池袋  |山田    |華子      |女性  |25 |
---|3|2019-03-15|品川  |高橋    |純子      |女性  |28 |
+--|1|2019-02-15|渋谷  |高田    |みすず    |女性  | 20|
+--|2|2019-01-15|池袋  |山田    |華子      |女性  | 25|
+--|3|2019-03-15|品川  |高橋    |純子      |女性  | 28|
 ```
 ex.【10.3 演習問題3(13:20)】
 
@@ -175,8 +175,8 @@ SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_feb`
 INTERSECT DISTINCT
 SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_mar`;
 
---| |last_name|first_name|gender|age|
---|1|山田     |太郎      |男性  | 28|
+-- | |last_name|first_name|gender|age|
+-- |1|山田     |太郎      |男性  | 28|
 ```
 ex.【10.4 演習問題3(5:20)】
 
@@ -188,9 +188,9 @@ ex.【10.4 演習問題3(5:20)】
 INTERSECT DISTINCT
 SELECT last_name,first_name,gender,age FROM `prj-test3.bq_trial.event_mar`;
 
---| |last_name|first_name|gender|age|
---|1|山田     |太郎     |男性   | 28|
---|2|高橋     |純子     |女性   | 28|
+-- | |last_name|first_name|gender|age|
+-- |1|山田     |太郎     |男性   | 28|
+-- |2|高橋     |純子     |女性   | 28|
 ```
 
 ### | EXCEPT - 差集合
@@ -215,9 +215,9 @@ SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_feb`
 EXCEPT DISTINCT
 SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_jan`;
 
---| |last_name|first_name|gender|age|
---|1|山本     |大輔      |男性  | 29|
---|2|本田     |健太郎    |男性  | 35|
+-- | |last_name|first_name|gender|age|
+-- |1|山本     |大輔      |男性  | 29|
+-- |2|本田     |健太郎    |男性  | 35|
 ```
 ex.【10.5 演習問題2(4:50)】
 
@@ -229,9 +229,9 @@ EXCEPT DISTINCT
  UNION DISTINCT
  SELECT last_name, first_name, gender, age FROM `prj-test3.bq_trial.event_feb`);
 
---| |last_name|first_name|gender|age|
---|1|鈴木      |輝夫     |男性  | 30|
---|2|橋田      |睦       |男性  | 30|
+-- | |last_name|first_name|gender|age|
+-- |1|鈴木      |輝夫     |男性  | 30|
+-- |2|橋田      |睦       |男性  | 30|
 -- 計4名
 ```
 ex.【10.5 演習問題3(6:50)】

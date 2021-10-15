@@ -208,7 +208,7 @@ ex.【9.5 演習問題1 (0:40)】(WHERE句 × スカラー)
     -- age BETWEEN (avg_age + std_age) AND (avg_age - std_age) #(別解)
  ORDER BY age DESC;
 
- -- |   |user_id|fullname   |birthday   |age|avg_age|stddev_age|
+ -- |   |user_id|fullname   |birthday  |age|avg_age|stddev_age|
  -- |  1|1105505|松元 陽彦  |1960-05-02| 58|   43.0|      15.0|
  -- |  2|1105505|秋山 充康  |1960-09-26| 58|   43.0|      15.0|
  -- |529| 962102|井ノ口 京香|1989-05-16| 29|   43.0|      15.0|

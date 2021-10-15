@@ -13,20 +13,22 @@ tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 テーブルデータとしてではなく視覚的に伝えやすくする方法が可視化です。
 
 1. SQLをBigQueryに書く。
+
 ```SQL
 SELECT
-        sp.year_month,
-        sm.shop_name,
-        sp.ttl_sales
-FROM(
-        SELECT
-                DATE_TRUNC(date, MONTH) AS year_month,
-                shop_id,
-                SUM(sales_amount) AS ttl_sales
-        FROM `prj-test3.bq_sample.shop_purchases`
-        GROUP BY date, shop_id) AS sp
+    sp.year_month,
+    sm.shop_name,
+    sp.ttl_sales
+FROM
+    (SELECT
+        DATE_TRUNC(date, MONTH) AS year_month,
+        shop_id,
+        SUM(sales_amount) AS ttl_sales
+     FROM `prj-test3.bq_sample.shop_purchases`
+     GROUP BY date, shop_id) AS sp
 LEFT JOIN `prj-test3.bq_sample.shops_master` AS sm
-USING(shop_id);
+USING(shop_id)
+;
 ```
 
 2. BigQuery上で、求めたいデータを抽出する。
