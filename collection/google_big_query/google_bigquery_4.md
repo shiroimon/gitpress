@@ -12,7 +12,16 @@ ex.【4.2 演習問題1(1:00)】
 
 shop_purchasesテーブルからpurchase_id,user_id,dateを取り出してください。
 ```SQL
-SELECT purchase_id, user_id, date FROM bq_sample.shop_purchases;
+SELECT
+    purchase_id,
+    user_id,
+    date
+FROM bq_sample.shop_purchases
+;
+
+-- | |purchase_id|user_id|date      |
+-- |1|         22| 956425|2018-01-05|
+-- |2|        388| 937162|2018-04-30|
 ```
 
 ### | DISTINCT句 - 重複除外
@@ -20,10 +29,22 @@ ex.【4.2 演習問題2(3:45)】
 
 shop_purchasesを利用して、固有のユーザーが何人いるかを取得。
 ```SQL
-SELECT DISTINCT user_id FROM bq_sample.shop_purchases;
+SELECT
+    DISTINCT user_id
+FROM bq_sample.shop_purchases
+;
+
+-- | |user_id|
+-- |1| 956425|
+-- |2| 937162|
 ```
 
 ### | EXCEPT() - かラム除外
+e.g. 抽出時に除外したいカラム名を記載。
+```
+EXCEPT(カラム名, ...)
+```
+
 ex.【4.3 演習問題1(1:50)】
 
 shop_purchasesテーブルから全カラムを取得。
@@ -46,37 +67,60 @@ ORDER BY {カラム番号,カラム} (ASC:昇順 DESC:降順） … [1]indexに�
 ```
 ex.【4.4 演習問題1(2:31)】
 
-shop_purchasesテーブルから、user_id、quantityを取得し、quantityの大き異順に並び替えてください。
+shop_purchasesテーブルから、user_id、quantityを取得し、
+quantityの大きい順に並び替える。
 ```SQL
 SELECT
     user_id,
     quantity
 FROM bq_sample.shop_purchases
-ORDER BY quantity DESC; --ORDER BY 2 DESC;
+ORDER BY quantity DESC  --ORDER BY 2 DESC;
+;
+
+-- | |user_id|quantity|
+-- |1| 971235|       5|
+-- |2| 992842|       5|
 ```
 
 ex.【4.4 演習問題2(5:06)】
 
-shop_purchasesテーブルンの全列を取得し、dateの古い順に並べてください。
-もし、同じ日に複数行ある場合、sales_amountの大きい順に並べてください。
-sales_amountも同額であった場合には、quantityの大きい順に並べてください。
+shop_purchasesテーブルの全列を取得し、dateの古い順(日付順)に並べる。
+もし、同じ日に複数行ある場合、sales_amountの大きい順に並べる。
+さらに、sales_amountも同額であった場合には、quantityの大きい順に並べる。
 ```SQL
 SELECT *
 FROM bq_sample.shop_purchases
-ORDER BY date, sales_amount DESC, quantity desc;
---日付順(昇順) ＋ 同日の場合売上高降順 + 数量降順
+--日付順(昇順) & 同日の場合売上高降順 & 数量降順
+ORDER BY
+    date,
+    sales_amount DESC,
+    quantity DESC
+;
+--                        [ASC]                         [DESC]   [DESC]
+-- | |purchase_id|user_id|date      |shop_id|product_id|quantity|sales_amount|
+-- |1|          6| 954830|2018-01-01|      1|        17|       3|       15488|
+-- |2|          1| 733995|2018-01-01|      2|        10|       1|       12775|
 ```
 
 ex.【4.4 演習問題3(8:20)】
 
-shop_purchasesテーブルの全列を取得し、dateの新しい順に並べてください。
-もし同じ日に複数のレコードがある場合には、sales_amountの小さい順に並べてください。
-但、並べ替えには列の順序を利用すること。
+shop_purchasesテーブルの全列を取得し、dateの新しい順（日付逆順）に並べる。
+もし、同日複数のレコードがある場合には、sales_amountの小さい順に並べる。
+但、並べ替えには列の順序番号を利用すること。
 ```SQL
-SELECT *
+SELECT
+    *
 FROM bq_sample.shop_purchases
-ORDER BY 3 desc, 7;
--- ORDER BY data desc, sales_amount;
+ORDER BY
+    3 DESC,
+    7 ASC
+;
+
+--                        [DESC]                                 [ASC]
+-- | |purchase_id|user_id|date      |shop_id|product_id|quantity|sales_amount|
+-- |1|       1281| 873505|2018-12-31|      2|         7|       1|        7527|
+-- |2|       1280| 840135|2018-12-31|      1|        11|       2|        7527|
+-- |3|       1282|1118265|2018-12-31|      1|        15|       4|       16000|
 ```
 
 ### | LIMIT句 - レコード制限
