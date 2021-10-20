@@ -157,13 +157,18 @@ SELECT SUM(quantity) FROM bq_sample.shop_purchases;
 |-|-:  |
 |1|2895|
 
-ex.
+ex.【5.5 演習問題1(1:56)】
+
+shop_id別のquantityの合計値を取得。
+quantityの合計の列名を、Total_quantityとする。Total_quantityの降順。
 ```SQL
-#【5.5 演習問題1(1:56)】
-SELECT shop_id, SUM(quantity) AS Total_quantity
+SELECT
+    shop_id,
+    SUM(quantity) AS Total_quantity
 FROM `prj-test3.bq_sample.shop_purchases`
 GROUP BY 1
-ORDER BY 2 DESC;
+ORDER BY 2 DESC
+;
 -- | |shop_id|Taotal_quantity|
 -- |1|      1|           1257|
 -- |2|      2|           1063|
@@ -171,6 +176,9 @@ ORDER BY 2 DESC;
 ```
 ex.【5.5 演習問題2(3:30)】
 
+shop_id別のsales_amountの合計を取得。
+sales_amountの合計の列名をTotal_salesとする。Total_sales多い順。
+但、product_idが1,5,11,18に該当するレコードだけを対象。
 ```SQL
 SELECT
     shop_id,
@@ -178,12 +186,13 @@ SELECT
 FROM `prj-test3.bq_sample.shop_purchases`
 WHERE product_id IN(1, 5, 11, 18)
 GROUP BY shop_id
-ORDER BY Total_sales DESC;
-
+ORDER BY Total_sales DESC
+;
 -- | |shop_id|Total_salse|
 -- |1|      1|    1789674|
 -- |2|      2|    1422230|
 ```
+
 eg .※ `SUM()` 集計時はNULLが無視される。
 ```SQL
 SELECT *
@@ -197,7 +206,7 @@ SELECT
 FROM `prj-test3.bq_trial.null_treatment`;
 ```
 | |ttl_qty|ttl_salse|
-|-|-:|-:|
+|-|-:     |-:       |
 |1|      9|    49600|
 
 ```SQL
@@ -209,7 +218,7 @@ FROM `prj-test3.bq_trial.null_treatment`
 GROUP BY 1;
 ```
 | |shop_name|ttl_qty|ttl_salse|
-|-|:-|-:|-:|
+|-|:-       |-:     |-:       |
 |1|新宿     |      5|    27800|
 |2|渋谷     |      4|    21800|
 
@@ -220,7 +229,7 @@ eg.
 SELECT AVG(quantity) FROM `prj-test3.bq_sample.shop_purchases`;
 ```
 | |f0_              |
-|-|-:|
+|-|-:               |
 |1|2.258190327613107|
 
 eg. ※ `AVG()` の集計時のNULLの振る舞い(計算時は無視される)
@@ -231,36 +240,41 @@ SELECT
 FROM `prj-test3.bq_trial.null_treatment`;
 ```
 | | avg_qty|avg_salse|
-|-|-:|-:|
+|-|-:      |-:       |
 |1|    2.25|  12400.0|
 
 ex.【5.6 演習問題1(2:30)】
 
-
+shop_id別のquantityの平均を取得。
+quantity平均の列名を、avg_atyとして、大きい順に並べ替える。
 ```SQL
 SELECT
     shop_id,
     AVG(quantity) AS avg_qty
 FROM `prj-test3.bq_sample.shop_purchases`
 GROUP BY shop_id
-ORDER BY 2 DESC;
-
+ORDER BY 2 DESC
+;
 -- | |shop_id|avg_qty           |
 -- |1|      5|               3.0|
 -- |2|      3|2.4468085106382977|
 ```
+
 ex.【5.6 演習問題2(3:30)】
 
-
+shop_id別のsales_amountの平均を取得。
+sales_amount平均の列名を、avg_salesとして、大きい順に並べ替える。
+但、dateが2018年6月に一致するレコードを対象。
 ```SQL
 SELECT
     shop_id,
     AVG(sales_amount) AS avg_sales
 FROM `prj-test3.bq_sample.shop_purchases`
-WHERE date BETWEEN "2018-06-01" AND "2018-06-30"
+WHERE
+    date BETWEEN "2018-06-01" AND "2018-06-30"
 GROUP BY shop_id
-ORDER BY 2 DESC;
-
+ORDER BY 2 DESC
+;
 -- | |shop_id|avg_sales        |
 -- |1|      1|17558.62222222221|
 -- |2|      2|12881.13043478261|
@@ -280,7 +294,7 @@ FROM `prj-test3.bq_sample.shop_purchases`;
 
 ex.【5.7 演習問題1(1:15)】
 
-
+shop_id毎のproduct_idが15番の商品の1回の販売での最高額を調査。
 ```SQL
 SELECT
     shop_id,
@@ -296,7 +310,7 @@ ORDER BY 1;
 ```
 ex.【5.7 演習問題2(3:15)】
 
-
+product_idが4番の商品を、一回の販売で1個だけ販売した際に最も低い額で販売した日を、shop_idを調査。
 ```SQL
 SELECT
     date,
@@ -308,8 +322,8 @@ WHERE
     AND
     quantity = 1
 GROUP BY 1, 2
-ORDER BY 3;
-
+ORDER BY 3
+;
 -- | |date      |shop_id|min_salse|
 -- |1|2018-06-30|      3|    13260|
 -- |2|2018-01-21|      3|    13650|
@@ -322,7 +336,8 @@ ORDER BY 3;
 
 ex.【5.8 演習問題1(2:35)】
 
-
+shop_purchasesテーブルを用いて、店舗毎の１販売あたりの金額のばらつきの大きさをproduct_idが15番の商品について調べる。
+指標は、母標準偏差を使用して、std_salesという列名で表示する。ばらつきが小さい順。
 ```SQL
 SELECT
     shop_id,
@@ -330,8 +345,8 @@ SELECT
 FROM `prj-test3.bq_sample.shop_purchases`
 WHERE product_id = 15
 GROUP BY shop_id
-ORDER BY 2;
-
+ORDER BY 2
+;
 -- | |shop_id|std_sales         |
 -- |1|      4|3664.3411301852543|
 -- |2|      1| 4962.301658504852|
@@ -365,7 +380,9 @@ ORDER BY sum_qty DESC;
 
 ex.【5.9 演習問題1(4:30)】
 
-
+product_idが18番の商品について、店舗毎の平均売上金額を取得。
+また、平均売上金額15,000円を超える店舗だけを表示。
+さらに、平均売上金額が大きい順にする。
 ```SQL
 SELECT
     shop_id,
@@ -374,26 +391,32 @@ FROM `prj-test3.bq_sample.shop_purchases`
 WHERE product_id = 18
 GROUP BY shop_id
 HAVING avg_salse > 15000
-ORDER BY avg_salse DESC;
-
+ORDER BY avg_salse DESC
+;
 -- | |shop_id|avg_slse          |
 -- |1|      4|           25090.0|
 -- |1|      2|16971.185185185186|
 ```
 ex.【5.9 演習問題2(10:45)】
 
-
+customersテーブルに対し、prefecture毎のプレミアムユーザー数（プレミアムユーザーは、Is_premiumの値がtrue）を取得。
+プレミアムユーザー数が15人以下のprefectureを、プレミアムユーザー数の多い順に並べ替え。
+但、絞り込みにも、並べ替えにも列の別名を利用。
 ```SQL
 SELECT
-    prefecture,
+    prefecture AS pref,
     COUNT(user_id) AS users
 FROM `prj-test3.bq_sample.customers`
-WHERE Is_premium = true
-GROUP BY 1
+WHERE
+    Is_premium = true
+    AND
+    prefecture IS NOT NULL
+GROUP BY pref
 HAVING users <= 15
-ORDER BY 2 DESC;
-
+ORDER BY users DESC
+;
 -- | |prefecture|users|
 -- |1|Osaka     |   11|
 -- |2|Kanagawa  |   11|
+-- |3|Saitama   |    4|
 ```
