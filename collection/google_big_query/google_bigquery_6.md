@@ -32,7 +32,9 @@ FROM `prj-test3.bq_sample.shop_purchases`;
 
 ex.【6.2 演習問題1(2:40)】
 
-
+shop_purchasesテーブルから、quantityとsales_amountを利用して、purchase_idごとの平均価格を取得。
+出力には、quantityとsales_amountも含める。
+平均単価はavg_priceとし、昇順。
 ```SQL
 # (miss_code)
 -- SELECT purchase_id,
@@ -55,10 +57,11 @@ ORDER BY 4;
 -- | |purchase_id|quantity|sales_amount|avg_salse|
 -- |1|        301|       2|        2660|   1330.0|
 -- |2|       1040|       1|        1400|   1400.0|
+-- |3|        214|       5|        7600|   1520.0|
 ```
 ex.【6.2 演習問題2(4:10)】
 
-
+直前の演習に対して、avg_priceが5000円より多い結果だけを取得。
 ```SQL
 #(miss_code)
 -- SELECT purchase_id,
@@ -66,7 +69,7 @@ ex.【6.2 演習問題2(4:10)】
 --        sales_amount,
 --        sales_amount/quantity AS avg_sales
 -- FROM `prj-test3.bq_sample.shop_purchases`
--- HAVING avg_sales > 5000　#[×]
+-- HAVING avg_sales > 5000
 -- ORDER BY 4;
 
 #(collect_code)
@@ -82,18 +85,19 @@ ORDER BY 4;
 -- | |purchase_id|quantity|sales_amount|avg_salse|
 -- |1|       1196|       2|       10030|   5015.0|
 -- |2|       1079|       1|        5015|   5015.0|
+-- |3|        619|       3|       15045|   5015.0|
 ```
 
 ---
-### 数列に対する基本的な関数
+### ■数列に対する基本的な関数
 #### | ROOUND() - 数字を丸める関数
 ```SQL
 SELECT
-        ROUND(154.249) AS basic,
-        ROUND(154.249, 1) AS Plus1,
-        ROUND(154.249, 2) AS Plus2,
-        ROUND(154.249, -1) AS Minus1,
-        ROUND(154.249, -2) AS Minus2;
+        ROUND(154.249) AS basic,-- 小数点以下第位
+        ROUND(154.249, 1) AS Plus1, -- 小数点以下第二位
+        ROUND(154.249, 2) AS Plus2, -- 小数点以下第三位
+        ROUND(154.249, -1) AS Minus1, -- 十の位を丸める
+        ROUND(154.249, -2) AS Minus2; -- 百の位を丸める
 ```
 | |basic|Plus1|Plus2 |Minus1|Minus2|
 |-|-:   |-:   |-:    |-:    |-:    |
@@ -104,7 +108,8 @@ SELECT
 切り上げ関数： CEIL()
 切り捨て関数： FLOOR()
 
-※ いずれも戻り値が浮動小数点（float）
+※ いずれも戻り値が整数。
+※ データ型は浮動小数点（float）なので「.0」がついている。
 ```
 
 ex.【6.3 演習問題1(4:00)】
@@ -234,7 +239,7 @@ LIMIT 5;
 --|2|        995|       99000|   106900|
 ```
 ---
-### 文字列に対する基本的な関数
+### ■文字列に対する基本的な関数
 #### | CONCAT() - 文字列連結
 e.g.
 ```
@@ -286,7 +291,7 @@ ORDER BY 3;
 --|1|         9|ブラウス 半袖|      7| ※半角スペースもカウント
 ```
 
-### | SUBSTR() - 文字列の一部取得
+#### | SUBSTR() - 文字列の一部取得
 e.g. prod_nameの１番左から、5文字取得
 ```
 SUBSTR(prod_name, 1, 5)
@@ -355,7 +360,7 @@ SELECT
 --|1|https://www.udemy.com|www.udemy.com|
 ```
 
-###  正規表現
+### ■正規表現
 （BigQueryには正規表現を利用できる関数がある。）
 #### | REGEXP_CONTAINS() - 指定正規表現の含有の有無
 e.g.
@@ -435,7 +440,7 @@ SELECT
 |1|XYZ@gmail.com|bbc@gmail.com|XXX@XXXXXXXXX|sample.jp/products/|www.sample.ac.jp/products/|
 
 ---
-### 日時、日付に対する基本的な関数
+### ■日時、日付に対する基本的な関数
 #### | DATE()、DATETIME() - DATE型(DATETIME型)
 e.g.
 ```SQL
@@ -748,10 +753,11 @@ GROUP BY 1;
 ```
 
 #### | IFNULL文 - nullに対しての条件式
-e.g.
-
-    IFNULL(かラム名, nullの場合の返り値)
-    ※ 値がnullでないなら何もしない。
+e.g. nullの時に発動(※ 値がnullでないなら何もしない)
+```sql
+IFNULL(かラム名, nullの場合の返り値)
+```
+cf. [値がNULLだった場合は指定した別の値を返す(ifnull関数, coalesce関数)](https://www.dbonline.jp/sqlite/function/index23.html) - DBOnline
 
 ex.【6.10 演習問題2(5:20)】
 
