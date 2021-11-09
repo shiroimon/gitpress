@@ -42,7 +42,7 @@ $ jupyter lab
 * _Cf :_ [【データサイエンス】データサイエンス100本ノック！実装までの道程](https://www.youtube.com/watch?v=mh8Z5d0-0PU) - Youtube
 * _Cf :_ [Macでデータサイエンス100本ノックを動かす方法](https://qiita.com/karaage0703/items/1b18b1f4ab65d35afb5f)- Qiita
 * _Cf :_ [データサイエンス100本ノックを、Google ColabとAzure Notebooksで気軽に行いたい！](https://qiita.com/noguhiro2002/items/de49db61b69c3dbc9282)- Qiita
-> 環境構築 "怠ッ.." な人向け。コモン化した最強の記事。
+→環境構築 "怠ッ.." な人向け。コモン化した最強の記事(ありがたい)。
 
 
 ---
