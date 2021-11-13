@@ -9,6 +9,5 @@
 - [集計・分析・視覚化 - section7](basics_07)
 - [集計・分析・視覚化 - section8](basics_08)
 - [集計・分析・視覚化 - section9](basics_09)
-- [集計・分析・視覚化 - section10](basics_10)
 ## 応用編
 - []()
