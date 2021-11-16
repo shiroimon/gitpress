@@ -1,7 +1,7 @@
 ---
 date    : 2021-10-25
-title   : 【🔎SQL】繰り返し処理できるの？
-excerpt : SQLを書いていて繰り返し処理できたらいいのにと思っているのです。
+title   : 【🔎 SQL】繰り返し処理できるの？ - BigQueryScripting
+excerpt : BigQueryでSQLを書いていて繰り返し処理できたらいいのにと思っているのです。
 tags    : ["SQL", "BigQuery", "BigQueryScripting", "β"]
 ---
 ## || LOOP処理

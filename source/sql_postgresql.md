@@ -1,8 +1,8 @@
 ---
 date    : 2021-09-18
-title   : 【🐘 PostgreSQL】環境構築
+title   : 【🔎 SQL】PostgreSQL 環境構築
 excerpt : CUI操作による、PostgreSQLのインストールから、データベースへアクセスまで。
-tags    : ["PostgresSQL", "SQL", "環境構築", "iTearm2"]
+tags    : ["PostgreSQL", "OSS-DB", "SQL", "環境構築", "iTearm2", "🐘"]
 ---
 
 ## || PostgreSQLって
