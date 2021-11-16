@@ -48,5 +48,5 @@ $ jupyter lab
 ---
 ## || やってみる
 
-* [Python]()
-* [SQL]()
+* [Python](https://gitpress.io/@dot_tk/python_100knock)
+* [SQL](https://gitpress.io/@dot_tk/sql_100knock)
