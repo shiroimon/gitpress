@@ -2,7 +2,7 @@
 date    : 2021-11-11
 title   : 【📊 DS】データサイエンスで使われる言語あれこれ
 excerpt :
-tags    : ["DataScientist", "GitHub", "Docker", "SQL", "R", "Python"]
+tags    : ["DataScientist", "SAS", "SPSS", "R", "Python"]
 ---
 
 ## || あらまし
