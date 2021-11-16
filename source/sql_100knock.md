@@ -296,66 +296,213 @@ where regexp_contains(tel_no, r'\d{3}-\d{3}-\d{4}')
 ### | S-017 ★
 顧客テーブル(customer)を生年月日(birth_day)で高齢順にソートし、先頭10件を全項目表示せよ。
 ```SQL
+select
+    *
+from `prj-test3.100knocks.customer`
+order by birth_day
+limit 10
+;
 ```
 
 ### | S-018 ★
 顧客テーブル(customer)を生年月日(birth_day)で若い順にソートし、先頭10件を全 項目表示せよ。
 ```SQL
+select
+    *
+from `prj-test3.100knocks.customer`
+order by birth_day desc
+limit 10
+;
 ```
 
 ### | S-019 ★★
 レシート明細テーブル(receipt)に対し、1件あたりの売上金額(amount)が高い順にラ ンクを付与し、先頭10件を抽出せよ。項目は顧客ID(customer_id)、売上金額 (amount)、付与したランクを表示させること。なお、売上金額(amount)が等しい場合は同一順位を付与するものとする。
 ```SQL
+select
+    customer_id
+    , amount
+    , rank()over(
+            order by amount desc
+      ) as ranking
+from `prj-test3.100knocks.receipt`
+order by ranking
+limit 10
+;
 ```
 
 ### | S-020 ★★
 レシート明細テーブル(receipt)に対し、1件あたりの売上金額(amount)が高い順にラ ンクを付与し、先頭10件を抽出せよ。項目は顧客ID(customer_id)、売上金額 (amount)、付与したランクを表示させること。なお、売上金額(amount)が等しい場 合でも別順位を付与すること。
 ```SQL
+select
+    customer_id
+    , amount
+    , dense_rank()over( -- row_number()
+            order by amount desc
+      ) as ranking
+from `prj-test3.100knocks.receipt`
+order by ranking
+limit 10
+;
 ```
+
+Cf. [【BIGQUERY】分析入門 - SECTION7](https://gitpress.io/c/google_bigquery/google_bigquery_7)- .tk
 
 ### | S-021 ★
 レシート明細テーブル(receipt)に対し、件数をカウントせよ。
 ```SQL
+select
+    count(*)
+from `prj-test3.100knocks.receipt`
+;
 ```
 
 ### | S-022 ★
 レシート明細テーブル(receipt)の顧客ID(customer_id)に対し、ユニーク件数をカウ ントせよ。
 ```SQL
+select
+    count(distinct customer_id)
+from `prj-test3.100knocks.receipt`
+;
 ```
 
 ### | S-023 ★
 レシート明細テーブル(receipt)に対し、店舗コード(store_cd)ごとに売上金額 (amount)と売上数量(quantity)を合計せよ。
 ```SQL
+select
+    store_cd
+    , sum(amount) as ttl_amount
+    , sum(quantity) as ttl_quantity
+from `prj-test3.100knocks.receipt`
+group by store_cd
+;
 ```
 
 ### | S-024 ★
-レシート明細テーブル(receipt)に対し、顧客ID(customer_id)ごとに最も新しい売上 日(sales_ymd)を求め、10件表示せよ。
+レシート明細テーブル(receipt)に対し、顧客ID(customer_id)ごとに最も新しい売上日(sales_ymd)を求め、10件表示せよ。
+```sql
+select
+    customer_id
+    , max(recently_sales_ymd) as recently_sales_ymd
+from(
+    select
+        customer_id
+        , last_value(sales_ymd) over(
+            partition by customer_id
+            order by sales_ymd
+            rows between unbounded preceding  and unbounded following
+        ) as recently_sales_ymd
+    from `prj-test3.100knocks.receipt`
+)
+group by customer_id
+limit 10
+;
+```
+
 ```SQL
+select
+    customer_id
+    , max(sales_ymd) as recently_sales_ymd
+from `prj-test3.100knocks.receipt`
+group by customer_id
+limit 10
+;
 ```
 
 ### | S-025 ★
 レシート明細テーブル(receipt)に対し、顧客ID(customer_id)ごとに最も古い売上日 (sales_ymd)を求め、10件表示せよ。
 ```SQL
+select
+    customer_id
+    , min(sales_ymd)
+from `prj-test3.100knocks.receipt`
+group by customer_id
+;
 ```
 
 ### | S-026 ★
 レシート明細テーブル(receipt)に対し、顧客ID(customer_id)ごとに最も新しい売上 日(sales_ymd)と古い売上日を求め、両者が異なるデータを10件表示せよ。
 ```SQL
+select
+    customer_id
+    , max(sales_ymd) as recently
+    , min(sales_ymd) as formely
+from `prj-test3.100knocks.receipt`
+group by customer_id
+having recently <> formely
+limit 10
+;
 ```
 
 ### | S-027 ★
 レシート明細テーブル(receipt)に対し、店舗コード(store_cd)ごとに売上金額 (amount)の平均を計算し、降順でTOP5を表示せよ。
 ```SQL
+select
+    store_cd
+    , avg(amount)as mean_amount
+from `prj-test3.100knocks.receipt`
+group by store_cd
+order by mean_amount desc
+limit 5
+;
 ```
 
 ### | S-028 ★
 レシート明細テーブル(receipt)に対し、店舗コード(store_cd)ごとに売上金額 (amount)の中央値を計算し、降順でTOP5を表示せよ。
 ```SQL
+# BigQuery
+select
+    store_cd
+    , max(median_amount) as median_amount
+from
+    (select
+        store_cd
+        , percentile_cont(amount, 0.5) over(partition by store_cd) as median_amount
+    from `prj-test3.100knocks.receipt`)
+group by store_cd
+order by median_amount desc
+limit 5
+;
+```
+```SQL
+# PostgreSQL
+select
+    store_cd
+    , percentile_cont(0.5)within group(order by amount) as median_amount
+from `prj-test3.100knocks.receipt`
+group by store_cd
+order by median_amount desc
+limit 5
+;
 ```
 
 ### | S-029 ★★
 レシート明細テーブル(receipt)に対し、店舗コード(store_cd)ごとに商品コード (product_cd)の最頻値を求めよ。
 ```SQL
+# BigQuery
+select
+    store_cd
+    , approx_top_count(product_cd, 1) as product_cd_mod
+from `prj-test3.100knocks.receipt`
+group by store_cd
+;
+```
+Cf.
+* [【BigQuery】StandardSQLで最頻値（modeやtop）](https://qiita.com/chatrate/items/e8d3a6cec35dfef4524b) - Qiita
+* [BigQueryで平均値、中央値、最頻値をSQLで取得する方法](https://itips.krsw.biz/bigquery-how-to-get-average-median-mode/) - ITips
+
+
+```SQL
+# PostgreSQL
+WITH product_mode AS (
+    SELECT store_cd,product_cd, COUNT(1) as mode_cnt,
+        RANK() OVER(PARTITION BY store_cd ORDER BY COUNT(1) DESC) AS rnk
+    FROM receipt
+    GROUP BY store_cd,product_cd
+)
+SELECT store_cd,product_cd, mode_cnt
+FROM product_mode
+WHERE rnk = 1
+ORDER BY store_cd,product_cd;
 ```
 
 ### | S-030 ★
