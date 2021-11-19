@@ -6,7 +6,7 @@ tags    : ["DataScientist", "SQL", "BigQuery"]
 ---
 ## SQL編
 
-### | EDA
+### | 各テーブル確認
 ```SQL
 -- 各テーブルのデータ数確認
 select
@@ -241,7 +241,7 @@ select
     *
 from `100knocks.customer`
 where
-    regexp_contains(customer_id, r'^(A|B|C|D|E|F)')
+    regexp_contains(customer_id, r'^(A|B|C|D|E|F)') -- r'^(A-F)'
     -- customer_id like 'A%'
     -- or
     -- customer_id like 'B%'
@@ -398,7 +398,7 @@ limit 10
 ;
 ```
 
-```SQL
+```
 select
     customer_id
     , max(sales_ymd) as recently_sales_ymd
@@ -463,7 +463,7 @@ order by median_amount desc
 limit 5
 ;
 ```
-```SQL
+```
 # PostgreSQL
 select
     store_cd
@@ -491,7 +491,7 @@ Cf.
 * [BigQueryで平均値、中央値、最頻値をSQLで取得する方法](https://itips.krsw.biz/bigquery-how-to-get-average-median-mode/) - ITips
 
 
-```SQL
+```
 # PostgreSQL（解法１）
 WITH product_mode AS (
     SELECT store_cd,product_cd, COUNT(1) as mode_cnt,
@@ -539,7 +539,7 @@ order by variance desc
 limit 5
 ;
 ```
-```SQL
+```
 # BigQuery 解法2
 select
     store_cd
@@ -589,7 +589,7 @@ from(
 group by store_cd
 ;
 ```
-```sql
+```
 # PostgreSQL
 SELECT
     PERCENTILE_CONT(0.25) WITHIN GROUP(ORDER BY amount) as amount_25per,
@@ -634,7 +634,7 @@ with
 select avg(ttl_amount) from customer_tb;
 ```
 
-```SQL
+```
 # PostgreSQL
 WITH customer_amount AS (
     SELECT customer_id, SUM(amount) AS sum_amount
@@ -694,7 +694,7 @@ and p.category_small_cd=c.category_small_cd
 limit 10
 ;
 ```
-```SQL
+```
 select
     p.*
     , c.category_small_name
@@ -801,7 +801,7 @@ order by sales_ymd
 limit 10
 ;
 ```
-```SQL
+```
 %%sql
 WITH sales_amount_by_date AS (
     SELECT sales_ymd, SUM(amount) as amount FROM receipt
@@ -842,12 +842,9 @@ order by sales_ymd
 limit 10
 ;
 ```
-```SQL
-```
 
 ### | S-043 ★
-レシート明細テーブル(receipt)と顧客テーブル(customer)を結合し、性別 (gender)と年代(ageから計算)ごとに売上金額(amount)を合計した売上サマリテー ブル(sales_summary)を作成せよ。性別は0が男性、1が女性、9が不明を表すものとす る。
-ただし、項目構成は年代、女性の売上金額、男性の売上金額、性別不明の売上金額の4項 目とすること(縦に年代、横に性別のクロス集計)。また、年代は10歳ごとの階級とすること。
+レシート明細テーブル(receipt)と顧客テーブル(customer)を結合し、性別 (gender)と年代(ageから計算)ごとに売上金額(amount)を合計した売上サマリテー ブル(sales_summary)を作成せよ。性別は0が男性、1が女性、9が不明を表すものとす る。ただし、項目構成は年代、女性の売上金額、男性の売上金額、性別不明の売上金額の4項 目とすること(縦に年代、横に性別のクロス集計)。また、年代は10歳ごとの階級とすること。
 ```SQL
 with
     tb as (
@@ -899,7 +896,7 @@ from
 order by age_category
 ;
 ```
-```SQL
+```
 %%sql
 
 -- SQL向きではないため、やや強引に記載する（カテゴリ数が多いときはとても長いSQLとなってしまう点に注意）
@@ -999,7 +996,7 @@ limit 10
 ```
 Cf.[【SQL】空白やスペース、0、特定の文字を削除する方法](https://oreno-it.info/archives/2609) - SE日記
 
-```SQL
+```
 # PostgreSQL
 %%sql
 SELECT customer_id, TO_CHAR(birth_day, 'YYYYMMDD') FROM customer LIMIT 10;
@@ -1019,7 +1016,7 @@ Cf.
 + [BigQueryでstring型の文字列からdate型の日付に変換する](https://ten-ezo.com/62ac07f58f3d46f08e1eee524476acd8) - TEN's page
 + [[小ネタ] BigQueryで区切り文字のない年月日（YYYYMMDD）から日付型（YYYY-MM-DD）にする方法](https://dev.classmethod.jp/articles/omoitsuki-sonoichi/) - DevelopersIO
 
-```SQL
+```
 # PostgreSQL
 %%sql
 SELECT customer_id, TO_DATE(application_date, 'YYYYMMDD')
@@ -1054,7 +1051,7 @@ Cf.
 * [BigQuery関数 | unixtimeをDATETIMEに変換する](https://tokukichi.com/posts/444) - とくきちのゆるログ
 * [TIMESTAMP_SECONDS](https://cloud.google.com/bigquery/docs/reference/standard-sql/timestamp_functions?hl=ja#timestamp_seconds) - GoogleCloud
 
-```SQL
+```
 # PostgreSQL
 %%sql
 
@@ -1078,7 +1075,7 @@ limit10
 ```
 Cf. [BIGQUERY】分析入門 - SECTION6](https://gitpress.io/c/google_bigquery/google_bigquery_6) - .tk
 
-```SQL
+```
 %%sql
 
 SELECT
@@ -1159,7 +1156,7 @@ where
 group by label
 ;
 ```
-```SQL
+```
 %%sql
 
 WITH cust AS (
@@ -1210,7 +1207,7 @@ from `prj-test3.100knocks.customer`
 limit 10
 ;
 ```
-```SQL
+```
 %%sql
 
 -- SQL向きではないため、やや強引に記載する（カテゴリ数が多いときはとても長いSQLとなってしまう点に注意）
@@ -1268,7 +1265,7 @@ from quatile
 limit 10
 ;
 ```
-```SQL
+```
 %%sql
 
 WITH sales_amount AS(
@@ -1349,7 +1346,7 @@ limit 10
 ```
 
 ### | S-058 ★★
-顧客テーブル(customer)の性別コード(gender_cd)をダミー変数化し、顧客ID (customer_id)とともに抽出せよ。結果は10件表示させれば良い。
+顧客テーブル(customer)の性別コード(gender_cd)を**ダミー変数化**し、顧客ID (customer_id)とともに抽出せよ。結果は10件表示させれば良い。
 ```SQL
 select
      customer_id
@@ -1363,7 +1360,7 @@ limit 10
 CF[ダミー変数](https://octopus.nehan.io/manual/3375/) - nehan
 
 ### | S-059 ★
-レシート明細テーブル(receipt)の売上金額(amount)を顧客ID(customer_id)ごとに 合計し、売上金額合計を平均0、標準偏差1に標準化して顧客ID、売上金額合計とともに表 示せよ。標準化に使用する標準偏差は、不偏標準偏差と標本標準偏差のどちらでも良いも のとする。ただし、顧客IDが"Z"から始まるのものは非会員を表すため、除外して計算す ること。結果は10件表示させれば良い。
+レシート明細テーブル(receipt)の売上金額(amount)を顧客ID(customer_id)ごとに 合計し、売上金額合計を**平均0、標準偏差1に標準化**して顧客ID、売上金額合計とともに表 示せよ。標準化に使用する標準偏差は、不偏標準偏差と標本標準偏差のどちらでも良いも のとする。ただし、顧客IDが"Z"から始まるのものは非会員を表すため、除外して計算す ること。結果は10件表示させれば良い。
 ```SQL
 with
      user_amount as (
@@ -1422,38 +1419,195 @@ LIMIT 10
 ```
 
 ### | S-060 ★
-レシート明細テーブル(receipt)の売上金額(amount)を顧客ID(customer_id)ごとに 合計し、売上金額合計を最小値0、最大値1に正規化して顧客ID、売上金額合計とともに表 示せよ。ただし、顧客IDが"Z"から始まるのものは非会員を表すため、除外して計算する こと。結果は10件表示させれば良い。
+レシート明細テーブル(receipt)の売上金額(amount)を顧客ID(customer_id)ごとに 合計し、売上金額合計を**最小値0、最大値1に正規化**して顧客ID、売上金額合計とともに表 示せよ。ただし、顧客IDが"Z"から始まるのものは非会員を表すため、除外して計算する こと。結果は10件表示させれば良い。
 ```SQL
+with
+     user_amount as (
+          select
+               customer_id
+               , sum(amount) as amount
+          from `prj-test3.100knocks.receipt`
+          where customer_id not like 'Z%'
+          group by customer_id
+     )
+     , min_max_scaler as (
+          select
+               *
+               , min(amount) over() as min
+               , max(amount) over() as max
+          from user_amount
+     )
+select
+     customer_id
+     , amount
+     , (amount - min)/(max - min) as mm_amount
+from min_max_scaler
+limit 10
+;
+```
+Cf. [正規化（Normalization）／標準化（Standardization）とは？](https://atmarkit.itmedia.co.jp/ait/articles/2110/07/news027.html) -@IT
+
+```
+%%sql
+
+WITH sales_amount AS(
+    SELECT
+        customer_id,
+        SUM(amount) as sum_amount
+    FROM
+        receipt
+    WHERE
+        customer_id NOT LIKE 'Z%'
+    GROUP BY
+        customer_id
+),
+stats_amount AS (
+    SELECT
+        max(sum_amount) as max_amount,
+        min(sum_amount) as min_amount
+    FROM
+        sales_amount
+)
+SELECT
+    customer_id,
+    sum_amount,
+    (sum_amount - min_amount) * 1.0
+            / (max_amount -  min_amount) * 1.0 AS scale_amount
+FROM sales_amount
+CROSS JOIN stats_amount
+LIMIT 10
 ```
 
 ### | S-061 ★
-レシート明細テーブル(receipt)の売上金額(amount)を顧客ID(customer_id)ごとに 合計し、売上金額合計を常用対数化(底=10)して顧客ID、売上金額合計とともに表示せ よ。ただし、顧客IDが"Z"から始まるのものは非会員を表すため、除外して計算するこ と。結果は10件表示させれば良い。
+レシート明細テーブル(receipt)の売上金額(amount)を顧客ID(customer_id)ごとに 合計し、売上金額合計を**常用対数化(底=10)**して顧客ID、売上金額合計とともに表示せ よ。ただし、顧客IDが"Z"から始まるのものは非会員を表すため、除外して計算するこ と。結果は10件表示させれば良い。
 ```SQL
+with
+     user_amount as (
+          select
+               customer_id
+               , sum(amount) as amount
+          from `prj-test3.100knocks.receipt`
+          where customer_id not like 'Z%'
+          group by customer_id
+     )
+select
+     customer_id
+     , amount
+     , log10(amount) as log_amount
+from user_amount
+limit 10
+;
 ```
+Cf. [対数(自然対数,常用対数)を求める](https://www.sql-reference.com/math/log.html) - 逆引きSQL構文集
 
 ### | S-062 ★
-レシート明細テーブル(receipt)の売上金額(amount)を顧客ID(customer_id)ごとに 合計し、売上金額合計を自然対数化(底=e)して顧客ID、売上金額合計とともに表示せよ (ただし、顧客IDが"Z"から始まるのものは非会員を表すため、除外して計算するこ と)。結果は10件表示させれば良い。
+レシート明細テーブル(receipt)の売上金額(amount)を顧客ID(customer_id)ごとに 合計し、売上金額合計を**自然対数化(底=e)**して顧客ID、売上金額合計とともに表示せよ (ただし、顧客IDが"Z"から始まるのものは非会員を表すため、除外して計算するこ と)。結果は10件表示させれば良い。
 ```SQL
+with
+     user_amount as (
+          select
+               customer_id
+               , sum(amount) as amount
+          from `prj-test3.100knocks.receipt`
+          where customer_id not like 'Z%'
+          group by customer_id
+     )
+select
+     customer_id
+     , amount
+     , log(amount) as log_amount
+from user_amount
+limit 10
+;
+```
+```
+%%sql
+
+SELECT
+    customer_id,
+    SUM(amount),
+    LN(SUM(amount) + 0.5) as log_amount
+FROM
+    receipt
+WHERE
+    customer_id NOT LIKE 'Z%'
+GROUP BY
+    customer_id
+LIMIT 10
 ```
 
 ### | S-063 ★
 商品テーブル(product)の単価(unit_price)と原価(unit_cost)から、各商品の利益額 を算出せよ。結果は10件表示させれば良い。
 ```SQL
+select
+    *
+    , (unit_price - unit_cost) as profit
+from `prj-test3.100knocks.product`
+limit 10
+;
 ```
 
 ### | S-064 ★
 商品テーブル(product)の単価(unit_price)と原価(unit_cost)から、各商品の利益率 の全体平均を算出せよ。 ただし、単価と原価にはNULLが存在することに注意せよ。
 ```SQL
+select
+    *
+    , (unit_price - unit_cost) as profit
+    , (unit_price - unit_cost) / unit_price * 100 as profit_rate -- 売上総利益（粗利）
+    , avg((unit_price - unit_cost) / unit_price * 100) over () as mean_profit_rate -- 売上総利益（粗利）平均
+from `prj-test3.100knocks.product`
+limit 10
+;
+```
+Cf.[【超カンタン！】利益率の計算方法・出し方を図解でわかりやすく説明します](https://www.unchi-co.com/kaigyoblog/kigyo_kaigyo/riekiritsu.html) - The企業＆飲食経営
+```
+%%sql
+
+SELECT
+    AVG((unit_price * 1.0 - unit_cost) / unit_price) as unit_profit_rate
+FROM
+    product
+LIMIT 10
 ```
 
 ### | S-065 ★
-商品テーブル(product)の各商品について、利益率が30%となる新たな単価を求めよ。 ただし、1円未満は切り捨てること。そして結果を10件表示させ、利益率がおよそ30%付 近であることを確認せよ。ただし、単価(unit_price)と原価(unit_cost)にはNULLが 存在することに注意せよ。
+商品テーブル(product)の各商品について、利益率が30%となる新たな単価を求めよ。 ただし、1円未満は切り捨てること。そして結果を10件表示させ、利益率がおよそ30%付近であることを確認せよ。ただし、単価(unit_price)と原価(unit_cost)にはNULLが 存在することに注意せよ。
 ```SQL
+select
+    product_cd
+    , unit_cost -- 原価
+    , unit_price -- 単価
+    , (unit_price - unit_cost) as profit -- 売上総利益（粗利）
+    , trunc((unit_price - unit_cost) / unit_price * 100) as profit_rate -- 売上総利益（粗利）率
+        -- 新単価式変換
+        -- (p-c) / p  = 0.3
+        -- p - c = 0.3p
+        -- p = c/0.7 ∴
+    , trunc(unit_cost / 0.7) as new_unit_price -- 新単価
+    , trunc((unit_cost / 0.7) - unit_cost) as new_profit -- 新売上総利益（粗利）
+    , trunc(((unit_cost / 0.7) - unit_cost) / (unit_cost / 0.7) * 100) as new_profit_rate -- 新売上総利益（粗利）率
+from `prj-test3.100knocks.product`
+order by product_cd
+limit 10
+;
 ```
 
 ### | S-066 ★
 商品テーブル(product)の各商品について、利益率が30%となる新たな単価を求めよ。 今回は、1円未満を丸めること(四捨五入または偶数への丸めで良い)。そして結果を10 件表示させ、利益率がおよそ30%付近であることを確認せよ。ただし、単価 (unit_price)と原価(unit_cost)にはNULLが存在することに注意せよ。
 ```SQL
+select
+    product_cd
+    , unit_cost -- 原価
+    , unit_price -- 単価
+    , (unit_price - unit_cost) as profit -- 売上総利益（粗利）
+    , trunc((unit_price - unit_cost) / unit_price * 100) as profit_rate -- 売上総利益（粗利）率
+    , round(unit_cost / 0.7) as new_unit_price -- 新単価
+    , round((unit_cost / 0.7) - unit_cost) as new_profit -- 新売上総利益（粗利）
+    , round(((unit_cost / 0.7) - unit_cost) / (unit_cost / 0.7) * 100) as new_profit_rate -- 新売上総利益（粗利）率
+from `prj-test3.100knocks.product`
+order by product_cd
+limit 10
+;
 ```
 
 ### | S-067 ★
