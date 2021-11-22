@@ -1611,18 +1611,65 @@ limit 10
 ```
 
 ### | S-067 ★
-商品テーブル(product)の各商品について、利益率が30%となる新たな単価を求めよ。 今回は、1円未満を切り上げること。そして結果を10件表示させ、利益率がおよそ30%付 近であることを確認せよ。ただし、単価(unit_price)と原価(unit_cost)にはNULLが 存在することに注意せよ。
+商品テーブル(product)の各商品について、利益率が30%となる新たな単価を求めよ。 今回は、1円未満を切り上げること。そして結果を10件表示させ、利益率がおよそ30%付近であることを確認せよ。ただし、単価(unit_price)と原価(unit_cost)にはNULLが 存在することに注意せよ。
 ```SQL
+select
+    product_cd
+    , unit_cost
+    , unit_price
+    , ceil(unit_cost / 0.7) as new_unit_price
+    , ceil((unit_cost / 0.7) - unit_cost) / ceil(unit_cost / 0.7) as new_unit_price_rate
+from `prj-test3.100knocks.product`
+limit 10
+;
 ```
 
 ### | S-068 ★
-商品テーブル(product)の各商品について、消費税率10%の税込み金額を求めよ。 1円未 満の端数は切り捨てとし、結果は10件表示すれば良い。ただし、単価(unit_price)には NULLが存在することに注意せよ。
+商品テーブル(product)の各商品について、消費税率10%の税込み金額を求めよ。1円未 満の端数は切り捨てとし、結果は10件表示すれば良い。ただし、単価(unit_price)にはNULLが存在することに注意せよ。
 ```SQL
+select
+    product_cd
+    -- , unit_cost
+    , unit_price
+    , floor(unit_price * 1.1) as tax
+from `prj-test3.100knocks.product`
+limit 10
+;
 ```
 
 ### | S-069 ★★
-レシート明細テーブル(receipt)と商品テーブル(product)を結合し、顧客毎に全商品 の売上金額合計と、カテゴリ大区分(category_major_cd)が"07"(瓶詰缶詰)の売上金 額合計を計算の上、両者の比率を求めよ。抽出対象はカテゴリ大区分"07"(瓶詰缶詰)の 売上実績がある顧客のみとし、結果は10件表示させればよい。
+レシート明細テーブル(receipt)と商品テーブル(product)を結合し、顧客毎に全商品の売上金額合計と、カテゴリ大区分(category_major_cd)が"07"(瓶詰缶詰)の売上金額合計を計算の上、両者の比率を求めよ。抽出対象はカテゴリ大区分"07"(瓶詰缶詰)の 売上実績がある顧客のみとし、結果は10件表示させればよい。
 ```SQL
+with tb as (
+    select
+        *
+    from `prj-test3.100knocks.receipt`
+        join `prj-test3.100knocks.product`
+            using(product_cd)
+)
+, user_all_amount as (
+    select
+        customer_id
+        , sum(amount) as amount_all
+    from tb
+    group by customer_id
+)
+, user_07_amount as (
+    select
+        customer_id
+        , sum(amount) as amount_07
+    from tb
+    where category_major_cd = 07
+    group by customer_id
+)
+select
+    *
+    , amount_07 / amount_all  as ration
+from user_all_amount
+    join user_07_amount
+        using(customer_id)
+limit 10
+;
 ```
 
 ### | S-070 ★★
