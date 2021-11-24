@@ -2001,7 +2001,7 @@ with
         union all
         select 'unit_price' as key, count(*) as null_ct from `prj-test3.100knocks.product` where unit_price is null
         union all
-        select 'unit_cost' as key, count(*) as null_ct from `prj-test3.100knocks.product` where unit_cost is null
+        select 'unit_cost' as key, count(*) as null_ct from `prj-test3.100knoks.product` where unit_cost is null
     )
 select
     *
@@ -2014,28 +2014,169 @@ using(key)
 ```
 
 ### | S-080 ★
-商品テーブル(product)のいずれかの項目に欠損が発生しているレコードを全て削除し た新たなproduct_1を作成せよ。なお、削除前後の件数を表示させ、前設問で確認した件 数だけ減少していることも確認すること。
+商品テーブル(product)のいずれかの項目に欠損が発生しているレコードを全て削除した新たなproduct_1を作成せよ。なお、削除前後の件数を表示させ、前設問で確認した件数だけ減少していることも確認すること。
 ```SQL
+with
+    -- remove null inharit records.
+    product_1 as (
+        select
+            *
+        from
+            `prj-test3.100knocks.product`
+        where
+            unit_cost is not null
+    )
+select
+    '削除前' as key
+    , count(*) as record
+from `prj-test3.100knocks.product`
+union all
+select
+    '削除後' as key
+    , count(*) as record
+from product_1
+;
 ```
 
 ### | S-081 ★
-単価(unit_price)と原価(unit_cost)の欠損値について、それぞれの平均値で補完した 新たなproduct_2を作成せよ。なお、平均値については1円未満を丸めること(四捨五入ま たは偶数への丸めで良い)。補完実施後、各項目について欠損が生じていないことも確認 すること。
+単価(unit_price)と原価(unit_cost)の欠損値について、それぞれの平均値で補完した新たなproduct_2を作成せよ。なお、平均値については1円未満を丸めること(四捨五入または偶数への丸めで良い)。補完実施後、各項目について欠損が生じていないことも確認すること。
 ```SQL
+with
+    product_2 as (
+        select
+            product_cd
+            , category_major_cd
+            , category_medium_cd
+            , category_small_cd
+            , trunc(case unit_price is null
+                when true then (select mean from(select avg(unit_price)over() as mean from `prj-test3.100knocks.product`)group by mean)
+                else unit_price
+            end) as unit_cost
+            , trunc(case unit_cost is null
+                when true then (select mean from(select avg(unit_cost)over() as mean from `prj-test3.100knocks.product`)group by mean)
+                else unit_cost
+            end) as unit_cost
+        from
+            `prj-test3.100knocks.product`
+        -- where unit_price is null
+    )
+select * from product_2
+;
 ```
+Cf. [【BIGQUERY】分析入門 - SECTION6
+](https://gitpress.io/c/google_bigquery/google_bigquery_6) - Gitpress
 
 ### | S-082 ★
 単価(unit_price)と原価(unit_cost)の欠損値について、それぞれの中央値で補完した 新たなproduct_3を作成せよ。なお、中央値については1円未満を丸めること(四捨五入ま たは偶数への丸めで良い)。補完実施後、各項目について欠損が生じていないことも確認 すること。
 ```SQL
+with
+    product_3 as (
+        select
+            product_cd
+            , category_major_cd
+            , category_medium_cd
+            , category_small_cd
+            , trunc(case unit_price is null
+                when true then (select q from(select percentile_cont(unit_price, 0.5)over() as q from `prj-test3.100knocks.product`)group by q)
+                else unit_price
+            end) as unit_price
+            , trunc(case unit_cost is null
+                when true then (select q from(select percentile_cont(unit_cost, 0.5)over() as q from `prj-test3.100knocks.product`)group by q)
+                else unit_cost
+            end) as unit_cost
+        from
+            `prj-test3.100knocks.product`
+        -- where unit_price is null
+    )
+select * from product_3
+;
 ```
 
 ### | S-083 ★★
-単価(unit_price)と原価(unit_cost)の欠損値について、各商品の小区分 (category_small_cd)ごとに算出した中央値で補完した新たなproduct_4を作成せよ。な お、中央値については1円未満を丸めること(四捨五入または偶数への丸めで良い)。補 完実施後、各項目について欠損が生じていないことも確認すること。
+単価(unit_price)と原価(unit_cost)の欠損値について、各商品の小区分 (category_small_cd)ごとに算出した中央値で補完した新たなproduct_4を作成せよ。
+なお、中央値については1円未満を丸めること(四捨五入または偶数への丸めで良い)。
+補完実施後、各項目について欠損が生じていないことも確認すること。
 ```SQL
+with
+    category_small_cd_gr as (
+        select
+            category_small_cd
+            , sum(unit_price) as unit_price
+            , sum(unit_cost) as unit_cost
+        from
+            `prj-test3.100knocks.product`
+        group by
+            category_small_cd
+    )
+    , product_4 as (
+        select
+            product_cd
+            , category_major_cd
+            , category_medium_cd
+            , category_small_cd
+            , trunc(
+                case unit_price is null
+                    when true then (select
+                                        q
+                                    from
+                                        (select
+                                            round(percentile_cont(unit_price, 0.5) over()) as q
+                                         from
+                                            category_small_cd_gr
+                                         )
+                                    group by
+                                        q
+                                    )
+                    else unit_price
+                end) as unit_price
+            , trunc(
+                case unit_cost is null
+                    when true then (select
+                                        q
+                                    from
+                                        (select
+                                            round(percentile_cont(unit_cost, 0.5) over()) as q
+                                         from
+                                            category_small_cd_gr
+                                         )
+                                    group by
+                                        q
+                                    )
+                    else unit_cost
+                end) as unit_cost
+        from
+            `prj-test3.100knocks.product`
+        -- where unit_price is null
+    )
+select * from product_4
+;
 ```
 
 ### | S-084 ★★
-顧客テーブル(customer)の全顧客に対し、全期間の売上金額に占める2019年売上金額 の割合を計算せよ。ただし、売上実績がない場合は0として扱うこと。そして計算した割 合が0超のものを抽出せよ。 結果は10件表示させれば良い。
+顧客テーブル(customer)の全顧客に対し、全期間の売上金額に占める2019年売上金額の割合を計算せよ。
+ただし、売上実績がない場合は0として扱うこと。
+そして計算した割 合が0超のものを抽出せよ。
+結果は10件表示させれば良い。
 ```SQL
+with prep_tb as (
+    select
+        format_date('%Y', parse_date('%Y%m%d', cast(sales_ymd as string))) as sales_y
+        , *
+    from `prj-test3.100knocks.receipt`
+        left join `prj-test3.100knocks.customer`
+            using(customer_id)
+)
+-- (select sum(amount) as ttl_amount from prep_tb)
+select
+    sum(amount) as ttl_amount_2019
+    , (select sum(amount) from prep_tb) as ttl_amount
+    , (sum(amount) / (select sum(amount) from prep_tb))*100 as ratio
+from
+    prep_tb
+where
+    sales_y = '2019'
+;
+
 ```
 
 ### | S-085 ★
