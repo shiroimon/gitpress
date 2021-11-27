@@ -1,7 +1,7 @@
 ---
 date    : 2021-11-13
 title   : 【🐍 Python】 scikit-learnで分類と回帰
-excerpt :アヤメの分類予測。住宅価格の回帰予測。
+excerpt : アヤメの分類予測。住宅価格の回帰予測。
 tags    : ["Python3", "scikit-lean", "Classification", "Regresion"]
 ---
 
