@@ -5,11 +5,16 @@ excerpt : データの入り口から出口までの流れ（ちょいメモ）
 tags    : ["DataScientist", "DataLake", "ETL", "DataWearHouse", "DataMart"]
 ---
 
-    ■ 一連のSTORY
+![img](https://i.pinimg.com/originals/97/10/b5/9710b5e8b1aba94b047c777928c83e86.gif)
+Cf. [datacamp.pxf.io](https://www.datacamp.com/)
 
-    [ 🌊 ] > [ 🎣 / 🔪 / 🚶 ‍] > [ 🏘 ] > [ 🗃 ]
+```
+■ 一連のSTORY
 
-    （なんかマイクラみたいなんだね。）
+[ 🌊 ] > [ 🎣 / 🔪 / 🚶 ‍] > [ 🏘 ] > [ 🗃 ]
+
+（なんかマイクラみたいなんだね。）
+```
 
 ## || 🌊 Data Lake (DL)
 > データレイク (Data lake) は構造化/非構造化データやバイナリ等のファイル含めたデータを一元的に格納するデータリポジトリ。一般的に、データレイクはレポート、可視化、分析、機械学習に利用されるエンタープライズのデータのコピーや返還後のデータを一カ所に集約する。
