@@ -11,10 +11,11 @@ tags    : ["docker", ""]
 ```shell
 $ docker --version
 ```
+
 * 
 ```shell
 $ docker login
-( $ docker login --username {ユーザー名})
+($ docker login --username {ユーザー名})
 ```
 Cf. [Docker Hubでパーソナルアクセストークンが利用可能になりました！](https://www.creationline.com/lab/29979) - CL LAB
 
@@ -34,6 +35,7 @@ $ docker images
 ```shell
 $ docker run {イメージ名}
 ```
+
 ```shell
 $ docker run hello-world
 
@@ -58,25 +60,40 @@ Share images, automate workflows, and more with a free Docker ID:
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
+
 * コンテナ確認
 ```shell
 $ docker ps
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ```
 ※`docker ps`コマンドはアクティブなコンテナのみ表示する。
+
 ```shell
 $ docker ps -a
 CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
 d93e08b7d54b   hello-world   "/hello"   10 minutes ago   Exited (0) 10 minutes ago             vigorous_kapitsa
 ```
+
 `-a`のオプションを付けると全て（all）表示される。
 
 
-### | 
+### | 別のコンテナを作成して起動まで 
+ubuntuイメージからコンテナを生成して、内部のbashのプログラミングを実行。
 ```shell
 $ docker run -it ubuntu bash
+
+root@999a5f9187cb:/# 
+root@999a5f9187cb:/# pwd
+root@999a5f9187cb:/# exit
 ```
-> ubuntuイメージからコンテナを生成して、内部のbashのプログラミングを実行。
+
+## || 「Docker image」の更新方法
+### | 「Docker file」→「Docker image」
+
+### | 「container」→「Docker image」
+
+
+
 
 
 
