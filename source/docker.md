@@ -6,24 +6,30 @@ tags    : ["docker", ""]
 ---
 
 ## || Docker
-*  `$ docker --version`
-*  `$ brew install docker `
-*  `$ docker login`
-*  `$ docker logout`
-*  `$ docker pull {imagename}`
-*  `$ docker images`
-*  `$ docker run {imagename}`
-*  `$ docker ps -a`
+* バージョン確認: `docker --version`
+* インストール  : `brew install docker `
+* ログイン      : `docker login`
+* ログアウト    : `docker logout`
+* イメージ取得  : `docker pull {imagename}`
+* イメージ実行（コンテナ起動） : `docker run -it {imagename} bash`
+* コンテナ一覧  : `docker ps -a` (ps=process status)
+* イメージ一覧  : `docker images`
+* コンテナ再起動: `docker restart`
+* コンテナ実行  : `docker exec -it {container} bash`
+* コンテナ更新  : `docker commit {imageid/name} {new_imagename(:tag)}`
+* コンテナ名変更: `docker tag {new_imagename(:tag)} {target}`
+* コンテナをDockerhubへ: `docker push {imagename}`
+
 * 全コンテナ停止: `docker stop $(docker ps -q)`
 * 全コンテナ削除: `docker rm $(docker ps -q -a)`
 * 全イメージ削除: `docker rmi $(docker images -q)`
-* コンテナ更新: `$ docker commit {imageid/name} {new_imagename(:tag)}`
-* コンテナ名変更: `$ docker tag {new_imagename(:tag)} {target}`
-* コンテナをDockerhubへ: `$ docker push {imagename}`
-*  `$ docker `
-*  `$ docker `
-*  `$ docker `
-*  `$ docker `
+* イメージ削除  : `docker rmi {imagename}`
+
+*  : `docker `
+*  : `docker `
+*  : `docker `
+*  : `docker `
+*  : `docker `
 
 
 ### | How to
@@ -173,6 +179,11 @@ hello-world           latest    feb5d9fea6a5   2 months ago     13.3kB
 * 公開
 ```shell
 ❯ docker push d0tth/my-first-repo
+Using default tag: latest
+The push refers to repository [docker.io/d0tth/my-first-repo]
+68ac24b7487b: Pushed
+9f54eef41275: Mounted from library/ubuntu
+latest: digest: sha256:4130fc0fc824589774b32486bfa7a2d6ef0e2fc20192d58b7b7bf9f5effded43 size: 736
 ```
 
 
