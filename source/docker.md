@@ -20,14 +20,22 @@ tags    : ["docker", ""]
 * コンテナ名変更: `docker tag {new_imagename(:tag)} {target}`
 * コンテナをDockerhubへ: `docker push {imagename}`
 
+* イメージ削除  : `docker rmi {imagename}`
+* 全イメージ削除: `docker rmi $(docker images -q)`
+
+* コンテナ停止  : `docker stop {container}`
+* コンテナ削除  : `docker rm {container}` 
 * 全コンテナ停止: `docker stop $(docker ps -q)`
 * 全コンテナ削除: `docker rm $(docker ps -q -a)`
-* 全イメージ削除: `docker rmi $(docker images -q)`
-* イメージ削除  : `docker rmi {imagename}`
+* 全コンテナ削除: `docker system prune`
 
-*  : `docker `
-*  : `docker `
-*  : `docker `
+* コンテナ名付け : `docker run --name {name}{imagename}`
+* detached mode: `docker run -d {imagename}`
+  * コンテナ起動後にdetachする（バックグラウンドで動かす）
+* foreground mode : `docker run --rm {imagename}`
+  * コンテナをExit後に削除する（使い捨てコンテナ用）
+
+
 *  : `docker `
 *  : `docker `
 
@@ -197,6 +205,60 @@ registry-1.docker.io/libray/ubuntu"latest
 ```
 特別指定をしないとデフォルトで「registry-1.docker.io」(Docker hub)に上がる仕組み。
 
+
+## || 更に詳しくコンテナ理解
+### | run がしていること
+```shell
+❯ docker run {imagename}
+```
+
+実務ではそこまで用いることはないが、`run`が内部で行っていることを理解することは重要。
+
+`docker run `は以下を内部で実行している。
+
+```shell
+❯ docker create {imagename}
+❯ docker start {container}
+```
+
+* コンテナを作成するだけ
+```
+❯ docker create hello-world
+40566ac4aacefa07dc410330129c3f5261c83267796b0cd66cc8b0e11c57383f
+❯ docker ps -a
+CONTAINER ID   IMAGE                 COMMAND    CREATED          STATUS                     PORTS     NAMES
+40566ac4aace   hello-world           "/hello"   14 seconds ago   Created                              strange_bhabha
+bcc883fc22d0   hello-world           "/hello"   2 minutes ago    Exited (0) 2 minutes ago             mystifying_elgamal
+```
+
+* コンテナ内部のプログラムを実行（同時に、`exit`される。）
+```
+❯ docker start 40566ac4aace
+40566ac4aace
+```
+
+### | コマンドを上書き
+
+```shell
+❯ docker run ubuntu pwd
+```
+
+### | -it
+```shell
+❯ docker run -i -t ubuntu bash
+```
+`-i`:input可能
+`-t`:output綺麗に表示
+
+それぞれをまとめて、`-it`
+
+### | コンテナ名付け 
+```
+❯ docker run --name sample_container ubuntu
+❯ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED         STATUS                     PORTS     NAMES
+7e009d4a4ff7   ubuntu    "bash"    8 seconds ago   Exited (0) 7 seconds ago             sample_container
+```
 
 
 
