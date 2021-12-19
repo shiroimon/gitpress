@@ -38,6 +38,13 @@ tags    : ["docker", ""]
 
 *  : `docker `
 *  : `docker `
+*  : `docker `
+*  : `docker `
+*  : `docker `
+*  : `docker `
+*  : `docker `
+*  : `docker `
+
 
 
 ### | How to
