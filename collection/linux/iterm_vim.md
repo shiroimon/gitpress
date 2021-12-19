@@ -7,6 +7,29 @@ tags   : ["vim", "neoovim", "ide", "iterm2", "linux"]
 
 ## || Vim
 
+<strong>  </strong>
+*  : ` `
+*  : ` `
+*  : ` `
+*  : ` `
+*  : ` `
+*  : ` `
+
+<strong>Comand mode (PLUGIN)</strong>
+*  : `:PlugInstall`
+*  : `:NERDTree` n.b. ctrl+w+w(画面移動)
+*  : `:Git {git comand}` i.g. git blame
+*  : `:MarkdownPreview`
+*  : `:FZF `
+*  : ` `
+*  : ` `
+*  : ` `
+*  : ` `
+*  : ` `
+
+
+
+
 
 ## || Vim / NeoVim
 
@@ -28,17 +51,4 @@ $ vim ~/.config/nvim/init.vim
 ### | 設定ファイルの全文
 ```shell
 ```
-
-## || CUIコマンド一覧
-
-* 移動
-|コマンド|用途|
-|:-:|:-:|
-|||
-
-* 移動
-|コマンド|用途|
-|:-:|:-:|
-|||
-
 
