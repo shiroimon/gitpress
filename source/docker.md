@@ -36,7 +36,10 @@ tags    : ["docker", ""]
   * コンテナをExit後に削除する（使い捨てコンテナ用）
 
 
-*  : `docker `
+* Dockerfile → Dockerimage : `docker build {directory}`
+  * Dockerfileの格納されているディレクトリ上で`docker build .`　（.はcdの意）
+  * 名前指定してビルド`docker build -t {name} {directory}`
+
 *  : `docker `
 *  : `docker `
 *  : `docker `
@@ -266,6 +269,133 @@ bcc883fc22d0   hello-world           "/hello"   2 minutes ago    Exited (0) 2 mi
 CONTAINER ID   IMAGE     COMMAND   CREATED         STATUS                     PORTS     NAMES
 7e009d4a4ff7   ubuntu    "bash"    8 seconds ago   Exited (0) 7 seconds ago             sample_container
 ```
+
+
+## || Dockerfile
+### | Dockerfileパスと内容
+[PATH] ~/docker/Dockerfile
+
+```
+FROM ubuntu:latest
+# make samplefile.
+RUN touch test
+```
+
+### | Build 
+```shell
+❯ cd ~/docker
+❯ docker build .
+[+] Building 1.5s (6/6) FINISHED
+ => [internal] load build definition from Dockerfile                                              0.1s
+ => => transferring dockerfile: 99B                                                               0.0s
+ => [internal] load .dockerignore                                                                 0.1s
+ => => transferring context: 2B                                                                   0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest                                  0.0s
+ => [1/2] FROM docker.io/library/ubuntu:latest                                                    0.0s
+ => [2/2] RUN touch test                                                                          1.2s
+ => exporting to image                                                                            0.0s
+ => => exporting layers                                                                           0.0s
+ => => writing image sha256:6720ca80961dae14f5bcc79fb0a5127cd1ee354e1c112ce23bf96492469d402b      0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+❯ docker images
+REPOSITORY            TAG       IMAGE ID       CREATED          SIZE
+<none>                <none>    6720ca80961d   30 seconds ago   72.8MB
+```
+
+無名で作成するとDockerimageは[Donglingimage]()として作成される。
+試しに、フィルターで確認するとDonglingimageを返す。
+```shell
+❯ docker images -f dangling=true
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+<none>       <none>    6720ca80961d   4 minutes ago   72.8MB
+```
+
+Cf.[使用していない Docker オブジェクトの削除（prune）](https://docs.docker.jp/config/pruning.html) - Docker-docs-ja
+
+```shell
+❯ docker build -t new-ubuntu:latest .
+```
+
+### | instraction (Dockerfileのコマンド)
+#### 基本インストラクション
+1. `FROM`
+2. `RUN`
+3. `CMD`
+
+#### FROM
+```
+FROM {dockerimage} # OS等々指定する。
+```
+#### RUN
+```
+RUN {linux comand} # やりたいこと
+```
+ig.
+```
+RUN touch test
+RUN echo `hello world` > test
+```
+* ※ RUN を複数書きすぎてファイルが重くなる問題。
+   * → Dockerimageのレイヤー数は最小に。
+
+* `RUN`の他に、`COPY`、`ADD`がレイヤーを作成するインストラクション。
+* コマンドは`&&`で繋げる。
+* 改行は`\`。
+* パッケージインストール（`apt`はubuntuのパッケージ管理）
+```
+RUN apt-get install {package}
+```
+* 最新版取得
+```
+RUN apt-get update
+```
+* レイヤー数削減
+```
+FROM ubuntu:latest
+RUN apt-get update
+RUN apt-get install XXX
+RUN apt-get install YYY
+RUN apt-get install ZZZ
+```
+(Layer:4)<br>
+ ↓ `install`をまとめる。
+```
+FROM ubuntu:latest
+RUN apt-get update
+RUN apt-get install XXX YYY ZZZ
+```
+(Layer:2)<br>
+ ↓ コマンドをまとめ、改行で見やすく。
+```
+FROM ubuntu:latest
+RUN apt-get update && apt-get install \
+XXX \
+YYY \
+ZZZ
+```
+(Layer:1)
+
+実践
+```
+FROM ubuntu:latest
+RUN apt-get update 
+RUN apt-get install -y \
+    curl \
+    cvs \
+    nginx 
+```
+
+#### CMD
+* コンテナのデフォルトコマンドを指定。
+```
+CMD ["executable", "param1", "param2"]
+```
+* Dockerfileの最後に記述（原則）
+
+
+
+
 
 
 
