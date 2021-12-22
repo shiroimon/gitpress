@@ -1,60 +1,75 @@
 ---
 date    : 2021-12-15
 title   : 【🐳 Docker】
-excerpt : 
-tags    : ["docker", ""]
+excerpt :  
+tags    : ["docker"]
 ---
 
 ## || Docker
+
 * バージョン確認: `docker --version`
 * インストール  : `brew install docker `
 * ログイン      : `docker login`
 * ログアウト    : `docker logout`
-* イメージ取得  : `docker pull {imagename}`
-* イメージ実行（コンテナ起動） : `docker run -it {imagename} bash`
-* コンテナ一覧  : `docker ps -a` (ps=process status)
+
+#### 💭 image
 * イメージ一覧  : `docker images`
-* コンテナ再起動: `docker restart`
-* コンテナ実行  : `docker exec -it {container} bash`
-* コンテナ更新  : `docker commit {imageid/name} {new_imagename(:tag)}`
-* コンテナ名変更: `docker tag {new_imagename(:tag)} {target}`
-* コンテナをDockerhubへ: `docker push {imagename}`
 
-* イメージ削除  : `docker rmi {imagename}`
-* 全イメージ削除: `docker rmi $(docker images -q)`
+##### Dockerhub → image
+* イメージ取得  : `docker pull {image}`
 
+##### run
+
+    内部的にpull&startをしている。
+
+* イメージ実行（コンテナ起動） : `docker run -it {image} bash`
+  * コンテナ起動後に削除 : `docker run -it --rm {image} bash`
+  * ホストのファイルシステムをコンテナにマウント: `docker run -it -v {host}:{container} {imege}`
+    * e.g. `docker run -it -v ~/host/mounted_folder:/new_dir {image} bash`
+  * ユーザーID、名前を指定してコンテナ作成 : `docker run -u {UserId}:{UserGroup}`
+    * e.g. `docker run -it -u $(id -u):$(id -g) -v ~/host/mounted_folder:/new_dir {image} bash`
+    * PC userid  : `$ id -u`
+    * PC groupid : `$ id -g`
+  * ホストのポートをコンテナポートに繋げる : `docker run -p {host_port}:{container_port}`
+    * e.g. `docker -p 8888:8888 --rm jupyter/datascience-notebook bash`
+  * PCリソース制約 : `docker -`
+    * e.g. `docker -`
+
+* イメージ削除  : `docker rmi {image}`
+  * 全イメージ削除: `docker rmi $(docker images -q)`
+
+##### file → image
+* Dockerfile → Dockerimage : `docker build {directory}`
+  * Dockerfileの格納されているディレクトリ上で`docker build .`　（.はcdの意）
+  * 名前指定してビルド`docker build -t {name} {directory}`
+
+#### 📦 container
+* コンテナ一覧  : `docker ps -a` (ps=process status)
+* コンテナ再起動: `docker restart {container} `
+  * コンテナ実行  : `docker exec -it {container} bash`
 * コンテナ停止  : `docker stop {container}`
+  * 全コンテナ停止: `docker stop $(docker ps -q)`
 * コンテナ削除  : `docker rm {container}` 
-* 全コンテナ停止: `docker stop $(docker ps -q)`
-* 全コンテナ削除: `docker rm $(docker ps -q -a)`
-* 全コンテナ削除: `docker system prune`
-
+  * 全コンテナ削除: `docker rm $(docker ps -q -a)`
+  * 全コンテナ削除: `docker system prune`
 * コンテナ名付け : `docker run --name {name}{imagename}`
 * detached mode: `docker run -d {imagename}`
   * コンテナ起動後にdetachする（バックグラウンドで動かす）
 * foreground mode : `docker run --rm {imagename}`
   * コンテナをExit後に削除する（使い捨てコンテナ用）
 
-
-* Dockerfile → Dockerimage : `docker build {directory}`
-  * Dockerfileの格納されているディレクトリ上で`docker build .`　（.はcdの意）
-  * 名前指定してビルド`docker build -t {name} {directory}`
-
-*  : `docker `
-*  : `docker `
-*  : `docker `
-*  : `docker `
-*  : `docker `
-*  : `docker `
-*  : `docker `
+##### container → Dockerhub
+* コンテナ更新  : `docker commit {imageid/name} {new_imagename(:tag)}`
+* コンテナ名変更: `docker tag {new_imagename(:tag)} {target}`
+* コンテナをDockerhubへ: `docker push {imagename}`
 
 
-
-### | How to
+### | How to Docker
 * バージョン確認
 ```shell
 ❯ docker --version
 ```
+
 * インストール
 ```shell
 ❯ brew install docker
@@ -69,7 +84,9 @@ tags    : ["docker", ""]
 username: 
 🗝:
 ```
+
 Cf. [Docker Hubでパーソナルアクセストークンが利用可能になりました！](https://www.creationline.com/lab/29979) - CL LAB
+
 
 ### | 💭 Docker Image
 * Docker hubからイメージをプルする。
@@ -232,7 +249,7 @@ registry-1.docker.io/libray/ubuntu"latest
 ```
 
 * コンテナを作成するだけ
-```
+```shell
 ❯ docker create hello-world
 40566ac4aacefa07dc410330129c3f5261c83267796b0cd66cc8b0e11c57383f
 ❯ docker ps -a
@@ -242,7 +259,7 @@ bcc883fc22d0   hello-world           "/hello"   2 minutes ago    Exited (0) 2 mi
 ```
 
 * コンテナ内部のプログラムを実行（同時に、`exit`される。）
-```
+```shell
 ❯ docker start 40566ac4aace
 40566ac4aace
 ```
