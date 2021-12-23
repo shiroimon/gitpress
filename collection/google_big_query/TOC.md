@@ -1,5 +1,5 @@
 # 【BIGQUERY】学習
-- [分析入門](google_bigquery)
+- [分析入門 - SECTION1](google_bigquery)
 - [分析入門 - SECTION2~3](google_bigquery_2_3)
 - [分析入門 - SECTION4](google_bigquery_4)
 - [分析入門 - SECTION5](google_bigquery_5)
@@ -11,8 +11,8 @@
 - [分析入門 - SECTION11](google_bigquery_11)
 - [分析入門 - SECTION12](google_bigquery_12)
 
-
-# 【BIGQUERY】SQLコマンド
+# 【BIGQUERY】標準SQLコマンド
 ## 集計関数
 
 ## 変換関数
+
