@@ -1,7 +1,7 @@
----
+-:NERDTreeToggle--
 date    : 2021-12-15
-title   : 【🐳 Docker】
-excerpt :  
+title   : 【🐳 Docker】基本操作＆コマンド一覧
+excerpt : Dockerの基本的操作
 tags    : ["docker"]
 ---
 
@@ -23,40 +23,48 @@ tags    : ["docker"]
     内部的にpull&startをしている。
 
 * イメージ実行（コンテナ起動） : `docker run -it {image} bash`
-  * コンテナ起動後に削除 : `docker run -it --rm {image} bash`
-  * ホストのファイルシステムをコンテナにマウント: `docker run -it -v {host}:{container} {imege}`
-    * e.g. `docker run -it -v ~/host/mounted_folder:/new_dir {image} bash`
-  * ユーザーID、名前を指定してコンテナ作成 : `docker run -u {UserId}:{UserGroup}`
-    * e.g. `docker run -it -u $(id -u):$(id -g) -v ~/host/mounted_folder:/new_dir {image} bash`
-    * PC userid  : `$ id -u`
-    * PC groupid : `$ id -g`
-  * ホストのポートをコンテナポートに繋げる : `docker run -p {host_port}:{container_port}`
-    * e.g. `docker -p 8888:8888 --rm jupyter/datascience-notebook bash`
-  * PCリソース制約 : `docker -`
-    * e.g. `docker -`
+  + コンテナ起動後に削除 : `docker run -it --rm {image} bash`
+  + ホストのファイルシステムをコンテナにマウント: `docker run -it -v {host}:{container} {imege}`
+    - e.g. `docker run -it -v ~/host/mounted_folder:/new_dir {image} bash`
+  + ユーザーID、名前を指定してコンテナ作成 : `docker run -u {UserId}:{UserGroup}`
+    - e.g. `docker run -it -u $(id -u):$(id -g) -v ~/host/mounted_folder:/new_dir {image} bash`
+    - PC userid  : `$ id -u`
+    - PC groupid : `$ id -g`
+  + ホストのポートをコンテナポートに繋げる : `docker run -p {host_port}:{container_port}`
+    - e.g. `docker run -it -p 8888:8888 --rm jupyter/datascience-notebook bash`
+  + コンテナがアクセスできるCPUI上限 : `docker --cpus {# of CPUs}`
+  + コンテナがアクセスできるメモリ上限: `docker --memory {byte}`
+    - 物理コア数 : `$ sysctl -n hw.physicalcpu_max`
+    - 論理コア数 : `$ sysctl -n hw.logicalcpu_max`
+    - メモリ(byte): `$ sysctl hw.memsize` 
+    - e.g. `docker run -it --rm --cpus 2 --memory 2g ubuntu bash`
 
 * イメージ削除  : `docker rmi {image}`
-  * 全イメージ削除: `docker rmi $(docker images -q)`
+  + 全イメージ削除: `docker rmi $(docker images -q)`
+
 
 ##### file → image
 * Dockerfile → Dockerimage : `docker build {directory}`
-  * Dockerfileの格納されているディレクトリ上で`docker build .`　（.はcdの意）
-  * 名前指定してビルド`docker build -t {name} {directory}`
+  + Dockerfileの格納されているディレクトリ上で`docker build .`　（.はcdの意）
+  + 名前指定してビルド`docker build -t {name} {directory}`
+
 
 #### 📦 container
 * コンテナ一覧  : `docker ps -a` (ps=process status)
+* コンテナのあらゆる情報確認 : `docker inspect {container}`
+  + e.g.CPU数やメモリ量等確認時に : `docker inspect 5f90be76cd31 | grep -i cpu `  (| grep :抽出 -i:ignore大文字小文字問わず {検索語句} )
 * コンテナ再起動: `docker restart {container} `
-  * コンテナ実行  : `docker exec -it {container} bash`
+  + コンテナ実行  : `docker exec -it {container} bash`
 * コンテナ停止  : `docker stop {container}`
-  * 全コンテナ停止: `docker stop $(docker ps -q)`
+  + 全コンテナ停止: `docker stop $(docker ps -q)`
 * コンテナ削除  : `docker rm {container}` 
-  * 全コンテナ削除: `docker rm $(docker ps -q -a)`
-  * 全コンテナ削除: `docker system prune`
+  + 全コンテナ削除: `docker rm $(docker ps -q -a)`
+  + 全コンテナ削除: `docker system prune`
 * コンテナ名付け : `docker run --name {name}{imagename}`
 * detached mode: `docker run -d {imagename}`
-  * コンテナ起動後にdetachする（バックグラウンドで動かす）
+  + コンテナ起動後にdetachする（バックグラウンドで動かす）
 * foreground mode : `docker run --rm {imagename}`
-  * コンテナをExit後に削除する（使い捨てコンテナ用）
+  + コンテナをExit後に削除する（使い捨てコンテナ用）
 
 ##### container → Dockerhub
 * コンテナ更新  : `docker commit {imageid/name} {new_imagename(:tag)}`
@@ -409,12 +417,5 @@ RUN apt-get install -y \
 CMD ["executable", "param1", "param2"]
 ```
 * Dockerfileの最後に記述（原則）
-
-
-
-
-
-
-
 
 

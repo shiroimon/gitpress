@@ -16,9 +16,9 @@ drwxr-xr-x   7 tt    staff     224  1 23  2021 kaggle
 
 ```
 d   *** [- :file][d :directory][l : simbolicklink]
-rwx *** 所有者
-rwx *** 所有グループ
-rwx *** その他
+rwx *** [r:read][w:wright][x:execute] 所有者
+rwx *** [r:read][w:wright][x:execute] 所有グループ
+rwx *** [r:read][w:wright][x:execute] その他
 ```
 
 * User ID 確認
