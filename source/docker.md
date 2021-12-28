@@ -15,8 +15,13 @@ tags    : ["docker"]
 #### 💭 image
 * イメージ一覧  : `docker images`
 
-##### Dockerhub → image
+##### Dockerhub → Dockerimage
 * イメージ取得  : `docker pull {image}`
+
+##### Dockerfile → Dockerimage
+* イメージ化 : `docker build {directory}`
+  + Dockerfile格納上のディレクトリ上で`docker build .`　（.はcdの意）
+  + 名前指定してビルド`docker build -t {name} {directory}`
 
 ##### run
 
