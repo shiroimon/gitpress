@@ -77,6 +77,20 @@ tags    : ["docker"]
 * コンテナをDockerhubへ: `docker push {imagename}`
 
 
+### 実践
+Dockerfileを作成後に
+
+```shell
+docker run -p 8888:8888 -v ~/docker/ds_python/:/work --name my-lab 511a925b20aa
+```
+
+* `-p` : publishしてコンテナとホストのポートを設定 
+* `-v` : ホストとコンテナ内部のディレクトリを共有
+  + `~/docker/ds_python/:/work` :  `{ホスト内}:{コンテナ内}` 
+* `--name` : dockerimage に名前を作成
+
+
+---
 ### | How to Docker
 * バージョン確認
 ```shell
