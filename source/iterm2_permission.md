@@ -1,8 +1,8 @@
 ---
 data    : 2021-12-24
-title   : 【iTearm】パーミッション
+title   : 【🐚iTerm】パーミッション
 excerpt : 権限について
-tags    : ["permission", "iTearm"]
+tags    : ["permission", "iTerm"]
 ---
 
 ## 権限について 

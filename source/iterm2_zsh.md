@@ -2,10 +2,10 @@
 date    : 2021-03-22
 title   : 【🐚 iTerm2】 zshでいい感じにしてみたい
 excerpt :
-tags    : ["iTeram2", "zsh", "ターミナル", "shell"]
+tags    : ["iTerm2", "zsh", "ターミナル", "shell"]
 ---
 
-自分の `iTeram2` を以下のような感じにするまでのあれこれです。
+自分の `iTerm2` を以下のような感じにするまでのあれこれです。
 ![img](https://i.gyazo.com/e8e91e01f0252350b8fc3bfe0432c350.png)
 
 
@@ -14,7 +14,7 @@ tags    : ["iTeram2", "zsh", "ターミナル", "shell"]
 https://iterm2.com/
 
 
-そもそもiTearm2とは、Mac専用のコマンドラインツールです。
+そもそもiTerm2とは、Mac専用のコマンドラインツールです。
 GPLライセンスも承認されているそうです。
 (※GPLとはオープンソースやフリーソフトウェアの作成・配布のために作られたライセンスのこと）
 そのためiTerm2もダンロードは無料です。
