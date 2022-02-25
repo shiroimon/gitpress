@@ -1,8 +1,8 @@
 ---
 date   : 2021-09-04
-title  : 【BigQuery】分析入門 - Section10
+title  : 分析入門 - Section10
 excerpt: Google BigQuery基本の「き」について。
-tags   : ["Google BigQuery", "SQL基本", "分析基本"]
+tags   : ["Google BigQuery", "SQL", "分析", "union"]
 ---
 
 ## || Section10
