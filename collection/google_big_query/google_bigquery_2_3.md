@@ -1,7 +1,7 @@
 ---
 date   : 2021-09-11
 title  : 分析入門 - Session2~3
-excerpt: Google BigQuery基本の「き」について。
+excerpt: BigQuery基本設定
 tags   : ["Google BigQuery", "SQL", "分析"]
 ---
 
