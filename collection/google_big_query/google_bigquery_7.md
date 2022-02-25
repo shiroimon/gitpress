@@ -1,7 +1,7 @@
 ---
 date   : 2021-09-07
 title  : 分析入門 - Section7
-excerpt: Google BigQuery基本の「き」について。
+excerpt: BigQuery分析関数
 tags   : ["Google BigQuery", "SQL", "分析", "window関数"]
 ---
 
