@@ -1,6 +1,6 @@
 ---
 date   : 2022-02-25
-title  : 【BigQuery】coalesce関数
+title  : coalesce関数
 excerpt: BigQueryのcoalesce関数について
 tags   : ["Google BigQuery", "SQL", "分析", "coalesce"]
 ---
