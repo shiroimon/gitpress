@@ -14,10 +14,3 @@
 # 【BIGQUERY】
 - [coalesce()](sql_coalesce)
 - [countif()](sql_countif)
-
-
-
-<!-- ## 集計関数
-
-## 変換関数
- -->
