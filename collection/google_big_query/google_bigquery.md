@@ -1,6 +1,6 @@
 ---
 date   : 2021-09-12
-title  : 【BigQuery】分析入門
+title  : 分析入門 - SECTION1
 excerpt: Google BigQuery基本の「き」について。
 tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 ---
