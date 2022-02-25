@@ -1,7 +1,7 @@
 ---
 date   : 2021-09-02
 title  : 分析入門 - Section12
-excerpt: Google BigQuery基本の「き」について。
+excerpt: BigQueryおまけ（可視化）
 tags   : ["Google BigQuery", "SQL", "分析", "DataPortal"]
 ---
 
