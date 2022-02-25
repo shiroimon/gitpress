@@ -1,7 +1,7 @@
 ---
 date   : 2021-09-08
 title  : 分析入門 - Section6
-excerpt: Google BigQuery基本の「き」について。
+excerpt: BigQuery四則演算、条件分岐
 tags   : ["Google BigQuery", "SQL", "分析"]
 ---
 
