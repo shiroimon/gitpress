@@ -1,7 +1,7 @@
 ---
 date   : 2021-09-06
 title  : 分析入門 - Section8
-excerpt: Google BigQuery基本の「き」について。
+excerpt: BigQueryテーブル結合
 tags   : ["Google BigQuery", "SQL", "分析", "ER図", "join"]
 ---
 
