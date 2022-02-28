@@ -1,6 +1,7 @@
 # 【BIGQUERY】分析入門
 
-![img]()
+![img](https://img-c.udemycdn.com/course/240x135/2394060_adbb_4.jpg)<br>
+[BigQuery で学ぶ非エンジニアのための SQL データ分析入門 - Udemy ](https://www.udemy.com/share/102kOc3@Jm55eXaV2GdLXwnNAoEOPHhXUleiQK0EG6JQboecG715rn2_tpL6jBbg8kL1nsqw/)
 
 - [SECTION1](google_bigquery)
 - [SECTION2~3](google_bigquery_2_3)
