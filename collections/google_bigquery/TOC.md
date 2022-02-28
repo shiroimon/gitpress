@@ -1,7 +1,4 @@
 # 【BIGQUERY】分析入門
-
-![img]()
-
 - [SECTION1](google_bigquery)
 - [SECTION2~3](google_bigquery_2_3)
 - [SECTION4](google_bigquery_4)
@@ -14,6 +11,6 @@
 - [SECTION11](google_bigquery_11)
 - [SECTION12](google_bigquery_12)
 
-# 【BIGQUERY】
+# 【BIGQUERY】 句 ・ 文 ・ 関数
 - [coalesce()](sql_coalesce)
 - [countif()](sql_countif)
