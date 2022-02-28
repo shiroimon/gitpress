@@ -1,4 +1,7 @@
 # 【BIGQUERY】分析入門
+
+![img]()
+
 - [SECTION1](google_bigquery)
 - [SECTION2~3](google_bigquery_2_3)
 - [SECTION4](google_bigquery_4)
