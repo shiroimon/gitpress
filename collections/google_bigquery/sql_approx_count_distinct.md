@@ -10,7 +10,7 @@ tags   : ["Google BigQuery", "SQL", "分析", "APPROX_COUNT_DISTINCT"]
 `APPROX_COUNT_DISTINCT()`
 
 EDA時や、ざっくり特徴量のカウント等に厳密な結果を求めていない時　`count(distinct HOGE)`　を用いないで、
-近侍集計関数を用いいると幸せ。（メモリの節約にもなるし）
+近侍集計関数を用いると幸せ。（メモリの節約にもなるし）
 
 
 ## || Cf.
