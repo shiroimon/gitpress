@@ -1,6 +1,6 @@
 ---
 date   : 2022-03-01
-title  : approx_count_distinct
+title  : approx_count_distinct()
 excerpt: BigQueryの近侍集計関数について
 tags   : ["Google BigQuery", "SQL", "分析", "approx_count_distinct"]
 ---
