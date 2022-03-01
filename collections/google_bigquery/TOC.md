@@ -11,7 +11,8 @@
 - [SECTION11](google_bigquery_11)
 - [SECTION12](google_bigquery_12)
 
-# 【BIGQUERY】 句 ・ 文 ・ 関数
+# 【BIGQUERY】
 - [coalesce()](sql_coalesce)
 - [approx_count_distinct()](sql_approx_count_distinct)
 - [countif()](sql_countif)
+- [UDF](sql_udf)
