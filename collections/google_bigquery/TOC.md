@@ -1,5 +1,5 @@
 # 【BIGQUERY】分析入門
-- - [SECTION1](google_bigquery)
+- | [SECTION1](google_bigquery)
 - [SECTION2~3](google_bigquery_2_3)
 - [SECTION4](google_bigquery_4)
 - [SECTION5](google_bigquery_5)
