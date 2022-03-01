@@ -18,3 +18,4 @@
 - [UDF](sql_udf)
 - [_TABLE_SUFFIX](sql_table_suffix)
 - [row_number()](sql_row_number)
+- [exists](sql_exists)
