@@ -1,6 +1,6 @@
 ---
 date   : 2021-09-12
-title  : row_number
+title  : row_number()
 excerpt: Google BigQuery基本の「き」について。（はじめに～）
 tags   : ["Google BigQuery", "SQL", "分析", "row_number"]
 ---
