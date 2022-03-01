@@ -1,6 +1,11 @@
+---
+date   : 2022-03-01
+title  : APPROX_COUNT_DISTINCT
+excerpt: BigQueryの近侍集計関数について
+tags   : ["Google BigQuery", "SQL", "分析", "APPROX_COUNT_DISTINCT"]
+---
 
-
-## | 近似集計関数
+## || 近似集計関数
 
 `APPROX_COUNT_DISTINCT()`
 
@@ -8,6 +13,6 @@ EDA時や、ざっくり特徴量のカウント等に厳密な結果を求め�
 近侍集計関数を用いいると幸せ。（メモリの節約にもなるし）
 
 
-## | Cf.
+## || Cf.
 + [Approximate aggregate functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/approximate_aggregate_functions#approximate_aggregate_functions) - Google Cloud
 + [SQLは書けるけどBigQueryは初見の人に贈るざっくりBigQuery](https://zenn.dev/masumomo/articles/e45d1f57cc8025) - Zenn
