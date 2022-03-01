@@ -16,3 +16,4 @@
 - [approx_count_distinct()](sql_approx_count_distinct)
 - [countif()](sql_countif)
 - [UDF](sql_udf)
+- [_TABLE_SUFFIX](sql_table_suffix)
