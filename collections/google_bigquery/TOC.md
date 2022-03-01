@@ -13,4 +13,5 @@
 
 # 【BIGQUERY】 句 ・ 文 ・ 関数
 - [coalesce()](sql_coalesce)
+- [approx_count_distinct()](sql_approx_count_distinct)
 - [countif()](sql_countif)
