@@ -1,11 +1,11 @@
 ---
 date   : 2022-02-29
-title  : countif関数
+title  : countif()
 excerpt: BigQueryのcountif関数について
 tags   : ["Google BigQuery", "SQL", "分析", "countif"]
 ---
 
-## || countif関数
+## || countif
 
 Excelや、Spreadsheetではお馴染み、`countif()`。
 BigQueryでも使えるよ。
