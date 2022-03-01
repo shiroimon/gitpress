@@ -2,7 +2,7 @@
 date   : 2022-03-01
 title  : UDF
 excerpt: BigQueryのユーザー定義関数について
-tags   : ["Google BigQuery", "SQL", "UDF", ""]
+tags   : ["Google BigQuery", "SQL", "UDF", "自作関数"]
 ---
 
 ## || ユーザー定義関数（UDF）
@@ -70,6 +70,21 @@ GROUP BY
 > 参考：[標準 SQL ユーザー定義関数 | BigQuery | Google Cloud](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions?hl=ja)
 
 （参考になりすぎるTT）
+
+### | まねっこ（自作関数）
+
+```sql
+-- 正しい経過月数計算
+CREATE TEMPORARY FUNCTION CALC_ELAPSED_MONTHS (base_date DATETIME, value_date DATETIME) 
+    AS (
+        DATE_DIFF(base_date, value_date, MONTH) 
+        + IF(DATE_DIFF(base_date, DATE_ADD(value_date, INTERVAL DATE_DIFF(base_date, value_date, MONTH) MONTH), DAY) >= 0, 0, -1)
+    );
+```
+
+```sql
+```
+
 
 ## || Cf.
 + [BigQueryでユーザー定義関数（UDF）は武器になるという話](https://techblog.zozo.com/entry/bigquery-udf) - ZOZO
