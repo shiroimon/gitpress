@@ -75,7 +75,6 @@ GROUP BY
 ### | まねっこ（自作関数）
 
 ```sql
--- 正しい経過月数計算
 create temporary function 
     CALC_ELAPSED_MONTHS(base_date datetime, value_date datetime) as (
     /*
