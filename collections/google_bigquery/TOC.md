@@ -18,6 +18,7 @@
 - [_TABLE_SUFFIX](sql_table_suffix)
 - [row_number()](sql_row_number)
 - [exists()](sql_exists)
-- [lead()](sql_lead)
+- [lead() lag()](sql_lead)
+- [left() right() substr()](sql_left_right_substr)
 
 
