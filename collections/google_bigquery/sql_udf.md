@@ -2,7 +2,7 @@
 date   : 2022-03-01
 title  : UDF
 excerpt: BigQueryのユーザー定義関数について
-tags   : ["Google BigQuery", "SQL", "UDF", "自作関数"]
+tags   : ["Google BigQuery", "SQL", "UDF", "自作関数", "TEMPORARY FUNCTION"]
 ---
 
 ## || ユーザー定義関数（UDF）
@@ -74,11 +74,16 @@ GROUP BY
 ### | まねっこ（自作関数）
 
 ```sql
--- 正しい経過月数計算
-CREATE TEMPORARY FUNCTION CALC_ELAPSED_MONTHS (base_date DATETIME, value_date DATETIME) 
-    AS (
-        DATE_DIFF(base_date, value_date, MONTH) 
-        + IF(DATE_DIFF(base_date, DATE_ADD(value_date, INTERVAL DATE_DIFF(base_date, value_date, MONTH) MONTH), DAY) >= 0, 0, -1)
+-- 正しい経過月数計算
+create temporary function 
+    CALC_ELAPSED_MONTHS(base_date datetime, value_date datetime) as (
+    /*
+     * 経過月数を正しく規定する関数
+     * eg. 集計期間2011/2/1~2012/1/31の1年間とする時、2011/1/31から翌日に予約をした会員も月差分で加えられてしまう。
+     *     回避として、そういった1ケ月満たない会員に「-1」を渡す処理をする。
+     */
+        date_diff(base_date, value_date, month) 
+        + if(date_diff(base_date, date_add(value_date, interval date_diff(base_date, value_date, month) month), day) >= 0, 0, -1)
     );
 ```
 
