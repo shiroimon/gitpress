@@ -13,7 +13,7 @@ LEAD ( scalar_expression [ ,offset(1) ] , [ default(null) ] )
 + コホート分析
 
 
-# || Cf.
+## || Cf.
 + [【BigQuery】LAG関数，LEAD関数の使い方](https://qiita.com/kota_fujimura/items/cff732bb9acb47510a03) - Qiita
 + [LEAD (Transact-SQL)](https://docs.microsoft.com/ja-jp/sql/t-sql/functions/lead-transact-sql?view=sql-server-ver15) - Microsoft
 + [Analytic function concepts](https://cloud.google.com/bigquery/docs/reference/standard-sql/analytic-function-concepts?hl=ja#navigation-functions) - Google Cloud
