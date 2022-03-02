@@ -14,10 +14,10 @@
 - [coalesce()](sql_coalesce)
 - [approx_count_distinct()](sql_approx_count_distinct)
 - [countif()](sql_countif)
-- [UDF](sql_udf)
+- [UDF - TEMPORARY FUNCTION](sql_udf)
 - [_TABLE_SUFFIX](sql_table_suffix)
 - [row_number()](sql_row_number)
-- [exists](sql_exists)
+- [exists()](sql_exists)
 - [lead()](sql_lead)
 
 
