@@ -1,3 +1,10 @@
+---
+date   : 2022-03-02
+title  : lead()
+excerpt: BigQueryのlead関数について
+tags   : ["Google BigQuery", "SQL", "分析関数", "lead"]
+---
+
 ## || lead()
 ```sql
 LEAD ( scalar_expression [ ,offset(1) ] , [ default(null) ] )   
