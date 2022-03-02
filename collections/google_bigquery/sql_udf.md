@@ -1,5 +1,5 @@
 ---
-date   : 2022-03-01
+date   : 2022-03-02
 title  : UDF
 excerpt: BigQueryのユーザー定義関数について
 tags   : ["Google BigQuery", "SQL", "UDF", "自作関数", "TEMPORARY FUNCTION"]
@@ -71,6 +71,7 @@ GROUP BY
 
 （参考になりすぎるTT）
 
+
 ### | まねっこ（自作関数）
 
 ```sql
@@ -94,4 +95,5 @@ create temporary function
 ## || Cf.
 + [BigQueryでユーザー定義関数（UDF）は武器になるという話](https://techblog.zozo.com/entry/bigquery-udf) - ZOZO
 + [Standard SQL user-defined functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions?hl=ja) - Google Cloud
++ []() -
 
