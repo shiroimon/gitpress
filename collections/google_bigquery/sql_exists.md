@@ -1,11 +1,15 @@
 ---
 date   : 2022-03-01
-title  : exists
+title  : exists()
 excerpt: BigQueryのexistsについて
 tags   : ["Google BigQuery", "SQL", "exists"]
 ---
 
 ## || exists
+
+> exists : 意味・対訳
+> 存在する、現存する、(特殊な条件または場所に)ある、現われる、生存する、生きている、(…で)(やっと)生きていく
+> cf. https://ejje.weblio.jp/content/exist
 
 ```sql
 select * from hoge
