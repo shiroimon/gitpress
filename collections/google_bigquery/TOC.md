@@ -1,8 +1,6 @@
 # [BIGQUERY] 分析入門
 - - [Sect.1　はじめに](google_bigquery)
-本文法](google_bigqulead()
-- - [lead　集- - [Sect.2~3　
-基本設定](google_bigquery_2_3)
+- - [Sect.2~3　基本設定](google_bigquery_2_3)
 - - [Sect.4　基計関数](google_bigquery_5)
 - - [Sect.6　四則演算、条件分岐](google_bigquery_6)
 - - [Sect.7　分析関数](google_bigquery_7)
@@ -19,7 +17,7 @@
 - [UDF](sql_udf)
 - [_TABLE_SUFFIX](sql_table_suffix)
 - [row_number()](sql_row_number)
-- [lead()](sql_lead)
 - [exists](sql_exists)
+- [lead()](sql_lead)
 
 
