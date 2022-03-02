@@ -19,6 +19,6 @@
 - [row_number()](sql_row_number)
 - [exists()](sql_exists)
 - [lead() lag()](sql_lead)
-- [left() right() substr()](sql_left_right_substr)
+- [left() right()](sql_left_right)
 
 
