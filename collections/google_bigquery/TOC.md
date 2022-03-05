@@ -11,7 +11,7 @@
 - - [Sect.11　練習問題](google_bigquery_11)
 - - [Sect.12　おまけ](google_bigquery_12)
 
-# [BIGQUERY]
+# [BIGQUERY] SQL
 - [coalesce()](sql_coalesce)
 - [approx_count_distinct()](sql_approx_count_distinct)
 - [countif()](sql_countif)
@@ -23,3 +23,5 @@
 - [left() right()](sql_left_right)
 
 
+# [BIGQUERY] ML
+- []()
