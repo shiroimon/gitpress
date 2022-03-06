@@ -33,8 +33,8 @@ tags   : ["Google Cloud", "資格"]
 + [学習プログラムを始める](https://cloud.google.com/training/data-engineering-and-analytics?hl=ja#data-engineer-learning-path)
 + [ウェブセミナーを受講する](https://cloudonair.withgoogle.com/events/data-engineer-certification?utm_source=cgc&utm_medium=et&utm_campaign=-&utm_content=data-eng-cert-cgc-cert-cloud-dev&utm_term=-)
 + 参考情報
- - [Google Cloud のドキュメント](https://cloud.google.com/docs?hl=ja)
- - [Google Cloud ソリューション](https://cloud.google.com/architecture?hl=ja)
+ 　- [Google Cloud のドキュメント](https://cloud.google.com/docs?hl=ja)
+ 　- [Google Cloud ソリューション](https://cloud.google.com/architecture?hl=ja)
 
 #### 3. 模擬試験
 [Data Engineer 模擬試験 > ](https://docs.google.com/forms/d/e/1FAIpQLSd4j4bcgbYenBRFIL6Kb0cvXp13qCQ-z6JzowgDxRaPITn56g/viewform?hl=ja)
