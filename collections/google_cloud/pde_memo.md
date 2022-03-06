@@ -44,7 +44,7 @@ tags   : ["Google Cloud", "資格"]
 
 
 ## || 合格体験記よみあさり
-+ [[Google 認定資格] GCP Professional Data Engineer の勉強方法と対策](https://trainz.jp/media/learningtoai/1545/)　- Trainz
++ [〔Google 認定資格〕 GCP Professional Data Engineer の勉強方法と対策](https://trainz.jp/media/learningtoai/1545/)　- Trainz
 + []() - 
 + []() - 
 + []() - 
