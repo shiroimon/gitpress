@@ -22,6 +22,7 @@
 - [lead() lag()](sql_lead)
 - [left() right()](sql_left_right)
 - [unset()](sql_unset)
+- [window](sql_window)
 
 
 # [BIGQUERY] ML
