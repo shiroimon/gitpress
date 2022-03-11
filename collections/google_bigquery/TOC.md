@@ -21,6 +21,7 @@
 - [exists()](sql_exists)
 - [lead() lag()](sql_lead)
 - [left() right()](sql_left_right)
+- [unset()](sql_unset)
 
 
 # [BIGQUERY] ML
