@@ -5,4 +5,4 @@ excerpt: BigQueryのユーザー定義関数について
 tags   : ["Google BigQuery", "SQL", "unset()"]
 ---
 
-## || unset
+## || unset()
