@@ -59,9 +59,7 @@ tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 
 ## || Cf
 * [入門ガイド](https://cloud.google.com/bigquery/docs/how-to) - Google Cloud
-* [API とリファレンス](https://cloud.google.com/bigquery/docs/reference?hl=ja) - Google Cloud
-
-* [BigQuery で INFORMATION_SCHEMA から CREATE TABLE 文が取得できるようになりました！](https://dev.classmethod.jp/articles/bigquery-information-schema-get-create-table-ddl/)  - DevelopersIO
 * [[初心者向け] Google BigQueryの基礎を理解してGoogle Cloud Consoleから触ってみた](https://dev.classmethod.jp/articles/google-bigquery-debut/) - DevelopersIO
+* [BigQuery で INFORMATION_SCHEMA から CREATE TABLE 文が取得できるようになりました！](https://dev.classmethod.jp/articles/bigquery-information-schema-get-create-table-ddl/)  - DevelopersIO
 
 * [BigQuery独自エラーのトラブルシュート集](https://techblog.gmo-ap.jp/2020/12/10/bigquery_trouble_shoot/) - TECHBLOG by GMO
