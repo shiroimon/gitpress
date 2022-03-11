@@ -23,7 +23,8 @@
 - [left() right()](sql_left_right)
 - [unset()](sql_unset)
 - [window](sql_window)
-- []()
+- [INFORMATION_SCHEMA](sql_information_schema)
+- 
 
 
 # [BIGQUERY] ML
