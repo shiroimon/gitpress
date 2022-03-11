@@ -1,3 +1,23 @@
+<details>
+<summary>
+<span style="border-bottom: solid 1px blue;">[BIGQUERY] 分析入門</spqn> 
+</summary>
+
+- - [Sect.1　はじめに](google_bigquery)
+- - [Sect.2~3　基本設定](google_bigquery_2_3)
+- - [Sect.4　基計文法](google_bigquery_4)
+- - [Sect.5　基計関数](google_bigquery_5)
+- - [Sect.6　四則演算、条件分岐](google_bigquery_6)
+- - [Sect.7　分析関数](google_bigquery_7)
+- - [Sect.8　テーブル結合](google_bigquery_8)
+- - [Sect.9　サブクエリ](google_bigquery_9)
+- - [Sect.10　集合演算、ビュー](google_bigquery_10)
+- - [Sect.11　練習問題](google_bigquery_11)
+- - [Sect.12　おまけ](google_bigquery_12)
+
+</details>
+
+
 # [BIGQUERY] 分析入門
 - - [Sect.1　はじめに](google_bigquery)
 - - [Sect.2~3　基本設定](google_bigquery_2_3)
