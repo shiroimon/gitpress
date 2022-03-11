@@ -1,8 +1,8 @@
 ---
-date   : 2021-09-12
-title  : 分析入門 - Section1
-excerpt: Google BigQuery基本の「き」について。（はじめに～）
-tags   : ["Google BigQuery", "SQL基本", "分析基本"]
+date   : 2022-03-11
+title  : INFORMATION_SCHEMA
+excerpt: 
+tags   : ["Google BigQuery", "SQL", "INFORMATION_SCHEMA"]
 ---
 ## || INFORMATION_SCHEMA 
 
