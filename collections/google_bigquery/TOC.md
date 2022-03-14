@@ -11,6 +11,7 @@
 - - [Sect.11　練習問題](google_bigquery_11)
 - - [Sect.12　おまけ](google_bigquery_12)
 
+
 # [BIGQUERY] SQL
 - [coalesce()](sql_coalesce)
 - [approx_count_distinct()](sql_approx_count_distinct)
@@ -24,9 +25,11 @@
 - [unset()](sql_unset)
 - [window](sql_window)
 - [INFORMATION_SCHEMA](sql_information_schema)
+- [percentile_cont() percentile_disc()](sql_percentile)
 - 
 
 
 # [BIGQUERY] ML
 - [時系列モデルの予測](ml_time_series)
 - []()
+
