@@ -26,7 +26,7 @@
 - [window](sql_window)
 - [INFORMATION_SCHEMA](sql_information_schema)
 - [percentile_cont() percentile_disc()](sql_percentile)
-- 
+- [safe_cast()](sql_safe_cast)
 
 
 # [BIGQUERY] ML
