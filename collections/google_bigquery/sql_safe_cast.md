@@ -1,6 +1,8 @@
 ## || safe_cast()
 
 型変換なのだが、通常のcast()変換とは異なる。
+string や Null を許容して一括変換してくれる。
+
 
 ## || Cf.
 + [BigQueryでNULLや空白があるカラムをintに変換する方法](https://itips.krsw.biz/bigquery-how-to-cast-blank-null-column-to-int/) - ITips
