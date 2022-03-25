@@ -1,3 +1,9 @@
+---
+date   : 2022-03-2
+title  : st_distance()
+excerpt: 緯度・経度を用いて分析したい時に使える関数
+tags   : ["Google BigQuery", "SQL", "地理関数"]
+---
 
 ## || st_distance()
 
