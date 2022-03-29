@@ -13,21 +13,23 @@
 
 
 # [BIGQUERY] SQL
-- [coalesce()](sql_coalesce)
-- [approx_count_distinct()](sql_approx_count_distinct)
-- [countif()](sql_countif)
-- [UDF](sql_udf)
 - [_TABLE_SUFFIX](sql_table_suffix)
-- [row_number()](sql_row_number)
+- [approx_count_distinct()](sql_approx_count_distinct)
+- [coalesce()](sql_coalesce)
+- [countif()](sql_countif)
 - [exists()](sql_exists)
+- [extract()](sql_extract)
+- [expect()](sql_expect)
 - [lead() lag()](sql_lead)
 - [left() right()](sql_left_right)
 - [unset()](sql_unset)
-- [window](sql_window)
 - [INFORMATION_SCHEMA](sql_information_schema)
 - [percentile_cont() percentile_disc()](sql_percentile)
+- [row_number()](sql_row_number)
 - [safe_cast()](sql_safe_cast)
 - [st_distance()](sql_st_distance)
+- [UDF](sql_udf)
+- [window](sql_window)
 
 
 # [BIGQUERY] ML
