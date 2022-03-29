@@ -11,5 +11,5 @@ select
 ```
 
 || cf.
-+ []() - 
++ [【SQL日付関数】EXTRAC – 日付から任意の日付要素を取得する　（Oracle）](http://www.sql-master.net/articles/SQL761.html) - SQL Master　データベースエンジニアとセキュリティエンジニアとLinuxエンジニアのための情報
 + 
