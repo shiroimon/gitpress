@@ -30,9 +30,9 @@ from (
        , i.CATALOG_ID as MED_CATALOG_ID
 
        , st_distance(
-           st_geogpoint(r.SHOP_LONGITUDE, r.SHOP_LATITUDE)
-           , st_geogpoint(i.SHOP_LONGITUDE, i.SHOP_LATITUDE)
-       ) as X_METERS
+               st_geogpoint(r.SHOP_LONGITUDE, r.SHOP_LATITUDE)
+             , st_geogpoint(i.SHOP_LONGITUDE, i.SHOP_LATITUDE)
+         ) as X_METERS
    from
        med_rsv_member r
    left join
