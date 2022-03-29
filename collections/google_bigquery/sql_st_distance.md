@@ -9,6 +9,40 @@ tags   : ["Google BigQuery", "SQL", "地理関数"]
 
 緯度・経度を用いて、位置関係を調査したい。
 
+```sql
+select
+   *
+   , row_number() over(partition by SHOPOWNER_ID order by X_METERS) as DIS_NUM
+from (
+   select distinct
+       r.SHOPOWNER_ID = i.SHOPOWNER_ID as DISTINCTFLG
+       # 対象会員の予約医院
+       , r.SHOPOWNER_ID
+       , r.CLINIC_NAME
+       , r.SHOP_LATITUDE
+       , r.SHOP_LONGITUDE
+
+       # レコメンド用医院
+       , i.SHOPOWNER_ID as MED_SHOPOWNER_ID
+       , i.CLINIC_NAME as MED_CLINIC_NAME
+       , i.SHOP_LATITUDE as MED_SHOP_LATITUDE
+       , i.SHOP_LONGITUDE as MED_SHOP_LONGITUDE
+       , i.CATALOG_ID as MED_CATALOG_ID
+
+       , st_distance(
+           st_geogpoint(r.SHOP_LONGITUDE, r.SHOP_LATITUDE)
+           , st_geogpoint(i.SHOP_LONGITUDE, i.SHOP_LATITUDE)
+       ) as X_METERS
+   from
+       med_rsv_member r
+   left join
+       med_info_prep i using(INTEGRATION_ID)
+   )
+where
+       X_METERS <= 1000
+   and DISTINCTFLG is false
+```
+
 
 ## || Cf.
 + [BigQuery GIS による天文データのクエリ](https://cloud.google.com/blog/ja/products/gcp/querying-the-stars-with-bigquery-gis) - GoogleCloud
