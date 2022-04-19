@@ -28,6 +28,7 @@
 - [row_number()](sql_row_number)
 - [safe_cast()](sql_safe_cast)
 - [st_distance()](sql_st_distance)
+- [struct()](sql_struct)
 - [UDF](sql_udf)
 - [window](sql_window)
 
