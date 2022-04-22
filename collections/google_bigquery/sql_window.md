@@ -43,7 +43,7 @@ from
     raw_table
 window 
       a as (partition by member order by date)
-    , b as (partition by member order by date)
+    , b as (partition by member order by date desc, class_a)
 ```
 
 ## || cf.
