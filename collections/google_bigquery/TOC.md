@@ -31,7 +31,7 @@
 - [st_distance()](sql_st_distance)
 - [struct()](sql_struct)
 - [UDF](sql_udf)
-- [window](sql_window)
+- [WINDOW句](sql_window)
 
 
 # [BIGQUERY] ML
