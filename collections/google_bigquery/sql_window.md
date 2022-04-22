@@ -1,5 +1,5 @@
 ---
-date   : 2022-03-02
+date   : 2022-04-22
 title  : WINDOW句
 excerpt: 分析関数
 tags   : ["Google BigQuery", "SQL", "window句"]
@@ -7,7 +7,7 @@ tags   : ["Google BigQuery", "SQL", "window句"]
 
 ## || WINDOW句
 
-# | 実行順序
+### | 実行順序
 WINDOW句を使用したクエリの評価は、通常、次の順序で完了します。
 
 1. FROM
@@ -19,7 +19,6 @@ WINDOW句を使用したクエリの評価は、通常、次の順序で完了�
 7. DISTINCT
 8. ORDER BY
 9. LIMIT
-
 
 
 ```sql
