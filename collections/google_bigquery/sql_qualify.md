@@ -58,6 +58,7 @@ where
 （↑コレが、こう↓）
 
 ```sql
+/* with句による多重ネスト回避時に使える */
 select
     student_id
     , class
@@ -83,6 +84,7 @@ i.e.
 ```
 
 ```sql
+/* 絞込要因で、SELECT句持ちしたくない時に使える */
 select
     student_id
     , class
