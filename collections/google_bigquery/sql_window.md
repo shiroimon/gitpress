@@ -1,5 +1,5 @@
 ---
-date   : 2022-04-22
+date   : 2022-03-02
 title  : WINDOW句
 excerpt: 分析関数の拡張
 tags   : ["Google BigQuery", "SQL", "window句"]
