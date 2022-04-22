@@ -1,7 +1,7 @@
 ---
 date   : 2022-03-02
 title  : UDF
-excerpt: BigQueryのユーザー定義関数について
+excerpt: ユーザー定義関数
 tags   : ["Google BigQuery", "SQL", "UDF", "自作関数", "TEMPORARY FUNCTION"]
 ---
 
