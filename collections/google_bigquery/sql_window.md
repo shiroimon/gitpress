@@ -6,6 +6,10 @@ tags   : ["Google BigQuery", "SQL", "window句"]
 ---
 
 ## || WINDOW句
+> WINDOW句は名前付きウィンドウのリストを定義します。<br>
+> 名前付きウィンドウは、分析関数を使用するテーブル内の行のグループを表します。<br>
+> 名前付きウィンドウは、ウィンドウ指定で定義するか、別の名前付きウィンドウを参照することが可能です。<br>
+> 別の名前付きウィンドウを参照している場合、参照されるウィンドウは、参照するウィンドウよりも前に定義されている必要があります。
 
 ### | 実行順序
 WINDOW句を使用したクエリの評価は、通常、次の順序で完了します。
@@ -30,7 +34,10 @@ select
 from 
     raw_table
 window 
-    w as (partition by member order by date) ← 纏められる 
+    w as (partition by member order by date)
+group by 
+    member
+;
 ```
 
 ```sql
@@ -39,11 +46,16 @@ select
     member
     , sum(amount) over a as total_amount
     , count(amount) over b as number_of_amount
+    , count(amount) over(c rows between PRECEDING and FOLLOWING) as number_of_amount
 from 
     raw_table
 window 
       a as (partition by member order by date)
     , b as (partition by member order by date desc, class_a)
+    , c as b --こんなのもできる
+group by 
+    member
+;
 ```
 
 ## || cf.
