@@ -25,6 +25,7 @@
 - [unset()](sql_unset)
 - [INFORMATION_SCHEMA](sql_information_schema)
 - [percentile_cont() percentile_disc()](sql_percentile)
+- [QUALIFY句](sql_qualify)
 - [row_number()](sql_row_number)
 - [safe_cast()](sql_safe_cast)
 - [st_distance()](sql_st_distance)
