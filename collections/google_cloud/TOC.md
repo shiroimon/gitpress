@@ -6,7 +6,7 @@
 5. [Step.5](gcp_coursera_5)
 
 # [GCP] Professional Data Engineer
-+ []()
++ [memo](pde_memo)
 
 # [GCP] tips
 + [memo](memo)
