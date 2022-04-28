@@ -28,9 +28,11 @@
 - [QUALIFY句](sql_qualify)
 - [row_number()](sql_row_number)
 - [safe_cast()](sql_safe_cast)
+- [split()](sql_split)
 - [st_distance()](sql_st_distance)
 - [struct()](sql_struct)
 - [UDF](sql_udf)
+- [unset()](sql_unset)
 - [WINDOW句](sql_window)
 
 
