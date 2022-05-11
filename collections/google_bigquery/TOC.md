@@ -17,7 +17,6 @@
 + [approx_count_distinct()](sql_approx_count_distinct)
 + [coalesce()](sql_coalesce)
 + [countif()](sql_countif)
-+ [exists()](sql_exists)
 + [extract()](sql_extract)
 + [expect()](sql_expect)
 + [lead() / lag()](sql_lead)
@@ -33,8 +32,10 @@
 ## 句（節）
 + [QUALIFY句](sql_qualify)
 + [WINDOW句](sql_window)
++ [EXISTS句](sql_exists)
 
 ## BigQuery特有
++ [BigQueryScriptting](sql_bqscripting)
 + [_TABLE_SUFFIX](sql_table_suffix)
 + [INFORMATION_SCHEMA](sql_information_schema)
 + [UDF](sql_udf)
