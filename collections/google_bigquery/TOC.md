@@ -13,7 +13,7 @@
 
 
 # [BIGQUERY] SQL
-*関数*
+## 関数
 - [approx_count_distinct()](sql_approx_count_distinct)
 - [coalesce()](sql_coalesce)
 - [countif()](sql_countif)
@@ -42,4 +42,3 @@
 
 # [BIGQUERY] ML
 - [時系列モデルの予測](ml_time_series)
-- []()
