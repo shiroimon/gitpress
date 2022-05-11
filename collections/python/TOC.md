@@ -1,7 +1,0 @@
-# Python
-
-## NumPy
-
-## Pandas
-
-## 
