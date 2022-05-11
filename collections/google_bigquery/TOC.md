@@ -29,12 +29,10 @@
 - [st_distance()](sql_st_distance)
 - [struct()](sql_struct)
 - [unnest()](sql_unnest)
-
 ## 文/句/節
 - [QUALIFY句](sql_qualify)
 - [WINDOW句](sql_window)
-
-## 
+## BigQuery特有
 - [_TABLE_SUFFIX](sql_table_suffix)
 - [INFORMATION_SCHEMA](sql_information_schema)
 - [UDF](sql_udf)
