@@ -14,7 +14,6 @@
 
 # [BIGQUERY] SQL
 
-## 関数
 - [approx_count_distinct()](sql_approx_count_distinct)
 - [coalesce()](sql_coalesce)
 - [countif()](sql_countif)
