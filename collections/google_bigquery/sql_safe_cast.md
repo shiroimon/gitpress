@@ -1,3 +1,10 @@
+---
+date   : 2022-04-11
+title  : safe_cast()
+excerpt: 
+tags   : ["Google BigQuery", "SQL", "safe_cast"]
+---
+
 ## || safe_cast()
 
 型変換なのだが、通常のcast()変換とは異なる。
