@@ -18,7 +18,6 @@
 + [coalesce()](sql_coalesce)
 + [countif()](sql_countif)
 + [extract()](sql_extract)
-+ [expect()](sql_expect)
 + [ifnull()](sql_ifnull)
 + [lead() / lag()](sql_lead)
 + [left() / right()](sql_left_right)
@@ -30,6 +29,11 @@
 + [st_distance()](sql_st_distance)
 + [struct()](sql_struct)
 + [unnest()](sql_unnest)
+
+## 演算子
++ [UNION](sql_union)
++ [EXCEPT](sql_except)
++ [INTERSECT](sql_intersect)
 
 ## 句（節）
 + [QUALIFY句](sql_qualify)
