@@ -49,7 +49,7 @@
 
 # [BIGQUERY] DS
 ## DS 100ノック
-+ [概要](ds/ds_100knock)
++ [概要](/ds/ds_100knock)
 + [挑戦](sql_100knock)
 + [1~10]()
 + [11~20]()
