@@ -4,6 +4,7 @@ title  : 分析入門 - Section1
 excerpt: Google BigQuery基本の「き」について。（はじめに～）
 tags   : ["Google BigQuery", "SQL基本", "分析基本"]
 ---
+
 ## || はじめに
 この記事は、Udemyにて学習をした際のメモです。
 
