@@ -1,9 +1,10 @@
 ---
 date   : 2022-03-14
-title  : percentile_cont() percentile_disc()
+title  : percentile_cont() / percentile_disc()
 excerpt: 
 tags   : ["Google BigQuery", "SQL", "window関数", "percentile_cont()", "percentile_disc()"]
 ---
+
 ## || 分析関数
 ```sql
 percentile_[cont|disc](percent) 
@@ -39,7 +40,6 @@ select
 
 ### | percentile_cont()
 小数値を返す。（対象が偶数値だと線形補完する処理が施されてるとのこと。）
-
 
 
 ## || Cf.
