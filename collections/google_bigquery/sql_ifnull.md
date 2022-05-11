@@ -1,4 +1,11 @@
-## ifhull()
+---
+date   : 2022-05-11
+title  : ifnull()
+excerpt: 
+tags   : ["Google BigQuery", "SQL", "ifnull"]
+---
+
+## || ifhull()
 
 null値を代替して置き換える。
 
@@ -13,5 +20,5 @@ null回避。
 > 普段MySQLを使用していないという方は、使い慣れた関係データベース管理システムにおいてIFNULL関数と同様の役割を果たす関数を使用してみるか、これを機にOracleを使ってみるといいでしょう。
 
 
-## cf.
+## || cf.
 + [MySQLのIFNULL関数とは？使い方とハンズオンで完全マスター](https://style.potepan.com/articles/18643.html) - POTEPAN
