@@ -13,7 +13,7 @@
 
 
 # [BIGQUERY] SQL
-- [_TABLE_SUFFIX](sql_table_suffix)
+## 関数
 - [approx_count_distinct()](sql_approx_count_distinct)
 - [coalesce()](sql_coalesce)
 - [countif()](sql_countif)
@@ -22,17 +22,22 @@
 - [expect()](sql_expect)
 - [lead() / lag()](sql_lead)
 - [left() / right()](sql_left_right)
-- [INFORMATION_SCHEMA](sql_information_schema)
 - [percentile_()](sql_percentile)
-- [QUALIFY句](sql_qualify)
 - [row_number()](sql_row_number)
 - [safe_cast()](sql_safe_cast)
 - [split()](sql_split)
 - [st_distance()](sql_st_distance)
 - [struct()](sql_struct)
-- [UDF](sql_udf)
 - [unnest()](sql_unnest)
+
+## 文/句/節
+- [QUALIFY句](sql_qualify)
 - [WINDOW句](sql_window)
+
+## 
+- [_TABLE_SUFFIX](sql_table_suffix)
+- [INFORMATION_SCHEMA](sql_information_schema)
+- [UDF](sql_udf)
 
 
 # [BIGQUERY] ML
