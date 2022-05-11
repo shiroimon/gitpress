@@ -1,3 +1,10 @@
+---
+date   : 2022-05-11
+title  : nullif()
+excerpt: 
+tags   : ["Google BigQuery", "SQL", "nullif"]
+---
+
 ## || nullif()
 
 nullifは、故意にnull値を用いることができる。
