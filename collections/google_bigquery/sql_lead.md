@@ -1,8 +1,8 @@
 ---
 date   : 2022-03-02
-title  : lead()
-excerpt: BigQueryのlead関数について
-tags   : ["Google BigQuery", "SQL", "分析関数", "lead"]
+title  : lead() / lag()
+excerpt: 
+tags   : ["Google BigQuery", "SQL", "分析関数", "lead", "lag"]
 ---
 
 ## || lead()
