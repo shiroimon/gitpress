@@ -1,11 +1,11 @@
 ---
 date   : 2021-09-12
 title  : row_number()
-excerpt: Google BigQuery基本の「き」について。（はじめに～）
+excerpt: 
 tags   : ["Google BigQuery", "SQL", "分析", "row_number"]
 ---
 
-## || row_number
+## || row_number()
 
 レコードの連番を振りなおしたい時にも使える。
 
