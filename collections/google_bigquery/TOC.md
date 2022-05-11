@@ -30,7 +30,7 @@
 + [struct()](sql_struct)
 + [unnest()](sql_unnest)
 
-## 文/句/節
+## 句（節）
 + [QUALIFY句](sql_qualify)
 + [WINDOW句](sql_window)
 
