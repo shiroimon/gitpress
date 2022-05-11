@@ -48,5 +48,5 @@
 # [BIGQUERY] DS
 + [DS 100ノック概要](ds_100knock)
 + [DS 100ノック挑戦](sql_100knock)
-+ [Jupyterlab⇔BigQuery](ds_jupyter_bigquery)
++ [Jupyter⇔BigQuery](ds_jupyter_bigquery)
 
