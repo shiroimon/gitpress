@@ -13,7 +13,8 @@ with ttl_amount as (
     select
         sales_ymd
         , sum(amount) as amount
-    from `prj-test3.100knocks.receipt`
+    from 
+        `100knocks.receipt`
     group by sales_ymd
     order by sales_ymd
 )
@@ -22,8 +23,10 @@ select
     -- , amount
     -- , lag(amount) over(order by sales_ymd) as lag
     , lag(amount) over(order by sales_ymd) - amount as diff
-from ttl_amount
-order by sales_ymd
+from 
+    ttl_amount
+order by 
+    sales_ymd
 limit 10
 ;
 ```
@@ -53,18 +56,23 @@ with ttl_amount as (
     select
         sales_ymd
         , sum(amount) as amount
-    from `prj-test3.100knocks.receipt`
+    from 
+        `100knocks.receipt`
     group by sales_ymd
     order by sales_ymd
 )
 select
     sales_ymd
     , amount
-    , lag(amount, 1) over(order by sales_ymd) as amount_lag_1
-    , lag(amount, 2) over(order by sales_ymd) as amount_lag_2
-    , lag(amount, 3) over(order by sales_ymd) as amount_lag_3
-from ttl_amount
-order by sales_ymd
+    , lag(amount, 1) over w as amount_lag_1
+    , lag(amount, 2) over w as amount_lag_2
+    , lag(amount, 3) over w as amount_lag_3
+from 
+    ttl_amount
+window
+    w as (order by sales_ymd)
+order by 
+    sales_ymd
 limit 10
 ;
 ```
@@ -79,22 +87,22 @@ with
             , gender
             , age
             , case  
-                when age < 20 then "10's"
-                when age between 20 and 29 then "20's"
-                when age between 30 and 39 then "30's"
-                when age between 40 and 49 then "40's"
-                when age between 50 and 59 then "50's"
-                when age between 60 and 69 then "60's"
-                when age between 70 and 79 then "70's"
-                else "Over80's"
-             end as age_category
+                  when age < 20 then "10's"
+                  when age between 20 and 29 then "20's"
+                  when age between 30 and 39 then "30's"
+                  when age between 40 and 49 then "40's"
+                  when age between 50 and 59 then "50's"
+                  when age between 60 and 69 then "60's"
+                  when age between 70 and 79 then "70's"
+                  else "Over80's"
+              end as age_category
             , amount
         from
-            `prj-test3.100knocks.receipt`
+            `100knocks.receipt`
         left join
-            `prj-test3.100knocks.customer`
-            using(customer_id)
-        where gender is not null
+            `100knocks.customer` using(customer_id)
+        where 
+            gender is not null
     )
 select
     *
@@ -102,24 +110,34 @@ from
     (select
         age_category
         , sum(amount) as male
-    from tb
-    where gender = "男性"
-    group by age_category)
-    left join
+    from 
+        tb
+    where 
+        gender = "男性"
+    group by 
+        age_category) as m
+left join
     (select
         age_category
         , sum(amount) as female
-    from tb
-    where gender = "女性"
-    group by age_category) using(age_category)
-    left join
+    from 
+        tb
+    where 
+        gender = "女性"
+    group by 
+        age_category) as f using(age_category)
+left join
     (select
         age_category
         , sum(amount) as unknown
-    from tb
-    where gender = "不明"
-    group by age_category) using(age_category)
-order by age_category
+    from 
+        tb
+    where 
+        gender = "不明"
+    group by 
+        age_category) as u using(age_category)
+order by 
+    age_category
 ;
 ```
 ```
