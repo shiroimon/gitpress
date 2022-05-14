@@ -20,7 +20,8 @@ select
     , customer_id
     , product_cd
     , amount
-from `100knocks.receipt`
+from 
+    `100knocks.receipt`
 limit 10
 ;
 ```
