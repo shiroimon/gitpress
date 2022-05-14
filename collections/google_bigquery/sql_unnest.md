@@ -1,11 +1,11 @@
 ---
 date   : 2022-03-02
-title  : unnest()
-excerpt: UNNEST関数
+title  : UNNEST()
+excerpt: 
 tags   : ["Google BigQuery", "SQL", "unnest()"]
 ---
 
-## | UNNEST()
+## || unnest()
 
 UNNEST を使うと、ARRAYなどの配列や、REPEATEDなカラムを、開くことができる。
 
