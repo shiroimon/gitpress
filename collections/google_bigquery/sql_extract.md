@@ -5,12 +5,12 @@ excerpt:
 tags   : ["Google BigQuery", "SQL", "extruct"]
 ---
 
-## || EXTRACT
+## || extruct()
 
 ```sql
 select 
     extract(year from rsv_date from) as YEAR
-    , extract(month fron rsv_date) as MONTH
+    , extract(month from rsv_date) as MONTH
 ```
 
 
