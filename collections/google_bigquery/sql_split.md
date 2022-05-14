@@ -1,12 +1,22 @@
+---
+date   : 2022-05-14
+title  : SPLIT関数
+excerpt: 
+tags   : ["Google BigQuery", "SQL", "split"]
+---
+
 ## || SPLIT()
 
 ```sql
 select
-  -- SPLITで文字列を' '(スペース)で区切り、offsetで値を取り出す
-  split("hello world everyone", ' ')[offset(0)]   -- 0番目の要素　hello
-  , split("hello world everyone", ' ')[offset(1)] -- 1番目の要素　world
-  , split("hello world everyone", ' ')[offset(2)] -- 2番目の要素　everyone
+    -- SPLITで文字列を' '(スペース)で区切り、offsetで値を取り出す
+    split("hello world everyone", ' ')[offset(0)]   -- 0番目の要素　hello
+    , split("hello world everyone", ' ')[offset(1)] -- 1番目の要素　world
+    , split("hello world everyone", ' ')[offset(2)] -- 2番目の要素　everyone
 ```
+
+'[offset(0)]'で分割した値にアクセスできる。（０index）
+
 
 
 ## || cf.
