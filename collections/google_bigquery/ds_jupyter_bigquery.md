@@ -1,10 +1,10 @@
 ---
 date    : 2021-10-26
-title   : 【🪐 Jupyter Lab】BigQueryと繋げる
+title   : 🪐 Jupyter Lab 🔍BigQuery 連携
 excerpt :
 tags    : ["JupyterLab", "BigQuery", "GoogleCloudPlatform"]
 ---
-## || 🪐JupyterLab → 🌐BigQuery
+## || 🪐JupyterLab → 🔍BigQuery
 
 * _Cf :_ [jupyter notebookからBigQueryを使う](https://qiita.com/itatibs/items/2be5c5c399548adf84a5)- Qiita
 * _Cf :_ [BigQuery + jupyterで機械学習を行う(その1: データセットの作成)](https://qiita.com/Hase8388/items/3d7da2166b5bc495879f)- Qiita
@@ -12,7 +12,7 @@ tags    : ["JupyterLab", "BigQuery", "GoogleCloudPlatform"]
 * _Cf :_ [Jupyter ノートブックで BigQuery データを可視化する ](https://cloud.google.com/bigquery/docs/visualize-jupyter?hl=ja)- GoogleCloud
 
 
-## || 🌐BigQuery → 🪐JupyterLab
+## || 🔍BigQuery → 🪐JupyterLab
 ![Google AI Platform](https://i.gyazo.com/b1c5503a1da8e2f84fb19bd4e0fb9dd5.png)
 
 * _Cf :_ [GCPでJupyterLabを使ってBigQueryのデータを可視化してみた](https://qiita.com/okumurakengo/items/9e21da73a4ecc67726f7)- Qiita

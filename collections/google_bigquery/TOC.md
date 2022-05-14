@@ -69,7 +69,5 @@
 + [81~90](ds_100knock_sql_to90)
 + [91~100](ds_100knock_sql_to100)
 
-
-## • 
+## •
 + [Jupyter⇔BigQuery](ds_jupyter_bigquery)
-
