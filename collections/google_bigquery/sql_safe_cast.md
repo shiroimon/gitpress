@@ -1,14 +1,15 @@
 ---
 date   : 2022-04-11
-title  : safe_cast()
+title  : SAFE_CAST関数
 excerpt: 
 tags   : ["Google BigQuery", "SQL", "safe_cast"]
 ---
 
 ## || safe_cast()
 
-型変換なのだが、通常のcast()変換とは異なる。
-string や Null を許容して一括変換してくれる。
+型変換なのだが、通常の'cast()'変換とは異なる。
+
+データ内に、string や Null を許容して一括変換してくれる。
 
 
 ## || Cf.
