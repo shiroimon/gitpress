@@ -1,11 +1,12 @@
 ---
 date   : 2022-03-14
-title  : percentile_cont() / percentile_disc()
+title  : PERCENTAILE_CONT関数 / PERCENTAIL_DISC関数
 excerpt: 
 tags   : ["Google BigQuery", "SQL", "window関数", "percentile_cont()", "percentile_disc()"]
 ---
 
 ## || 分析関数
+
 ```sql
 percentile_[cont|disc](percent) 
 within group(order by expression [(asc)|desc])
@@ -13,7 +14,7 @@ over(partition by partition_list)
 ```
 
 ```sql
-#e.g.
+#　e.g.
 select 
     percentile_cont(0.5) within group(order by val) as median
     percentile_cont(val, 0.5) over() as median_1
@@ -40,6 +41,7 @@ select
 
 ### | percentile_cont()
 小数値を返す。（対象が偶数値だと線形補完する処理が施されてるとのこと。）
+
 
 
 ## || Cf.
