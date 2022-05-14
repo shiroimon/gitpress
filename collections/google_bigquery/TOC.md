@@ -19,7 +19,7 @@
 + [countif()](sql_countif)
 + [extract()](sql_extract)
 + [ifnull()](sql_ifnull)
-+ [lead() / lag()](sql_lead)
++ [lead() / lag()](sql_lead_lag)
 + [left() / right()](sql_left_right)
 + [nullif()](sql_nullif)
 + [percentile_()](sql_percentile)
