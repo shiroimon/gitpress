@@ -33,7 +33,8 @@ select
     , customer_id
     , product_cd
     , amount
-from `100knocks.receipt`
+from 
+    `100knocks.receipt`
 limit 10
 ;
 ```
@@ -48,8 +49,10 @@ select
     , customer_id
     , product_cd
     , amount
-from `100knocks.receipt`
-where customer_id = 'CS018205000001'
+from 
+    `100knocks.receipt`
+where   
+    customer_id = 'CS018205000001'
 ;
 ```
 
@@ -64,11 +67,11 @@ select
     , customer_id
     , product_cd
     , amount
-from `100knocks.receipt`
+from 
+    `100knocks.receipt`
 where
-    customer_id = 'CS018205000001'
-    and
-    amount >= 1000
+        customer_id = 'CS018205000001'
+    and amount >= 1000
 ;
 ```
 
@@ -84,11 +87,11 @@ select
     , product_cd
     , quantity
     , amount
-from `100knocks.receipt`
+from 
+    `100knocks.receipt`
 where
-    customer_id = 'CS018205000001'
-    and
-    (amount >= 1000 or quantity >= 5)
+        customer_id = 'CS018205000001'
+    and (amount >= 1000 or quantity >= 5)
 ;
 ```
 
@@ -103,11 +106,11 @@ select
     , customer_id
     , product_cd
     , amount
-from `100knocks.receipt`
+from 
+    `100knocks.receipt`
 where
-    customer_id = 'CS018205000001'
-    and
-    amount between 1000 and 2000
+        customer_id = 'CS018205000001'
+    and amount between 1000 and 2000
 ;
 ```
 
@@ -122,11 +125,11 @@ select
     , customer_id
     , product_cd
     , amount
-from `100knocks.receipt`
+from 
+    `100knocks.receipt`
 where
-    customer_id = 'CS018205000001'
-    and
-    product_cd <> 'P071401019'
+        customer_id = 'CS018205000001'
+    and product_cd <> 'P071401019'
 ;
 ```
 
@@ -138,11 +141,11 @@ where
 ```sql
 select
     *
-from `100knocks.store`
+from 
+    `100knocks.store`
 where
-    prefecture_cd <> 13
-    and
-    floor_area < 900
+        prefecture_cd <> 13
+    and floor_area < 900
 ;
 ```
 
@@ -152,9 +155,11 @@ where
 ```SQL
 select
     *
-from `100knocks.store`
-where store_cd like 'S14%'
--- where regexp_contains(store_cd, r'S14') #別解
+from 
+    `100knocks.store`
+where 
+    store_cd like 'S14%'
+    -- where regexp_contains(store_cd, r'S14') #別解
 limit 10
 ;
 ```
