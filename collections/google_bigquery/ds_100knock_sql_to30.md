@@ -224,14 +224,17 @@ order by
 limit 5
 ;
 ```
-```
+```sql
 # BigQuery 解法2
 select
     store_cd
     , variance(amount) as variance
-from `100knocks.receipt`
-group by store_cd
-order by variance desc
+from 
+    `100knocks.receipt`
+group by 
+    store_cd
+order by 
+    variance desc
 limit 5
 ;
 ```
