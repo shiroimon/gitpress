@@ -1,19 +1,16 @@
 ---
 date   : 2022-05-11
-title  : extruct()
+title  : EXTRUCT関数
 excerpt:
 tags   : ["Google BigQuery", "SQL", "extruct"]
 ---
 
 ## || EXTRACT
-```sql
-extract(element FROM date)
-```
 
 ```sql
 select 
-    extract(rsv_date from year) as YEAR
-    , extract(rsv_date from month) as MONTH
+    extract(year from rsv_date from) as YEAR
+    , extract(month fron rsv_date) as MONTH
 ```
 
 
