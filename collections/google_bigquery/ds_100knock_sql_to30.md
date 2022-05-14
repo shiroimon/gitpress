@@ -9,18 +9,16 @@ tags    : ["DataScientist", "SQL", "BigQuery"]
 ### | S-021 ★
 レシート明細テーブル(receipt)に対し、件数をカウントせよ。
 ```SQL
-select
-    count(*)
-from `prj-test3.100knocks.receipt`
-;
+select　count(*)　from　`100knocks.receipt`;
 ```
 
 ### | S-022 ★
-レシート明細テーブル(receipt)の顧客ID(customer_id)に対し、ユニーク件数をカウ ントせよ。
+レシート明細テーブル(receipt)の顧客ID(customer_id)に対し、ユニーク件数をカウントせよ。
 ```SQL
 select
-    count(distinct customer_id)
-from `prj-test3.100knocks.receipt`
+    count(distinct customer_id)　as unique_count
+from 
+    `100knocks.receipt`
 ;
 ```
 
@@ -31,8 +29,10 @@ select
     store_cd
     , sum(amount) as ttl_amount
     , sum(quantity) as ttl_quantity
-from `prj-test3.100knocks.receipt`
-group by store_cd
+from 
+    `100knocks.receipt`
+group by 
+    store_cd
 ;
 ```
 
@@ -46,13 +46,18 @@ from(
     select
         customer_id
         , last_value(sales_ymd) over(
-            partition by customer_id
-            order by sales_ymd
-            rows between unbounded preceding  and unbounded following
-        ) as recently_sales_ymd
-    from `prj-test3.100knocks.receipt`
+                partition by 
+                    customer_id 
+                order by 
+                    sales_ymd
+                rows 
+                    between unbounded preceding  and unbounded following
+          ) as recently_sales_ymd
+    from 
+        `100knocks.receipt`
 )
-group by customer_id
+group by 
+    customer_id
 limit 10
 ;
 ```
@@ -61,8 +66,10 @@ limit 10
 select
     customer_id
     , max(sales_ymd) as recently_sales_ymd
-from `prj-test3.100knocks.receipt`
-group by customer_id
+from 
+    `100knocks.receipt`
+group by 
+    customer_id
 limit 10
 ;
 ```
@@ -73,8 +80,10 @@ limit 10
 select
     customer_id
     , min(sales_ymd)
-from `prj-test3.100knocks.receipt`
-group by customer_id
+from 
+    `100knocks.receipt`
+group by 
+    customer_id
 ;
 ```
 
@@ -85,9 +94,12 @@ select
     customer_id
     , max(sales_ymd) as recently
     , min(sales_ymd) as formely
-from `prj-test3.100knocks.receipt`
-group by customer_id
-having recently <> formely
+from 
+    `100knocks.receipt`
+group by 
+    customer_id
+having 
+    recently <> formely
 limit 10
 ;
 ```
@@ -98,9 +110,12 @@ limit 10
 select
     store_cd
     , avg(amount)as mean_amount
-from `prj-test3.100knocks.receipt`
-group by store_cd
-order by mean_amount desc
+from
+    `100knocks.receipt`
+group by 
+    store_cd
+order by 
+    mean_amount desc
 limit 5
 ;
 ```
@@ -114,11 +129,13 @@ select
     , max(median_amount) as median_amount
 from
     (select
-        store_cd
-        , percentile_cont(amount, 0.5) over(partition by store_cd) as median_amount
-    from `prj-test3.100knocks.receipt`)
-group by store_cd
-order by median_amount desc
+         store_cd
+         , percentile_cont(amount, 0.5) over(partition by store_cd) as median_amount
+     from `100knocks.receipt`) as stcd
+group by 
+    store_cd
+order by 
+    median_amount desc
 limit 5
 ;
 ```
@@ -127,7 +144,7 @@ limit 5
 select
     store_cd
     , percentile_cont(0.5)within group(order by amount) as median_amount
-from `prj-test3.100knocks.receipt`
+from `100knocks.receipt`
 group by store_cd
 order by median_amount desc
 limit 5
@@ -141,8 +158,10 @@ limit 5
 select
     store_cd
     , approx_top_count(product_cd, 1) as product_cd_mod
-from `prj-test3.100knocks.receipt`
-group by store_cd
+from 
+    `100knocks.receipt`
+group by 
+    store_cd
 ;
 ```
 Cf.
@@ -174,27 +193,34 @@ ORDER BY store_cd
 レシート明細テーブル(receipt)に対し、店舗コード(store_cd)ごとに売上金額 (amount)の標本分散を計算し、降順でTOP5を表示せよ。
 ```SQL
 # BigQuery 解法1(スクラッチ)
-with mean_tb as (
+with 
+    mean_tb as (
         select
             store_cd
             , avg(amount) as mean
-        from `prj-test3.100knocks.receipt`
-        group by store_cd
+        from 
+            `100knocks.receipt`
+        group by 
+            store_cd
     )
     , diff_tb as (
         select
             store_cd
             , pow(cast(amount as float64) - m.mean, 2) as deviation_square
-        from `prj-test3.100knocks.receipt`
-        left join mean_tb as m
-        using(store_cd)
+        from 
+            `100knocks.receipt`
+        left join 
+            mean_tb m using(store_cd)
     )
 select
     store_cd
     , avg(deviation_square) as variance
-from diff_tb
-group by store_cd
-order by variance desc
+from 
+    diff_tb
+group by 
+    store_cd
+order by    
+    variance desc
 limit 5
 ;
 ```
@@ -203,7 +229,7 @@ limit 5
 select
     store_cd
     , variance(amount) as variance
-from `prj-test3.100knocks.receipt`
+from `100knocks.receipt`
 group by store_cd
 order by variance desc
 limit 5
