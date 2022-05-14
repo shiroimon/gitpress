@@ -5,10 +5,12 @@ excerpt:
 tags   : ["Google BigQuery", "SQL", "exists"]
 ---
 
-## || exists
+## || exists()
 
 > exists : 意味・対訳
+>
 > 存在する、現存する、(特殊な条件または場所に)ある、現われる、生存する、生きている、(…で)(やっと)生きていく
+> 
 > cf. https://ejje.weblio.jp/content/exist
 
 ```sql
@@ -22,7 +24,8 @@ where exists(
 ※ `in句`とは似て非なる。
 
 
-## || Cf.
+
+## || cf.
 + [【SQL】5分でわかる！ EXISTSでサブクエリを扱う方法](https://www.sejuku.net/blog/73615) - SAMURAIENGIEER
 + []() - 
 + []() - 
