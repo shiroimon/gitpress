@@ -1,6 +1,6 @@
 ---
 date   : 2022-03-2
-title  : st_distance()
+title  : ST_DISTANCE関数
 excerpt: 緯度・経度を用いて分析したい時に使える関数
 tags   : ["Google BigQuery", "SQL", "地理関数"]
 ---
@@ -16,13 +16,13 @@ select
 from (
    select distinct
        r.SHOPOWNER_ID = i.SHOPOWNER_ID as DISTINCTFLG
-       # 対象会員の予約医院
+       # 対象会員の予約店舗
        , r.SHOPOWNER_ID
        , r.CLINIC_NAME
        , r.SHOP_LATITUDE
        , r.SHOP_LONGITUDE
 
-       # レコメンド用医院
+       # レコメンド用店舗
        , i.SHOPOWNER_ID as MED_SHOPOWNER_ID
        , i.CLINIC_NAME as MED_CLINIC_NAME
        , i.SHOP_LATITUDE as MED_SHOP_LATITUDE
@@ -44,7 +44,7 @@ where
 ```
 
 
-## || Cf.
+## || cf.
 + [BigQuery GIS による天文データのクエリ](https://cloud.google.com/blog/ja/products/gcp/querying-the-stars-with-bigquery-gis) - GoogleCloud
 + [地理関数](https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions?hl=ja) - GoogleCloud
 + [BigQueryで測定系の地理関数を確認してみた(BigQuery GIS)](https://dev.classmethod.jp/articles/bigquery-geography-functions-try/) - DevelopersIO
