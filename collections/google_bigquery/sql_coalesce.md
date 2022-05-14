@@ -1,11 +1,11 @@
 ---
 date   : 2022-02-25
-title  : coalesce()
-excerpt: BigQueryのcoalesce関数について
+title  : COALESCE関数
+excerpt: 
 tags   : ["Google BigQuery", "SQL", "分析", "coalesce"]
 ---
 
-## || coalesce関数
+## || coalesce（）
 
 * 欠損処理に使える。(Null補完ができる。)
 
@@ -55,7 +55,7 @@ on
 
 
 
-Cf. 
-- [COALESCE Function](https://docs.trifacta.com/display/DP/COALESCE+Function)
-- [SQL関数coalesceの使い方と読み方](https://spirits.appirits.com/doruby/8666/)
-- [COALESCE関数](https://e-words.jp/w/COALESCE%E9%96%A2%E6%95%B0.html)
+## || cf. 
++ [COALESCE Function](https://docs.trifacta.com/display/DP/COALESCE+Function) - 
++ [SQL関数coalesceの使い方と読み方](https://spirits.appirits.com/doruby/8666/) - 
++ [COALESCE関数](https://e-words.jp/w/COALESCE%E9%96%A2%E6%95%B0.html) -
