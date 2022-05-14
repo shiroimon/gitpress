@@ -16,6 +16,7 @@
 
 <details>
 <summary>関数 </summary>
+  
 + [approx_count_distinct()](sql_approx_count_distinct)
 + [coalesce()](sql_coalesce)
 + [countif()](sql_countif)
@@ -31,6 +32,7 @@
 + [st_distance()](sql_st_distance)
 + [struct()](sql_struct)
 + [unnest()](sql_unnest)
+  
 </details>
 
 ## 演算子
