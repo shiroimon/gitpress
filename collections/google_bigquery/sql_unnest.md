@@ -1,6 +1,6 @@
 ---
 date   : 2022-03-02
-title  : UNNEST()
+title  : UNNEST関数
 excerpt: 
 tags   : ["Google BigQuery", "SQL", "unnest()"]
 ---
