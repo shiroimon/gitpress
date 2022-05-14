@@ -12,11 +12,9 @@
 11. - [Sect.12　おまけ](google_bigquery_12)
 
 
-# [BIGQUERY] SQL
 
-<details>
-<summary>関数 </summary>
-  
+# [BIGQUERY] SQL
+##関数  
 + [approx_count_distinct()](sql_approx_count_distinct)
 + [coalesce()](sql_coalesce)
 + [countif()](sql_countif)
@@ -32,8 +30,6 @@
 + [st_distance()](sql_st_distance)
 + [struct()](sql_struct)
 + [unnest()](sql_unnest)
-  
-</details>
 
 ## 演算子
 + [UNION](sql_union)
@@ -52,8 +48,10 @@
 + [UDF](sql_udf)
 
 
+
 # [BIGQUERY] ML
 + [時系列モデルの予測](ml_time_series)
+
 
 
 # [BIGQUERY] DS
