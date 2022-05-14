@@ -14,7 +14,7 @@
 
 
 # [BIGQUERY] SQL
-## 関数  
+## • 関数  
 + [approx_count_distinct()](sql_approx_count_distinct)
 + [coalesce()](sql_coalesce)
 + [countif()](sql_countif)
@@ -31,17 +31,17 @@
 + [struct()](sql_struct)
 + [unnest()](sql_unnest)
 
-## 演算子
+## • 演算子
 + [UNION](sql_union)
 + [EXCEPT](sql_except)
 + [INTERSECT](sql_intersect)
 
-## 句（節）
+## • 句（節）
 + [QUALIFY句](sql_qualify)
 + [WINDOW句](sql_window)
 + [EXISTS句](sql_exists)
 
-## BigQuery特有
+## • BigQuery特有
 + [BigQueryScriptting](sql_bqscripting)
 + [_TABLE_SUFFIX](sql_table_suffix)
 + [INFORMATION_SCHEMA](sql_information_schema)
@@ -55,7 +55,7 @@
 
 
 # [BIGQUERY] DS
-## DS 100ノック
+## • DS100ノック
 + [概要](ds_100knock)
 + [挑戦](ds_100knock_sql)
 + [1~10](ds_100knock_sql_to10)
@@ -70,6 +70,6 @@
 + [91~100](ds_100knock_sql_to100)
 
 
-## 
+## • 
 + [Jupyter⇔BigQuery](ds_jupyter_bigquery)
 
