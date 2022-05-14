@@ -12,8 +12,10 @@ tags    : ["DataScientist", "SQL", "BigQuery"]
 ```SQL
 select
     *
-from `100knocks.customer`
-where regexp_contains(customer_id, r'1$')
+from 
+   `100knocks.customer`
+where 
+   regexp_contains(customer_id, r'1$')
 limit 10
 ;
 ```
@@ -23,8 +25,10 @@ limit 10
 ```SQL
 select
     *
-from `100knocks.store`
-where address like '%横浜市%'
+from 
+   `100knocks.store`
+where 
+   address like '%横浜市%'
 ;
 ```
 
@@ -33,20 +37,16 @@ where address like '%横浜市%'
 ```SQL
 select
     *
-from `100knocks.customer`
+from
+   `100knocks.customer`
 where
-    regexp_contains(customer_id, r'^(A|B|C|D|E|F)') -- r'^(A-F)'
-    -- customer_id like 'A%'
-    -- or
-    -- customer_id like 'B%'
-    -- or
-    -- customer_id like 'C%'
-    -- or
-    -- customer_id like 'D%'
-    -- or
-    -- customer_id like 'E%'
-    -- or
-    -- customer_id like 'F%'
+    regexp_contains(customer_id, r'^(A|B|C|D|E|F)') -- r'^(A-F)' 別解
+    --    customer_id like 'A%'
+    -- or customer_id like 'B%'
+    -- or customer_id like 'C%'
+    -- or customer_id like 'D%'
+    -- or customer_id like 'E%'
+    -- or customer_id like 'F%'
 limit 10
 ;
 ```
@@ -57,7 +57,8 @@ Cf. [BigQueryでLIKE文の複数条件指定をORから正規表現に直す](ht
 ```SQL
 select
     *
-from `prj-test3.100knocks.customer`
+from 
+   `100knocks.customer`
 where
     regexp_contains(status_cd, r'[1-9]$')
 limit 10
@@ -69,7 +70,8 @@ limit 10
 ```SQL
 select
     *
-from `prj-test3.100knocks.customer`
+from 
+   `100knocks.customer`
 where
     regexp_contains(status_cd, r'^(A|B|C|D|E|F)-\d+-[1-9]$')
 limit 10
@@ -82,7 +84,8 @@ Cf. [基本的な正規表現一覧](https://murashun.jp/article/programming/reg
 ```SQL
 select
     *
-from `prj-test3.100knocks.store`
+from 
+   `100knocks.store`
 where regexp_contains(tel_no, r'\d{3}-\d{3}-\d{4}')
 ;
 ```
@@ -92,8 +95,10 @@ where regexp_contains(tel_no, r'\d{3}-\d{3}-\d{4}')
 ```SQL
 select
     *
-from `prj-test3.100knocks.customer`
-order by birth_day
+from 
+   `100knocks.customer`
+order by 
+   birth_day
 limit 10
 ;
 ```
@@ -103,8 +108,10 @@ limit 10
 ```SQL
 select
     *
-from `prj-test3.100knocks.customer`
-order by birth_day desc
+from 
+   `100knocks.customer`
+order by 
+   birth_day desc
 limit 10
 ;
 ```
@@ -115,11 +122,11 @@ limit 10
 select
     customer_id
     , amount
-    , rank()over(
-            order by amount desc
-      ) as ranking
-from `prj-test3.100knocks.receipt`
-order by ranking
+    , rank()　over(order by amount desc) as ranking
+from 
+   `100knocks.receipt`
+order by 
+   ranking
 limit 10
 ;
 ```
@@ -130,11 +137,11 @@ limit 10
 select
     customer_id
     , amount
-    , dense_rank()over( -- row_number()
-            order by amount desc
-      ) as ranking
-from `prj-test3.100knocks.receipt`
-order by ranking
+    , dense_rank()　over(order by amount desc) as ranking -- row_number()別解
+from 
+   `100knocks.receipt`
+order by 
+   ranking
 limit 10
 ;
 ```
