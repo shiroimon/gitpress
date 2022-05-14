@@ -1,7 +1,7 @@
 ---
 date    : 2021-09-24
-title   : 【📊 DS】データサイエンス100本ノック（構造化データ加工編）
-excerpt : データサイエンス協会が、データサイエンス初学者のための実践的な学習環境をGitHubに無料公開！
+title   : 概要
+excerpt : 
 tags    : ["DataScientist", "GitHub", "Docker", "SQL", "R", "Python"]
 ---
 
@@ -39,14 +39,9 @@ $ docker-compose up -d --build
 $ jupyter lab
 ```
 
-* _Cf :_ [【データサイエンス】データサイエンス100本ノック！実装までの道程](https://www.youtube.com/watch?v=mh8Z5d0-0PU) - Youtube
-* _Cf :_ [Macでデータサイエンス100本ノックを動かす方法](https://qiita.com/karaage0703/items/1b18b1f4ab65d35afb5f)- Qiita
-* _Cf :_ [データサイエンス100本ノックを、Google ColabとAzure Notebooksで気軽に行いたい！](https://qiita.com/noguhiro2002/items/de49db61b69c3dbc9282)- Qiita
+
+## || cf.
++ [【データサイエンス】データサイエンス100本ノック！実装までの道程](https://www.youtube.com/watch?v=mh8Z5d0-0PU) - Youtube
++ [Macでデータサイエンス100本ノックを動かす方法](https://qiita.com/karaage0703/items/1b18b1f4ab65d35afb5f)- Qiita
++ [データサイエンス100本ノックを、Google ColabとAzure Notebooksで気軽に行いたい！](https://qiita.com/noguhiro2002/items/de49db61b69c3dbc9282)- Qiita
 →環境構築 "怠ッ.." な人向け。コモン化した最強の記事(ありがたい)。
-
-
----
-## || やってみる
-
-* [Python](https://gitpress.io/@dot_tk/python_100knock)
-* [SQL](https://gitpress.io/@dot_tk/sql_100knock)
