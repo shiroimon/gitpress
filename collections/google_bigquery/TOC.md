@@ -23,6 +23,7 @@
 + [lead() / lag()](sql_lead_lag)
 + [left() / right()](sql_left_right)
 + [nullif()](sql_nullif)
++ [parse_date()](sql_parse_date)
 + [percentile_()](sql_percentile)
 + [row_number()](sql_row_number)
 + [safe_cast()](sql_safe_cast)
