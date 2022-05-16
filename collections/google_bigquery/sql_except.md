@@ -25,7 +25,7 @@ from
 left join 
     hoge_id h using(VAR_VALUE)
 ```
-「cd」「ｈ」何れにも同カラム名が存在するときに、selectで指定する際に除外するときにも使える。
+「cd」内に存在するカラム「VAR_KEY, VAR_VALUE」を、selectで指定する際に除外するときにも使える。
 
 
 
