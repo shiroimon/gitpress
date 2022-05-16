@@ -12,7 +12,7 @@ tags   : ["Google BigQuery", "SQL", "except"]
 ### | 差集合
 
 
-cf. []() - 
+cf. [分析入門 - SECTION10](https://gitpress.io/c/bigquery/google_bigquery_10) - GitPress
 
 
 ### | 除外利用
