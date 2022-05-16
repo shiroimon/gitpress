@@ -9,6 +9,24 @@ tags   : ["Google BigQuery", "SQL", "except"]
 
 差集合を取得できる。
 
+### | 差集合
+
+
+cf. []() - 
+
+
+### | 除外利用
+```sql
+select
+    cd.* except(VAR_KEY, VAR_VALUE)
+    , h.NUMBERS as PARK_MEMBER_ID
+from 
+    `datasets.table` cd
+left join 
+    hoge_id h using(VAR_VALUE)
+```
+「cd」「ｈ」何れにも同カラム名が存在するときに、selectで指定する際に除外するときにも使える。
+
 
 
 ## || cf.
