@@ -1,33 +1,33 @@
 # DB / SQL / 
 ## [DB] SQL COMMAND
-### ・DDL
+### ■ DDL
 + [CREATE]()
 + [ALTER]()
 + [DROP]()
 + [TRUNCATE]()
 + [RENAME]()
-### ・DML
+### ■ DML
 + [INSERT]()
 + [UPDATE]()
 + [DELETE]()
 + [MERGE]()
-### ・DCL
+### ■ DCL
 + [GRANT]()
 + [REVOKE]()
-### ・TCL
+### ■ TCL
 + [COMMIT]()
 + [ROLLBACK]()
 + [SAVE POINT]()
-### ・DQL
+### ■ DQL
 + [SELECT]()
 
 
 
 ## [DB] 
-### ・OSS
+### ■ OSS
 + [PostgreSQL]()
 
-### ・ER
-
+### ■ ER
++ []()
 
 
