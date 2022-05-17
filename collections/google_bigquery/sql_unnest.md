@@ -10,6 +10,20 @@ tags   : ["Google BigQuery", "SQL", "unnest()"]
 UNNEST を使うと、ARRAYなどの配列や、REPEATEDなカラムを、開くことができる。
 
 ```sql
+select 
+    fullVisitorId as UU
+    , visitNumber as SS
+    , struct (
+          h.eventInfo.eventCategory as CATEGORY
+        , h.eventInfo.eventAction as ACTION
+        , h.eventInfo.eventLabel as LABEL
+        , h.eventInfo.eventValue as VALUE
+      ) as EVENT
+    , ht.customDimensions as CUSTOM_DIMENSIONS_HITS
+    , ht.experiment as EXPERIMENT
+from 
+    ga 
+    , unnest(hits) as ht
 ```
 
 ```sql 
