@@ -6,6 +6,6 @@
 
 <table align='center' width="80%">
     <tr><th>ディレクトリ</th><th>用途</th></tr>
-    <tr><td>COLLECTIONS</td><td>自己学習ノート</td></tr>
-    <tr><td>SOURCE</td><td>コード内部で説明を付するノート(プロジェクト、研究、業務…etc.)</td></tr>
+    <tr><td>COLLECTIONS</td><td>自己学習（ノート）</td></tr>
+    <tr><td>SOURCE</td>覚書<td></td></tr>
 </table>
