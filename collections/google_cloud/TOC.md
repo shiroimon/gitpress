@@ -1,4 +1,4 @@
-# [GCP] Udemy
+## [GCP] Udemy
 1. [Sect.1:](gcp_udemy_1)
 2. [Sect.2:](gcp_udemy_2)
 3. [Sect.3:](gcp_udemy_3)
@@ -15,10 +15,10 @@
 
 
 
-# [GCP] Professional Data Engineer
+## [GCP] Professional Data Engineer
 + [memo](pde_memo)
 
-## ・coursera
+### ■ coursera
 1. [Step.1](gcp_coursera_1)
 2. [Step.2](gcp_coursera_2)
 3. [Step.3](gcp_coursera_3)
@@ -27,6 +27,8 @@
 
 
 
-# [GCP] tips
-+ [memo](memo)
-+ []()
+## [GCP] tips
++ [memo](gcloud_memo)
+
+### ■ API
++ [DLP API](gcloud_dlp_api)
