@@ -72,3 +72,11 @@
 
 ## •
 + [Jupyter⇔BigQuery](ds_jupyter_bigquery)
+
+
+
+# [BIGQUERY] ERROR
++ [To copy a table, the destination and source datasets must be in the same region. Copy an entire dataset to move data between regions.]()
+
+
+
