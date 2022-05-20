@@ -29,6 +29,5 @@
 
 ## [GCP] tips
 + [memo](gcloud_memo)
-
-### ■ API
-+ [DLP API](gcloud_dlp_api)
++ [GoogleCloudS torage](gcloud_storage)
++ [GoogleCloud DLP API](gcloud_dlp_api)
