@@ -17,7 +17,9 @@ from
 order by 
     USERID
 limit 1000000 offset 0 -- 0~1000000迄
--- limit 2000000 offset 1000001 -- 1000001~2000000迄
+-- limit 1000000 offset 1000001 -- 1000001~2000000迄
+-- limit 1000000 offset 2000001 -- 2000001~3000000迄
+-- limit 3314884 offset 3000001 -- 3000001~3314884迄
 ```
 
 ## || REFERENCE
