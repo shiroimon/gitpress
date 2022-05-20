@@ -1,7 +1,7 @@
 
 
 ## || ERROR
-作成したクエリを一時的にテーブル化しようとしたら、以下のようなエラーが出て困った。。
+作成したクエリの抽出結果を一時的にテーブル化しようとしたら、以下のようなエラーが出て困った。。
 
     To copy a table, the destination and source datasets must be in the same region. Copy an entire dataset to move data between regions.
 
