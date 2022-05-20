@@ -41,6 +41,7 @@
 + [QUALIFY句](sql_qualify)
 + [WINDOW句](sql_window)
 + [EXISTS句](sql_exists)
++ [LIMIT / OFFSET句](sql_limit_offset)
 
 ## • BigQuery特有
 + [BigQueryScriptting](sql_bqscripting)
