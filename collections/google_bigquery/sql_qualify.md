@@ -96,6 +96,8 @@ qualify
 ;
 ```
 
-## || ｃf.
+## || REFERENCE
 + [QUALIFY 句](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax?hl=ja#qualify_clause) - GoogleCloud
 + [BigQueryのqualify句の使い方](https://zenn.dev/hrkh/articles/hatena-20210615-124624) - Zenn
++ [tips9: preview 機能を楽しむ](https://yoheikikuta.github.io/BigQuery_tips_part3/) - 原理的には可能
++ 
