@@ -16,7 +16,7 @@
 
 
 ## [GCP] Professional Data Engineer
-+ [memo](pde_memo)
++ [memo](gcp_pde_memo)
 
 ### ■ coursera
 1. [Step.1](gcp_coursera_1)
