@@ -93,3 +93,11 @@ tags   : ["Google Cloud", "資格"]
 ③[Udemyで販売している模擬試験](https://www.udemy.com/course/google-certified-professional-data-engineer-practice-test/)<br>
 
 
+
+
+
+
+---
+
+[Google Cloud 認定資格の取得準備：クラウドデータエンジニア プロフェッショナル認定証](https://www.coursera.org/professional-certificates/gcp-data-engineering#courses) - Coursera
+[Data Engineering, Big Data and ML on Google Cloud 日本語版専門講座](https://www.coursera.org/specializations/gcp-data-machine-learning-jp) - Coursera
