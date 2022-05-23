@@ -15,9 +15,8 @@
 
 
 
-## [GCP] Professional Data Engineer
-
-### ■ coursera
+## [GCP] Coursera
+### ■ Professional Data Engineer
 + [(memo)](gcp_pde_memo)
 1. [Step.1](gcp_coursera_1)
 2. [Step.2](gcp_coursera_2)
@@ -28,6 +27,6 @@
 
 
 ## [GCP] tips
-+ [memo](gcloud_memo)
++ [(memo)](gcloud_memo)
 + [GoogleCloudS torage](gcloud_storage)
 + [GoogleCloud DLP API](gcloud_dlp_api)
