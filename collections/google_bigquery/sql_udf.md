@@ -87,12 +87,25 @@ create temporary function
     );
 ```
 
+## || JavaScript UDF
+
+UDF内部にJSの処理を追加することもできるらしい！（すご）
+
 ```sql
+# Model function
+CREATE TEMPORARY FUNCTION lr_prob(x1 FLOAT64, x2 FLOAT64, w0 FLOAT64, w1 FLOAT64, w2 FLOAT64)
+      RETURNS FLOAT64
+      LANGUAGE js AS """
+        return 1 / (1 + Math.exp(-(w0 + w1 * x1 + w2 * x2)));
+      """;
 ```
 
+機会学習とかで使えそう。(cf.[「BigQuery ML」：SQLで機械学習ってどういうこと？試しにSQLでロジスティック回帰を書いてみた。](https://www.wantedly.com/companies/wantedly/post_articles/129482))
 
-## || Cf.
+
+
+## || REFERENCE
 + [BigQueryでユーザー定義関数（UDF）は武器になるという話](https://techblog.zozo.com/entry/bigquery-udf) - ZOZO
 + [Standard SQL user-defined functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions?hl=ja) - Google Cloud
-+ []() -
++ [JavaScript UDF](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions?hl=ja#javascript-udf-structure) - GoogleCLoud
 
