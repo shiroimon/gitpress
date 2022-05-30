@@ -22,6 +22,7 @@
 + [ifnull()](sql_ifnull)
 + [lead() / lag()](sql_lead_lag)
 + [left() / right()](sql_left_right)
++ [lower()](sql_lower)
 + [nullif()](sql_nullif)
 + [parse_date()](sql_parse_date)
 + [percentile_()](sql_percentile)
