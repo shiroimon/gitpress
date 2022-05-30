@@ -76,14 +76,14 @@ GROUP BY
 
 ```sql
 create temporary function 
-    CALC_ELAPSED_MONTHS(base_date datetime, value_date datetime) as (
-    /*
-     * 経過月数を正しく規定する関数
-     * eg. 集計期間2011/2/1~2012/1/31の1年間とする時、2011/1/31から翌日に予約をした会員も月差分で加えられてしまう。
-     *     回避として、そういった1ケ月満たない会員に「-1」を渡す処理をする。
-     */
-        date_diff(base_date, value_date, month) 
-        + if(date_diff(base_date, date_add(value_date, interval date_diff(base_date, value_date, month) month), day) >= 0, 0, -1)
+    calc_elapsed_month(BASE_DATE datetime, VALUE_DATE datetime) as (
+        /*
+         * 経過月数を正しく規定する関数
+         * eg. 集計期間2011/2/1~2012/1/31の1年間とする時、2011/1/31から翌日に予約をした会員も月差分で加えられてしまう。
+         *     回避として、そういった1ケ月満たない会員に「-1」を渡す処理をする。
+         */
+        date_diff(BASE_DATE, VALUE_DATE, month) 
+        + if(date_diff(BASE_DATE, date_add(VALUE_DATE, interval date_diff(BASE_DATE, VALUE_DATE, month) month), day) >= 0, 0, -1)
     );
 ```
 
