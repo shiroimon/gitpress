@@ -53,6 +53,7 @@
 
 
 # [BIGQUERY] ML
++ [ロジスティック回帰分析](ml_rogleg)
 + [時系列モデルの予測](ml_time_series)
 
 
