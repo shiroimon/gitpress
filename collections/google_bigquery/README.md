@@ -1,7 +1,7 @@
 # Google BigQuery
 ## ||BigQuerynのSQL（標準SQLリファレンス）より
 
-先ずはここら([クエリ構文](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax?hl=ja))目を通して、
+公式ドキュメントの構成が分かるところ→[クエリ構文](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax?hl=ja)
 
 
 
