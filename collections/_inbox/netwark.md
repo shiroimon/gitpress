@@ -5,7 +5,7 @@ excerpt :
 tags    : ["", "", ""]
 ---
 
-## ||TCP/IP(インターネット・プロトコル・スイート)
+## ||TCP/IP
 
 ※ [OSI参照モデルとは？TCP/IPとの違いを図解で解説](https://www.itmanage.co.jp/column/osi-reference-model/#anc003) - アイティーエム
 
