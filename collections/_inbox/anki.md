@@ -1,6 +1,6 @@
 ---
 date    : 2022-05-30
-title   : Anki
+title   : 【🌟Anki】
 excerpt :
 tags    : ["Anki", "学習ツール"]
 ---
