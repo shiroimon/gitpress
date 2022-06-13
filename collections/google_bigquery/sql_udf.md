@@ -90,23 +90,24 @@ create temporary function
 ## || 関数を永続的な UDF として作成 & 呼び出し
 ### | 作成
 ```sql
--- dataset.hoge_view
--- 作成した関数を永続化（データセットつけるだけ）
-create temporary function
-    [dataset].calc_elapsed_month(BASE_DATE datetime, VALUE_DATE datetime) as (
-        date_diff(BASE_DATE, VALUE_DATE, month) 
-        + if(date_diff(BASE_DATE, date_add(VALUE_DATE, interval date_diff(BASE_DATE, VALUE_DATE, month) month), day) >= 0, 0, -1)
-    )
+-- 作成した関数を永続化（データセットつけて実行する）
+create function
+    `prj.dataset`.calc_elapsed_month(BASE_DATE datetime, VALUE_DATE datetime) as (~);
+
 ```
+上記ができると
+prj > dataset >『routine』指定したデータセット直下にroutineなるものができている！
+
+![無題](https://user-images.githubusercontent.com/28585421/173274249-bca84580-7877-407e-8f95-d3594310db83.png)
+
 cf. [SQL UDF](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions?hl=ja#sql-udf-structure) - GoogleCloud
 
 
 ### | 呼び出し
 ```sql
--- dataset.fuga_view
 -- データセット名をつければ呼び込める！
 select 
-    [dataset].calc_elapsed_month(BASE_DATE, VALUE_DATE)
+    `prj.dataset.calc_elapsed_month`(BASE_DATE, VALUE_DATE)
     , BASE_DATE
     , VALUE_DATE
 from ~
