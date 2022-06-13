@@ -90,6 +90,7 @@ create temporary function
 ## || 関数を永続的な UDF として作成 & 呼び出し
 ### | 作成
 ```sql
+-- dataset.hoge_view
 -- 作成した関数を永続化（データセットつけるだけ）
 create temporary function
     [dataset].calc_elapsed_month(BASE_DATE datetime, VALUE_DATE datetime) as (
@@ -102,6 +103,7 @@ cf. [SQL UDF](https://cloud.google.com/bigquery/docs/reference/standard-sql/user
 
 ### | 呼び出し
 ```sql
+-- dataset.fuga_view
 -- データセット名をつければ呼び込める！
 select 
     [dataset].calc_elapsed_month(BASE_DATE, VALUE_DATE)
