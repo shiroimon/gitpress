@@ -60,7 +60,7 @@ with
     )
 select * except(station_name, isweekday) from stationstats;
 ```
-
+cf.[ロンドンのレンタル自転車のデータセットをクラスタ化するための K 平均法モデルの作成](https://cloud.google.com/bigquery-ml/docs/kmeans-tutorial?hl=ja) - GoogleCloud
 
 ## || REFERENCE
 + [分類モデルの作成](https://cloud.google.com/bigquery-ml/docs/logistic-regression-prediction?hl=ja) - GoogleCloud
