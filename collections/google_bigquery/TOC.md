@@ -50,6 +50,9 @@
 + [INFORMATION_SCHEMA](sql_information_schema)
 + [UDF](sql_udf)
 
+## ■ ERROR
++ [To copy a table, the destination and source datasets must be in the same region. Copy an entire dataset to move data between regions.](bq_error_case1)
+
 
 
 # [BIGQUERY] ML
@@ -78,7 +81,8 @@
 
 
 
-# [BIGQUERY] ERROR
-+ [To copy a table, the destination and source datasets must be in the same region. Copy an entire dataset to move data between regions.](bq_error_case1)
+# [BIGQUERY] GA
++ []()
+
 
 
