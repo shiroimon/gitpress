@@ -75,7 +75,7 @@ GROUP BY
 ### | まねっこ（自作関数）
 
 ```sql
-create temporary function 
+create temporary function
     calc_elapsed_month(BASE_DATE datetime, VALUE_DATE datetime) as (
         /*
          * 経過月数を正しく規定する関数
@@ -86,6 +86,34 @@ create temporary function
         + if(date_diff(BASE_DATE, date_add(VALUE_DATE, interval date_diff(BASE_DATE, VALUE_DATE, month) month), day) >= 0, 0, -1)
     );
 ```
+
+## || 関数を永続的な UDF として作成 & 呼び出し
+### | 作成
+```sql
+-- 作成した関数を永続化（データセットつけるだけ）
+create temporary function
+    [dataset].calc_elapsed_month(BASE_DATE datetime, VALUE_DATE datetime) as (
+        date_diff(BASE_DATE, VALUE_DATE, month) 
+        + if(date_diff(BASE_DATE, date_add(VALUE_DATE, interval date_diff(BASE_DATE, VALUE_DATE, month) month), day) >= 0, 0, -1)
+    )
+```
+cf. [SQL UDF](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions?hl=ja#sql-udf-structure) - GoogleCloud
+
+
+### | 呼び出し
+```sql
+-- データセット名をつければ呼び込める！
+select 
+    [dataset].calc_elapsed_month(BASE_DATE, VALUE_DATE)
+    , BASE_DATE
+    , VALUE_DATE
+from ~
+```
+cf. [永続的なユーザー定義関数（UDF）の呼び出し](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-reference?hl=ja#calling_persistent_user-defined_functions_udfs) -- GoogleCLoud
+
+    ※プロジェクトを跨ぐ場合はも同様でプロジェクト名を付与して絶対パスにすると◎
+
+
 
 ## || JavaScript UDF
 
@@ -99,6 +127,8 @@ CREATE TEMPORARY FUNCTION lr_prob(x1 FLOAT64, x2 FLOAT64, w0 FLOAT64, w1 FLOAT64
         return 1 / (1 + Math.exp(-(w0 + w1 * x1 + w2 * x2)));
       """;
 ```
+cf.[JavaScript UDF](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions?hl=ja#javascript-udf-structure) - GoogleCLoud
+
 
 機会学習とかで使えそう。(cf.[「BigQuery ML」：SQLで機械学習ってどういうこと？試しにSQLでロジスティック回帰を書いてみた。](https://www.wantedly.com/companies/wantedly/post_articles/129482))
 
@@ -107,5 +137,3 @@ CREATE TEMPORARY FUNCTION lr_prob(x1 FLOAT64, x2 FLOAT64, w0 FLOAT64, w1 FLOAT64
 ## || REFERENCE
 + [BigQueryでユーザー定義関数（UDF）は武器になるという話](https://techblog.zozo.com/entry/bigquery-udf) - ZOZO
 + [Standard SQL user-defined functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions?hl=ja) - Google Cloud
-+ [JavaScript UDF](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions?hl=ja#javascript-udf-structure) - GoogleCLoud
-
