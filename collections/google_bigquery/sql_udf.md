@@ -105,9 +105,9 @@ cf. [SQL UDF](https://cloud.google.com/bigquery/docs/reference/standard-sql/user
 
 ### | 呼び出し
 ```sql
--- データセット名をつければ呼び込める！
+-- データセット名をつければ『routine』からいつでも呼び込める！
 select 
-    `prj.dataset.calc_elapsed_month`(BASE_DATE, VALUE_DATE)
+    `prj.dataset`.calc_elapsed_month(BASE_DATE, VALUE_DATE)
     , BASE_DATE
     , VALUE_DATE
 from ~
