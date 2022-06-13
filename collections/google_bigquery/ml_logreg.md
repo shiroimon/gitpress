@@ -6,8 +6,9 @@ GoogleCLoud内部に、*BigQueryML*のチュートリアルが用意されてい
 
 ```sql
 #standardSQL
+-- ロジスティック回帰（分類モデル）
 create model `bqml_tutorial.sample_model`
-options(model_type='logistic_reg') as (
+options(model_type='logistic_reg') as
     select
           if(totals.transactions is null, 0, 1) as LABEL
         , ifnull(device.operatingSystem, "") as OS
@@ -18,7 +19,46 @@ options(model_type='logistic_reg') as (
         `bigquery-public-data.google_analytics_sample.ga_sessions_*`
     where
         _TABLE_SUFFIX between '20160801' and '20170630'
-);
+```
+
+```sql
+#standardSQL
+-- k-means
+create or replace model 
+bqml_tutorial.london_station_clusters 
+options(model_type='kmeans', num_clusters=4) as
+with 
+    hs as (
+        select
+            h.start_station_name as station_name
+            , if(extract(DAYOFWEEK from h.start_date) = 1 or extract(DAYOFWEEK from h.start_date) = 7
+                  , "weekend"
+                  , "weekday"
+              ) as is_weekday
+            , h.duration
+            , ST_DISTANCE(ST_GEOGPOINT(s.longitude, s.latitude), ST_GEOGPOINT(-0.1, 51.5))/1000 AS distance_from_city_center
+        from 
+            `bigquery-public-data.london_bicycles.cycle_hire` h
+        join
+            `bigquery-public-data.london_bicycles.cycle_stations` s
+        on 
+            h.start_station_id = s.id
+        where
+            h.start_date between cast('2015-01-01 00:00:00' as timestamp) and cast('2016-01-01 00:00:00' as timestamp) 
+    )
+    , stationstats as (
+        select
+            station_name
+            , isweekday
+            , avg(duration) as duration
+            , count(duration) as num_trips
+            , max(distance_from_city_center) as distance_from_city_center
+        from 
+            hs
+        group by 
+            station_name, isweekday
+    )
+select * except(station_name, isweekday) from stationstats;
 ```
 
 
