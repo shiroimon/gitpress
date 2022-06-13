@@ -4,6 +4,23 @@ GoogleCLoud内部に、*BigQueryML*のチュートリアルが用意されてい
 
 クイックスタート＞[BigQuery ML で機械学習モデルを作成する](https://cloud.google.com/bigquery-ml/docs/create-machine-learning-model?hl=ja)
 
+```sql
+#standardSQL
+create model `bqml_tutorial.sample_model`
+options(model_type='logistic_reg') as (
+    select
+          if(totals.transactions is null, 0, 1) as LABEL
+        , ifnull(device.operatingSystem, "") as OS
+        , device.isMobile as IS_MOBILE
+        , ifnull(geoNetwork.country, "") as COUNTRY
+        , ifnull(totals.pageviews, 0) as PV
+    from
+        `bigquery-public-data.google_analytics_sample.ga_sessions_*`
+    where
+        _TABLE_SUFFIX between '20160801' and '20170630'
+);
+```
+
 
 ## || REFERENCE
 + [分類モデルの作成](https://cloud.google.com/bigquery-ml/docs/logistic-regression-prediction?hl=ja) - GoogleCloud
