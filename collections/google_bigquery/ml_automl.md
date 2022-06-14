@@ -1,28 +1,39 @@
 ## || BigQueryMLでAutoML
 ```sql
 #standardSQL
+/*
+ * 各タスクをトランザクション毎にまとめている為、
+ * 必要に応じてコメントアウトして使用。（ or 一気通貫しても◎）
+ */
+
+
 begin
 /* モデル作成 */
     create or replace model `dataset`.auto_ml_1 -- モデル名
     options(
           model_type = 'AUTOML_CLASSIFIER' -- 使用アルゴリズム
         -- , input_label_cols = [''] -- ターゲット名（カラム）
-        , budget_hours = 1.0
+        , budget_hours = 1.0 -- 時間制限
     ) as
+    /* 学習に使用するデータを抽出するクエリ */
     select
         State
         , Account_Length
         , Area_Code
         , Total_Charge / Account_Length as avg_daily_spend
         , CustServ_Calls / Account_Length as avg_daily_cases
-        , Churn_ as label
+        , Churn_ as label -- 推論するラベル
     from  
         `dataset.CSV_CUSTOMER_ACTIVITY`
     where
         date(2020, 1, 1) <= Record_Date
     ;
+
+
+
 /* モデル評価 */
     select * from ml.evaluate(model `dataset`.auto_ml_1, (
+        /* モデル作成に使用した特徴量を抽出するクエリ */
         select
             State
             , Account_Length
@@ -36,6 +47,9 @@ begin
             date(2020, 1, 1) <= Record_Date
         )
     );
+
+
+
 /* モデル推論 */
     select
         predicted_label
@@ -45,6 +59,7 @@ begin
         , avg_daily_spend
         , avg_daily_cases
     from ml.predict(model `dataset`.auto_ml_1, (
+        /* 予測するのに必要な特徴量を抽出するクエリ */
         select
             State
             , Account_Length
@@ -59,7 +74,19 @@ begin
         )
     ), unnest(predicted_label_probs)
     where
-        label = 'True.'
+        label = 'True.' -- ∵ 2値分類のため
+    ;
+
+
+
+/* 特徴量の重み */
+    select 
+        processed_input
+        , weight
+    from 
+        ml.weights(model `dataset`.auto_ml_1)
+    order by 
+        abs(weight) desc
     ;
 end
 ```
