@@ -1,4 +1,13 @@
 ## || BigQueryMLでAutoML
+### | データセット収集
+[オープンデータ](https://hsi.ksc.kwansei.ac.jp/AI-Center/opendata.html)(人工知能研究センター)に色々あるよ！
+
+今回は、カリフォルニア大学アーバイン校Machine Learningデータセットのリポジトリから公開されている『顧客解約予測データセット』
+[California Irvine カリフォルニアアーバインの紹介](https://academic-accelerator.com/Manuscript-Generator/jp/California-Irvine)
+
+
+### | クエリ
+
 ```sql
 #standardSQL
 /*
