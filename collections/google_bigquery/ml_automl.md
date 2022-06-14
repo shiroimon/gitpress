@@ -72,7 +72,7 @@ with
                 , Area_Code
                 , Total_Charge / Account_Length as avg_daily_spend
                 , CustServ_Calls / Account_Length as avg_daily_cases
-                , Churn_ as label
+                -- , Churn_ as label -- (推論時不要）
             from  
                 `my_dataset.CSV_CUSTOMER_ACTIVITY`
             where
