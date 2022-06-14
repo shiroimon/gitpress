@@ -1,4 +1,6 @@
 ## || BigQueryMLでサポートされるモデル
+![image](https://user-images.githubusercontent.com/28585421/173488664-3a6221c8-cb19-4d2b-ac11-58a8b40b15dc.png)
+([チートシートのDL](https://cloud.google.com/bigquery-ml/images/ml-model-cheatsheet.pdf) - Google)
 
 ### | 教師あり
 + 回帰
