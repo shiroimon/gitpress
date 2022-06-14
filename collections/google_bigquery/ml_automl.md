@@ -141,7 +141,7 @@ begin
 
 
 
-/* モデル推論（テストデータに対して） */
+/* 係数算出（特徴量の重み） */
     select 
         processed_input
         , weight
