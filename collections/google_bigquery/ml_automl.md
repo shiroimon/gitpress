@@ -2,93 +2,95 @@
 ```sql
 #standardSQL
 /*
- * 各タスクをトランザクション毎にまとめている為、
- * 必要に応じてコメントアウトして使用。（ or 一気通貫しても◎）
+ * ◇ BigQuery ML
+ *   先に、「MODEL_DEVLOP」を実行。実行後、コメントアウトしてView化すると便利
+ *   後に、「MODEL_EVALUATE」「MODEL_PREDICT」を実行。
  */
 
-
-begin
-/* モデル作成 */
-    create or replace model `dataset`.auto_ml_1 -- モデル名
-    options(
-          model_type = 'AUTOML_CLASSIFIER' -- 使用アルゴリズム
-        -- , input_label_cols = [''] -- ターゲット名（カラム）
-        , budget_hours = 1.0 -- 時間制限
-    ) as
-    /* 学習に使用するデータを抽出するクエリ */
-    select
-        State
-        , Account_Length
-        , Area_Code
-        , Total_Charge / Account_Length as avg_daily_spend
-        , CustServ_Calls / Account_Length as avg_daily_cases
-        , Churn_ as label -- 推論するラベル
-    from  
-        `dataset.CSV_CUSTOMER_ACTIVITY`
-    where
-        date(2020, 1, 1) <= Record_Date
-    ;
+/* MODEL_DEVLOP */
+    -- create or replace model `my_dataset`.auto_ml_1 -- モデル名
+    -- options(
+    --       model_type = 'AUTOML_CLASSIFIER' -- 使用アルゴリズム
+    --     -- , input_label_cols = [''] -- ターゲット名（カラム）
+    --     , budget_hours = 1.0 -- 時間制限
+    -- ) as
+    -- /* クエリ（学習に使用するデータを抽出する） */
+    -- select
+    --     State
+    --     , Account_Length
+    --     , Area_Code
+    --     , Total_Charge / Account_Length as avg_daily_spend
+    --     , CustServ_Calls / Account_Length as avg_daily_cases
+    --     , Churn_ as label -- 推論するラベル
+    -- from  
+    --     `my_dataset.CSV_CUSTOMER_ACTIVITY`
+    -- where
+    --     date(2020, 1, 1) <= Record_Date
+    -- ;
 
 
 
-/* モデル評価 */
-    select * from ml.evaluate(model `dataset`.auto_ml_1, (
-        /* モデル作成に使用した特徴量を抽出するクエリ */
-        select
-            State
-            , Account_Length
-            , Area_Code
-            , Total_Charge / Account_Length as avg_daily_spend
-            , CustServ_Calls / Account_Length as avg_daily_cases
-            , Churn_ as label
-        from  
-            `dataset.CSV_CUSTOMER_ACTIVITY`
-        where
-            date(2020, 1, 1) <= Record_Date
+with
+
+/* MODEL_EVALUATE */
+
+    evaluation as (
+        select * from ml.evaluate(model `my_dataset`.auto_ml_1, (
+            /* サブクエリ（モデル作成に使用した特徴量を抽出するクエリ） */
+            select
+                State
+                , Account_Length
+                , Area_Code
+                , Total_Charge / Account_Length as avg_daily_spend
+                , CustServ_Calls / Account_Length as avg_daily_cases
+                , Churn_ as label
+            from  
+                `my_dataset.CSV_CUSTOMER_ACTIVITY`
+            where
+                date(2020, 1, 1) <= Record_Date
+            )
         )
-    );
+    )
 
 
 
-/* モデル推論 */
-    select
-        predicted_label
-        , prob
-        , State
-        , Account_Length
-        , avg_daily_spend
-        , avg_daily_cases
-    from ml.predict(model `dataset`.auto_ml_1, (
-        /* 予測するのに必要な特徴量を抽出するクエリ */
+/* MODEL_PREDICT */
+
+    , predict as (
         select
-            State
+            predicted_label
+            , prob
+            , State
             , Account_Length
-            , Area_Code
-            , Total_Charge / Account_Length as avg_daily_spend
-            , CustServ_Calls / Account_Length as avg_daily_cases
-            , Churn_ as label
-        from  
-            `dataset.CSV_CUSTOMER_ACTIVITY`
+            , avg_daily_spend
+            , avg_daily_cases
+        from ml.predict(model `my_dataset`.auto_ml_1, (
+            /* サブクエリ（予測するのに必要な特徴量を抽出するクエリ） */
+            select
+                State
+                , Account_Length
+                , Area_Code
+                , Total_Charge / Account_Length as avg_daily_spend
+                , CustServ_Calls / Account_Length as avg_daily_cases
+                , Churn_ as label
+            from  
+                `my_dataset.CSV_CUSTOMER_ACTIVITY`
+            where
+                date(2020, 1, 1) <= Record_Date
+            )
+        ), unnest(predicted_label_probs)
         where
-            date(2020, 1, 1) <= Record_Date
-        )
-    ), unnest(predicted_label_probs)
-    where
-        label = 'True.' -- ∵ 2値分類のため
-    ;
+            predicted_label = 'True.' -- ∵ 2値分類のため
+    )
 
 
 
-/* 特徴量の重み */
-    select 
-        processed_input
-        , weight
-    from 
-        ml.weights(model `dataset`.auto_ml_1)
-    order by 
-        abs(weight) desc
-    ;
-end
+/* OUTPUT */
+
+select * from 
+evaluation
+-- predict
+;
 ```
 
 ```txt
