@@ -56,6 +56,7 @@
 
 
 # [BIGQUERY] ML
++ [BigQuery MLについて](ml_index)
 + [AutoML](ml_automl)
 + [ロジスティック回帰](ml_logreg)
 + [時系列モデルの予測](ml_time_series)
