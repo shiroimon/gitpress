@@ -3,7 +3,7 @@
 #standardSQL
 begin
 /* モデル作成 */
-    create or replace model `0030997_hirukawa`.auto_ml_1 -- モデル名
+    create or replace model `dataset`.auto_ml_1 -- モデル名
     options(
           model_type = 'AUTOML_CLASSIFIER' -- 使用アルゴリズム
         -- , input_label_cols = [''] -- ターゲット名（カラム）
@@ -17,12 +17,12 @@ begin
         , CustServ_Calls / Account_Length as avg_daily_cases
         , Churn_ as label
     from  
-        `0030997_hirukawa.CSV_CUSTOMER_ACTIVITY`
+        `dataset.CSV_CUSTOMER_ACTIVITY`
     where
         date(2020, 1, 1) <= Record_Date
     ;
 /* モデル評価 */
-    select * from ml.evaluate(model `0030997_hirukawa`.auto_ml_1, (
+    select * from ml.evaluate(model `dataset`.auto_ml_1, (
         select
             State
             , Account_Length
@@ -31,7 +31,7 @@ begin
             , CustServ_Calls / Account_Length as avg_daily_cases
             , Churn_ as label
         from  
-            `0030997_hirukawa.CSV_CUSTOMER_ACTIVITY`
+            `dataset.CSV_CUSTOMER_ACTIVITY`
         where
             date(2020, 1, 1) <= Record_Date
         )
@@ -44,7 +44,7 @@ begin
         , Account_Length
         , avg_daily_spend
         , avg_daily_cases
-    from ml.predict(model `0030997_hirukawa`.auto_ml_1, (
+    from ml.predict(model `dataset`.auto_ml_1, (
         select
             State
             , Account_Length
@@ -53,7 +53,7 @@ begin
             , CustServ_Calls / Account_Length as avg_daily_cases
             , Churn_ as label
         from  
-            `0030997_hirukawa.CSV_CUSTOMER_ACTIVITY`
+            `dataset.CSV_CUSTOMER_ACTIVITY`
         where
             date(2020, 1, 1) <= Record_Date
         )
