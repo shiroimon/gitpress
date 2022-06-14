@@ -97,6 +97,73 @@ end
 [BigQuery ML unable to identify label column in data](https://stackoverflow.com/questions/54151811/bigquery-ml-unable-to-identify-label-column-in-data) - stack overflow
 [feedbackThe CREATE MODEL statement](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create) - Google Cloud
 
+### | Taitaic
+[「BigQueryML」でSQLを書いて機械学習モデルを構築&予測できる！](https://qiita.com/s_yaginuma/items/b692d3716dcb06416ce0) - Qiita
+```sql
+#standardSQL
+begin
+/* モデル作成 */
+    create model `Kaggle_titanic`.model_titanic
+    options (model_type = 'logistic_reg') as
+    select
+        Pclass
+        , title
+        , is_female
+        , family_size
+        , is_alone
+        , age
+        , embarked
+        , fare
+        , class_age
+        , Survived as label
+    from 
+        `Kaggle_titanic.preprocessed_data` -- 前処理終わり
+    left join 
+        `Kaggle_titanic.label_train` using(PassengerId)
+    where 
+        train_flag = 'train'
+    ;
+/* モデル評価 */
+    select * from ml.evaluate(model `Kaggle_titanic`.model_titanic, (
+        select Pclass, title, is_female, family_size, is_alone, age, embarked, fare, class_age, Survived as label
+        from `Kaggle_titanic.preprocessed_data`
+        left join `Kaggle_titanic.label_train` using(PassengerId)
+        where train_flag = 'train'
+        )
+    );
+/* モデル推論（テストデータに対して） */
+    select * from ml.predict(model `Kaggle_titanic`.model_titanic, (
+        select Pclass, title, is_female, family_size, is_alone, age, embarked, fare, class_age, Survived as label
+        from `Kaggle_titanic.preprocessed_data`
+        where train_flag = 'test'
+        )
+    );
+
+
+
+/* モデル推論（テストデータに対して） */
+    select 
+        processed_input
+        , weight
+    from 
+        ml.weights(model `Kaggle_titanic.model_titanic`)
+    order by  
+        abs(weight) desc
+    ;
+
+/* サブミット作成 (※Kaggle用) */
+    select 
+        PassengerID
+        , predicted_label as Survived
+    from ml.predict(model `Kaggle_titanic`.model_titanic, (
+        select PassengerID, Pclass, title, is_female, family_size, is_alone, age, embarked, fare, class_age, Survived as label
+        from `Kaggle_titanic.preprocessed_data`
+        where train_flag = 'test'
+        )
+    );
+end
+```
+
 
 ## || REFERENCE
 + [SQLだけでモデルが作れる！BigQuery ML による自動モデル作成と Tableau による可視化](https://www.skillupai.com/blog/tech/bigquery-tableau/) - SkillUpAI
