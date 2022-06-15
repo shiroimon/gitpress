@@ -85,6 +85,7 @@
 
 
 # [BIGQUERY] GA
++ [GA4](ga_ga4)
 + []()
 
 
