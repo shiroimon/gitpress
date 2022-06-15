@@ -1,3 +1,10 @@
+---
+date    : 2022-06-13
+title   : GA4
+excerpt : 
+tags    : ["Google BigQuery", "GA4"]
+---
+
 ## || GA4
 ### | GA(UA) - GA4
 ||ユニバーサルアナリティクス|GA4|
