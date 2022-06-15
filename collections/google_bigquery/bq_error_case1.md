@@ -1,4 +1,9 @@
-
+---
+date    : 2022-01-01
+title   : To copy a table, the destination and source datasets must be in the same region. Copy an entire dataset to move data between regions.
+excerpt : 
+tags    : ["Google BigQuery", "error"]
+---
 
 ## || ERROR
 作成したクエリの抽出結果（300万レコード程）を一時的にテーブル化しようとしたら、以下のようなエラーが出て困った。。
