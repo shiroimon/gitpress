@@ -23,5 +23,6 @@ cf.[[GA4] 予測指標](https://support.google.com/analytics/answer/9846734?hl=j
 
 
 ## || REFERENCE
++ [「GA4＋機械学習」で何ができるのか？](https://note.com/and_a/n/n4fe543d56d06) - note
 + [【第1回】GA4とは？特徴や機械学習の活用を解説](https://blog.members.co.jp/article/50218) - Members
 + [[GA4] 予測指標](https://support.google.com/analytics/answer/9846734?hl=ja) - アナリティクスヘルプ
