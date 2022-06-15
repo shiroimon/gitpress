@@ -23,6 +23,7 @@ cf.[[GA4] 予測指標](https://support.google.com/analytics/answer/9846734?hl=j
 
 
 ## || REFERENCE
++ [Google アナリティクス 4プロパティ 機械学習モデルを活用した予測機能とプライバシー重視のデータ収集](https://ayudante.jp/column/2020-12-18/11-00/) - Ayudante,Inc.
 + [「GA4＋機械学習」で何ができるのか？](https://note.com/and_a/n/n4fe543d56d06) - note
 + [【第1回】GA4とは？特徴や機械学習の活用を解説](https://blog.members.co.jp/article/50218) - Members
 + [[GA4] 予測指標](https://support.google.com/analytics/answer/9846734?hl=ja) - アナリティクスヘルプ
