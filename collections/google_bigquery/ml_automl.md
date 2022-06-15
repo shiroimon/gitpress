@@ -1,3 +1,9 @@
+---
+date    : 2022-06-14
+title   : Google BigQuery ML
+excerpt : 
+tags    : ["Google BigQuery", "BigQuery ML", "AutoML"]
+---
 ## || BigQueryMLでAutoML
 ### | データセット収集
 [オープンデータ](https://hsi.ksc.kwansei.ac.jp/AI-Center/opendata.html)(人工知能研究センター)に色々あるよ！
