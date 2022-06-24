@@ -49,6 +49,7 @@
 + [_TABLE_SUFFIX](sql_table_suffix)
 + [INFORMATION_SCHEMA](sql_information_schema)
 + [UDF](sql_udf)
++ [カスタムクエリ](sql_custom_query)
 
 ## ■ ERROR
 + [To copy a table, the destination and source datasets must be in the same region. Copy an entire dataset to move data between regions.](bq_error_case1)
