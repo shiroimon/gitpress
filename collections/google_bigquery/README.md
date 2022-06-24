@@ -1,11 +1,14 @@
+# Google BigQuery
+## TEMPLATE
+```
 ---
 date    : 2022-01-01
 title   : 
 excerpt : 
 tags    : ["Google BigQuery", ""]
 ---
+```
 
-# Google BigQuery
 ## ||BigQuerynのSQL（標準SQLリファレンス）より
 
 公式ドキュメントの構成が分かるところ→[クエリ構文](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax?hl=ja)
