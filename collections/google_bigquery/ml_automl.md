@@ -186,4 +186,4 @@ end
 + [AutoML Tables が BigQuery ML で一般提供に](https://cloud.google.com/blog/ja/products/data-analytics/automl-tables-now-generally-available-bigquery-ml) - Google Cloud
 + [BigQuery上のGA4データを元にしたGoogle Auto ML Tablesの試用レビュー](https://www.principle-c.com/column/ga/ga4/review-ga4-google-auto-ml-tables/) - PRINCIPLE
 + [「BigQueryML」でSQLを書いて機械学習モデルを構築&予測できる！](https://qiita.com/s_yaginuma/items/b692d3716dcb06416ce0) - Qiita
-+ 
++ [BigQuery MLでスロット使用量が急増しているプロジェクトやユーザーを異常検知する](https://www.yasuhisay.info/entry/2022/03/07/104500) - yasuhisa's blog
