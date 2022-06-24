@@ -1,9 +1,20 @@
 ---
 date    : 2022-01-01
-title   : 疑似中間テーブル作成 
+title   : 疑似中間テーブル作成 - too many subqueries or query is too complex 回避
 excerpt : 
 tags    : ["Google BigQuery", ""]
 ---
+## || Resources exceeded during query execution: Not enough resources for query planning - too many subqueries or query is too complex
+```
+Resources exceeded during query execution: Not enough resources for query planning - too many subqueries or query is too complex
+```
+よく出るこいつ。
+
+> WITH句を多用していたり、ビューの多段が10個近くになってくるとこのエラーがよく発生することが多いです*2。
+
+参考にしたすごい人も言っている。
+
+
 
 ## || 疑似的中間テーブル作成
 ### | テンポラリーテーブル作成
