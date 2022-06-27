@@ -75,7 +75,7 @@ GROUP BY
 ### | まねっこ（自作関数）
 
 ```sql
-create temporary function
+create temp function
     calc_elapsed_month(BASE_DATE datetime, VALUE_DATE datetime) as (
         /*
          * 経過月数を正しく規定する関数
