@@ -15,14 +15,19 @@
 
 
 
-## [GCP] Coursera
-### ■ Professional Data Engineer
-+ [(memo)](gcp_pde_memo)
-1. [Step.1](gcp_coursera_1)
-2. [Step.2](gcp_coursera_2)
-3. [Step.3](gcp_coursera_3)
-4. [Step.4](gcp_coursera_4)
-5. [Step.5](gcp_coursera_5)
+## [GCP] SERTIFICATION
+### ■ Professional Data Engineer (memo)
++ [概要要綱(memo)](gcp_pde_memo)
+1. [coursera - Step.1](gcp_coursera_1)
+2. [coursera - Step.2](gcp_coursera_2)
+3. [coursera - Step.3](gcp_coursera_3)
+4. [coursera - Step.4](gcp_coursera_4)
+5. [coursera - Step.5](gcp_coursera_5)
+
+
+
+## [GCP] COMMAND
++ [(memo)]()
 
 
 
@@ -30,3 +35,4 @@
 + [(memo)](gcloud_memo)
 + [GoogleCloudS torage](gcloud_storage)
 + [GoogleCloud DLP API](gcloud_dlp_api)
++
