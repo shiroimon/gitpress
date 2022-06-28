@@ -27,12 +27,11 @@
 
 
 ## [GCP] COMMAND
-+ [(memo)]()
++ [(memo)](gcloud_memo)
 
 
 
 ## [GCP] tips
-+ [(memo)](gcloud_memo)
 + [GoogleCloudS torage](gcloud_storage)
 + [GoogleCloud DLP API](gcloud_dlp_api)
 +
