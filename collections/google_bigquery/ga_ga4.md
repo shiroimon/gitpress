@@ -1,7 +1,7 @@
 ---
 date    : 2022-06-13
 title   : GA4
-excerpt : 
+excerpt :
 tags    : ["Google BigQuery", "GA4"]
 ---
 
@@ -14,7 +14,7 @@ tags    : ["Google BigQuery", "GA4"]
 |BigQueryとの連携 |有料版にて利用可能|無料版でも利用可能|
 |最大データ保持期間|50ヵ月|14ヵ月|
 
-cf. [【第1回】GA4とは？特徴や機械学習の活用を解説](https://blog.members.co.jp/article/50218) 
+cf. [【第1回】GA4とは？特徴や機械学習の活用を解説](https://blog.members.co.jp/article/50218)
 
 ### | GA4 のMLの期待
 |指標|定義|
@@ -34,3 +34,8 @@ cf.[[GA4] 予測指標](https://support.google.com/analytics/answer/9846734?hl=j
 + [「GA4＋機械学習」で何ができるのか？](https://note.com/and_a/n/n4fe543d56d06) - note
 + [【第1回】GA4とは？特徴や機械学習の活用を解説](https://blog.members.co.jp/article/50218) - Members
 + [[GA4] 予測指標](https://support.google.com/analytics/answer/9846734?hl=ja) - アナリティクスヘルプ
+
++ [Google AnalyticsのデータをBigQueryで集計・分析するときのテクニック集](https://ohke.hateblo.jp/entry/2018/06/02/230000)
++ [[UA] BigQuery Export スキーマ](https://support.google.com/analytics/answer/3437719?hl=ja)
++ [Googleアナリティクス4（GA4）とBigQuery連携まとめ！Exportの方法からデータの確認、可視化までを詳しく解説](https://www.data-be.at/magazine/ga4-bigquery/)
++ [Google Analytics 4 + BigQueryでよく使う基本的なSQL例](https://ex-ture.com/blog/2020/10/23/google-analytics-4-bigquery-6sqls/)
