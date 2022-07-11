@@ -47,6 +47,7 @@
 ## ■ BigQuery特有
 + [BigQueryScriptting](sql_bqscripting)
 + [_TABLE_SUFFIX](sql_table_suffix)
++ [__TABLE__](sql_table)
 + [INFORMATION_SCHEMA](sql_information_schema)
 + [UDF](sql_udf)
 + [カスタムクエリ](sql_custom_query)
