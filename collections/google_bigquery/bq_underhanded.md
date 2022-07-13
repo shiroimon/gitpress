@@ -1,0 +1,7 @@
+# 裏技法
+## || 
+## || REFERENCE
++ [BigQuery で 1 円も溶かさない人の顔 (ZERO BYTE STRUCT を考案した)](https://qiita.com/na0/items/2086fd93116ee7ce9a96) - Qiita
++ [BigQuery で無からリレーションを出現させる（StandardSQL 編）](https://qiita.com/yancya/items/a1ebe6dbc5d635839cc8) - Qiita
++ [BigqueryStandardSQLの黒魔術ってなに！？記してみました！](https://medium.com/eureka-engineering/bigquery-standard-sql-f13b04c0b6c4) - Medium
++ [BigQuery のパフォーマンスを各種ダッシュボードでトラブルシューティング](https://cloud.google.com/blog/ja/products/data-analytics/troubleshoot-bigquery-performance-with-these-dashboards) - GoogleCLoud
