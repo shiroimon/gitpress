@@ -1,5 +1,11 @@
-# 裏技法
+---
+date    : 2022-01-01
+title   :BigQueryの裏技法メモ 
+excerpt : 
+tags    : ["Google BigQuery", ""]
+---
 ## || 
+
 ## || REFERENCE
 + [BigQuery で 1 円も溶かさない人の顔 (ZERO BYTE STRUCT を考案した)](https://qiita.com/na0/items/2086fd93116ee7ce9a96) - Qiita
 + [BigQuery で無からリレーションを出現させる（StandardSQL 編）](https://qiita.com/yancya/items/a1ebe6dbc5d635839cc8) - Qiita
