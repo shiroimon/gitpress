@@ -12,3 +12,4 @@ tags    : ["Google BigQuery", ""]
 + [BigQueryのコストに対する恐怖心を払拭する](https://qiita.com/kamujun/items/ab3cd3e6f8934a01cbc8) - Qiita
 + [BigqueryStandardSQLの黒魔術ってなに！？記してみました！](https://medium.com/eureka-engineering/bigquery-standard-sql-f13b04c0b6c4) - Medium
 + [BigQuery のパフォーマンスを各種ダッシュボードでトラブルシューティング](https://cloud.google.com/blog/ja/products/data-analytics/troubleshoot-bigquery-performance-with-these-dashboards) - GoogleCLoud
++ [クエリプランとタイムライン](https://cloud.google.com/bigquery/query-plan-explanation?hl=ja&_ga=2.95586332.-1869872404.1642128535) - GoogleCloud
