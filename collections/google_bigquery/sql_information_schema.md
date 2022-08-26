@@ -28,6 +28,28 @@ where
 */
 ```
 
+## || NFORMATION_SCHEMA.JOBS_BY_PROJECT
+世代確認等にも使える。
+```SQL
+SELECT
+    ROW_NUMBER() OVER(PARTITION BY job_type ORDER BY creation_time) AS number
+    , creation_time
+    , user_email
+    , job_type
+    , start_time
+    , end_time
+    , query
+    , state
+FROM 
+    `region-us`.INFORMATION_SCHEMA.JOBS_BY_PROJECT
+WHERE 
+        query LIKE '%TAB3_%'
+    AND query NOT LIKE '%T_OWN_EXPENSE_TAB3_SS_CV%'
+    AND DATE(start_time) BETWEEN '2022-07-01' AND '2022-07-31'
+ORDER BY 
+    start_time
+```
+あるプロジェクトで、クエリ自体がヶいてしまった場合、過去にBigQueryで走らせたクエリを確認することができる。
 
 ## || REFERENCE
 + [BigQuery INFORMATION_SCHEMA の概要](https://cloud.google.com/bigquery/docs/information-schema-intro?hl=ja) - Google Cloud
