@@ -20,6 +20,7 @@
 + [countif()](sql_countif)
 + [extract()](sql_extract)
 + [ifnull()](sql_ifnull)
++ [last_day](sql_last_day)
 + [lead() / lag()](sql_lead_lag)
 + [left() / right()](sql_left_right)
 + [lower()](sql_lower)
