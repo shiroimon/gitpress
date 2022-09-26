@@ -145,12 +145,12 @@ limit 10
 レシート明細テーブル(receipt)と店舗テーブル(store)を内部結合し、レシート明細 テーブルの全項目と店舗テーブルの店舗名(store_name)を10件表示させよ。
 ```SQL
 select
-    *
+    receipt.*
+    , store.store_name
 from
-    `100knocks.receipt`
+    `100knocks.receipt` receipt
 left join
-    (select store_cd, store_name from `100knocks.store`) as store
-using(store_cd)
+    (select distinct store_cd, store_name from `100knocks.store`) as store using(store_cd)
 limit 10
 ;
 ```
@@ -163,13 +163,13 @@ select
 from
     `100knocks.product` p
 left join
-    (select category_major_cd, category_medium_cd, category_small_cd, category_small_name from `prj-test3.100knocks.category`) as c
+    (select category_major_cd, category_medium_cd, category_small_cd, category_small_name from `100knocks.category`) as c
 using(category_major_cd, category_medium_cd, category_small_cd)
 
 -- on 
---         p.category_major_cd=c.category_major_cd
+--         p.category_major_cd =c.category_major_cd
 --     and p.category_medium_cd=c.category_medium_cd
---     and p.category_small_cd=c.category_small_cd
+--     and p.category_small_cd =c.category_small_cd
 
 limit 10
 ;
