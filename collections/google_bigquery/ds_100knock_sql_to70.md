@@ -167,10 +167,11 @@ select
     , unit_price -- 単価
     , (unit_price - unit_cost) as profit -- 売上総利益（粗利）
     , trunc((unit_price - unit_cost) / unit_price * 100) as profit_rate -- 売上総利益（粗利）率
-        -- 新単価式変換
-        -- (p-c) / p  = 0.3
-        -- p - c = 0.3p
-        -- p = c/0.7 ∴
+        /* 新単価(式変換)
+         * (p-c) / p  = 0.3
+         *      p - c = 0.3p
+         *          p = c / 0.7 ∴
+         */
     , trunc(unit_cost / 0.7) as new_unit_price -- 新単価
     , trunc((unit_cost / 0.7) - unit_cost) as new_profit -- 新売上総利益（粗利）
     , trunc(((unit_cost / 0.7) - unit_cost) / (unit_cost / 0.7) * 100) as new_profit_rate -- 新売上総利益（粗利）率
