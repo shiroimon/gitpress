@@ -72,7 +72,7 @@ from
     `100knocks.receipt`
 where
         customer_id = 'CS018205000001'
-    and amount >= 1000
+    and 1000 <= amount
 ;
 ```
 
@@ -92,7 +92,7 @@ from
     `100knocks.receipt`
 where
         customer_id = 'CS018205000001'
-    and (amount >= 1000 or quantity >= 5)
+    and (1000 <= amount or 5 <= quantity)
 ;
 ```
 
@@ -160,7 +160,7 @@ from
     `100knocks.store`
 where 
     store_cd like 'S14%'
-    -- where regexp_contains(store_cd, r'S14') #別解
+    -- where regexp_contains(store_cd, r'^S14') #別解
 limit 10
 ;
 ```
