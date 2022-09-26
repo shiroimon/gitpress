@@ -16,7 +16,7 @@ select　count(*)　from　`100knocks.receipt`;
 レシート明細テーブル(receipt)の顧客ID(customer_id)に対し、ユニーク件数をカウントせよ。
 ```SQL
 select
-    count(distinct customer_id)　as unique_count
+    count(distinct customer_id)　as unique_cnt
 from 
     `100knocks.receipt`
 ;
@@ -51,7 +51,7 @@ from(
                 order by 
                     sales_ymd
                 rows 
-                    between unbounded preceding  and unbounded following
+                    between UNBOUNDED PRECEDING and UNBOUNDED FOLLOWING
           ) as recently_sales_ymd
     from 
         `100knocks.receipt`
