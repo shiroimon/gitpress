@@ -40,13 +40,14 @@ select
 from
    `100knocks.customer`
 where
-    regexp_contains(customer_id, r'^(A|B|C|D|E|F)') -- r'^(A-F)' 別解
+    regexp_contains(customer_id, r'^(A|B|C|D|E|F)')
+    -- regexp_contains(customer_id, r'^(A-F)') -- 別解
     --    customer_id like 'A%'
     -- or customer_id like 'B%'
     -- or customer_id like 'C%'
     -- or customer_id like 'D%'
     -- or customer_id like 'E%'
-    -- or customer_id like 'F%'
+    -- or customer_id like 'F%' -- 別解
 limit 10
 ;
 ```
@@ -73,7 +74,7 @@ select
 from 
    `100knocks.customer`
 where
-    regexp_contains(status_cd, r'^(A|B|C|D|E|F)-\d+-[1-9]$')
+    regexp_contains(status_cd, r'^(A-F)-\d+-[1-9]$')
 limit 10
 ;
 ```
@@ -85,8 +86,9 @@ Cf. [基本的な正規表現一覧](https://murashun.jp/article/programming/reg
 select
     *
 from 
-   `100knocks.store`
-where regexp_contains(tel_no, r'\d{3}-\d{3}-\d{4}')
+    `100knocks.store`
+where 
+    regexp_contains(tel_no, r'\d{3}-\d{3}-\d{4}')
 ;
 ```
 
@@ -122,7 +124,7 @@ limit 10
 select
     customer_id
     , amount
-    , rank()　over(order by amount desc) as ranking
+    , rank() over (order by amount desc) as ranking
 from 
    `100knocks.receipt`
 order by 
@@ -137,7 +139,7 @@ limit 10
 select
     customer_id
     , amount
-    , dense_rank()　over(order by amount desc) as ranking -- row_number()別解
+    , dense_rank()　over (order by amount desc) as ranking -- row_number()別解
 from 
    `100knocks.receipt`
 order by 
