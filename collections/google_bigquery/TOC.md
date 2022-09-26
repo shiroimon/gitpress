@@ -19,6 +19,7 @@
 + [coalesce()](sql_coalesce)
 + [countif()](sql_countif)
 + [extract()](sql_extract)
++ [greatest()](sql_greatest)
 + [ifnull()](sql_ifnull)
 + [last_day()](sql_last_day)
 + [lead() / lag()](sql_lead_lag)
