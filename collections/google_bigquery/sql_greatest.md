@@ -1,6 +1,10 @@
 ---
 date    : 2022-09-26
-title   : greatest()
+title   : GREATEST関数
 excerpt : 
 tags    : ["Google BigQuery", "greatest"]
 ---
+## || greatest()
+
+## || reference
+* []() - 
