@@ -1,3 +1,10 @@
+---
+date    : 2022-09-28
+title   : lower()
+excerpt : 
+tags    : ["Google BigQuery", "lower"]
+---
+
 ## || lower()
 
 大文字を小文字に変換
