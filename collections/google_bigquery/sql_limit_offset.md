@@ -1,3 +1,9 @@
+---
+date    : 2022-0９-２８
+title   : LIMIT句 OFFSET句
+excerpt : 
+tags    : ["Google BigQuery", ""]
+---
 ## || LIMIT句 OFFSET句
 ### | LIMIT句
 
