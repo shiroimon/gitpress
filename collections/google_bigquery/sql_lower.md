@@ -1,6 +1,6 @@
 ---
 date    : 2022-09-28
-title   : lower()
+title   : LOWER関数
 excerpt : 
 tags    : ["Google BigQuery", "lower"]
 ---
