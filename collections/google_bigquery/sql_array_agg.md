@@ -1,10 +1,10 @@
 ---
 date    : 2022-09-26
-title   : array_agg()
+title   : ARRAY_AGG関数
 excerpt : 
 tags    : ["Google BigQuery", "array_agg"]
 ---
-## || 
+## || array_agg()
 
 
 ## || REFERENCE
