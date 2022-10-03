@@ -28,7 +28,16 @@ select
 ※ SPLIT関数の戻り値はARRAY型の為、特定配列にアクセスする場合。
 [SAFE_OFFSET(0)]：0を始めとする.
 [SAFE_ORDINAL(1)]：1を始めとする.
-
+```sql
+select 
+      oaza_name_kana
+    , split(oaza_name_kana, ' ')[offset(0)] as oaza_name_kana0 -- 大字
+    
+    -- , nth(2, split(oaza_name_kana, ' ')) as oaza_name_kana1 -- NTH関数がレガシーSQLの為使用不可
+    , split(oaza_name_kana, ' ')[safe_offset(1)] as oaza_name_kana1 -- 丁目
+from 
+    jp_addresses
+```
 
 
 ## || REFERENCE
