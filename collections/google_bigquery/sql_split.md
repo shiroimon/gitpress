@@ -16,8 +16,8 @@ select
 ```
 
 ### | アクセス方法
-'[offset(0)]'で分割した値にアクセスできる。（０index）
-'[ORDINAL(1)]'で分割した値にアクセスできる。（1 index）
+- [offset(0)]：で分割した値にアクセスできる。（０index）
+- [ORDINAL(1)]：で分割した値にアクセスできる。（1 index）
 
 ```sql
 select
@@ -26,8 +26,9 @@ select
 ```
 
 ※ SPLIT関数の戻り値はARRAY型の為、特定配列にアクセスする場合。
-[SAFE_OFFSET(0)]：0を始めとする.
-[SAFE_ORDINAL(1)]：1を始めとする.
+- [SAFE_OFFSET(0)]：0を始めとする.
+- [SAFE_ORDINAL(1)]：1を始めとする.
+
 ```sql
 select 
       oaza_name_kana
