@@ -8,10 +8,11 @@ excerpt:
 tags   : ["Linux", ""]
 ---
 ## || $
-```shell
+\```shell
 $
-```
+\```
 
 ## || REFERENCE
 - []() - 
+
 ```
