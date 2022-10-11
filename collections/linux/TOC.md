@@ -4,6 +4,8 @@
 - [$split]()
 - [$find]()
 - [$grep]()
+- [$mkdir]()
+- [$rm]()
 
 ## || MiddleWear
 - [Homebrew](iterm_brew)
