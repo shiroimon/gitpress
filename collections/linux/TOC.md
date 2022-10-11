@@ -11,7 +11,7 @@
 
 
 ## [Linux] MiddleWear
-- [DOcker](middleweawr_docker)
+- [Docker](middleweawr_docker)
 - [Homebrew](middleweawr_brew)
 - [Vim / NeoVim](middleweawr_vim)
 - [Zsh / Oh-My-Zsh](middleweawr_zsh)
