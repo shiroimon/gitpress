@@ -28,7 +28,7 @@ from
 -- cross join unnest(hits) as ht
 ```
 上記のクエリでは「カンマ演算子（`,`）」で「CROSSJOIN」を暗黙的に実行されている。
-cf.[配列操作](https://cloud.google.com/bigquery/docs/reference/standard-sql/arrays?hl=ja) - GoogleCloud
+（cf.[配列操作](https://cloud.google.com/bigquery/docs/reference/standard-sql/arrays?hl=ja) - GoogleCloud）
 
 
 ### | e.g.
