@@ -1,6 +1,7 @@
 # Linux
 ## [Linux] COMMAND
 - [Linux Command](iterm_linux)
+- [$sort](command_sort)
 - [$split](command_split)
 - [$find]()
 - [$grep]()
