@@ -1,5 +1,5 @@
 # Google BigQuery
-## TEMPLATE
+## || TEMPLATE
 ```markdown
 ---
 date    : 2022-01-01
