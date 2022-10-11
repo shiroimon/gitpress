@@ -18,4 +18,5 @@ $
 ```
 
 ## || REFERENCE
--[Linux入門講座】初心者からステップバイステップで学べる！](https://eng-entrance.com/category/linux) - エンジニアの入り口
+- [Linux入門講座】初心者からステップバイステップで学べる！](https://eng-entrance.com/category/linux) - エンジニアの入り口
+- []() - 
