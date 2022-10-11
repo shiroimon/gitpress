@@ -22,6 +22,7 @@ Githubアカウントのみ。
     Cf. [FRONT MATTER SPECIFICATIONS](https://gitpress.io/c/helps/front-matter) - GitPress（書き方お作法）
 
 * 冒頭に以下のおまじないを書くこと。
+
 ```markdown
 ---
 date   :
@@ -32,7 +33,9 @@ tags   :
 ```
 
 ### | 記事投稿
+
 手順は簡単で、Githubにpushするだけ。
+
 ```sh
 $ git status
 $ git add {任意のファイル}
