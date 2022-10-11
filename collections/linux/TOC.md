@@ -1,21 +1,25 @@
 # Linux
-## || COMAND
+## [Linux] COMMAND
 - [Linux Command](iterm_linux)
-- [$split]()
+- [$split](command_split)
 - [$find]()
 - [$grep]()
 - [$mkdir]()
 - [$rm]()
-
-## || MiddleWear
-- [Homebrew](iterm_brew)
-- [Vim / NeoVim](iterm_vim)
-- [Zsh / Oh-My-Zsh](iterm_zsh)
-
-## || OS
-- [Ubuntu](iterm_ubuntu)
+- 
 
 
-## || 用途
-- [ファイル分割したい]()
-- [ファイル検索したい]()
+## [Linux] MiddleWear
+- [Homebrew](middleweawr_brew)
+- [Vim / NeoVim](middleweawr_vim)
+- [Zsh / Oh-My-Zsh](middleweawr_zsh)
+
+
+## [Linux] OS
+- [Ubuntu](os_ubuntu)
+- [Cent_OS](os_cent_os)
+
+
+## [Linux] 用途から
+- [ファイル分割したい](want_)
+- [ファイル検索したい](want_)
