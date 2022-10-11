@@ -6,7 +6,7 @@ tags    : ["GitPress", "Blog", "HowTo"]
 ---
 
 ## || GitPressってなに
-![img](https://i.gyazo.com/a45ed92ccb3dee4fc36a6adb2d4de92e.png)
+<img width="80%" alt="topスクショ" src="https://user-images.githubusercontent.com/28585421/155921826-8799b723-b71d-4edb-88b0-45e8219b2967.png">
 
 ---
 ## || 環境構築
