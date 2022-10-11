@@ -2,9 +2,10 @@
 
 ## || カテゴリ
 - Google Cloud
-- Google BigQuery
-- Google App Script
+- Google BigQuery (≒SQL)
+- Google App Script (≒javascript)
+- Google Looker (≒Tableau)
 - Tableau 
 - Python
-- javascript
 - Linux
+- PostgreSQL
