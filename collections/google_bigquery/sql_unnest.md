@@ -22,10 +22,16 @@ select
     , ht.customDimensions as CUSTOM_DIMENSIONS_HITS
     , ht.experiment as EXPERIMENT
 from 
-    ga 
-    , unnest(hits) as ht
-```
+    ga , unnest(hits) as ht
 
+-- from ga
+-- cross join unnest(hits) as ht
+```
+上記のクエリでは「カンマ演算子（`,`）」で「CROSSJOIN」を暗黙的に実行されている。
+cf.[配列操作](https://cloud.google.com/bigquery/docs/reference/standard-sql/arrays?hl=ja) - GoogleCloud
+
+
+### | e.g.
 ```sql 
     # unnest を用いて、親テーブルに無い値を付与
     , search_list_marge as (
@@ -41,7 +47,7 @@ from
 ```
 
 
-## | cf.
+## || REFERENCE
 + [BigqueryでUNNESTを使いこなせ！クエリ効率１００%！！最強！！](https://medium.com/eureka-engineering/bigquery-unnest-100percent-3d28560b4f0)-  medium
 + [BigQuery 活用術: UNNEST 関数](https://developers-jp.googleblog.com/2017/04/bigquery-tip-unnest-function.html)- Google Developers
 + [BigQuery で複数の配列をフラット化する](https://labs.septeni.co.jp/entry/2018/11/06/120000) - FLINTERS Engineer's Blog
