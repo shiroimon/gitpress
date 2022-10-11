@@ -1,18 +1,19 @@
 ---
 date    : 2021-01-05
-title   : 【🐱 Github】How to GitPress
-excerpt : GitPressの初めての投稿記事。
+title   : How to GitPress
+excerpt : GitPress始め方
 tags    : ["GitPress", "Blog", "HowTo"]
 ---
 
 ## || GitPressってなに
 <img width="80%" alt="topスクショ" src="https://user-images.githubusercontent.com/28585421/155921826-8799b723-b71d-4edb-88b0-45e8219b2967.png">
 
----
+
+
 ## || 環境構築
 
 
----
+
 ## || 記事投稿
 ### - 記事
 
@@ -48,9 +49,8 @@ tags   : ["GitPress", "Blog", "HowTo"]
 
 
 ### - 投稿
-
 手順は簡単で、Githubにpushするだけ。
-```linux
+```sh
 $ git status
 $ git add {任意のファイル}
 $ git commit -m '{任意のコメント}'
@@ -58,9 +58,8 @@ $ git push -u origin main {or master}
 ```
 
 
----
-## || GitPressできること
 
+## || GitPressできること
 色々な言語がかける
 * https://gitpress.io/c/helps/languages
 LaTeXがかける
