@@ -18,7 +18,9 @@ $split -l 2 code.php a_code
 * e.g.
 ```shell
 $split -l 500000 -d ./list1_000000000000.csv ./split/list1_1_ --additional-suffix=.csv
-（＝ファイルcode.phpを２行ごとに、ファイルa_code＋アルファベットというファイル名に分割）
+（＝list1_000000000000.csv を5万行ごとに、split1ディレクトリ配下に、list1_1_ に数字と.csv を付与して分割）
+$ls 
+list1_1_00.csv list1_1_01.csv 
 ```
 
 ### | OPTION
