@@ -7,3 +7,4 @@
 - Tableau 
 - Python
 - javascript
+- Linux
