@@ -73,6 +73,7 @@
 + [ハイパラチューニング](ml_hyperpara)
 + [ロジスティック回帰](ml_logreg)
 + [時系列モデルの予測](ml_time_series)
++ [RFM分析、K平均クラスタリング](ml_rfm_k-means)
 
 
 
