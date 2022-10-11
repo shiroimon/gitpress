@@ -46,6 +46,21 @@ from
     )
 ```
 
+```SQL
+#standardSQL
+SELECT 
+    event, event.name, event.timestamp_micros
+FROM 
+    `firebase-analytics-sample-data.android_dataset.app_events_20160607`
+    , UNNEST(event_dim) as event
+    , UNNEST(event.params) as event_param
+WHERE 
+        event.name = "round_completed"
+    AND event_param.key = "score"
+    AND 10000 < event_param.value.int_value
+```
+
+
 
 ## || REFERENCE
 + [BigqueryでUNNESTを使いこなせ！クエリ効率１００%！！最強！！](https://medium.com/eureka-engineering/bigquery-unnest-100percent-3d28560b4f0)-  medium
