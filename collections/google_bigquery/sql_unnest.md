@@ -67,6 +67,55 @@ WHERE
 ```
 
 
+```SQL
+#standardSQL
+with
+    sequences as (
+        select  [
+            'あ','い','う','え','お',
+            'か','き','く','け','こ',
+            'さ','し','す','せ','そ',
+            'た','ち','つ','て','と',
+            'な','に','ぬ','ね','の',
+            'は','ひ','ふ','へ','ほ',
+            'ま','み','む','め','も',
+            'や','ゆ','よ',
+            'ら','り','る','れ','ろ',
+            'わ','を','ん'] AS n
+    )
+
+# 2単語の組み合わせ
+select
+      na1 as firstL
+    , na2 as lastL
+    , concat(na1, na2) as name
+from 
+    sequences
+    , unnest(sequences.n) as na1
+    , unnest(sequences.n) as na2
+where
+      na1 not in ('を','ん')
+  and na1 != na2
+;
+
+# 3単語の組み合わせ
+select 
+--     na1 as firstL
+--   , na2 as secondL
+--   , na3 as lastL
+--   , concat(na1, na2, na3) as name
+-- from
+--   sequences
+--   , unnest(sequences.n) as na1
+--   , unnest(sequences.n) as na2
+--   , unnest(sequences.n) as na3
+-- where
+--       na1 not in ('を','ん')
+--   and na1 != na2
+--   and na2 != na3
+-- ;
+```
+
 
 ## || REFERENCE
 + [テーブル スキーマでネストされた列と繰り返し列を指定する](https://cloud.google.com/bigquery/docs/nested-repeated?hl=ja) - GoogleCloud
