@@ -7,6 +7,11 @@ title  : 【🐚 Linux】
 excerpt: 
 tags   : ["Linux", ""]
 ---
+## || $
+```shell
+$
 ```
 
-## || 
+## || REFERENCE
+- []() - 
+```
