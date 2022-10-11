@@ -66,7 +66,6 @@ WHERE
     AND 10000 < event_param.value.int_value
 ```
 
-
 ```SQL
 #standardSQL
 with
@@ -115,6 +114,8 @@ select
 --   and na2 != na3
 -- ;
 ```
+「ABC分析」「アソシエーション分析」等にも応用できそう。（[商品分析の手法（ABC分析、アソシエーション分析）](https://www.albert2005.co.jp/knowledge/marketing/customer_product_analysis/abc_association) - Albeart,
+[どの単語の組み合わせがよく使われるかを分析する方法](https://exploratory.io/note/GMq1Qom5tS/FVI2obS0jW) - Exporatory)
 
 
 ## || REFERENCE
