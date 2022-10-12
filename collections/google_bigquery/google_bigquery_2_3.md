@@ -5,9 +5,10 @@ excerpt: BigQuery基本設定
 tags   : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || Google BigQueryとは？
 
-![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
 >BigQuery（ビッグクエリ）は、ペタバイト単位のデータに対するスケーラブルな分析を可能にする、フルマネージドのサーバーレスのデータウェアハウスである。ANSI SQLを使用したクエリをサポートするPlatform as a Service（PaaS）としてGoogle Cloud Platformにより提供されている。また、機械学習の機能も組み込まれている。BigQueryは2010年5月に発表され、2011年11月に一般提供（GA）となった。
 >
 > Cf. [BigQuery - Wikipedia](https://ja.wikipedia.org/wiki/BigQuery)
