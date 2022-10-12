@@ -4,52 +4,60 @@ title   : Google BigQuery ML
 excerpt : 
 tags    : ["Google BigQuery", "BigQuery ML", "AutoML"]
 ---
+
 ## || BigQueryMLでAutoML
 ### | データセット収集
-[オープンデータ](https://hsi.ksc.kwansei.ac.jp/AI-Center/opendata.html)(人工知能研究センター)に色々あるよ！
 
-今回は、[カリフォルニア大学アーバイン校](https://academic-accelerator.com/Manuscript-Generator/jp/California-Irvine)Machine Learningデータセットのリポジトリから公開されている『顧客解約予測データセット』
+[オープンデータ](https://hsi.ksc.kwansei.ac.jp/AI-Center/opendata.html)(人工知能研究センター) に色々あるよ！
+
+
+今回は、[カリフォルニア大学アーバイン校](https://academic-accelerator.com/Manuscript-Generator/jp/California-Irvine) Machine Learning データセットのリポジトリから『顧客解約予測データセット』（公開されている）
 
 
 ### | クエリ
 
-```sql
+```SQL
+#standardSQL
+
+/* MODEL_DEVLOP */
+
+    create or replace model `my_dataset`.AUTO_ML_1 -- モデル名
+    options(
+           model_type = 'AUTOML_CLASSIFIER' -- 使用アルゴリズム
+         -- , input_label_cols = [''] -- ターゲット名（カラム）
+         , budget_hours = 1.0 -- 時間制限
+     ) as
+     /* クエリ（学習に使用するデータを抽出する） */
+     select
+         State
+         , Account_Length
+   　    , Area_Code
+         , Total_Charge / Account_Length as avg_daily_spend
+         , CustServ_Calls / Account_Length as avg_daily_cases
+         , Churn_ as label -- 推論するラベル
+     from  
+         `my_dataset.CSV_CUSTOMER_ACTIVITY`
+     where
+         date(2020, 1, 1) <= Record_Date
+     ;
+```
+```SQL
 #standardSQL
 /*
  * ◇ BigQuery ML
- *   先に、「MODEL_DEVLOP」を実行。実行後、コメントアウトしてView化すると便利
- *   後に、「MODEL_EVALUATE」「MODEL_PREDICT」を実行。
+ *   先に、「MODEL_DEVLOP」を実行。実行後、コメントアウトしてView化して同一ファイルで扱うのもあり
+ *   次に、「MODEL_EVALUATE」「MODEL_PREDICT」を実行。
  */
-
-/* MODEL_DEVLOP */
-    -- create or replace model `my_dataset`.auto_ml_1 -- モデル名
-    -- options(
-    --       model_type = 'AUTOML_CLASSIFIER' -- 使用アルゴリズム
-    --     -- , input_label_cols = [''] -- ターゲット名（カラム）
-    --     , budget_hours = 1.0 -- 時間制限
-    -- ) as
-    -- /* クエリ（学習に使用するデータを抽出する） */
-    -- select
-    --     State
-    --     , Account_Length
-    --     , Area_Code
-    --     , Total_Charge / Account_Length as avg_daily_spend
-    --     , CustServ_Calls / Account_Length as avg_daily_cases
-    --     , Churn_ as label -- 推論するラベル
-    -- from  
-    --     `my_dataset.CSV_CUSTOMER_ACTIVITY`
-    -- where
-    --     date(2020, 1, 1) <= Record_Date
-    -- ;
-
-
 
 with
 
 /* MODEL_EVALUATE */
 
     evaluation as (
-        select * from ml.evaluate(model `my_dataset`.auto_ml_1, (
+        select 
+            * 
+        from 
+            ml.evaluate(model `my_dataset`.AUTO_ML_1, (
             /* サブクエリ（モデル作成に使用した特徴量を抽出するクエリ） */
             select
                 State
@@ -78,7 +86,7 @@ with
             , Account_Length
             , avg_daily_spend
             , avg_daily_cases
-        from ml.predict(model `my_dataset`.auto_ml_1, (
+        from ml.predict(model `my_dataset`.AUTO_ML_1, (
             /* サブクエリ（予測するのに必要な特徴量を抽出するクエリ） */
             select
                 State
@@ -86,7 +94,7 @@ with
                 , Area_Code
                 , Total_Charge / Account_Length as avg_daily_spend
                 , CustServ_Calls / Account_Length as avg_daily_cases
-                -- , Churn_ as label -- (推論時不要）
+                -- , Churn_ as label -- ∵推論時不要
             from  
                 `my_dataset.CSV_CUSTOMER_ACTIVITY`
             where
@@ -94,17 +102,16 @@ with
             )
         ), unnest(predicted_label_probs)
         where
-            predicted_label = 'True.' -- ∵ 2値分類のため
+            predicted_label = 'True.' -- ∵2値分類の為
     )
 
 
 
 /* OUTPUT */
 
-select * from 
-evaluation
--- predict
-;
+select * from evaluation;
+-- select * from predict;
+
 ```
 
 ```txt
