@@ -14,6 +14,25 @@
 
 
 # [BIGQUERY] SQL
+## ■ 演算子
++ [UNION](sql_union)
++ [EXCEPT](sql_except)
++ [INTERSECT](sql_intersect)
+
+## ■ 句（節）
++ [QUALIFY句](sql_qualify)
++ [WINDOW句](sql_window)
++ [EXISTS句](sql_exists)
++ [LIMIT / OFFSET句](sql_limit_offset)
+
+## ■ BigQuery特有
++ [BigQueryScriptting](sql_bqscripting)
++ [_TABLE_SUFFIX](sql_table_suffix)
++ [_TABLE_](sql_table)
++ [INFORMATION_SCHEMA](sql_information_schema)
++ [UDF](sql_udf)
++ [カスタムクエリ](sql_custom_query)
+
 ## ■ 関数
 + [approx_count_distinct()](sql_approx_count_distinct)
 + [array_agg()](sql_array_agg)
@@ -35,25 +54,6 @@
 + [st_distance()](sql_st_distance)
 + [struct()](sql_struct)
 + [unnest()](sql_unnest)
-
-## ■ 演算子
-+ [UNION](sql_union)
-+ [EXCEPT](sql_except)
-+ [INTERSECT](sql_intersect)
-
-## ■ 句（節）
-+ [QUALIFY句](sql_qualify)
-+ [WINDOW句](sql_window)
-+ [EXISTS句](sql_exists)
-+ [LIMIT / OFFSET句](sql_limit_offset)
-
-## ■ BigQuery特有
-+ [BigQueryScriptting](sql_bqscripting)
-+ [_TABLE_SUFFIX](sql_table_suffix)
-+ [_TABLE_](sql_table)
-+ [INFORMATION_SCHEMA](sql_information_schema)
-+ [UDF](sql_udf)
-+ [カスタムクエリ](sql_custom_query)
 
 ## ■ ERROR
 + [To copy a table, the destination and source datasets must be in the same region. Copy an entire dataset to move data between regions.](bq_error_case1)
