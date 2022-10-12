@@ -11,10 +11,10 @@ tags    : ["Google BigQuery", "BigQuery ML"]
 
 ### | 教師あり
 + 回帰
-  - Linear regression（線形回帰）
-  - Deep Neural Network（DNN、回帰）
+  - [Linear regression](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-glm)（線形回帰）
+  - [Deep Neural Network](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-dnn-models)（DNN、回帰）
   - XGBoost（回帰）
-  - AutoML Tables（回帰）
+  - [AutoML Tables](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-automl)（回帰）
 + 分類
   - Binary logistic regression（２項分類）
   - Multiclass logistic regression（多項分類）
@@ -24,12 +24,16 @@ tags    : ["Google BigQuery", "BigQuery ML"]
 
 ### | 教師なし
 + クラスタリング
-  - K-means clustering（K 平均法クラスタリング）
+  - [K-means clustering](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-kmeans)（K 平均法クラスタリング）
 + レコメンデーション
   - Matrix Factorization
 + 時系列予測
   - Time series（ARIMA）
 
+
+### | モデリング
+
+cf.[The CREATE MODEL statement](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create) - GoogleCloud
 
 
 ## || REFERENCE
