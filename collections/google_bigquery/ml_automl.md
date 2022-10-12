@@ -141,7 +141,7 @@ select * from evaluation; -- モデル評価
 ## || 実コンペでもやっているで参考にしよう（Kaggle）
 ### | Taitaicコンペ
 
-[「BigQueryML」でSQLを書いて機械学習モデルを構築&予測できる！](https://qiita.com/s_yaginuma/items/b692d3716dcb06416ce0) - Qiita
+cf. [「BigQueryML」でSQLを書いて機械学習モデルを構築&予測できる！](https://qiita.com/s_yaginuma/items/b692d3716dcb06416ce0) - Qiita
 
 ```SQL
 #standardSQL
