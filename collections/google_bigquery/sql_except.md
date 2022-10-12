@@ -18,7 +18,7 @@ except distinct
 (select * from `TABLE2`)
 ;
 ```
-cf. [分析入門 - SECTION10](https://gitpress.io/c/bigquery/google_bigquery_10) - GitPress
+cf. [分析入門 - SECTION10](https://gitpress.io/c/bigquery/google_bigquery_10#-except---差集合) - GitPress
 
 
 ### | 除外利用
