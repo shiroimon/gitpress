@@ -6,6 +6,19 @@ tags    : ["Google BigQuery", "BigQuery ML", "AutoML"]
 ---
 
 ## || BigQueryMLでAutoML
+
+```SQL
+create or replace model `{my_project.my_dataset}`.{モデル名}
+options(
+     model_type = 'AUTOML_CLASSIFIER' --( ※ )使用アルゴリズム
+     /* 使用モデル別にオプションを適時変更 */
+     -- , budget_hours = 1.0              --(e.g.)時間制限
+     -- , num_clusters=5                  --(e.g.)分割数（クラスタリング時） 
+     -- , standardize_features = true     --(e.g.)
+) as {クエリ} -- 使用するデータセット
+;
+```
+
 ### | データセット収集
 
 [オープンデータ](https://hsi.ksc.kwansei.ac.jp/AI-Center/opendata.html)(人工知能研究センター) に色々あるよ！
@@ -14,7 +27,7 @@ tags    : ["Google BigQuery", "BigQuery ML", "AutoML"]
 今回は、[カリフォルニア大学アーバイン校](https://academic-accelerator.com/Manuscript-Generator/jp/California-Irvine) Machine Learning データセットのリポジトリから『顧客解約予測データセット』（公開されている）
 
 
-### | クエリ
+### | モデリング
 
 ```SQL
 #standardSQL
@@ -41,6 +54,9 @@ tags    : ["Google BigQuery", "BigQuery ML", "AutoML"]
          date(2020, 1, 1) <= Record_Date
      ;
 ```
+
+### | 評価・推論
+
 ```SQL
 #standardSQL
 /*
@@ -109,24 +125,29 @@ with
 
 /* OUTPUT */
 
-select * from evaluation;
--- select * from predict;
+select * from evaluation; -- モデル評価
+-- select * from predict; -- 推論
 
 ```
 
-```txt
+▼ 実施時に出たエラー文
+```
 (error)Unable to identify the label column in query statement. Either specify the label column using OPTIONS(input_label_cols=['your_label_col']) or name the label column in the data as 'label'.
 ```
-[BigQuery ML unable to identify label column in data](https://stackoverflow.com/questions/54151811/bigquery-ml-unable-to-identify-label-column-in-data) - stack overflow
-[feedbackThe CREATE MODEL statement](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create) - Google Cloud
+- [BigQuery ML unable to identify label column in data](https://stackoverflow.com/questions/54151811/bigquery-ml-unable-to-identify-label-column-in-data) - stack overflow
+- [feedbackThe CREATE MODEL statement](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create) - Google Cloud
 
-### | Taitaic
+
+## || 実コンペでもやっているで参考にしよう（Kaggle）
+### | Taitaicコンペ
+
 [「BigQueryML」でSQLを書いて機械学習モデルを構築&予測できる！](https://qiita.com/s_yaginuma/items/b692d3716dcb06416ce0) - Qiita
-```sql
+
+```SQL
 #standardSQL
 begin
 /* モデル作成 */
-    create model `Kaggle_titanic`.model_titanic
+    create model `Kaggle_titanic`.MODEL_TAITANIC
     options (model_type = 'logistic_reg') as
     select
         Pclass
@@ -140,25 +161,31 @@ begin
         , class_age
         , Survived as label
     from 
-        `Kaggle_titanic.preprocessed_data` -- 前処理終わり
+        `Kaggle_titanic.preprocessed_data` --（前処理終わりのテーブル）
     left join 
-        `Kaggle_titanic.label_train` using(PassengerId)
+        `Kaggle_titanic.label_train` using(PassengerId) -- ラベル付与
     where 
         train_flag = 'train'
     ;
+
+
+
 /* モデル評価 */
-    select * from ml.evaluate(model `Kaggle_titanic`.model_titanic, (
+    select * from ml.evaluate(model `Kaggle_titanic`.MODEL_TAITANIC, (
         select Pclass, title, is_female, family_size, is_alone, age, embarked, fare, class_age, Survived as label
-        from `Kaggle_titanic.preprocessed_data`
-        left join `Kaggle_titanic.label_train` using(PassengerId)
-        where train_flag = 'train'
+          from `Kaggle_titanic.preprocessed_data`
+          left join `Kaggle_titanic.label_train` using(PassengerId)
+         where train_flag = 'train'
         )
     );
+
+
+
 /* モデル推論（テストデータに対して） */
-    select * from ml.predict(model `Kaggle_titanic`.model_titanic, (
+    select * from ml.predict(model `Kaggle_titanic`.MODEL_TAITANIC, (
         select Pclass, title, is_female, family_size, is_alone, age, embarked, fare, class_age, Survived as label
-        from `Kaggle_titanic.preprocessed_data`
-        where train_flag = 'test'
+          from `Kaggle_titanic.preprocessed_data`
+         where train_flag = 'test'
         )
     );
 
