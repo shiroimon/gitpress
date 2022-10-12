@@ -6,6 +6,7 @@ tags   : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 ---
 
 ## || Google BigQueryとは？
+
 ![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
 >BigQuery（ビッグクエリ）は、ペタバイト単位のデータに対するスケーラブルな分析を可能にする、フルマネージドのサーバーレスのデータウェアハウスである。ANSI SQLを使用したクエリをサポートするPlatform as a Service（PaaS）としてGoogle Cloud Platformにより提供されている。また、機械学習の機能も組み込まれている。BigQueryは2010年5月に発表され、2011年11月に一般提供（GA）となった。
 >
@@ -18,10 +19,11 @@ tags   : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 
 ざっくり、Googleが提供するPaaS（Platform as a Service）のこと。
 
+
 > ![img](https://www.topgate.co.jp/gcp/images/gcp-intro-pict01.png)
 Cf. https://www.topgate.co.jp/gcp/index.html
 
-* データベース
+### | データベース
 ```
 2種類のサービス形態がある。
 平たくまとめるとお金を取るか、取らないか。無料で利用できるのがOSS。
@@ -34,6 +36,7 @@ BigQueryは無料枠もあるが、処理に応じて従量課金型。
  * SaaS
 
    Google BigQuery、Amazon AWS、TreasureData...etc.
+
 
 
 ## || BigQuery環境構築
@@ -64,6 +67,7 @@ https://cloud.google.com/bigquery/
 ```
 ```
 
+
 ## || SQL
 ![img](https://i.gyazo.com/98a9bea92ecc5c16284d732b6e14e958.png)
 Cf. [The Relational Model Content based on Chapter 3 - SlideToDoc](https://slidetodoc.com/the-relational-model-content-based-on-chapter-3-2/)
@@ -72,7 +76,7 @@ Cf. [The Relational Model Content based on Chapter 3 - SlideToDoc](https://slide
 > Cf. [SQL - Wikipedia](https://ja.wikipedia.org/wiki/SQL)
 
 
-* SQL
+### |SQL
 
   SQLとは、Structured Query Language（直訳：構造化された検索言語）の略で、古くはIBM社が1970年台に開発していたデータベース管理システムの制御用の言語、SEQUEL（Structured English Query Language）が元になっている。
   (ドナルドさん、ボイスさんのお陰っす。)
@@ -86,7 +90,7 @@ Cf. [The Relational Model Content based on Chapter 3 - SlideToDoc](https://slide
 
 
 
-### ● 基本文法
+### | 基本文法
 ```SQL
 SELECT {カラム名}
 FROM {テーブル名};
@@ -94,7 +98,7 @@ FROM {テーブル名};
 {テーブル名}から、{カラム名}に記載の列を取得してきて！って意味です。
 
 
-### ● 記述、実行順序
+### | 記述、実行順序
 * 各区の記述順序
 ```SQL
 # 1. SELECT    ：取得する列の指定
@@ -121,105 +125,4 @@ FROM {テーブル名};
 #  8. SELECT
 #  9. ORDER BY
 # 10. LIMIT
-```
-
-
-### ● 基本関数一覧
-
-- [x] `SUM()`
-- [x] `AVG()`
-- [x] `COUNT()`
-- [x] `MIN()`
-- [x] `MAX()`
-- [x] `STDDEV_POP()`
-- [ ] `STDDEV_SAMP()`
-- [x] `ROUND()`
-- [ ] `CEIL()`
-- [ ] `FLOOR()`
-- [ ] `TRUNC()`
-- [ ] `ABS()`
-- [ ] `MOD()`
-- [x] `CAST()`
-- [x] `CONCAT()`
-- [ ] `LENGTH()`
-- [ ] `SUBSTR()`
-- [ ] `REPLACE()`
-- [ ] `TRIM()`
-- [ ] `REGEXP_CONTAINS()`
-- [ ] `REGEXP_EXTRACT()`
-- [ ] `REGEXP_REPLACE()`
-- [ ] `DATE()`
-- [ ] `DATETIME()`
-- [ ] `CURRENT_DATE()`
-- [ ] `CURRENR_DATETIME()`
-- [ ] `DATE_ADD()`
-- [ ] `DATETIME_ADD()`
-- [ ] `DATE_SUB()`
-- [ ] `DATETIME_SUB()`
-- [ ] `DATE_TRUNC()`
-- [ ] `DATETIME_TRUNC()`
-- [ ] `FORMAT_DATE()`
-- [ ] `FORMAT_DATETIME()`
-
-
-### ● 便利な句
-```SQL
-LIKE
-```
-
-```SQL
-IN()
-```
-
-条件分岐
-```SQL
-IF()
-IFNULL()
-```
-```SQL
--- Bool型の分類
-CASE
-    WHEN THEN
-    ELSE
-END
-
--- カラム毎の値の分類
-CASE()
-    WHEN THEN
-    ELSE
-END
-```
-
-分析関数 OVER句
-```SQL
-[]() OVER(
-        PARTITION BY
-        ORDER BY
-        (WINDOW_FRAME)
-    )
-```
-
-関数化 WITH句
-```SQL
-WITH
-[] AS (SELECT FROM ),
-[] AS (SELECT FROM )
-```
-
-
-### ● 結合
-
-
-- [ ] `INNER JOIN`
-    - [ ] `self JOIN`
-- [ ] `LEFT OUTER JOIN`
-- [ ] `RIGHT OUTER JOIN`
-- [ ] `FULL OUTER JOIN`
-- [ ] ``
-
-```SQL
-FROM [table①] AS [t①]
-[結合句] [table②] AS [t②]
-→ USING [key]
-→ ON [t①.key = t②.key]
 ```
