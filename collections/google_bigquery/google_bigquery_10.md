@@ -2,7 +2,7 @@
 date   : 2021-09-04
 title  : 分析入門 - Section10
 excerpt: BigQuery集合演算、ビュー
-tags   : ["Google BigQuery", "SQL", "分析", "union"]
+tags   : ["Google BigQuery", "SQL", "分析", "union", "Udemy講座"]
 ---
 
 ## || Section10
