@@ -16,6 +16,7 @@ tags    : ["Feature Engineering", "ML", "Preprocessing"]
 - TargetEncoder
 
 ▼ 向き不向き
+
 ||good|bad||
 |:-|:-|:-|:-|
 |StandardSaler||||
