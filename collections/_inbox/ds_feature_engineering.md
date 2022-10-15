@@ -17,13 +17,13 @@ tags    : ["Feature Engineering", "ML", "Preprocessing"]
 
 ▼ 向き不向き
 
-||good|bad||
+|-|good|bad| |
 |:-|:-|:-|:-|
-|StandardSaler||||
-|Normalization|　|||
-|LabelEncoder　　|決定木系　　　　　　||軽いが解釈性が減る|
-|OneHotEncoder|NN 線形回帰||重くなる|
-|TargetEncoder|||Overfitting(過学習)の危険|
+|StandardSaler|-|-|-|
+|Normalization|-|-|-|
+|LabelEncoder　　|決定木系　|-|軽いが解釈性が減る|
+|OneHotEncoder|NN 線形回帰|-|重くなる|
+|TargetEncoder|-|-|Overfitting(過学習)の危険|
 
 
 ## || REFERENCE
