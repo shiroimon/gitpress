@@ -15,9 +15,8 @@ tags    : ["Feature Engineering", "ML", "Preprocessing"]
 - OneHotEncoder
 - TargetEncoder
 
-▼ 向き不向き
-
-|-|good|bad| |
+#### ▼ 向き不向き
+|-|good|bad|-|
 |:-|:-|:-|:-|
 |StandardSaler|-|-|-|
 |Normalization|-|-|-|
