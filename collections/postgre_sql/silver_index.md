@@ -4,7 +4,9 @@ title  : 【🥈Silver Ver.2.0】
 excerpt:
 tags   : ["OSS-DB", "Silver", "PostgreSQL"]
 ---
+
 ## || INDEX
+
     0. 概要
         - OSS-DBとは
         - 戦略
@@ -21,6 +23,7 @@ tags   : ["OSS-DB", "Silver", "PostgreSQL"]
         3-1. SQLコマンド
         3-2. 組み込み関数
         3-3. トランザクションの概念
+
 
 ## || 0. 概要
 ### | OSS-DBとは
