@@ -97,3 +97,7 @@ tags   : ["Google Cloud", "資格"]
 [Preparing for the Google Cloud Professional Data Engineer Exam 日本語版](https://www.coursera.org/learn/preparing-cloud-professional-data-engineer-exam-jp)）
 
 
+## || REFERRENCE
+- [GCP（Google Cloud Platform）の資格で年収UP！勉強ロードマップ4ステップを紹介！](https://toukei-lab.com/gcp_learn) - スタビジ
+
+
