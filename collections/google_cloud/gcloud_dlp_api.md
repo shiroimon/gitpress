@@ -1,3 +1,9 @@
+---
+date    : 2022-01-01
+title   : GoogleCloud DLP API
+excerpt : 
+tags    : ["Google Cloud", "DLP", "API"]
+---
 
 ## || GoogleCloud DLP(Data Loss Prevention) API
 
