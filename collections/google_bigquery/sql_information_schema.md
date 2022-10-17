@@ -14,22 +14,24 @@ tags   : ["Google BigQuery", "SQL", "INFORMATION_SCHEMA"]
 
 ## || テーブル確認（カラム）
 ```SQL
+#standardSQL
 select
     table_name
     , column_name
     , data_type
 from 
-    `my_pj.my_ds.INFORMATION_SCHEMA.COLUMNS`
+    `my_pj.my_ds.INFORMATION_SCHEMA.COLUMNS` -- テーブル列確認
 where 
     table_name = "yellow_taxi_2015"
 ;
 
 /*
-| |table_name      |column_name     |data_type|
+|-|table_name      |column_name     |data_type|
 |-|-               |-               |-        |
 |1|yellow_taxi_2015|vendor_id       |STRING   |
 |2|yellow_taxi_2015|pickup_datetime |TIMESTAMP|
 |3|yellow_taxi_2015|dropoff_datetime|TIMESTAMP|
+~
 */
 ```
 
@@ -38,8 +40,14 @@ where
 ## || NFORMATION_SCHEMA.JOBS_BY_PROJECT
 ● クエリ世代確認等にも使える。
 ```SQL
+#standardSQL
+/* ■インシデント；
+ * あるプロジェクトで、クエリ自体が紛失してしまった。
+ * そこで、過去にBigQueryで走らせたクエリをログベース（ジョブ単位）で確認することができる。
+*/
+
 SELECT
-    ROW_NUMBER() OVER(PARTITION BY job_type ORDER BY creation_time) AS number
+    ROW_NUMBER() OVER (PARTITION BY job_type ORDER BY creation_time) AS number
     , creation_time
     , user_email
     , job_type
@@ -48,17 +56,16 @@ SELECT
     , query
     , state
 FROM 
-    `region-us`.INFORMATION_SCHEMA.JOBS_BY_PROJECT
+    `region-us`.INFORMATION_SCHEMA.JOBS_BY_PROJECT -- ジョブのメタデータ確認
 WHERE 
         query LIKE '%TAB3_%'
     AND query NOT LIKE '%T_OWN_EXPENSE_TAB3_SS_CV%'
     AND DATE(start_time) BETWEEN '2022-07-01' AND '2022-07-31'
 ORDER BY 
     start_time
+;
+
 ```
-インシデント；
-あるプロジェクトで、クエリ自体が紛失してしまった。
-そこで、過去にBigQueryで走らせたクエリをログベースで確認することができる。
 
 
 
