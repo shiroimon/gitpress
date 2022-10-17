@@ -4,7 +4,12 @@ title  : INFORMATION_SCHEMA
 excerpt: 
 tags   : ["Google BigQuery", "SQL", "INFORMATION_SCHEMA"]
 ---
+
 ## || INFORMATION_SCHEMA 
+> BigQuery INFORMATION_SCHEMA ビューは、BigQuery オブジェクトに関するメタデータ情報を提供するシステム定義の読み取り専用ビューです。
+>
+>『 [BigQuery INFORMATION_SCHEMA の概要](https://cloud.google.com/bigquery/docs/information-schema-intro?hl=ja)』より
+
 
 
 ## || テーブル確認（カラム）
@@ -28,8 +33,10 @@ where
 */
 ```
 
+
+
 ## || NFORMATION_SCHEMA.JOBS_BY_PROJECT
-世代確認等にも使える。
+● クエリ世代確認等にも使える。
 ```SQL
 SELECT
     ROW_NUMBER() OVER(PARTITION BY job_type ORDER BY creation_time) AS number
@@ -49,7 +56,11 @@ WHERE
 ORDER BY 
     start_time
 ```
-あるプロジェクトで、クエリ自体がヶいてしまった場合、過去にBigQueryで走らせたクエリを確認することができる。
+インシデント；
+あるプロジェクトで、クエリ自体が紛失してしまった。
+そこで、過去にBigQueryで走らせたクエリをログベースで確認することができる。
+
+
 
 ## || REFERENCE
 + [BigQuery INFORMATION_SCHEMA の概要](https://cloud.google.com/bigquery/docs/information-schema-intro?hl=ja) - Google Cloud
