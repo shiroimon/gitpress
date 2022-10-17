@@ -64,8 +64,16 @@ WHERE
 ORDER BY 
     start_time
 ;
-
 ```
+
+
+
+## || INFORMATION_SCHEMA.PARTITIONS
+● テーブルの更新時間を取得する方法
+* `.__TABLE__` : (旧式) cf. [BigQueryでテーブルの更新時間を取得する方法](https://qiita.com/nii_yan/items/62dae301370e274d85f8) 
+* `.INFORMATION_SCHEMA.PARTITIONS`: cf.[テーブルの最終更新日をINFORMATION_SCHEMA.PARTITIONSから調査する](https://www.yasuhisay.info/entry/2021/12/23/083000)
+
+
 
 
 
