@@ -87,10 +87,13 @@ PIVOT 演算子は、集計を使用して行を列に変換できる。PIVOT �
 ```
 
 
-## || UNPIVOT句
+## || UNPIVOT演算子
 
 
 
 ## || REFERENCE
-- [SQL ServerのPIVOT句・UNPIVOT句](https://www.casleyconsulting.co.jp/blog/engineer/162/) - CasleyConsulting
 - [PIVOT演算子](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax?hl=ja#pivot_operator) - GoogleCloud 
+- [UNPIVOT演算子](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax?hl=ja#unpivot_operator) - GoogleCloud 
+- [BigQueryでpivotとunpivotするやつ2](https://qiita.com/taniyam/items/cb121edef1b594cd9042) - Qiita
+- [SQL ServerのPIVOT句・UNPIVOT句](https://www.casleyconsulting.co.jp/blog/engineer/162/) - CasleyConsulting
+- 
