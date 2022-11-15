@@ -20,6 +20,8 @@ PIVOT 演算子は、集計を使用して行を列に変換できる。PIVOT �
 ### | 縦持ちデータ→横持ちに変換
 年月別に集計をしたい。
 ```SQL
+# ~ 上述のWITH句は割愛
+    -- 縦持ち 
     , RAWDATA as(
         select
             CATALOG_ID
@@ -39,10 +41,11 @@ PIVOT 演算子は、集計を使用して行を列に変換できる。PIVOT �
         where 
             LOG_MONTH between date("2017-01-01") and date("2022-10-01") --指定期間
     )
-
+    
+    -- 横持ち
     , REPORT as (
         select 
-            CATALOG_ID         --医院ID
+            CATALOG_ID           --医院ID
             , CUST_NO            --顧客番号
             , CLINIC_NAME        --医院名
             , SERVICE_START_DATE --契約開始年月日
