@@ -20,10 +20,11 @@
 + [INTERSECT](sql_intersect)
 
 ## ■ 句（節）
-+ [QUALIFY句](sql_qualify)
-+ [WINDOW句](sql_window)
 + [EXISTS句](sql_exists)
 + [LIMIT / OFFSET句](sql_limit_offset)
++ [PIVOTT / UNPIPOT句](sql_pivot_unpivot)
++ [QUALIFY句](sql_qualify)
++ [WINDOW句](sql_window)
 
 ## ■ BigQuery特有
 + [BigQueryScriptting](sql_bqscripting)
