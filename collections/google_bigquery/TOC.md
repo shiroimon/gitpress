@@ -22,7 +22,7 @@
 ## ■ 句（節）
 + [EXISTS句](sql_exists)
 + [LIMIT / OFFSET句](sql_limit_offset)
-+ [PIVOTT / UNPIPOT句](sql_pivot_unpivot)
++ [PIVOT / UNPIVOT句](sql_pivot_unpivot)
 + [QUALIFY句](sql_qualify)
 + [WINDOW句](sql_window)
 
