@@ -18,11 +18,13 @@
 + [UNION](sql_union)
 + [EXCEPT](sql_except)
 + [INTERSECT](sql_intersect)
++ [PIVOT / UNPIVOT](sql_pivot_unpivot)
++ [TABLESAMPLE](sql_tablesample)
+
 
 ## ■ 句（節）
 + [EXISTS句](sql_exists)
 + [LIMIT / OFFSET句](sql_limit_offset)
-+ [PIVOT / UNPIVOT句](sql_pivot_unpivot)
 + [QUALIFY句](sql_qualify)
 + [WINDOW句](sql_window)
 
