@@ -9,3 +9,9 @@
 - Google Colaboratory(≒ Jupyter Notebook)
 - Python
 - Linux
+
+
+## || ターゲット
+- [] GoogleCloudDataAnalysis
+- [] 
+- [] 
