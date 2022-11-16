@@ -11,11 +11,13 @@
 
 
 ## [MiddleWear]
-- [Homebrew](middlewear_brew)
 - [Vim / NeoVim](middlewear_vim)
 - [Zsh / Oh-My-Zsh](middlewear_zsh)
 
-### | Git (VCS)
+### | (PackageControlSystem)
+- [Homebrew](middlewear_brew)
+
+### | Git (VersionControlSystem)
 - [Git](middlewear_git)
 - [$git tig](git_tig)
 - 
