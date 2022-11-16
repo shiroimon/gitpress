@@ -1,22 +1,27 @@
 ## [Linux] COMMAND
-<!-- - [$cd](command_) -->
-<!-- - [$find](command_) -->
-<!-- - [$grep](command_) -->
-<!-- - [$ls](command_)  -->
-<!-- - [$mkdir](command_) -->
-<!-- - [$pwd](command_) -->
-<!-- - [$rm](command_) -->
+- [$cd](command_)
+- [$find](command_)
+- [$grep](command_)
+- [$ls](command_) 
+- [$mkdir](command_)
+- [$pwd](command_)
+- [$rm](command_)
 - [$sort](command_sort)
 - [$split](command_split)
 
 
-## [Linux] MiddleWear
-<!-- - [](middlewear_) -->
-- [Docker](middlewear_docker)
-- [Git](middlewear_git)
+## [MiddleWear]
 - [Homebrew](middlewear_brew)
 - [Vim / NeoVim](middlewear_vim)
 - [Zsh / Oh-My-Zsh](middlewear_zsh)
+
+### | Git (VCS)
+- [Git](middlewear_git)
+- [$git tig]()
+- 
+
+### | Docker
+- [Docker](middlewear_docker)
 
 
 ## [Linux] OS
