@@ -1,4 +1,4 @@
-# DB / SQL /
+# DB / SQL
 ## [DB] SQL COMMAND
 <!--
     Defination : 定義
