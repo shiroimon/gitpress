@@ -1,11 +1,13 @@
 ---
 date    : 2021-09-18
-title   : 【🔎 SQL】PostgreSQL 環境構築
+title   : 🐘 PostgreSQL - 環境構築 - 
 excerpt : CUI操作による、PostgreSQLのインストールから、データベースへアクセスまで。
-tags    : ["PostgreSQL", "OSS-DB", "SQL", "環境構築", "iTearm2", "🐘"]
+tags    : ["PostgreSQL", "OSS-DB", "SQL", "環境構築", "iTearm2"]
 ---
 
-## || PostgreSQLって
+
+
+## || PostgreSQL
 ![img](https://i.gyazo.com/8bb756a9d2e944bba0e29344976093bd.jpg)
 
 > PostgreSQLは、拡張性とSQL準拠を強調するフリーでオープンソースの関係データベース管理システムである。Postgresとしても知られている。もともとは、カリフォルニア大学バークレー校で開発されたIngresデータベースの後継としてその起源を根拠としたPOSTGRESという名前であった。1996年に、プロジェクトはSQLのサポートを反映してPostgreSQLに改名された。2007年の検討の結果、開発チームはPostgreSQLという名前とPostgresという別名を維持することを決定した。
@@ -13,7 +15,7 @@ tags    : ["PostgreSQL", "OSS-DB", "SQL", "環境構築", "iTearm2", "🐘"]
 >
 > ー [PostgreSQL - Wikipedia](https://ja.wikipedia.org/wiki/PostgreSQL)
 
-#### 国内の検索トレンド
+### | 国内の検索トレンド
 国内でのGoogle検索のトレンド、過去半年間での比較。
 そこまで人気高いわけではないのかな？イメージではぶっち切り！なのかと思っていたのに。
 
@@ -63,9 +65,10 @@ export PATH=$PATH:/Library/PostgreSQL/{バージョン}/bin
 $ source ~/ .bash_profile
 （$ exec $SHELL -l）
 ```
-        最後にパスが通ったか確認で、もう一度バージョン確認してみる。
-        通過していればバージョンが返ってくる。
-Cf. [Mac psqlコマンドのPATHを通す - テンプレ部](https://awesomecatsis.com/mac-psql-path/)
+最後にパスが通ったか確認で、もう一度バージョン確認してみる。
+通過していればバージョンが返ってくる。
+
+cf. [Mac psqlコマンドのPATHを通す - テンプレ部](https://awesomecatsis.com/mac-psql-path/)
 
 3. ログイン、ログアウト
 ```shell
