@@ -8,6 +8,6 @@
 
 <table align='center' width="80%">
     <tr><th>ディレクトリ</th><th>用途</th></tr>
-    <tr><td>COLLECTIONS</td><td>自己学習（ノート）</td></tr>
-    <tr><td>SOURCE</td><td>覚　書　</td></tr>
+    <tr><td>COLLECTIONS</td><td>自己学習（TIL用）</td></tr>
+    <tr><td>SOURCE</td><td>覚　書</td></tr>
 </table>
