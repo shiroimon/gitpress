@@ -1,4 +1,4 @@
-# Google BigQuery
+# PostgreSQL
 ## || TEMPLATE
 ```markdown
 ---
