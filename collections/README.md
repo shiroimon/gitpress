@@ -12,13 +12,14 @@
 
 
 ## || ターゲット
-- [] GoogleCloudDataAnalysis
-- [] LPIC Lv1
-- [] OSS-DB Silver
-- [] 統計検定 2級
-- [] E資格（認定取得）
-- [] アクセス解析士
-
-- [] G検定
-- [] 温泉ソムリエ
-- [] 珈琲検定
+### | キャリア的
+- GoogleCloudDataAnalysis
+- LPIC Lv1
+- OSS-DB Silver
+- 統計検定 2級
+- E資格（認定取得）
+- アクセス解析士
+### | 趣味的
+- G検定
+- 温泉ソムリエ
+- 珈琲検定
