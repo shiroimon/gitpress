@@ -24,11 +24,11 @@
 - [Docker](middlewear_docker)
 
 
-## [Linux] OS
+## [OS]
 - [Ubuntu](os_ubuntu)
 - [Cent_OS](os_cent_os)
 
 
-## [Linux] 用途から
+## [Linux] 用途別
 - [ファイル分割したい](want_)
 - [ファイル検索したい](want_)
