@@ -1,41 +1,37 @@
 # DB / SQL
-## [DB] SQL COMMAND
-<!--
-    Defination : 定義
-    Manipulation : 操作
-    Query :
-    Transaction Control :制御（トランザクション） 
-    Data Control : 制御（データ）
-  -->
-### ■ DDL
-+ [CREATE]()
-+ [ALTER]()
-+ [DROP]()
-+ [RENAME]()
-+ [TRUNCATE]()
-+ [RENAME]()
-### ■ DML
-+ [INSERT]()
-+ [UPDATE]()
-+ [DELETE]()
-+ [MERGE]()
-### ■ DQL
-+ [SELECT]()
-### ■ TCL
-+ [COMMIT]()
-+ [ROLLBACK]()
-+ [SETTRANSACTION]()
-+ [SAVEPOINT]()
-### ■ DCL
-+ [GRANT]()
-+ [REVOKE]()
-
-
-
-
 ## [DB]
 ### ■ OSS
 + [PostgreSQL]()
 
 ### ■ ER
 + []()
+
+
+
+## [SQL] COMMAND
+### ■ DDL (Defination=定義)
++ [CREATE](sql_ddl_crate)
++ [ALTER](sql_ddl_)
++ [DROP]()
++ [RENAME]()
++ [TRUNCATE]()
++ [RENAME]()
+
+### ■ DML (Manipulation=操作)
++ [INSERT]()
++ [UPDATE]()
++ [DELETE]()
++ [MERGE]()
+
+### ■ TCL (TransactionControl=制御)
++ [COMMIT]()
++ [ROLLBACK]()
++ [SETTRANSACTION]()
++ [SAVEPOINT]()
+
+### ■ DCL (DataControl=制御)
++ [GRANT]()
++ [REVOKE]()
+
+### ■ DQL (Query)
++ [SELECT]()
