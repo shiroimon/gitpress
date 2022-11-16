@@ -8,16 +8,13 @@ tags    : ["PostgreSQL", "OSS-DB", "SQL", "環境構築", "iTearm2"]
 ![img](https://i.gyazo.com/8bb756a9d2e944bba0e29344976093bd.jpg)
 
 ## || PostgreSQL
-> PostgreSQLは、拡張性とSQL準拠を強調するフリーでオープンソースの関係データベース管理システムである。Postgresとしても知られている。もともとは、カリフォルニア大学バークレー校で開発されたIngresデータベースの後継としてその起源を根拠としたPOSTGRESという名前であった。1996年に、プロジェクトはSQLのサポートを反映してPostgreSQLに改名された。2007年の検討の結果、開発チームはPostgreSQLという名前とPostgresという別名を維持することを決定した。
->PostgreSQLは、原子性、整合性、独立性、耐久性 (ACID)プロパティを持つトランザクション、自動更新可能なビュー、マテリアライズドビュー、トリガ、外部キー、ストアドプロシージャを特徴としている。単一マシンからデータウェアハウスや多数の同時使用ユーザを持つWebサービスまで、さまざまなワークロードを扱えるように設計されている。macOS Serverのデフォルトデータベースであり、Linux、FreeBSD、OpenBSD、Windowsでも利用可能である。
+> PostgreSQLは、拡張性とSQL準拠を強調するフリーでオープンソースの関係データベース管理システムである。
+> Postgresとしても知られている。もともとは、カリフォルニア大学バークレー校で開発されたIngresデータベースの後継としてその起源を根拠としたPOSTGRESという名前であった。
+> 1996年に、プロジェクトはSQLのサポートを反映してPostgreSQLに改名された。2007年の検討の結果、開発チームはPostgreSQLという名前とPostgresという別名を維持することを決定した。
+> PostgreSQLは、原子性、整合性、独立性、耐久性 (ACID)プロパティを持つトランザクション、自動更新可能なビュー、マテリアライズドビュー、トリガ、外部キー、ストアドプロシージャを特徴としている。単一マシンからデータウェアハウスや多数の同時使用ユーザを持つWebサービスまで、さまざまなワークロードを扱えるように設計されている。
+> macOS Serverのデフォルトデータベースであり、Linux、FreeBSD、OpenBSD、Windowsでも利用可能である。
 >
-> ー [PostgreSQL - Wikipedia](https://ja.wikipedia.org/wiki/PostgreSQL)
-
-### | 国内の検索トレンド
-国内でのGoogle検索のトレンド、過去半年間での比較。
-そこまで人気高いわけではないのかな？イメージではぶっち切り！なのかと思っていたのに。
-
-![img](https://i.gyazo.com/a66bc0163661bc9eeb63a9e634c37301.png)
+> "[PostgreSQL](https://ja.wikipedia.org/wiki/PostgreSQL) - Wikipedia"
 
 
 
