@@ -1,13 +1,13 @@
 ## [Linux] COMMAND
-- [$cd](command_)
-- [$find](command_)
-- [$grep](command_)
-- [$ls](command_) 
-- [$mkdir](command_)
-- [$pwd](command_)
-- [$rm](command_)
-- [$sort](command_sort)
-- [$split](command_split)
+- [$cd](linux_)
+- [$find](linux_)
+- [$grep](linux_)
+- [$ls](linux_) 
+- [$mkdir](linux_)
+- [$pwd](linux_)
+- [$rm](linux_)
+- [$sort](linux_sort)
+- [$split](linux_split)
 
 
 ## [MiddleWear]
@@ -17,7 +17,7 @@
 
 ### | Git (VCS)
 - [Git](middlewear_git)
-- [$git tig]()
+- [$git tig](git_tig)
 - 
 
 ### | Docker
