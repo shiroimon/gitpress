@@ -1,12 +1,13 @@
 ## [Linux] COMMAND
-- [Linux Command](iterm_linux)
+<!-- - [$cd](command_) -->
+<!-- - [$find](command_) -->
+<!-- - [$grep](command_) -->
+<!-- - [$ls](command_)  -->
+<!-- - [$mkdir](command_) -->
+<!-- - [$pwd](command_) -->
+<!-- - [$rm](command_) -->
 - [$sort](command_sort)
 - [$split](command_split)
-- [$find]()
-- [$grep]()
-- [$mkdir]()
-- [$rm]()
-- 
 
 
 ## [Linux] MiddleWear
