@@ -11,7 +11,9 @@
 
 
 ## [Linux] MiddleWear
+<!-- - [](middlewear_) -->
 - [Docker](middlewear_docker)
+- [Git](middlewear_git)
 - [Homebrew](middlewear_brew)
 - [Vim / NeoVim](middlewear_vim)
 - [Zsh / Oh-My-Zsh](middlewear_zsh)
