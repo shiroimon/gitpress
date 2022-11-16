@@ -1,8 +1,8 @@
 ---
 date    : 2021-10-01
-title   : 【🍺 Homebrew】
+title   : 🍺 Homebrew
 excerpt :
-tags    : ["🍺", "Homebrew", "環境構築", "iTearm2"]
+tags    : ["Homebrew", "環境構築", "iTearm2"]
 ---
 ## || 🍺 Homebrew
 ![img](https://brew.sh/assets/img/homebrew-social-card.png)
@@ -10,7 +10,7 @@ tags    : ["🍺", "Homebrew", "環境構築", "iTearm2"]
 > 同じくmacOSのためのMacPortsやFinkと同様の目的と機能を備え、利用が広がりつつある。
 > LinuxのDebianのAPTに似た使用感である。Max Howellによって開発された。
 >
-> ー [Homebrew (パッケージ管理システム) - Wikipedia](https://ja.wikipedia.org/wiki/Homebrew_(%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0))
+> "[Homebrew (パッケージ管理システム)](https://ja.wikipedia.org/wiki/Homebrew_(%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0)) - Wikipedia"
 
 どーでもいいけど、なんて美味しそうなロゴなのだろうか。
 記事をまとめながら飲みたくなる…
