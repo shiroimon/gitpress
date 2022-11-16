@@ -1,6 +1,6 @@
 ---
 date   : 2022-10-11
-title  : 【🐚 Linux】$sort
+title  : 🐚 $sort
 excerpt: 
 tags   : ["Linux", "sort"]
 ---
