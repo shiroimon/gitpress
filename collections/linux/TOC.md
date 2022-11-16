@@ -26,7 +26,7 @@
 
 ## [OS]
 - [Ubuntu](os_ubuntu)
-- [Cent_OS](os_cent_os)
+- [CentOS](os_cent_os)
 
 
 ## [Linux] 用途別
