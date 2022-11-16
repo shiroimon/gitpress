@@ -1,6 +1,6 @@
 ---
 date   : 2021-12-07
-title  : 【🐚 Linux】$split
+title  : 🐚 $split
 excerpt: 
 tags   : ["linux", "command", split"]
 ---
