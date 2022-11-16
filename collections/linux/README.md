@@ -2,8 +2,8 @@
 
 ```txt
 ---
-date   : 2021-12-07
-title  : 【🐚 Linux】
+date   : 2022-01-01
+title  : 🐚 
 excerpt: 
 tags   : ["Linux", ""]
 ---
