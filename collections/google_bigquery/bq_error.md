@@ -6,7 +6,7 @@ tags    : ["Google BigQuery", ""]
 ---
 
 ## || BigQueryのエラー
-### | 
+### |  
 ```
 Query exceeded resource limits. This query used 96791 CPU seconds but would charge only 170M Analysis bytes. 
 This exceeds the ratio supported by the on-demand pricing model. 
@@ -16,7 +16,8 @@ Please consider moving this workload to the flat-rate reservation pricing model,
 
 ### | 
 ```
-To copy a table, the destination and source datasets must be in the same region. Copy an entire dataset to move data between regions.
+To copy a table, the destination and source datasets must be in the same region. 
+Copy an entire dataset to move data between regions.
 ```
 作成したクエリの抽出結果（300万レコード程）を一時的にテーブル化しようとしたら、以下のようなエラーが出て困った。。
 
