@@ -60,7 +60,6 @@
 
 ## ■ ERROR
 + [error](bq_error)
-+ [To copy a table, the destination and source datasets must be in the same region. Copy an entire dataset to move data between regions.](bq_error_case1)
 + [Resources exceeded during query execution: Not enough resources for query planning - too many subqueries or query is too complex](bq_table)
 
 
