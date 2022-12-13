@@ -14,6 +14,15 @@
 
 
 # [BIGQUERY] SQL
+## ■ BigQuery特有
++ [BigQueryScriptting](sql_bqscripting)
++ [_TABLE_SUFFIX](sql_table_suffix)
++ [_TABLE_](sql_table)
++ [INFORMATION_SCHEMA](sql_information_schema)
++ [UDF](sql_udf)
++ [カスタムクエリ](sql_custom_query)
+
+
 ## ■ 演算子
 + [UNION](sql_union)
 + [EXCEPT](sql_except)
@@ -26,19 +35,11 @@
 + [EXISTS句](sql_exists)
 + [LIMIT / OFFSET句](sql_limit_offset)
 + [QUALIFY句](sql_qualify)
-+ [WINDOW句](sql_window)
++ [WINDOW句（名前付きウィンドウ）](sql_window)
++ [OVER句 / WINDOW FRAME句](sql_over_window_frame)
 
-## ■ BigQuery特有
-+ [BigQueryScriptting](sql_bqscripting)
-+ [_TABLE_SUFFIX](sql_table_suffix)
-+ [_TABLE_](sql_table)
-+ [INFORMATION_SCHEMA](sql_information_schema)
-+ [UDF](sql_udf)
-+ [カスタムクエリ](sql_custom_query)
 
 ## ■ 関数
-+ [approx_count_distinct()](sql_approx_count_distinct)
-+ [array_agg()](sql_array_agg)
 + [coalesce()](sql_coalesce)
 + [countif()](sql_countif)
 + [extract()](sql_extract)
@@ -57,6 +58,17 @@
 + [st_distance()](sql_st_distance)
 + [struct()](sql_struct)
 + [unnest()](sql_unnest)
+
+### [配列関数](https://cloud.google.com/bigquery/docs/reference/standard-sql/array_functions?hl=ja)
++ [array_agg()](sql_array_agg)
+
+### [集計近似関数](https://cloud.google.com/bigquery/docs/reference/standard-sql/approximate_aggregate_functions?hl=ja)
++ [approx_count_distinct()](sql_approx_count_distinct)
+
+### [ナビゲーション関数](https://cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions?hl=ja)
++ [nth_value()](sql_nth_value)
++ [first_value() / last_value()]()
+
 
 ## ■ ERROR
 + [error](bq_error)
