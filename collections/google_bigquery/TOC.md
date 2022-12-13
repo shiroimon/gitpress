@@ -41,7 +41,6 @@
 
 ## ■ 関数
 + [coalesce()](sql_coalesce)
-+ [countif()](sql_countif)
 + [extract()](sql_extract)
 + [greatest()](sql_greatest)
 + [ifnull()](sql_ifnull)
@@ -51,23 +50,26 @@
 + [lower()](sql_lower)
 + [nullif()](sql_nullif)
 + [parse_date()](sql_parse_date)
-+ [percentile_()](sql_percentile)
-+ [row_number()](sql_row_number)
 + [safe_cast()](sql_safe_cast)
 + [split()](sql_split)
-+ [st_distance()](sql_st_distance)
 + [struct()](sql_struct)
 + [unnest()](sql_unnest)
 
-### [配列関数](https://cloud.google.com/bigquery/docs/reference/standard-sql/array_functions?hl=ja)
+#### [集計関数](https://cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions?hl=ja)
++ [countif()](sql_countif)
+#### [配列関数](https://cloud.google.com/bigquery/docs/reference/standard-sql/array_functions?hl=ja)
 + [array_agg()](sql_array_agg)
-
-### [集計近似関数](https://cloud.google.com/bigquery/docs/reference/standard-sql/approximate_aggregate_functions?hl=ja)
+#### [集計近似関数](https://cloud.google.com/bigquery/docs/reference/standard-sql/approximate_aggregate_functions?hl=ja)
 + [approx_count_distinct()](sql_approx_count_distinct)
-
-### [ナビゲーション関数](https://cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions?hl=ja)
+#### [番号付け関数](https://cloud.google.com/bigquery/docs/reference/standard-sql/numbering_functions?hl=ja)
++ [row_number()](sql_row_number)
+#### [ナビゲーション関数](https://cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions?hl=ja)
 + [nth_value()](sql_nth_value)
 + [first_value() / last_value()]()
++ [percentile_()](sql_percentile)
+#### [地理関数](https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions?hl=ja)
++ [st_distance()](sql_st_distance)
+
 
 
 ## ■ ERROR
