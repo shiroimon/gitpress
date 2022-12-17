@@ -1,8 +1,11 @@
 # JUPYTER
+- [jupyter]()
+
 ## ||　Python
 ### | ENV
-- [pipenv](env_pipenv)
-- [](env_conda)
+- [$pip](env_pip)
+- [$pipenv](env_pipenv)
+- [$conda](env_conda)
 
 ### | DS
 - [NumPy](ds_numpy)
