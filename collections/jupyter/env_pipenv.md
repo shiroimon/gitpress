@@ -1,8 +1,8 @@
 ---
 date    : 2022-01-01
-title   : 🪐 
+title   : 🪐 Python仮想環境でJupyter起動
 excerpt : 
-tags    : ["Jupyter", "Jupyter lab", ""]
+tags    : ["Jupyter", "Jupyter lab", "pipenv", "仮想環境", "Python"]
 ---
 
 ## || 
