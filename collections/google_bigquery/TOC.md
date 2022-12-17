@@ -121,7 +121,7 @@
 
 # [BIGQUERY] GA
 + [GA4](ga_ga4)
-+ []()
++ [GA4 データフラット化](ga_ga4_get_flaten)
 
 
 
