@@ -1,13 +1,15 @@
-# Python
-## || 
+# JUPYTER
+## ||　Python
+### | ENV
 - [pipenv](env_pipenv)
 - [](env_conda)
 
-## || DS
-### | ML / DL
+### | DS
 - [NumPy](ds_numpy)
 - [Pandas](ds_pandas)
 - [matplotlib](ds_matplotlib)
+- []()
 
-## || Web
+### | Web
 - [Django](web_django)
+- []()
