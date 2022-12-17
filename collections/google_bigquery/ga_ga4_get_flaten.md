@@ -6,9 +6,12 @@ tags    : ["Google BigQuery", "GA4"]
 ---
 
 ## || 
-とんでもなく勉強になるクエリを記述する最強の人を真似て写経兼してみた。（参考記事は「REFERENCE」に）
+とんでもなく勉強になるクエリを記述する最強の人を真似て写経兼してみた。（参考記事は「REFERENCE」へ）
+
 GA4（Firebase）のデータ構造は、初見〇し過ぎる。。
+
 都度、データをこねくり回して抽出もいいが、、、手間過ぎる。そんな時に出会った最強の人。感謝ですm(_ _)m
+
 
 ### | フラット化
 ```SQL
@@ -217,6 +220,7 @@ with
 select * from t2
 """, str_dynamic_columns);
 ```
+
 
 ## || REFERENCE
 - [GA4/Firebaseのログをフラット化する汎用クエリ](https://www.marketechlabo.com/ga4-firebase-log-preprocessing/) - marketechlabo
