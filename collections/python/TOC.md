@@ -1,7 +1,7 @@
 # Python
 ## || 
-- [pipenv](env_pip)
--
+- [pipenv](env_pipenv)
+- [](env_conda)
 
 ## || DS
 ### | ML / DL
