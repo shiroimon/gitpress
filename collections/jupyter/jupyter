@@ -1,4 +1,9 @@
-
+---
+date    : 2022-01-01
+title   : 🪐 Jupyter
+excerpt : 由来や変遷
+tags    : ["Jupyter", "Jupyter lab", "Jupyter Notebook"]
+---
 ## || 由来
 
 `Jupyter = julia Python R`
@@ -24,3 +29,8 @@ IPythonと異なり、Python以外のコンピュータ言語にも対応して�
 ### | 🐍JupyterLab
 次にJupyterLabですが、Jupyter Notebookの後継機として、色々な拡張性を増やしたIDEになっているように思います。
 今まで使った限りでは、NotebookでできたことはJupyterLabでもできるので、今後のアップデートを考えると、こちらに乗り換えらない手はないかと思います。
+
+
+
+## || REFERENCE
+- []() -
