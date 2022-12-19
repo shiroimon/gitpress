@@ -35,14 +35,12 @@ $ pipenv shell
 (myproject)＄ 
 ```
 
-＊ JupyterLab起動
+* JupyterLab起動
 ```shell
 (myproject)＄ jupyter lab
 ```
-
 ※ ブラウザーに立ち上がる。
 ※ 終了する際は、ブラウザー側のWebUIで終了、もしくは `Ctrl+C` で終了。
-
 
 * 仮想環境終了
 ```shell
