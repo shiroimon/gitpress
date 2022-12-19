@@ -1,7 +1,15 @@
-### ■ 基本操作・ショートカット
+---
+date    : 2022-01-01
+title   : 🪐 基本操作・ショートカット
+excerpt : 
+tags    : ["Jupyter", "Jupyter lab", ""]
+---
+
+## || 
+### | 基本操作・ショートカット
 
 #### （入力モード）
-> ```esc```で、ショートカットモード。
+`esc`で、ショートカットモード。
 
 + esc + Y : code mode
 + esc + M : Markdown mode
@@ -43,9 +51,10 @@
 + Ctrl + Shift + – : セル分割（コードは実行されません）
 
 
----
-### cf.
-+ [Jupyter Lab ショートカット一覧(Windows) とキー割り当て変更方法](https://qiita.com/YH0132/items/7588479a3c979a1f287e)
-+ [Jupyter Lab：基本的な使い方 - ](https://kiseno-log.com/2020/05/10/jupyter-lab%EF%BC%9A%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E4%BD%BF%E3%81%84%E6%96%B9/)
-+ [JupyterLab](http://www.yasunaga-lab.bio.kyutech.ac.jp/EosJ/index.php/JupyterLab#.E6.8B.A1.E5.BC.B5.E6.A9.9F.E8.83.BD)
-+ [図解！Jupyter Labを徹底解説！(インストール・使い方・拡張機能)](https://ai-inter1.com/jupyter-lab/)
+
+## || REFERENCE
+- [Jupyter Lab ショートカット一覧(Windows) とキー割り当て変更方法](https://qiita.com/YH0132/items/7588479a3c979a1f287e) - 
+- [Jupyter Lab：基本的な使い方](https://kiseno-log.com/2020/05/10/jupyter-lab%EF%BC%9A%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E4%BD%BF%E3%81%84%E6%96%B9/)
+- [JupyterLab](http://www.yasunaga-lab.bio.kyutech.ac.jp/EosJ/index.php/JupyterLab#.E6.8B.A1.E5.BC.B5.E6.A9.9F.E8.83.BD) - 
+- [図解！Jupyter Labを徹底解説！(インストール・使い方・拡張機能)](https://ai-inter1.com/jupyter-lab/) - 
+- 
