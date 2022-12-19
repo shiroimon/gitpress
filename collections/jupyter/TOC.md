@@ -1,5 +1,6 @@
 # JUPYTER
 - [jupyter](jupyter)
+- [jupyter shotcut](jupyter_shortcut)
 
 ## ||　Python
 ### | ENV
