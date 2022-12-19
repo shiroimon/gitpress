@@ -1,5 +1,5 @@
 # JUPYTER
-- [jupyter](jupyter)
+- [jupyter](jupyter.md)
 - [jupyter shotcut](jupyter_shortcut)
 
 ## ||　Python
