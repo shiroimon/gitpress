@@ -1,5 +1,5 @@
 # JUPYTER
-- [jupyter]()
+- [jupyter](jupyter)
 
 ## ||　Python
 ### | ENV
