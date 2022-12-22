@@ -2,10 +2,10 @@
 ## [DB]
 ### ■ OSS
 + [OSS_DB](db_oss_silver.md)
-+ [PostgreSQL](db_postgresql.md)
 
+### [SQL] PostgreSQL
++ [環境構築](sql_postgre.md)
 
-## [SQL]
 ### ■ DDL (Defination=定義)
 + [CREATE](sql_ddl_crate)
 + [ALTER](sql_ddl_alter)
