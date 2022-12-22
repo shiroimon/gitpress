@@ -4,7 +4,7 @@
 + [PostgreSQL]()
 
 
-## [SQL] COMMAND
+## [SQL]
 ### ■ DDL (Defination=定義)
 + [CREATE](sql_ddl_crate)
 + [ALTER](sql_ddl_alter)
