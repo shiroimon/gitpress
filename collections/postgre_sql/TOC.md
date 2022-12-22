@@ -3,10 +3,6 @@
 ### ■ OSS
 + [PostgreSQL]()
 
-### ■ ER
-+ [ER]()
-
-
 
 ## [SQL] COMMAND
 ### ■ DDL (Defination=定義)
