@@ -440,3 +440,8 @@ CMD ["executable", "param1", "param2"]
 * Dockerfileの最後に記述（原則）
 
 
+## || 
++ [コンテナとは何か解説、従来の仮想化と何が違う？DockerやKubernetesとは？](https://www.sbbit.jp/article/cont1/57184) - ビジネス＋IT
++ [Virtualisation and Container (仮想化とコンテナ) – Ansible, Docker and Kubernetes](https://avinton.com/academy/%E4%BB%AE%E6%83%B3%E5%8C%96%E3%81%A8%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A/) - Avinton
+
+
