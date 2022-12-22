@@ -10,25 +10,30 @@
 - [$split](linux_split)
 
 
+
 ## [MiddleWear]
 - [Vim / NeoVim](middlewear_vim)
 - [Zsh / Oh-My-Zsh](middlewear_zsh)
 
-### | (PackageControlSystem)
+### | PackageControlSystem
 - [Homebrew](middlewear_brew)
 
-### | Git (VersionControlSystem)
+### | VersionControlSystem
 - [Git](middlewear_git)
-- [$git tig](git_tig)
-- 
+- [$git tig](git_tig) 
 
-### | Docker
+### | Virtualisation and Container
 - [Docker](middlewear_docker)
+
+### | DBMS
+- [PostgreSQL](middlewear_postgersql)
+
 
 
 ## [OS]
 - [Ubuntu](os_ubuntu)
 - [CentOS](os_cent_os)
+
 
 
 ## [Linux] 用途別
