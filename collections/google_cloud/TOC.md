@@ -32,6 +32,6 @@
 
 
 ## [GCP] tips
-+ [GoogleCloudS torage](gcloud_storage)
++ [GoogleCloudStorage](gcloud_storage)
 + [GoogleCloud DLP API](gcloud_dlp_api)
 +
