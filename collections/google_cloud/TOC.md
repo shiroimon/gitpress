@@ -15,8 +15,8 @@
 
 
 
-## [GCP] SERTIFICATION
-### ■ Professional Data Engineer (memo)
+## [GCP] certification
+### ■ Professional Data Engineer
 + [概要要綱(memo)](gcp_pde_memo)
 1. [coursera - Step.1](gcp_coursera_1)
 2. [coursera - Step.2](gcp_coursera_2)
