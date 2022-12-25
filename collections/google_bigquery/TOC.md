@@ -14,6 +14,10 @@
 
 
 # [BIGQUERY] SQL
++ [SQL歴史](sql_history)
++ []()
+
+
 ## ■ BigQuery特有
 + [BigQueryScriptting](sql_bqscripting)
 + [_TABLE_SUFFIX](sql_table_suffix)
