@@ -17,12 +17,9 @@ tags   : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 >
 > Cf. [BigQuery とは - Google Cloud](https://cloud.google.com/bigquery/docs/introduction?hl=ja)
 
-
 ざっくり、Googleが提供するPaaS（Platform as a Service）のこと。
 
 
-> ![img](https://www.topgate.co.jp/gcp/images/gcp-intro-pict01.png)
-Cf. https://www.topgate.co.jp/gcp/index.html
 
 ### | データベース
 ```
