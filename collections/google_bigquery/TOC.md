@@ -40,6 +40,7 @@
 + [INFORMATION_SCHEMA](sql_information_schema)
 + [UDF](sql_udf)
 + [カスタムクエリ](sql_custom_query)
++ [クエリパラメータ](sql_quryparameter)
 
 ## ■ 関数
 + [approx_count_distinct()](sql_approx_count_distinct) - 集計近似
