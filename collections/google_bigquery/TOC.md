@@ -18,13 +18,12 @@
 + []()
 
 
-## ■ BigQuery特有
-+ [BigQueryScriptting](sql_bqscripting)
-+ [_TABLE_SUFFIX](sql_table_suffix)
-+ [_TABLE_](sql_table)
-+ [INFORMATION_SCHEMA](sql_information_schema)
-+ [UDF](sql_udf)
-+ [カスタムクエリ](sql_custom_query)
+## ■ 句（節）
++ [EXISTS句](sql_exists)
++ [LIMIT / OFFSET句](sql_limit_offset)
++ [QUALIFY句](sql_qualify)
++ [WINDOW句（名前付きウィンドウ）](sql_window)
++ [OVER句 / WINDOW FRAME句](sql_over_window_frame)
 
 
 ## ■ 演算子
@@ -33,14 +32,16 @@
 + [INTERSECT](sql_intersect)
 + [PIVOT / UNPIVOT](sql_pivot_unpivot)
 + [TABLESAMPLE](sql_tablesample)
++ [UNNEST](sql_unnest)
 
 
-## ■ 句（節）
-+ [EXISTS句](sql_exists)
-+ [LIMIT / OFFSET句](sql_limit_offset)
-+ [QUALIFY句](sql_qualify)
-+ [WINDOW句（名前付きウィンドウ）](sql_window)
-+ [OVER句 / WINDOW FRAME句](sql_over_window_frame)
+## ■ BigQuery特有
++ [BigQueryScriptting](sql_bqscripting)
++ [_TABLE_SUFFIX](sql_table_suffix)
++ [_TABLE_](sql_table)
++ [INFORMATION_SCHEMA](sql_information_schema)
++ [UDF](sql_udf)
++ [カスタムクエリ](sql_custom_query)
 
 
 ## ■ 関数
@@ -56,14 +57,9 @@
 + [parse_date()](sql_parse_date)
 + [safe_cast()](sql_safe_cast)
 + [split()](sql_split)
-+ [struct()](sql_struct)
-+ [unnest()](sql_unnest)
 
 #### 集計関数 [](https://cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions?hl=ja)
 + [countif()](sql_countif)
-
-#### 配列関数 [](https://cloud.google.com/bigquery/docs/reference/standard-sql/array_functions?hl=ja)
-+ [array_agg()](sql_array_agg)
 
 #### 集計近似関数 [](https://cloud.google.com/bigquery/docs/reference/standard-sql/approximate_aggregate_functions?hl=ja)
 + [approx_count_distinct()](sql_approx_count_distinct)
@@ -79,6 +75,9 @@
 #### 地理関数 [](https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions?hl=ja)
 + [st_distance()](sql_st_distance)
 
+#### データ型
++ [STRUCT()](sql_struct)
++ [array_agg()](sql_array_agg)
 
 
 ## ■ ERROR
