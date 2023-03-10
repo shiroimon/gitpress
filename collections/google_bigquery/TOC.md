@@ -13,10 +13,10 @@
 
 
 
+
 # [BIGQUERY] SQL
 + [SQL歴史](sql_history)
 + []()
-
 
 ## ■ 句（節）
 + [EXISTS句](sql_exists)
@@ -24,7 +24,6 @@
 + [QUALIFY句](sql_qualify)
 + [WINDOW句（名前付きウィンドウ）](sql_window)
 + [OVER句 / WINDOW FRAME句](sql_over_window_frame)
-
 
 ## ■ 演算子
 + [UNION](sql_union)
@@ -34,7 +33,6 @@
 + [TABLESAMPLE](sql_tablesample)
 + [UNNEST](sql_unnest)
 
-
 ## ■ BigQuery特有
 + [BigQueryScriptting](sql_bqscripting)
 + [_TABLE_SUFFIX](sql_table_suffix)
@@ -43,9 +41,10 @@
 + [UDF](sql_udf)
 + [カスタムクエリ](sql_custom_query)
 
-
 ## ■ 関数
++ [approx_count_distinct()](sql_approx_count_distinct) - 集計近似
 + [coalesce()](sql_coalesce)
++ [countif()](sql_countif)
 + [extract()](sql_extract)
 + [greatest()](sql_greatest)
 + [ifnull()](sql_ifnull)
@@ -55,40 +54,29 @@
 + [lower()](sql_lower)
 + [nullif()](sql_nullif)
 + [parse_date()](sql_parse_date)
++ [row_number()](sql_row_number) - 番号付
 + [safe_cast()](sql_safe_cast)
 + [split()](sql_split)
-
-#### 集計関数 [](https://cloud.google.com/bigquery/docs/reference/standard-sql/aggregate_functions?hl=ja)
-+ [countif()](sql_countif)
-
-#### 集計近似関数 [](https://cloud.google.com/bigquery/docs/reference/standard-sql/approximate_aggregate_functions?hl=ja)
-+ [approx_count_distinct()](sql_approx_count_distinct)
-
-#### 番号付け関数 [](https://cloud.google.com/bigquery/docs/reference/standard-sql/numbering_functions?hl=ja)
-+ [row_number()](sql_row_number)
-
-#### ナビゲーション関数 [](https://cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions?hl=ja)
++ [st_distance()](sql_st_distance)
 + [nth_value()](sql_nth_value)
 + [first_value() / last_value()]()
 + [percentile_()](sql_percentile)
-
-#### 地理関数 [](https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions?hl=ja)
-+ [st_distance()](sql_st_distance)
 
 #### データ型
 + [STRUCT()](sql_struct)
 + [array_agg()](sql_array_agg)
 
-
-## ■ ERROR
+## ■ エラー
 + [error](bq_error)
 + [Resources exceeded during query execution: Not enough resources for query planning - too many subqueries or query is too complex](bq_table)
+
 
 
 
 # [BIGQUERY] ADVANCE
 + [BigQueryをもっと速くしたい](bq_faster)
 + [BigQuery裏技法](bq_underhanded)
+
 
 
 
@@ -99,6 +87,7 @@
 + [ロジスティック回帰](ml_logreg)
 + [時系列モデルの予測](ml_time_series)
 + [RFM分析、K平均クラスタリング](ml_rfm_k-means)
+
 
 
 
@@ -119,6 +108,7 @@
 
 ## ■ 
 + [Jupyter⇔BigQuery](ds_jupyter_bigquery)
+
 
 
 
