@@ -9,9 +9,9 @@ tags    : ["docker_file", "",]
 https://publicdomainq.net/container-ship-0020603/
 ## || Dockerfile 
 ### | instraction (基本)
-1. *FROM* : `FROM {dockerimage} # OS等々指定` 
-2. *RUN* : `RUN {linux comand} # やりたいこと`
-3. *CMD* : 
+1. **FROM** : `FROM {dockerimage} # OS等々指定` 
+2. **RUN** : `RUN {linux comand} # やりたいこと`
+3. **CMD** : 
 
 #### 2. RUN
 * ig.
@@ -76,4 +76,5 @@ RUN  apt-get install -y \
 
 ## || REFERRENCE
 * []() - 
-* f
+* []() - 
+* 
