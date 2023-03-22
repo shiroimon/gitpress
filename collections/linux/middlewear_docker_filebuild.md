@@ -7,80 +7,73 @@ tags    : ["docker_file", "",]
 
 ![publicdomainq-0020603gmd](https://user-images.githubusercontent.com/28585421/194487142-42f7189e-b156-453c-b4e2-e39c9445f75a.jpg)
 https://publicdomainq.net/container-ship-0020603/
-## || Docker File 
+## || Dockerfile 
+### | instraction (基本)
+1. *FROM* : `FROM {dockerimage} # OS等々指定` 
+2. *RUN* : `RUN {linux comand} # やりたいこと`
+3. *CMD* : 
 
-### | instraction (Dockerfileのコマンド)
-#### 基本インストラクション
-1. `FROM`
-2. `RUN`
-3. `CMD`
-
-#### FROM
-```
-FROM {dockerimage} # OS等々指定する。
-```
-#### RUN
-```
-RUN {linux comand} # やりたいこと
-```
-ig.
+#### 2. RUN
+* ig.
 ```
 RUN touch test
 RUN echo `hello world` > test
 ```
-* ※ RUN を複数書きすぎてファイルが重くなる問題。
-   * → Dockerimageのレイヤー数は最小に。
+(注意)　RUN を複数書きすぎてファイルが重くなる問題　→ Dockerimageのレイヤー数は最小に！
 
-* `RUN`の他に、`COPY`、`ADD`がレイヤーを作成するインストラクション。
-* コマンドは`&&`で繋げる。
-* 改行は`\`。
-* パッケージインストール（`apt`はubuntuのパッケージ管理）
-```
-RUN apt-get install {package}
-```
-* 最新版取得
-```
-RUN apt-get update
-```
+* `RUN`の他に、`COPY`、`ADD`がレイヤーを作成するインストラクション
+* `&&`: コマンド結合
+* `\`: 改行
+* `apt`: ubuntuのパッケージ管理(パッケージインストール)
+    - `RUN apt-get install {package}`
+* `RUN apt-get update`: 最新版取得
 * レイヤー数削減
-```
+```txt
+# (Layer数:4)
 FROM ubuntu:latest
 RUN apt-get update
 RUN apt-get install XXX
 RUN apt-get install YYY
 RUN apt-get install ZZZ
 ```
-(Layer:4)<br>
- ↓ `install`をまとめる。
-```
+```txt
+# (Layer数:2)
 FROM ubuntu:latest
 RUN apt-get update
 RUN apt-get install XXX YYY ZZZ
 ```
-(Layer:2)<br>
- ↓ コマンドをまとめ、改行で見やすく。
-```
+```txt
+# (Layer:1)
+# コマンドをまとめ、改行で見やすく
 FROM ubuntu:latest
-RUN apt-get update && apt-get install \
-XXX \
-YYY \
-ZZZ
-```
-(Layer:1)
-
-実践
-```
-FROM ubuntu:latest
-RUN apt-get update 
-RUN apt-get install -y \
-    curl \
-    cvs \
-    nginx 
+RUN  apt-get update && apt-get install \
+     XXX \
+     YYY \
+     ZZZ
 ```
 
-#### CMD
+#### 3. CMD
 * コンテナのデフォルトコマンドを指定。
 ```
 CMD ["executable", "param1", "param2"]
 ```
 * Dockerfileの最後に記述（原則）
+
+
+
+## || 実践
+```txt
+FROM ubuntu:latest
+RUN  apt-get update 
+RUN  apt-get install -y \
+     curl \
+     cvs \
+     nginx 
+```
+
+### | 実践 - Dockerfile(分析基盤用)
+
+
+## || REFERRENCE
+* []() - 
+* f
