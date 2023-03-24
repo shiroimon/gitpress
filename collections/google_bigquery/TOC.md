@@ -77,6 +77,7 @@
 # [BIGQUERY] ADVANCE
 + [BigQueryをもっと速くしたい](bq_faster)
 + [BigQuery裏技法](bq_underhanded)
++ [BigQueryエクスポート](bq_export)
 
 
 
