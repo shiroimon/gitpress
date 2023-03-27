@@ -32,6 +32,6 @@
 
 
 ## [GCP] tips
-+ [GoogleCloudStorage](gcloud_storage)
++ [GoogleCloud Storage](gcloud_storage)
 + [GoogleCloud DLP API](gcloud_dlp_api)
-+
++ [Google Wordpress](gcloud_wordpress)
