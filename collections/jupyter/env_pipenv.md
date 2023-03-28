@@ -1,19 +1,19 @@
 ---
 date    : 2022-01-01
-title   : 🪐 Python仮想環境でJupyter起動
+title   : 🪐 Python仮想環境(pipenv)でJupyter起動まで
 excerpt : 
 tags    : ["Jupyter", "Jupyter lab", "pipenv", "仮想環境", "Python"]
 ---
 
-## || Python仮想環境でJupyter起動
-* 仮想環境構築
+## || Python仮想環境（pipenv）でJupyter起動
+* 「pipenv」インストール
 ```shell
 $ pip install pipenv
 ```
 
 * 任意のディレクトリに任意のフォルダを作成して移動
 ```shell
-$ cd Dev
+$ cd dev
 $ mkdir myproject
 $ cd myproject
 ```
@@ -24,7 +24,7 @@ $ pipenv --python 3
 ```
 `$ pipenv --python 3.6` 任意のバージョン指定もできる
 
-* JupyterLabをインストール
+* 「JupyterLab」インストール
 ```shell
 $ pipenv install jupyterlab
 ```
