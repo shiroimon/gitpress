@@ -1,6 +1,6 @@
 ---
 date    : 2022-01-01
-title   : 🌩 GoogleCloud DLP API
+title   : 🌩 DLP API
 excerpt :
 tags    : ["GoogleCloudPlatform", "DLP", "API"]
 ---
