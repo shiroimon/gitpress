@@ -1,10 +1,18 @@
+---
+date    : 2023-04-12
+title   : 🌩 GCS
+excerpt :
+tags    : ["GoogleCloudPlatform", "GCS"]
+---
 
-## || GCS (Google Cloud Stroage)
+## || GCSとは
+
+　　　　GCS (Google Cloud Stroage)
 
 「Google Drive」とはまた違うサービス。
 
 
-## || cf.
+## || REFERRENCEF
 + [Cloud Storage ドキュメント](https://cloud.google.com/storage/docs?hl=ja) - GoogleCloud
 + [【GCS】なんでもかんでも突っ込んじゃえ。ライフサイクルの魅力とは](https://www.isoroot.jp/blog/1403/) - isoroot
 + [どっちがいい？Google DriveとGoogle Cloud Storageを徹底比較](https://www.serversus.work/topics/z90q4zi1a8hy26n0b1h5/) - serversus
