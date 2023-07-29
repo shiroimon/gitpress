@@ -16,3 +16,4 @@ tags    : ["PostgreSQL", ""]
 
 
 ## || REFERENCE
+- [PostgreSQLのロール・権限のここがわかりづらい](https://speakerdeck.com/tameguro/postgresqlnororuquan-xian-nokokogawakaridurai) - 
