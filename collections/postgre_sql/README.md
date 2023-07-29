@@ -17,3 +17,4 @@ tags    : ["PostgreSQL", ""]
 
 ## || REFERENCE
 - [PostgreSQLのロール・権限のここがわかりづらい](https://speakerdeck.com/tameguro/postgresqlnororuquan-xian-nokokogawakaridurai) - 
+- [PostgreSQL で時系列データの扱いを考える](https://zenn.dev/hasegawasatoshi/articles/7659dc2b9a0081) - Zenn
