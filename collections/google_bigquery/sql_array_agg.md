@@ -24,15 +24,17 @@ group by
 |2|test.co.jp|/dir1|
 |3|test.co.jp|/page1|
 |3|test.co.jp|/dir1|
+
 cf.【GCP】BigQueryのARRAY_AGG関数 
 
- 　↓
+　**↓**
 
 |user_id|access_pagepath|
 |:-:|:-:|
 |1|[/page1,page2]|
 |2|[/dir1]
 |3|[/page1,/dir1]|
+
 cf.【GCP】BigQueryのARRAY_AGG関数 
 
 e.g 
