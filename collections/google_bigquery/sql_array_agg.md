@@ -18,7 +18,7 @@ group by
 ```
 
 |user_id|access_domain|access_pagepath|
-|:-:|:-:|:-:|
+|:-:|:-|:-|
 |1|test.co.jp|/page1|
 |1|test.co.jp|/page2|
 |2|test.co.jp|/dir1|
@@ -30,7 +30,7 @@ cf.【GCP】BigQueryのARRAY_AGG関数
 　**↓**
 
 |user_id|access_pagepath|
-|:-:|:-:|
+|:-|:-|
 |1|[/page1,page2]|
 |2|[/dir1]
 |3|[/page1,/dir1]|
