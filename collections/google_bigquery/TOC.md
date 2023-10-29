@@ -15,16 +15,15 @@
 
 # 【BIGQUERY : SQL】
 + [SQL歴史](sql_history)
-+ []()
 
-## ■ 句（節）
+## ⚫︎SQL - 句（節）
 + [EXISTS句](sql_exists)
 + [LIMIT / OFFSET句](sql_limit_offset)
 + [QUALIFY句](sql_qualify)
 + [WINDOW句（名前付きウィンドウ）](sql_window)
 + [OVER句 / WINDOW FRAME句](sql_over_window_frame)
 
-## ■ 演算子
+## ⚫︎SQL - 演算子
 + [UNION](sql_union)
 + [EXCEPT](sql_except)
 + [INTERSECT](sql_intersect)
@@ -32,8 +31,8 @@
 + [TABLESAMPLE](sql_tablesample)
 + [UNNEST](sql_unnest)
 
-## ■ 関数
-+ [approx_count_distinct()](sql_approx_count_distinct) - 集計近似
+## ⚫︎SQL - 関数
++ [approx_count_distinct()](sql_approx_count_distinct)
 + [coalesce()](sql_coalesce)
 + [countif()](sql_countif)
 + [extract()](sql_extract)
@@ -45,7 +44,7 @@
 + [lower()](sql_lower)
 + [nullif()](sql_nullif)
 + [parse_date()](sql_parse_date)
-+ [row_number()](sql_row_number) - 番号付
++ [row_number()](sql_row_number)
 + [safe_cast()](sql_safe_cast)
 + [split()](sql_split)
 + [st_distance()](sql_st_distance)
@@ -53,15 +52,15 @@
 + [first_value() / last_value()]()
 + [percentile_()](sql_percentile)
 
-## ■ データ型
+## ⚫︎SQL - データ型
 + [STRUCT()](sql_struct)
 + [array_agg()](sql_array_agg)
 
-## ■ エラー文
+## ⚫︎SQL - エラー文
 + [error](bq_error)
 + [Resources exceeded during query execution: Not enough resources for query planning - too many subqueries or query is too complex](bq_table)
 
-## ■ BigQuery特有
+## ⚫︎SQL - BigQuery特有
 + [BigQueryScriptting](sql_bqscripting)
 + [_TABLE_SUFFIX](sql_table_suffix)
 + [_TABLE_](sql_table)
