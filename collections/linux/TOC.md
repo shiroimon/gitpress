@@ -12,23 +12,23 @@
 
 
 ## [Middleware]
-- [Vim / NeoVim](middlewear_vim)
-- [Zsh / Oh-My-Zsh](middlewear_zsh)
+- [Vim / NeoVim](middleware_vim)
+- [Zsh / Oh-My-Zsh](middleware_zsh)
 
 ### | PackageControlSystem
-- [Homebrew](middlewear_brew)
+- [Homebrew](middleware_brew)
 
 ### | VersionControlSystem
-- [Git](middlewear_git)
+- [Git](middleware_git)
 - [$git tig](git_tig) 
 
 ### | Virtualisation and Container
-- [Docker](middlewear_docker)
-- [DOcker Comand](middlewear_docker_comand.md)
-- [Dockerfile](middlewear_docker_filebuild.md)
+- [Docker](middleware_docker)
+- [DOcker Comand](middleware_docker_comand.md)
+- [Dockerfile](middleware_docker_filebuild.md)
 
 ### | DBMS
-- [PostgreSQL](middlewear_postgersql)
+- [PostgreSQL](middleware_postgersql)
 
 
 
