@@ -1,7 +1,7 @@
 ---
 date    : 2021-03-22
 title   : 【🐚 iTerm2】 zshでいい感じにしてみたい
-excerpt :　見易いコンソール画面を目指して
+excerpt : 見易いコンソール画面を目指して
 tags    : ["CLI", "iTerm2", "zsh", "ターミナル", "shell"]
 ---
 
