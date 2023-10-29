@@ -1,8 +1,8 @@
 ---
 date    : 2023-03-10
 title   : 🔍 SQL歴史
-excerpt : 
-tags    : ["Google BigQuery", "SQL", "歴史"]
+excerpt : SQLの起源について
+tags    : ["BigQuery", "SQL", "歴史"]
 ---
 
 ## || SQL生みの親
