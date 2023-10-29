@@ -1,4 +1,6 @@
-## [Linux] COMMAND
+# CLI / CUI
+## 【CLI : OS】　
+### ⚫︎ Linux　COMMAND
 - [$cd](linux_)
 - [$find](linux_)
 - [$grep](linux_)
@@ -9,35 +11,33 @@
 - [$sort](linux_sort)
 - [$split](linux_split)
 
+### ⚫︎ Linux Distribution
+- [Ubuntu](os_ubuntu)
+- [CentOS](os_cent_os)
+
+### ⚫︎ Linux 用途別
+- [ファイル分割したい](want_)
+- [ファイル検索したい](want_)
 
 
-## [Middleware]
+
+## 【CLI : Middleware】
 - [Vim / NeoVim](middleware_vim)
 - [Zsh / Oh-My-Zsh](middleware_zsh)
+- [YAML](middleware_yaml)
 
-### | PackageControlSystem
+### ⚫︎ PCS (PackageControlSystem)
 - [Homebrew](middleware_brew)
 
-### | VersionControlSystem
+### ⚫︎ VCS (VersionControlSystem)
 - [Git](middleware_git)
 - [$git tig](git_tig) 
 
-### | Virtualisation and Container
+### ⚫︎ Virtualisation & Container
 - [Docker](middleware_docker)
 - [DOcker Comand](middleware_docker_comand.md)
 - [Dockerfile](middleware_docker_filebuild.md)
 
-### | DBMS
+### ⚫︎ RDBMS
 - [PostgreSQL](middleware_postgersql)
 
-
-
-## [OS]
-- [Ubuntu](os_ubuntu)
-- [CentOS](os_cent_os)
-
-
-
-## [Linux] 用途別
-- [ファイル分割したい](want_)
-- [ファイル検索したい](want_)
