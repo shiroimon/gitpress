@@ -11,7 +11,7 @@
 
 
 
-## [MiddleWear]
+## [Middleware]
 - [Vim / NeoVim](middlewear_vim)
 - [Zsh / Oh-My-Zsh](middlewear_zsh)
 
