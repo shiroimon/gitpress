@@ -13,7 +13,7 @@
 
 ### ⚫︎ Linux Distribution
 - [Ubuntu](os_ubuntu)
-- [CentOS](os_cent_os)
+- [CentOS](os_centos)
 
 ### ⚫︎ Linux 用途別
 - [ファイル分割したい](want_)
@@ -31,7 +31,8 @@
 
 ### ⚫︎ VCS (VersionControlSystem)
 - [Git](middleware_git)
-- [$git tig](git_tig) 
+- [$git tig](git_tig)
+- [GitHub-SSH接続](middleware_github_ssh.md)
 
 ### ⚫︎ Virtualisation & Container
 - [Docker](middleware_docker)
