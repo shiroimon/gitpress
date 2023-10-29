@@ -1,8 +1,8 @@
 ---
 date    : 2021-03-22
 title   : 【🐚 iTerm2】 zshでいい感じにしてみたい
-excerpt :
-tags    : ["iTerm2", "zsh", "ターミナル", "shell"]
+excerpt :見易いコンソール画面を目指して
+tags    : ["CLI", "iTerm2", "zsh", "ターミナル", "shell"]
 ---
 
 自分の `iTerm2` を以下のような感じにするまでのあれこれです。
