@@ -81,7 +81,7 @@
 
 
 # 【BIGQUERY　: DS】
-## ■ DS100ノック
+## ⚫︎　DS100ノック
 + [概要](ds_100knock)
 + [挑戦](ds_100knock_sql)
 + [1~10](ds_100knock_sql_to10)
@@ -95,7 +95,7 @@
 + [81~90](ds_100knock_sql_to90)
 + [91~100](ds_100knock_sql_to100)
 
-## ■　ML
+## ⚫︎　ML
 + [BigQuery MLについて](ml_index)
 + [AutoML](ml_automl)
 + [ハイパラチューニング](ml_hyperpara)
