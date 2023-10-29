@@ -2,7 +2,7 @@
 date    : 2023-3-23
 title   : 🐳 Dockerコマンド一覧
 excerpt : 
-tags    : ["docker", "comand",]
+tags    : ["docker", "comand", "CLI"]
 ---
 
 ![publicdomainq-0020603gmd](https://user-images.githubusercontent.com/28585421/194487142-42f7189e-b156-453c-b4e2-e39c9445f75a.jpg)
