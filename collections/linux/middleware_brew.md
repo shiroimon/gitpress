@@ -2,7 +2,7 @@
 date    : 2021-10-01
 title   : 🍺 Homebrew
 excerpt :
-tags    : ["Homebrew", "環境構築", "iTearm2"]
+tags    : ["Homebrew", "環境構築", "iTearm2",]
 ---
 ## || 🍺 Homebrew
 ![img](https://brew.sh/assets/img/homebrew-social-card.png)
