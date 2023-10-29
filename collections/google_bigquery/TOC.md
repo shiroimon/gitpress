@@ -13,7 +13,6 @@
 
 
 
-
 # [BIGQUERY] SQL
 + [SQL歴史](sql_history)
 + []()
@@ -32,15 +31,6 @@
 + [PIVOT / UNPIVOT](sql_pivot_unpivot)
 + [TABLESAMPLE](sql_tablesample)
 + [UNNEST](sql_unnest)
-
-## ■ BigQuery特有
-+ [BigQueryScriptting](sql_bqscripting)
-+ [_TABLE_SUFFIX](sql_table_suffix)
-+ [_TABLE_](sql_table)
-+ [INFORMATION_SCHEMA](sql_information_schema)
-+ [UDF](sql_udf)
-+ [カスタムクエリ](sql_custom_query)
-+ [クエリパラメータ](sql_queryparameter)
 
 ## ■ 関数
 + [approx_count_distinct()](sql_approx_count_distinct) - 集計近似
@@ -63,14 +53,22 @@
 + [first_value() / last_value()]()
 + [percentile_()](sql_percentile)
 
-#### データ型
+## ■ データ型
 + [STRUCT()](sql_struct)
 + [array_agg()](sql_array_agg)
 
-## ■ エラー
+## ■ エラー文
 + [error](bq_error)
 + [Resources exceeded during query execution: Not enough resources for query planning - too many subqueries or query is too complex](bq_table)
 
+## ■ BigQuery特有
++ [BigQueryScriptting](sql_bqscripting)
++ [_TABLE_SUFFIX](sql_table_suffix)
++ [_TABLE_](sql_table)
++ [INFORMATION_SCHEMA](sql_information_schema)
++ [UDF](sql_udf)
++ [カスタムクエリ](sql_custom_query)
++ [クエリパラメータ](sql_queryparameter)
 
 
 
@@ -78,18 +76,8 @@
 + [BigQueryをもっと速くしたい](bq_faster)
 + [BigQuery裏技法](bq_underhanded)
 + [BigQueryエクスポート](bq_export)
-
-
-
-
-# [BIGQUERY] ML
-+ [BigQuery MLについて](ml_index)
-+ [AutoML](ml_automl)
-+ [ハイパラチューニング](ml_hyperpara)
-+ [ロジスティック回帰](ml_logreg)
-+ [時系列モデルの予測](ml_time_series)
-+ [RFM分析、K平均クラスタリング](ml_rfm_k-means)
-
++ [GA4](ga_ga4)
++ [GA4 データフラット化](ga_ga4_get_flaten)
 
 
 
@@ -108,15 +96,12 @@
 + [81~90](ds_100knock_sql_to90)
 + [91~100](ds_100knock_sql_to100)
 
-## ■ 
+## ■　ML
++ [BigQuery MLについて](ml_index)
++ [AutoML](ml_automl)
++ [ハイパラチューニング](ml_hyperpara)
++ [ロジスティック回帰](ml_logreg)
++ [時系列モデルの予測](ml_time_series)
++ [RFM分析、K平均クラスタリング](ml_rfm_k-means)
 + [Jupyter⇔BigQuery](ds_jupyter_bigquery)
-
-
-
-
-# [BIGQUERY] GA
-+ [GA4](ga_ga4)
-+ [GA4 データフラット化](ga_ga4_get_flaten)
-
-
 
