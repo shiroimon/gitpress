@@ -1,4 +1,4 @@
-# [BIGQUERY] 分析入門
+# 【BIGQUERY : 分析入門】 
 1. - [Sect.1 はじめに](google_bigquery)
 2. - [Sect.2~3 基本設定](google_bigquery_2_3)
 3. - [Sect.4 基計文法](google_bigquery_4)
@@ -13,7 +13,7 @@
 
 
 
-# [BIGQUERY] SQL
+# 【BIGQUERY : SQL】
 + [SQL歴史](sql_history)
 + []()
 
@@ -72,7 +72,7 @@
 
 
 
-# [BIGQUERY] ADVANCE
+# 【BIGQUERY : ADVANCE】
 + [BigQueryをもっと速くしたい](bq_faster)
 + [BigQuery裏技法](bq_underhanded)
 + [BigQueryエクスポート](bq_export)
@@ -81,7 +81,7 @@
 
 
 
-# [BIGQUERY] DS
+# 【BIGQUERY　: DS】
 ## ■ DS100ノック
 + [概要](ds_100knock)
 + [挑戦](ds_100knock_sql)
