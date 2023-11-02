@@ -1,14 +1,15 @@
-# Google BigQuery
+# BigQuery
 ## || TEMPLATE
 ```markdown
 ---
 date    : 2022-01-01
 title   : 🔍 
-excerpt : 
-tags    : ["Google BigQuery", ""]
+excerpt : XXXX
+tags    : ["🔍", "BigQuery", "GoogleCloud"]
 ---
 
 ## || 
+### |
 
 ## || REFERENCE
 - []() -
