@@ -1,4 +1,4 @@
-# Jupyter Lab
+# Jupyter
 ## || TEMPLATE
 ```markdown
 ---
