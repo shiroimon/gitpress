@@ -1,13 +1,16 @@
 # LINUX / UNIX
 ## || TEMPLATE
 
-```txt
+```markdown
 ---
 date   : 2022-01-01
 title  : 🐧  
 excerpt: XXXX
 tags   : ["🐧", "Linux", ""]
 ---
+
+## || 
+### | 
 ## || $---
 \```shell
 $---
