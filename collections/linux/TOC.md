@@ -1,6 +1,6 @@
 # CLI / CUI
 ## 【CLI : OS】　
-### ⚫︎ Linux　COMMAND
+#### ⚫︎ Linux　COMMAND
 - [$cd](linux_)
 - [$find](linux_)
 - [$grep](linux_)
@@ -11,11 +11,11 @@
 - [$sort](linux_sort)
 - [$split](linux_split)
 
-### ⚫︎ Linux Distribution
+#### ⚫︎ Linux Distribution
 - [Ubuntu](os_ubuntu)
 - [CentOS](os_centos)
 
-### ⚫︎ Linux 用途別
+#### ⚫︎ Linux 用途別
 - [ファイル分割したい](want_)
 - [ファイル検索したい](want_)
 
@@ -26,19 +26,18 @@
 - [Zsh / Oh-My-Zsh](middleware_zsh)
 - [YAML](middleware_yaml)
 
-### ⚫︎ PCS (PackageControlSystem)
+#### ⚫︎ PCS (PackageControlSystem)
 - [Homebrew](middleware_brew)
 
-### ⚫︎ VCS (VersionControlSystem)
+#### ⚫︎ VCS (VersionControlSystem)
 - [Git](middleware_git)
 - [$git tig](git_tig)
 - [GitHub-SSH接続](middleware_github_ssh.md)
 
-### ⚫︎ Virtualisation & Container
+#### ⚫︎ Virtualisation & Container
 - [Docker](middleware_docker)
 - [DOcker Comand](middleware_docker_comand.md)
 - [Dockerfile](middleware_docker_filebuild.md)
 
-### ⚫︎ RDBMS
+#### ⚫︎ RDBMS
 - [PostgreSQL](middleware_postgersql)
-
