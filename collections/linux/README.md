@@ -4,13 +4,13 @@
 ```txt
 ---
 date   : 2022-01-01
-title  : 🐚 
-excerpt: 
-tags   : ["Linux", ""]
+title  : 🐧  
+excerpt: XXXX
+tags   : ["🐧", "Linux", ""]
 ---
-## || $
+## || $---
 \```shell
-$
+$---
 \```
 
 ## || REFERENCE
