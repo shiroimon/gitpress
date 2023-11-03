@@ -8,12 +8,13 @@ tags    : ["GitPress", "Blog", "HowTo"]
 <img width="80%" alt="topスクショ" src="https://user-images.githubusercontent.com/28585421/155921826-8799b723-b71d-4edb-88b0-45e8219b2967.png">
 
 ## || GitPressってなに
-🤖（ChatGPT-3.5)）　「 https://chat.openai.com/share/4dc0ba9d-119e-4fff-bf83-fe9e8011d87f 」
+🤖（ChatGPT-3.5)「 https://chat.openai.com/share/4dc0ba9d-119e-4fff-bf83-fe9e8011d87f 」
+
 とのこと。
 
 🐻‍❄️「GitHubアカウント持ってて、リポジトリ管理できて。マークダウン形式で記述できるブログみたいなヤ〜ツってことか。」
 
-
+Cf. https://gitpress.io/ - Official
 
 ## || GitPress書いてみよう
 ### | 必要なモノ
