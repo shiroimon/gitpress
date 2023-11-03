@@ -14,10 +14,17 @@ tags    : ["GitPress", "Blog", "HowTo"]
 🐻‍❄️「GitHubアカウント持ってて、リポジトリ管理できて。マークダウン形式で記述できるブログみたいなヤ〜ツってことか。」
 
 
+
+## || GitPress書いてみよう
 ### | 必要なモノ
 Githubアカウントのみ。
 
-### | 記事作成
+### | 導入
+1. -
+2. -
+3. -
+
+### | 執筆
 1. `.md` 拡張子でファイルを保存。 (e.g. `test.md`)
 2. マークダウン形式で記事を書くこと。
 
@@ -38,12 +45,10 @@ tags   :　[]
 * 「excerpt」は記事の説明文見たいの書く。 （n.b. 書かなくても反映する）
 * 「tags」はリスト形式で追加可能。 (e.g. ["GitHub", "GitPress", "Weblog"])
 
-
-
-### | 記事投稿
-
+### | 投稿
 手順は簡単で、Githubにpushするだけ。
-
+GitHubのWebUI上でも記事投稿可能！
+（以下は、CLIで記事投稿のコマンド例。）
 ```sh
 $ git status
 $ git add {任意のファイル}
@@ -53,15 +58,14 @@ $ git push -u origin main {or master}
 
 
 
-## || GitPressできること
+## || GitPress更にできること
 * [色々な言語が書ける](https://gitpress.io/c/helps/languages)
 * [LaTeXが書ける](https://gitpress.io/@gitpress/latex)
-* [チャートが書ける](https://gitpress.io/@gitpress/diagrams-with-mermaid)
+* [チャート図が書ける](https://gitpress.io/@gitpress/diagrams-with-mermaid)
 
 
 
 ## || REFERENCE
-* [What'sGitPress?](https://gitpress.io/) - GitPress
-* [MARKDOWN FOR GITPRESS](https://gitpress.io/c/helps/markdown) - GitPress
-* [FRONT MATTER SPECIFICATIONS](https://gitpress.io/c/helps/front-matter) - GitPress
-* https://gitpress.io/@gitpress/latex
+- [What'sGitPress?](https://gitpress.io/) - GitPress
+- [MARKDOWN FOR GITPRESS](https://gitpress.io/c/helps/markdown) - GitPress
+- [FRONT MATTER SPECIFICATIONS](https://gitpress.io/c/helps/front-matter) - GitPress
