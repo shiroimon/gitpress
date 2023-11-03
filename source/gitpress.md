@@ -18,7 +18,7 @@ tags    : ["GitPress", "Blog", "HowTo"]
 Githubアカウントのみ。
 
 ### | 記事作成
-1. `.md` 拡張子でファイルを保存。 e.g. `test.md`
+1. `.md` 拡張子でファイルを保存。 (e.g. `test.md`)
 2. マークダウン形式で記事を書くこと。
 
     Cf. [FRONT MATTER SPECIFICATIONS](https://gitpress.io/c/helps/front-matter) - GitPress（書き方お作法）
