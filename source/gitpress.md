@@ -14,11 +14,13 @@ tags    : ["GitPress", "Blog", "HowTo"]
 
 🐻‍❄️「GitHubアカウント持ってて、リポジトリ管理できて。マークダウン形式で記述できるブログみたいなヤ〜ツってことか。」
 
-Cf. https://gitpress.io/ - Official
+cf. https://gitpress.io/ - Official
 
 ## || GitPress書いてみよう
 ### | 必要なモノ
 Githubアカウントのみ。
+
+cf. https://github.com/ - Official
 
 ### | 導入
 1. -
@@ -29,7 +31,7 @@ Githubアカウントのみ。
 1. `.md` 拡張子でファイルを保存。 (e.g. `test.md`)
 2. マークダウン形式で記事を書くこと。
 
-    Cf. [FRONT MATTER SPECIFICATIONS](https://gitpress.io/c/helps/front-matter) - GitPress（書き方お作法）
+    cf. [FRONT MATTER SPECIFICATIONS](https://gitpress.io/c/helps/front-matter) - GitPress（書き方お作法）
 
 3. ファイル冒頭に以下のおまじないを書くこと。
 
@@ -70,3 +72,4 @@ $ git push -u origin main {or master}
 - [What'sGitPress?](https://gitpress.io/) - GitPress
 - [MARKDOWN FOR GITPRESS](https://gitpress.io/c/helps/markdown) - GitPress
 - [FRONT MATTER SPECIFICATIONS](https://gitpress.io/c/helps/front-matter) - GitPress
+- [gitpressでブログを作るときに詰まった話（Windows10）](https://qiita.com/chicken_data_analyst/items/eb2dc5bf5cae9cef91cf) - Qiita
