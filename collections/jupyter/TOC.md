@@ -1,8 +1,8 @@
-# Jupyter
+# JUPYTER
 - [jupyter](jupyter.md)
 - [jupyter shotcut](jupyter_shortcut)
 
-## 【Jupyter： Python】
+## 【JUPYTER： Python】
 #### ⚫︎ ENV
 - [$pip](env_pip)
 - [$pipenv](env_pipenv)
@@ -15,7 +15,6 @@
 - [seaborn](ds_seaborn)
 
 #### ⚫︎ Static
-
 
 #### ⚫︎ ML
 - [](ml_)
