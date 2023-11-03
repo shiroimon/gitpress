@@ -1,19 +1,28 @@
-# JUPYTER
+# Jupyter
 - [jupyter](jupyter.md)
 - [jupyter shotcut](jupyter_shortcut)
 
-## ||　Python
-### | ENV
+## 【Jupyter： Python】
+#### ⚫︎ ENV
 - [$pip](env_pip)
 - [$pipenv](env_pipenv)
 - [$conda](env_conda)
 
-### | DS
+#### ⚫︎ DS
 - [NumPy](ds_numpy)
 - [Pandas](ds_pandas)
 - [matplotlib](ds_matplotlib)
-- []()
+- [seaborn](ds_seaborn)
 
-### | Web
+#### ⚫︎ Static
+
+
+#### ⚫︎ ML
+- [](ml_)
+
+#### ⚫︎ DL
+- [](dl_)
+
+#### ⚫︎ Web
 - [Django](web_django)
-- []()
+- [Flask](web-flask)
