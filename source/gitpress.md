@@ -1,6 +1,6 @@
 ---
 date    : 2021-01-05
-title   : How to GitPress
+title   : What's GitPress, and how to write.
 excerpt : GitPress始め方
 tags    : ["GitPress", "Blog", "HowTo"]
 ---
