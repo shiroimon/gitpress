@@ -11,29 +11,34 @@ tags    : ["GitPress", "Blog", "HowTo"]
 🤖（ChatGPT-3.5)）　「 https://chat.openai.com/share/4dc0ba9d-119e-4fff-bf83-fe9e8011d87f 」
 とのこと。
 
-🐻‍❄️「GitHubアカウント持ってて、リポジトリ管理できて。マークダウン形式で記述できるブログみたいなヤ〜ツ」
+🐻‍❄️「GitHubアカウント持ってて、リポジトリ管理できて。マークダウン形式で記述できるブログみたいなヤ〜ツってことか。」
 
-## || 必要なモノ
+
+### | 必要なモノ
 Githubアカウントのみ。
 
-
-## || 記事投稿
 ### | 記事作成
-* .md 拡張子でファイルを保存。 e.g. `test.md`
-* マークダウン形式で記事を書くこと。
+1. `.md` 拡張子でファイルを保存。 e.g. `test.md`
+2. マークダウン形式で記事を書くこと。
 
     Cf. [FRONT MATTER SPECIFICATIONS](https://gitpress.io/c/helps/front-matter) - GitPress（書き方お作法）
 
-* 冒頭に以下のおまじないを書くこと。
+3. ファイル冒頭に以下のおまじないを書くこと。
 
 ```markdown
 ---
 date   :
 title  :
 excerpt:
-tags   :
+tags   :　[]
 ---
 ```
+* 「data」は、執筆日。
+* 「title」は、記事タイトル。　(n.b.なんかSEOにも特化いているアクセス稼ぎたいならSEOライティングを意識するといいかも。)
+* 「excerpt」は記事の説明文見たいの書く。 （n.b. 書かなくても反映する）
+* 「tags」はリスト形式で追加可能。 (e.g. ["GitHub", "GitPress", "Weblog"])
+
+
 
 ### | 記事投稿
 
