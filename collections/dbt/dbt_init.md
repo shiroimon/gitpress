@@ -21,6 +21,9 @@ cf.
 
 ### |
 
+### | 
+
+
 ## || REFERENCE
 - [dbt 入門](https://zenn.dev/foursue/books/31456a86de5bb4) - Zenn
 - [dbtで始めるデータパイプライン構築〜入門から実践〜](https://zenn.dev/dbt_tokyo/books/537de43829f3a0) - Zenn
