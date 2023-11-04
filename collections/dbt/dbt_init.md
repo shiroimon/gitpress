@@ -6,8 +6,10 @@ tags    : ["✴️", "dbt", "ETL", "MDS"]
 ---
 
 ## || dbt とは
->
-> [dbtとは？](https://zenn.dev/dbt_tokyo/books/537de43829f3a0/viewer/what_dbt) - Zenn
+> dbtとはdata build toolの略で、データ統合を行う際のプロセスであるELT(抽出, 変換, 格納)のうちTransform(変換)の役割を担うツールです。Transformのプロセスでは一般的にデータウェアハウスなどに抽出したデータを下流の分析ツールやデータベースで利用できる形式に変換・加工する処理を行います。
+dbtはこの工程で役に立つ様々な機能を提供してくれます。
+> 
+> 引用先：　[はじめて理解するdbt](https://www.isoroot.jp/blog/6054/) - isoroot 
 
 cf. 
 |TITLE|URL|
