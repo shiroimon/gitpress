@@ -11,7 +11,8 @@ dbtはこの工程で役に立つ様々な機能を提供してくれます。
 > 
 > 引用先：　[はじめて理解するdbt](https://www.isoroot.jp/blog/6054/) - isoroot 
 
-- cf. 
+`cf. `
+
 |TITLE|URL|
 |:-|:-|
 |Official|https://www.getdbt.com/|
