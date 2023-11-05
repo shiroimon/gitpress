@@ -23,6 +23,7 @@ tags    : ["🫧", "Looker", "BI", "GoogleCloud"]
 - [【第1回】Lookerとは？概要や特徴をわかりやすく解説](https://primestyle.co.jp/blog/tech-20220614/) - PrimeGroup Blog
 - [人気BIツール8つを詳細に比較【2022最新】](https://data-viz-lab.com/bitool-comparison) - Data Vis Lab
 - [LookMLのさまざまなパラメータ設定 #1](https://yosshiblog.jp/lookml%e3%81%ae%e3%81%95%e3%81%be%e3%81%96%e3%81%be%e3%81%aa%e3%83%91%e3%83%a9%e3%83%a1%e3%83%bc%e3%82%bf%e8%a8%ad%e5%ae%9a-1/) - YoshiLab 
+- [次世代BIプラットフォーム「Looker」についてご紹介](https://knowledge.insight-lab.co.jp/bi/introduction-to-looker#section_looker_4) - 
 
 ### | トレーニング
 - [Using Custom Fields in Looker Explores](https://www.cloudskillsboost.google/focuses/22212?parent=catalog) - GoogleCloud
