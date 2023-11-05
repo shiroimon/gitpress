@@ -15,7 +15,3 @@ tags    : ["🫧", "Looker", "BI", "GoogleCloud"]
 - []() -
 ```
 
-
-## || REFERENCE
-- []() -
-- 
