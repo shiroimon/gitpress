@@ -22,3 +22,7 @@ tags    : ["🫧", "Looker", "BI", "GoogleCloud"]
 - [[Looker入門] LookMLの開発事始めの儀（その壱）：プロジェクト作成 #looker](https://dev.classmethod.jp/articles/start-to-develop-lookml-one/) - DevelopersIO
 - [【第1回】Lookerとは？概要や特徴をわかりやすく解説](https://primestyle.co.jp/blog/tech-20220614/) - PrimeGroup Blog
 - [人気BIツール8つを詳細に比較【2022最新】](https://data-viz-lab.com/bitool-comparison) - Data Vis Lab
+
+### | トレーニング
+- [Using Custom Fields in Looker Explores](https://www.cloudskillsboost.google/focuses/22212?parent=catalog) - GoogleCloud
+- [Lookerコース　 - Developing Data Models with LookML （中級）](https://cloud-ace.jp/training_course/developing-data-models-with-lookml/?ref=press) - CloewdAse
