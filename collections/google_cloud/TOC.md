@@ -1,4 +1,33 @@
-## [GCP] Udemy
+[HOME / Collections TOP / ](https://gitpress.io/@shi6ma/collections)
+
+## 【Google Cloud】
++ [(memo)](gcloud_memo)
+
+
+
+
+## 【Google Cloud : tips】
++ [Google Cloud Storage](gcloud_storage)
++ [Google Cloud DLP-API](gcloud_dlp_api)
++ [Google Cloud WordPress](gcloud_wordpress)
++ [Google Cloud ETL/ELT](gcloud_etl)
+
+
+
+
+## 【Google Cloud : certification】
+#### ⚫︎ Professional Data Engineer
++ [概要要綱(memo)](gcp_pde_memo)
+1. [coursera - Step.1](gcp_coursera_1)
+2. [coursera - Step.2](gcp_coursera_2)
+3. [coursera - Step.3](gcp_coursera_3)
+4. [coursera - Step.4](gcp_coursera_4)
+5. [coursera - Step.5](gcp_coursera_5)
+
+
+
+
+## 【Google Cloud : Udemy】
 1. [Sect.1:](gcp_udemy_1)
 2. [Sect.2:](gcp_udemy_2)
 3. [Sect.3:](gcp_udemy_3)
@@ -12,28 +41,3 @@
 11. [Sect.11:](gcp_udemy_11)
 12. [Sect.12:](gcp_udemy_12)
 13. [Sect.13:](gcp_udemy_13)
-
-
-
-## [GCP] certification
-### ■ Professional Data Engineer
-+ [概要要綱(memo)](gcp_pde_memo)
-1. [coursera - Step.1](gcp_coursera_1)
-2. [coursera - Step.2](gcp_coursera_2)
-3. [coursera - Step.3](gcp_coursera_3)
-4. [coursera - Step.4](gcp_coursera_4)
-5. [coursera - Step.5](gcp_coursera_5)
-
-
-
-## [GCP] COMMAND
-+ [(memo)](gcloud_memo)
-
-
-
-## [GCP] tips
-+ [Google Cloud Storage](gcloud_storage)
-+ [Google Cloud DLP-API](gcloud_dlp_api)
-+ [Google Cloud WordPress](gcloud_wordpress)
-+ [Google Cloud ETL/ELT](gcloud_etl)
-
