@@ -64,7 +64,7 @@
 - - [BQエラー文集](bq_error)
 - - [BigQueryScriptting](sql_bqscripting)
 - - [_TABLE_SUFFIX](sql_table_suffix)
-- - [_TABLE_](sql_table)
+- - [_TABLE_](bq_meta_table)
 - - [INFORMATION_SCHEMA](bq_information_schema)
 - - [BQクエリ関数化（UDF）](bq_udf)
 - - [BQカスタムクエリ](sql_custom_query)
