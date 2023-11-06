@@ -65,7 +65,7 @@
 - - [BigQueryScriptting](sql_bqscripting)
 - - [_TABLE_SUFFIX](sql_table_suffix)
 - - [_TABLE_](sql_table)
-- - [INFORMATION_SCHEMA](sql_information_schema)
+- - [INFORMATION_SCHEMA](bq_information_schema)
 - - [BQクエリ関数化（UDF）](bq_udf)
 - - [BQカスタムクエリ](sql_custom_query)
 - - [BQクエリパラメータ](sql_queryparameter)
