@@ -1,3 +1,5 @@
+[HOME / Collections TOP / ](https://gitpress.io/@shi6ma/collections)
+
 ## 【🫧LOOKER】
 - - [Looker導入](looker_init)
 - - [LookML](lookml)
