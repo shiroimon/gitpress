@@ -1,4 +1,3 @@
 ## 【LOOKER】
-#### ⚫︎ 
-- [導入](looker_init)
-- 
+- [事始め](looker_init)
+- [LookML]
