@@ -1,4 +1,4 @@
-https://gitpress.io/@shi6ma/collections
+[collections TOP >](https://gitpress.io/@shi6ma/collections)
 ## 【🔍BIGQUERY: 分析入門】 
 1. - [Sect.1 はじめに](google_bigquery)
 2. - [Sect.2~3 基本設定](google_bigquery_2_3)
