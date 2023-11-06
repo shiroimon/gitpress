@@ -1,6 +1,6 @@
-# JUPYTER
+## 【JUPYTER】
 - [jupyter](jupyter.md)
-- [jupyter shotcut](jupyter_shortcut)
+- [ｼｮｰﾄｶｯﾄ](jupyter_shortcut)
 
 ## 【JUPYTER： Python】
 #### ⚫︎ ENV
