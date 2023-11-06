@@ -6,7 +6,7 @@ tags    : ["🔍", "BigQuery", "GoogleCloud"]
 ---
 
 ## || TABLESAMPLE SYSTEM句
-### |　こう書く
+### | こう書く
 ```SQL
 --(使い方)FROM句の末尾にTABLESAMPLE SYSTEM句を追記
 select *
