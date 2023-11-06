@@ -1,8 +1,10 @@
-# 【Tableau Desktop】
+[HOME / Collections TOP / ](https://gitpress.io/@shi6ma/collections)
+
+## 【Tableau】
 
 <!-- Udemy 学習 -->
-## [Tableau] 基礎編 
-### 集計・分析・視覚化
+## 【Tableau: 基礎編】
+#### 集計・分析・視覚化
 - [section1](basics_01)
 - [section2](basics_02)
 - [section3](basics_03)
@@ -14,7 +16,7 @@
 - [section9](basics_09)
 
 
-## [Tableau] 応用編
+## 【Tableau: 応用編】
 - []()
 
 
