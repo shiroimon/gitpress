@@ -1,11 +1,11 @@
-# PostgreSQL
-## || TEMPLATE
+# 🐘PostgreSQL
+## || MD_TMP
 ```markdown
 ---
 date    : 2022-01-01
 title   : 🐘 
 excerpt : 
-tags    : ["PostgreSQL", ""]
+tags    : ["🐘", "PostgreSQL", ""]
 ---
 
 ## || 
