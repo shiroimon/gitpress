@@ -59,7 +59,6 @@
 
 #### ⚫︎SQL - エラー文
 - - [error](bq_error)
-- - [Resources exceeded during query execution: Not enough resources for query planning - too many subqueries or query is too complex](bq_table)
 
 #### ⚫︎SQL - BigQuery特有
 - - [BigQueryScriptting](sql_bqscripting)
