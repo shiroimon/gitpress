@@ -1,9 +1,9 @@
 # GitPress
 
 <p align='center'>
-<img width="80%" alt="topスクショ" src="https://user-images.githubusercontent.com/28585421/155921826-8799b723-b71d-4edb-88b0-45e8219b2967.png">
+    <img width="80%" alt="topスクショ" src="https://user-images.githubusercontent.com/28585421/155921826-8799b723-b71d-4edb-88b0-45e8219b2967.png">
 </p>
-          
+
 <p align='center' style='margin-botom: 2em;'>URL : https://gitpress.io/@shi6ma/collections</p>
 
 <table align='center' width="80%">
