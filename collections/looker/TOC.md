@@ -1,8 +1,8 @@
 ## 【LOOKER】
-- [Looker導入](looker_init)
-- [LookML](lookml)
+-- [Looker導入](looker_init)
+-- [LookML](lookml)
 
 
 
 ## 【LOOKER STUDIO】
-- 
+-- []()
