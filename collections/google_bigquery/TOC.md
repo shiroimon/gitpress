@@ -58,20 +58,17 @@
 - - [array_agg()](sql_array_agg)
 
 
-#### ⚫︎SQL - BQ特有
-- - [BigQueryScriptting](sql_bqscripting)
-- - [_TABLE_SUFFIX](sql_table_suffix)
-- - [_TABLE_](sql_table)
-- - [INFORMATION_SCHEMA](sql_information_schema)
-- - [クエリ関数化（UDF）](sql_udf)
-- - [カスタムクエリ](sql_custom_query)
-- - [クエリパラメータ](sql_queryparameter)
-
-
 
 
 ## 【🔍BIGQUERY: ADVANCE】
 - - [BQエラー文集](bq_error)
+- - [BigQueryScriptting](sql_bqscripting)
+- - [_TABLE_SUFFIX](sql_table_suffix)
+- - [_TABLE_](sql_table)
+- - [INFORMATION_SCHEMA](sql_information_schema)
+- - [BQクエリ関数化（UDF）](bq_udf)
+- - [BQカスタムクエリ](sql_custom_query)
+- - [BQクエリパラメータ](sql_queryparameter)
 - - [BQもっと速くしたい](bq_faster)
 - - [BQ裏技法](bq_underhanded)
 - - [BQエクスポート](bq_export)
