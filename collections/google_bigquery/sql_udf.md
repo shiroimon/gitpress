@@ -1,12 +1,12 @@
 ---
 date   : 2022-03-02
-title  : UDF
-excerpt: ユーザー定義関数
-tags   : ["Google BigQuery", "SQL", "UDF", "自作関数", "TEMPORARY FUNCTION"]
+title  : 🔍クエリ関数化
+excerpt: ユーザー定義関数（UDF）
+tags   : ["🔍", "Google BigQuery", "SQL", "UDF", "自作関数", "TEMPORARY FUNCTION"]
 ---
 
 ## || ユーザー定義関数（UDF）
-詳細は、Cf.へ
+
 
 ### | メリット
 1. コーディングのコストを低減できる
