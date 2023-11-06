@@ -58,7 +58,7 @@
 - - [array_agg()](sql_array_agg)
 
 #### ⚫︎SQL - エラー文
-- - [error](bq_error)
+- - [error文集](bq_error)
 
 #### ⚫︎SQL - BigQuery特有
 - - [BigQueryScriptting](sql_bqscripting)
