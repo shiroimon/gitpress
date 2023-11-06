@@ -22,6 +22,8 @@ Please consider moving this workload to the flat-rate reservation pricing model,
 ```
 サブクエリをかなりの数ネストした上に、デカいテーブルを使いすぎた。。
 
+（解決策）　https://gitpress.io/c/bigquery/bq_table
+
 
 ### | ⛑️ 「別プロジェクトのデータ使うなら同じリージョンでせい！ｺﾗｰ」
 ```
