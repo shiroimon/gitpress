@@ -72,10 +72,11 @@
 
 
 
-## 【🔍BIGQUERY : ADVANCE】
-- - [BigQueryをもっと速くしたい](bq_faster)
-- - [BigQuery裏技法](bq_underhanded)
-- - [BigQueryエクスポート](bq_export)
+## 【🔍BIGQUERY:ADVANCE】
+- - [BQもっと速くしたい](bq_faster)
+- - [BQ裏技法](bq_underhanded)
+- - [BQエクスポート](bq_export)
+- - [BQ擬似中間テーブル](bq_table)
 - - [GA4](ga_ga4)
 - - [GA4 データフラット化](ga_ga4_get_flaten)
 
