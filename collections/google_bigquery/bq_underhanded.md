@@ -1,6 +1,6 @@
 ---
 date    : 2022-01-01
-title   :　🔍BigQueryの裏技法メモ 
+title   : 🔍BigQueryの裏技法メモ 
 excerpt : -
 tags    : ["🔍", "Google BigQuery"]
 ---
