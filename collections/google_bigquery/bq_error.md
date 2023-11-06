@@ -38,6 +38,7 @@ Copy an entire dataset to move data between regions.
 ```
 
 
+
 ## || REFERENCE
 - [データセットのコピーの設定](https://cloud.google.com/bigquery/docs/copying-datasets?hl=ja#setting_up_a_dataset_copy) - GoogleCloud 
 - [Location error on BigQuery](https://www.googlecloudcommunity.com/gc/Data-Analytics/Location-error-on-BigQuery/m-p/424261) - GoogleCloud(*2)
