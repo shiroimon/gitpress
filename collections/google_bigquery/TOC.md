@@ -23,13 +23,13 @@
 - - [QUALIFY句](sql_qualify)
 - - [WINDOW句（名前付きウィンドウ）](sql_window)
 - - [OVER句 / WINDOW FRAME句](sql_over_window_frame)
+- - [TABLESAMPLE SYSTEM句](sql_tablesample)
 
 #### ⚫︎SQL - 演算子
 - - [UNION](sql_union)
 - - [EXCEPT](sql_except)
 - - [INTERSECT](sql_intersect)
 - - [PIVOT / UNPIVOT](sql_pivot_unpivot)
-- - [TABLESAMPLE](sql_tablesample)
 - - [UNNEST](sql_unnest)
 
 #### ⚫︎SQL - 関数
