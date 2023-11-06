@@ -1,28 +1,28 @@
 [HOME / Collections TOP / ](https://gitpress.io/@shi6ma/collections)
 
 ## 【Google Cloud】
-+ [(memo)](gcloud_memo)
++ [(memo)](gcloud_memo.md)
 
 
 
 
 ## 【Google Cloud : tips】
-+ [Google Cloud Storage](gcloud_storage)
-+ [Google Cloud DLP-API](gcloud_dlp_api)
-+ [Google Cloud WordPress](gcloud_wordpress)
-+ [Google Cloud ETL/ELT](gcloud_etl)
++ [Google Cloud Storage](gcloud_storage.md)
++ [Google Cloud DLP-API](gcloud_dlp_api.md)
++ [Google Cloud WordPress](gcloud_wordpress.md)
++ [Google Cloud ETL/ELT](gcloud_etl.md)
 
 
 
 
 ## 【Google Cloud : certification】
 #### ⚫︎ Professional Data Engineer
-+ [概要要綱(memo)](gcp_pde_memo)
-1. [coursera - Step.1](gcp_coursera_1)
-2. [coursera - Step.2](gcp_coursera_2)
-3. [coursera - Step.3](gcp_coursera_3)
-4. [coursera - Step.4](gcp_coursera_4)
-5. [coursera - Step.5](gcp_coursera_5)
++ [概要要綱(memo)](gcp_pde_memo.md)
+1. [coursera - Step.1](gcp_coursera_1.md)
+2. [coursera - Step.2](gcp_coursera_2.md)
+3. [coursera - Step.3](gcp_coursera_3.md)
+4. [coursera - Step.4](gcp_coursera_4.md)
+5. [coursera - Step.5](gcp_coursera_5.md)
 
 
 
