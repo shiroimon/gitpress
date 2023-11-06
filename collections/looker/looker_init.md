@@ -1,5 +1,5 @@
 ---
-date    : 2022-01-01
+date    : 2023-11-05
 title   : 🫧 Looker 導入
 excerpt : XXXX 
 tags    : ["🫧", "Looker", "BI", "GoogleCloud"]
