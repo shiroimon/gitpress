@@ -1,4 +1,4 @@
-## 【🔍BIGQUERY : 分析入門】 
+## 【🔍BIGQUERY: 分析入門】 
 1. - [Sect.1 はじめに](google_bigquery)
 2. - [Sect.2~3 基本設定](google_bigquery_2_3)
 3. - [Sect.4 基計文法](google_bigquery_4)
@@ -14,7 +14,7 @@
 
 
 
-## 【🔍BIGQUERY : SQL】
+## 【🔍BIGQUERY: SQL】
 - - [SQL歴史](sql_history)
 
 #### ⚫︎SQL - 句（節）
@@ -33,46 +33,45 @@
 - - [UNNEST](sql_unnest)
 
 #### ⚫︎SQL - 関数
-+ [approx_count_distinct()](sql_approx_count_distinct)
-+ [coalesce()](sql_coalesce)
-+ [countif()](sql_countif)
-+ [extract()](sql_extract)
-+ [greatest()](sql_greatest)
-+ [ifnull()](sql_ifnull)
-+ [last_day()](sql_last_day)
-+ [lead() / lag()](sql_lead_lag)
-+ [left() / right()](sql_left_right)
-+ [lower()](sql_lower)
-+ [nullif()](sql_nullif)
-+ [parse_date()](sql_parse_date)
-+ [row_number()](sql_row_number)
-+ [safe_cast()](sql_safe_cast)
-+ [split()](sql_split)
-+ [st_distance()](sql_st_distance)
-+ [nth_value()](sql_nth_value)
-+ [first_value() / last_value()]()
-+ [percentile_()](sql_percentile)
+- - [approx_count_distinct()](sql_approx_count_distinct)
+- - [coalesce()](sql_coalesce)
+- - [countif()](sql_countif)
+- - [extract()](sql_extract)
+- - [greatest()](sql_greatest)
+- - [ifnull()](sql_ifnull)
+- - [last_day()](sql_last_day)
+- - [lead() / lag()](sql_lead_lag)
+- - [left() / right()](sql_left_right)
+- - [lower()](sql_lower)
+- - [nullif()](sql_nullif)
+- - [parse_date()](sql_parse_date)
+- - [row_number()](sql_row_number)
+- - [safe_cast()](sql_safe_cast)
+- - [split()](sql_split)
+- - [st_distance()](sql_st_distance)
+- - [nth_value()](sql_nth_value)
+- - [first_value() / last_value()]()
+- - [percentile_()](sql_percentile)
 
 #### ⚫︎SQL - データ型
 - - [STRUCT()](sql_struct)
 - - [array_agg()](sql_array_agg)
 
-#### ⚫︎SQL - エラー文
-- - [error文集](bq_error)
 
-#### ⚫︎SQL - BigQuery特有
+#### ⚫︎SQL - BQ特有
 - - [BigQueryScriptting](sql_bqscripting)
 - - [_TABLE_SUFFIX](sql_table_suffix)
 - - [_TABLE_](sql_table)
 - - [INFORMATION_SCHEMA](sql_information_schema)
-- - [UDF](sql_udf)
+- - [クエリ関数化（UDF）](sql_udf)
 - - [カスタムクエリ](sql_custom_query)
 - - [クエリパラメータ](sql_queryparameter)
 
 
 
 
-## 【🔍BIGQUERY:ADVANCE】
+## 【🔍BIGQUERY: ADVANCE】
+- - [BQエラー文集](bq_error)
 - - [BQもっと速くしたい](bq_faster)
 - - [BQ裏技法](bq_underhanded)
 - - [BQエクスポート](bq_export)
@@ -83,7 +82,7 @@
 
 
 
-## 【🔍BIGQUERY　: DS】
+## 【🔍BIGQUERY: DS】
 #### ⚫︎　DS100ノック
 - - [概要](ds_100knock)
 - - [挑戦](ds_100knock_sql)
