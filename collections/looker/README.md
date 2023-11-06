@@ -1,5 +1,5 @@
-# Looker
-## || TEMPLATE
+# 🫧Looker
+## || MD_TMP
 ```markdown
 ---
 date    : 2022-01-01
