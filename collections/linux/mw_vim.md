@@ -1,7 +1,7 @@
 ---
 date   : 2021-12-07
-title  : 【🐚 iTerm2】Vim & NeoVim
-excerpt: Neovimの設定。
+title  : 🐚 Vim & NeoVim
+excerpt: Vim、Neovimの設定。
 tags   : ["vim", "neoovim", "ide", "iterm2", "linux"]
 ---
 
@@ -52,3 +52,5 @@ $ vim ~/.config/nvim/init.vim
 ```shell
 ```
 
+
+## || RIFERDRENCE
