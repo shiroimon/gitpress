@@ -6,8 +6,10 @@ tags    : ["docker_file", "CLI",]
 ---
 
 ![publicdomainq-0020603gmd](https://user-images.githubusercontent.com/28585421/194487142-42f7189e-b156-453c-b4e2-e39c9445f75a.jpg)
-https://publicdomainq.net/container-ship-0020603/
-## || Dockerfile 
+cf. https://publicdomainq.net/container-ship-0020603/
+
+## || Dockerfile
+
 ### | instraction (基本)
 1. **FROM** : `FROM {dockerimage} # OS等々指定` 
 2. **RUN** : `RUN {linux comand} # やりたいこと`
@@ -73,6 +75,7 @@ RUN  apt-get install -y \
 
 ### | 実践 - Dockerfile(分析基盤用)
 
+https://github.com/polar-beer/my_docker
 
 ## || REFERRENCE
 * []() - 
