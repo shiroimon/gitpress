@@ -4,7 +4,7 @@ title  : Git
 excerpt: Gitについて
 tags   : ["CLI", "Git", ""]
 ---
-## ||　Gitとは
+## || Gitとは
 
 ## || REFERENCE
 - []() - 
