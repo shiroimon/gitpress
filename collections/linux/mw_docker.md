@@ -6,10 +6,10 @@ tags    : ["docker", "iTearm", "CLI"]
 ---
 
 ![publicdomainq-0020603gmd](https://user-images.githubusercontent.com/28585421/194487142-42f7189e-b156-453c-b4e2-e39c9445f75a.jpg)
+
 cf. https://publicdomainq.net/container-ship-0020603/
 
 ## || Docker とは
-
 ## || Docker コマンド基本操作
 
 |用途|コマンド|（備考）|
@@ -17,57 +17,29 @@ cf. https://publicdomainq.net/container-ship-0020603/
 ||`$docker `||
 |バージョン確認|`$docker -V`, `$docker --version`|-|
 |インストール|`$brew install docker`|Homebrewで取得する|
-|ログイン|`$docker login`||
-|ログアウト|`$docker logout`||
+|ログイン|`$docker login`|-|
+|ログアウト|`$docker logout`|-|
+|イメージ一覧|`$docker images`|[💭 Dockerイメージとは]()|
+|イメージ取得|`$docker pull {image}`|[Dockerhub]() → Dockerイメージを取得|
+|イメージ変換|`$docker build {/directory/}`、`＄docker build .`　（.はcdの意）|Dockerfile → Dockerイメージに変換|
+|イメージ変換|`$docker build -t {name} {/directory/}`|名前指定で変換|
+|イメージ実行|`$docker run`|内部的に `pull` & `start` をしている|
+|イメージ実行|`$docker run -it {image} bash`|イメージ実行＆コンテナ起動|
+|イメージ実行|`$docker run -it --rm {image} bash`|イメージ実行＆コンテナ起動、その後イメージ削除|
+|イメージ実行|`$docker run -it -v {host}:{container} {imege}`|イメージ実行＆ホストのファイルシステムをコンテナにマウント（e.g. `$docker run -it -v ~/host/mounted_folder:/new_dir {image} bash`）|
+|イメージ実行|`$docker run -u {UserId}:{UserGroup}`|イメージ実行＆ユーザーID、名前を指定してコンテナ作成（e.g. `$docker run -it -u $(id -u):$(id -g) -v ~/host/mounted_folder:/new_dir {image} bash`）、　※{UserId} ：`$id -u`、{UserGroup}： `$id -g`でそれぞれ確認できる|
+|イメージ実行|`$docker run -p {host_port}:{container_port}`|イメージ実行＆ホストのポートをコンテナポートに繋げる（e.g. `$docker run -it -p 8888:8888 --rm jupyter/datascience-notebook bash`）|
+|確認（CPU）|`$docker --cpus {# of CPUs}`|コンテナがアクセスできるCPUI上限を確認|
+|確認（メモリ）|`$docker --memory {byte}`|コンテナがアクセスできるメモリ上限を確認（e.g. `$docker run -it --rm --cpus 2 --memory 2g ubuntu bash`）、　物理コア数 : `$sysctl -n hw.physicalcpu_max`、　論理コア数 : `$sysctl -n hw.logicalcpu_max`、　メモリ(byte): `$sysctl hw.memsize`|
+|イメージ削除|`$docker rmi {image}`|全イメージ削除(`$docker rmi $(docker images -q)`）|
+|コンテナ一覧|`$docker ps -a`|[📦 Dockerコンテナとは]()、 ps = process status|
+|コンテナ情報確認|`$docker inspect {container}`|コンテナのあらゆる情報確認（e.g.CPU数やメモリ量等確認時: `$docker inspect 5f90be76cd31 | grep -i cpu `）、 `| grep`:抽出 `-i`:ignore大文字小文字問わず {検索語句} |
 
 
 
 ---
 
-#### 💭 image
-* イメージ一覧  : `docker images`
-
-##### Dockerhub → Dockerimage
-* イメージ取得  : `docker pull {image}`
-
-##### Dockerfile → Dockerimage
-* イメージ化 : `docker build {directory}`
-  + Dockerfile格納上のディレクトリ上で`docker build .`　（.はcdの意）
-  + 名前指定してビルド`docker build -t {name} {directory}`
-
-##### run
-
-    内部的にpull&startをしている。
-
-* イメージ実行（コンテナ起動） : `docker run -it {image} bash`
-  + コンテナ起動後に削除 : `docker run -it --rm {image} bash`
-  + ホストのファイルシステムをコンテナにマウント: `docker run -it -v {host}:{container} {imege}`
-    - e.g. `docker run -it -v ~/host/mounted_folder:/new_dir {image} bash`
-  + ユーザーID、名前を指定してコンテナ作成 : `docker run -u {UserId}:{UserGroup}`
-    - e.g. `docker run -it -u $(id -u):$(id -g) -v ~/host/mounted_folder:/new_dir {image} bash`
-    - PC userid  : `$ id -u`
-    - PC groupid : `$ id -g`
-  + ホストのポートをコンテナポートに繋げる : `docker run -p {host_port}:{container_port}`
-    - e.g. `docker run -it -p 8888:8888 --rm jupyter/datascience-notebook bash`
-  + コンテナがアクセスできるCPUI上限 : `docker --cpus {# of CPUs}`
-  + コンテナがアクセスできるメモリ上限: `docker --memory {byte}`
-    - 物理コア数 : `$ sysctl -n hw.physicalcpu_max`
-    - 論理コア数 : `$ sysctl -n hw.logicalcpu_max`
-    - メモリ(byte): `$ sysctl hw.memsize` 
-    - e.g. `docker run -it --rm --cpus 2 --memory 2g ubuntu bash`
-
-* イメージ削除  : `docker rmi {image}`
-  + 全イメージ削除: `docker rmi $(docker images -q)`
-
-
-##### file → image
-* Dockerfile → Dockerimage : `docker build {directory}`
-  + Dockerfileの格納されているディレクトリ上で`docker build .`　（.はcdの意）
-  + 名前指定してビルド`docker build -t {name} {directory}`
-
-
 #### 📦 container
-* コンテナ一覧  : `docker ps -a` (ps=process status)
 * コンテナのあらゆる情報確認 : `docker inspect {container}`
   + e.g.CPU数やメモリ量等確認時に : `docker inspect 5f90be76cd31 | grep -i cpu `  (| grep :抽出 -i:ignore大文字小文字問わず {検索語句} )
 * コンテナ再起動: `docker restart {container} `
