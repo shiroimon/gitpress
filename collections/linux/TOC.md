@@ -23,16 +23,17 @@
 
 
 ## 【CLI : Middleware】
-- - [Vim / NeoVim](middleware_vim)
-- - [Zsh / Oh-My-Zsh](middleware_zsh)
-- - [YAML](middleware_yaml.md)
+- - [Vim / NeoVim](mw_vim)
+- - [Zsh / Oh-My-Zsh](mw_zsh)
+- - [YAML](mw_yaml.md)
 
 #### ⚫︎ PCS (PackageControlSystem)
-- - [Homebrew](middleware_brew.md)
+- - [Homebrew](pcs_brew.md)
 
 #### ⚫︎ VCS (VersionControlSystem)
-- - [Git](middleware_git.md)
-- - [GitHub-SSH接続](middleware_github_ssh.md)
+- - [Git](mw_git.md)
+- - [GitHub](vcs_github.md)
+- - [GitHub-SSH接続](vcs_git_ssh.md)
 - - [$git tig](git_tig.md)
 
 #### ⚫︎ Virtualisation & Container
