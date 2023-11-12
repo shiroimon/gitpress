@@ -33,9 +33,8 @@
 #### ⚫︎ VCS (VersionControlSystem)
 - - [Git](mw_git.md)
 - - [GitHub](vcs_github.md)
-- - [GitHub-SSH接続](vcs_git_ssh.md)
-- - [GitHub便利コマンド](vcs_git_.md) 
-- - [$git tig](vcs_git_tig.md)
+- - [GitHub-SSH接続](vcs_github_ssh.md)
+- - [GitHub便利コマンド](vcs_github_.md) 
 
 #### ⚫︎ Virtualisation & Container
 - - [Docker](mw_docker.md)
