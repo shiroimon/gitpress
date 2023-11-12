@@ -34,13 +34,13 @@
 - - [Git](mw_git.md)
 - - [GitHub](vcs_github.md)
 - - [GitHub-SSH接続](vcs_git_ssh.md)
+- - [GitHub便利コマンド](vcs_git_.md) 
 - - [$git tig](vcs_git_tig.md)
 
 #### ⚫︎ Virtualisation & Container
 - - [Docker](mw_docker.md)
 - - [Dockerfile](mw_dockerfile.md)
 - - [Docker Comand](mw_docker_comand.md)
-- - [$docker run](mw_docker_run.md)
 
 #### ⚫︎ RDBMS
 - - [PostgreSQL](mw_postgersql.md)
