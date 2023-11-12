@@ -1,18 +1,28 @@
 ---
 date    : 2021-12-15
-title   : 🐳 Docker　基本操作
-excerpt : 
+title   : 🐳 Docker
+excerpt : 基本操作
 tags    : ["docker", "iTearm", "CLI"]
 ---
 
 ![publicdomainq-0020603gmd](https://user-images.githubusercontent.com/28585421/194487142-42f7189e-b156-453c-b4e2-e39c9445f75a.jpg)
 cf. https://publicdomainq.net/container-ship-0020603/
 
-## || Docker
-* バージョン確認: `docker --version`
-* インストール  : `brew install docker `
-* ログイン      : `docker login`
-* ログアウト    : `docker logout`
+## || Docker とは
+
+## || Docker コマンド基本操作
+
+|用途|コマンド|（備考）|
+|:-|:-|:-|
+||`$docker `||
+|バージョン確認|`$docker -V`, `$docker --version`|-|
+|インストール|`$brew install docker`|Homebrewで取得する|
+|ログイン|`$docker login`||
+|ログアウト|`$docker logout`||
+
+
+
+---
 
 #### 💭 image
 * イメージ一覧  : `docker images`
