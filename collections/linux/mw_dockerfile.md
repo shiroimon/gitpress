@@ -14,7 +14,17 @@ cf. https://publicdomainq.net/container-ship-0020603/
 2. **RUN** : `RUN {linux comand} # やりたいこと`
 3. **CMD** : 
 
+
+#### 1. FROM
+```
+FROM {dockerimage} # OS等々指定する。
+```
+
 #### 2. RUN
+```
+RUN {linux comand} # やりたいこと
+```
+
 * ig.
 ```
 RUN touch test
@@ -28,7 +38,7 @@ RUN echo `hello world` > test
 * `apt`: ubuntuのパッケージ管理(パッケージインストール)
     - `RUN apt-get install {package}`
 * `RUN apt-get update`: 最新版取得
-* レイヤー数削減
+* レイヤー数削減（`n.b.` ４→２→１と削減）
 ```txt
 # (Layer数:4)
 FROM ubuntu:latest
