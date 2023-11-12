@@ -6,7 +6,7 @@ tags    : ["docker", "iTearm", "CLI"]
 ---
 
 ![publicdomainq-0020603gmd](https://user-images.githubusercontent.com/28585421/194487142-42f7189e-b156-453c-b4e2-e39c9445f75a.jpg)
-https://publicdomainq.net/container-ship-0020603/
+cf. https://publicdomainq.net/container-ship-0020603/
 
 ## || Docker
 * バージョン確認: `docker --version`
@@ -440,7 +440,7 @@ CMD ["executable", "param1", "param2"]
 * Dockerfileの最後に記述（原則）
 
 
-## || 
+## || RIFERRENCE
 + [コンテナとは何か解説、従来の仮想化と何が違う？DockerやKubernetesとは？](https://www.sbbit.jp/article/cont1/57184) - ビジネス＋IT
 + [Virtualisation and Container (仮想化とコンテナ) – Ansible, Docker and Kubernetes](https://avinton.com/academy/%E4%BB%AE%E6%83%B3%E5%8C%96%E3%81%A8%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A/) - Avinton
 
