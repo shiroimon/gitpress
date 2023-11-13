@@ -9,9 +9,15 @@ tags   : ["CLI", "Git", ""]
 
 cf. https://ja.wikipedia.org/wiki/Git
 
-## || Gitとは
+## || Gitとは？
+### | 公式 
+https://gitforwindows.org/
 
-（公式）https://gitforwindows.org/
+### | なんで生まれた？
+（敬意、嬉しいこと等）
+
+### | 幸せに　なるために
+（概要説明：リポジトリ等）
 
 
 
