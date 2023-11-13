@@ -18,6 +18,10 @@ dbtはこの工程で役に立つ様々な機能を提供してくれます。
 |Official|https://www.getdbt.com/|
 |Document|https://docs.getdbt.com/|
 |GitHub|https://github.com/dbt-labs/dbt-core|
+|dbt tokyo - Japan dbt User Group|https://dbt-ug.tokyo/|
+
+    dbt-tokyoはdbtの日本におけるdbtの普及と、
+    dbtプロダクトへの貢献を目的に活動をしています。
 
 
 ### |
@@ -30,3 +34,7 @@ dbtはこの工程で役に立つ様々な機能を提供してくれます。
 - [dbtで始めるデータパイプライン構築〜入門から実践〜](https://zenn.dev/dbt_tokyo/books/537de43829f3a0) - Zenn
 - [はじめて理解するdbt](https://www.isoroot.jp/blog/6054/) - isoroot
 - [データエンジニア界隈で話題のdbt（data build tool）のまとめ](https://qiita.com/manabian/items/67af7e4476d436aded77) - Qiita
+- [What is dbt?](https://docs.getdbt.com/docs/introduction) - dbt
+- [dbtとは？](https://zenn.dev/dbt_tokyo/books/537de43829f3a0/viewer/what_dbt) - Zenn
+- [dbt プロジェクトの始め方](https://zenn.dev/foursue/books/31456a86de5bb4/viewer/04bca4) - Zenn (村長)
+- [What Is DBT and Why You Should Use It?](https://www.aggua.io/blog/what-is-dbt-why-use-it) - aggua
