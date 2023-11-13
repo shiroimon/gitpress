@@ -11,7 +11,7 @@ cf. https://ja.wikipedia.org/wiki/Git
 
 ## || Gitとは
 
-（公式）　https://gitforwindows.org/
+（公式）https://gitforwindows.org/
 
 
 ## || REFERENCE
