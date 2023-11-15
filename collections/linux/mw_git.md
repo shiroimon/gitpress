@@ -14,7 +14,7 @@ cf. https://ja.wikipedia.org/wiki/Git
 https://gitforwindows.org/
 
 ### | なんで生まれた？
-（敬意、嬉しいこと等）
+（経緯、嬉しいこと等）
 
 ### | 幸せに　なるために
 （概要説明：リポジトリ等）
