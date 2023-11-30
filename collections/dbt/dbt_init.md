@@ -56,8 +56,7 @@ $ source venv/bin/activate
 (venv)% touch profiles.yml
 ```
 
-＊１　`/touch dbt_project.yml`
-ファイルンの中身の詳細は[ここ](https://zenn.dev/foursue/books/31456a86de5bb4/viewer/7fce02#%E5%90%84%E3%82%BF%E3%82%B0%E3%81%AE%E8%AA%AC%E6%98%8E)がわかりやすい
+*１ `/touch dbt_project.yml`
 ```yaml
 name: 'dbt_training'
 config-version: 2
@@ -79,6 +78,8 @@ models:
   dbt_training:
     example:
 ```
+ファイルの中身の詳細説明は[ここ](https://zenn.dev/foursue/books/31456a86de5bb4/viewer/7fce02#%E5%90%84%E3%82%BF%E3%82%B0%E3%81%AE%E8%AA%AC%E6%98%8E)がわかりやすい。
+
 
 *2 `~/.dbt/profiles.yml`
 ```yaml
@@ -97,6 +98,10 @@ dbt_training_dw:
       keepalives_idle: 0 
       connect_timeout: 10
 ```
+上記は「PostgreSQL」に接続させる設定ファイル。（cf.[公式](https://docs.getdbt.com/docs/core/connect-data-platform/postgres-setup)）
+dbt はデータウェアハウス（DWH）の接続設定を `~/.dbt/profiles.yml` に書く。　`~/.dbt/profiles.yml` は各DWH毎にプロファイルを書く。
+DWの種類(PostgreSQL, Snowflake...etc.) 毎にアダプターがあり、プロファイルはアダプターごとに設定の書き方が異なる。
+
 
 (step2)　に入る前に `docker-compose.yml`を作成して下記を記述
 ```yaml
@@ -137,12 +142,15 @@ services:
 (venv)$ docker-compose stop
 ```
 
-3. STEP
+
+3. STEP dbt実行
 ```sell
 (venv)$ dbt run
 ```
+※モデル作成していないから、「WARNING」出ているが気にせず。`logs/`ディレクトリができていることを確認。
 
 
+4. STEP モデル作成
 
 ### | 
 
