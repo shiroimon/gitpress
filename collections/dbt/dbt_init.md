@@ -24,7 +24,73 @@ dbtはこの工程で役に立つ様々な機能を提供してくれます。
     dbtプロダクトへの貢献を目的に活動をしています。
 
 
-### |
+### | 導入
+
+    「#」は全てコメントコンソールに記述するものではない
+
+1. STEP　* 
+```shell
+# (step1) dbtを用意
+$ mkdir sandbox
+$ cd sandbox
+$ mkdir training_dbt
+$ cd training_dbt
+# 仮想環境を用意
+$ python3 -m venv venv
+# 仮想環境を実行
+$ source venv/bin/activate
+(venv)$　pip install --upgrade pip
+(venv)$　pip install dbt-postgres
+# 仮想環境を停止からの再実行
+(venv)$　deactivate
+$ source venv/bin/activate
+# dbt環境が手元にあるか確認
+(venv)$　dbt --version
+```
+
+(step2)　に入る前に `docker-compose.yml`を作成して下記を記述
+```yaml
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+```
+
+2. STEP 🐘 
+```shell
+# (step2) データベース（PostgreSQL）を用意
+# 先のファイル用意があるなら「Docker」から
+(venv)$　touch docker-compose.yml
+(venv)$　vim docker-compose.yml
+#　　　　　　　　　　↓
+#　　　　　　　　　　#vimの説明は割愛
+#　　　　　　　　　　[esc][I]押して、でさっきのファイルの内容コピペ
+#     [esc][:wq!]押して、抜ける。
+
+# Dockerいるか確認
+(venv)$　docker --version
+# gemを新規で導入するときには、まず以下のコマンドを実行
+# cf. https://qiita.com/KenAra/items/f1976caa69468323c29d -Qiita
+(venv)$ docker-compose build
+# Docker起動
+(venv)$ docker-compose up -d
+# Docker停止
+(venv)$ docker-compose stop
+```
+
+3. STEP
+```sell
+```
+
+
 
 ### | 
 
