@@ -1,8 +1,8 @@
 ---
 date    : 2023-11-03
-title   : ✴️ dbt導入
-excerpt : XXXX
-tags    : ["✴️", "dbt", "ETL", "MDS"]
+title   : ✴️ dbt
+excerpt : 導入から実行まで
+tags    : ["✴️", "dbt", "ETL/ELT", "MDS"]
 ---
 
 ## || dbt とは
