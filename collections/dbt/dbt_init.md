@@ -98,6 +98,7 @@ dbt_training_dw:
       keepalives_idle: 0 
       connect_timeout: 10
 ```
+
 上記は「PostgreSQL」に接続させる設定ファイル。（cf.[公式](https://docs.getdbt.com/docs/core/connect-data-platform/postgres-setup)）
 dbt はデータウェアハウス（DWH）の接続設定を `~/.dbt/profiles.yml` に書く。　`~/.dbt/profiles.yml` は各DWH毎にプロファイルを書く。
 DWの種類(PostgreSQL, Snowflake...etc.) 毎にアダプターがあり、プロファイルはアダプターごとに設定の書き方が異なる。
@@ -126,10 +127,11 @@ services:
 # 先のファイル用意があるなら「Docker」から
 (venv)$　touch docker-compose.yml
 (venv)$　vim docker-compose.yml
-#　　　　　　　　　　↓
-#　　　　　　　　　　#vimの説明は割愛
-#　　　　　　　　　　[esc][I]押して、でさっきのファイルの内容コピペ
-#     [esc][:wq!]押して、抜ける。
+#　　　　↓
+#　　　　#vimの説明は割愛
+#　　　　[esc][I]押して、さっきのファイルの内容コピペ
+#        [esc][:wq!]押して、抜ける。
+
 
 # Dockerいるか確認
 (venv)$　docker --version
