@@ -146,6 +146,7 @@ services:
 # Docker停止
 (venv)$ docker-compose stop
 ```
+もしここで`Docker`でつまいづいたら[コマンド参照](https://gitpress.io/c/docker_/mw_docker)してやり直し。
 
 
 3. STEP dbt実行
