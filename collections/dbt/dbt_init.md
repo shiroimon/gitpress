@@ -35,30 +35,23 @@ $ mkdir sandbox
 $ cd sandbox
 $ mkdir dbt_training
 $ cd dbt_training
-
 # 仮想環境を用意
 $ python3 -m venv venv
-
 # 仮想環境を実行
 $ source venv/bin/activate
 (venv)$　pip install --upgrade pip
 (venv)$　pip install dbt-postgres
-
 # 仮想環境を停止からの再実行
 (venv)$　deactivate
 $ source venv/bin/activate
-
 # dbt環境が手元にあるか確認
 (venv)$　dbt --version
-
 # 必要なディレクトリ を準備
 (venv)% mkdir models analysis tests seeds macros snapshots target
-
 # dbt設定ファイルを作成（＊１後述のYAMLファイル）
 (venv)% touch dbt_project.yml
 (venv)% mkdir .dbt
 (venv)% cd .dbt
-
 # DWH接続ファイルを作成（＊2後述のYAMLファイル）
 (venv)% touch profiles.yml
 ```
@@ -136,24 +129,20 @@ services:
 2. STEP 🐘 
 ```shell
 # (step2) データベース（PostgreSQL）を用意
-# 先のファイル用意があるなら「Docker」から
-(venv)$　touch docker-compose.yml
-(venv)$　vim docker-compose.yml
+# 先のファイル用意があるなら「Docker」確認から
+(venv)$ touch docker-compose.yml
+(venv)$ vim docker-compose.yml
 #　　　　↓
 #　　　　#vimの説明は割愛
 #　　　　[esc][I]押して、さっきのファイルの内容コピペ
 #        [esc][:wq!]押して、抜ける。
-
 # Dockerいるか確認
 (venv)$　docker --version
-
 # gemを新規で導入するときには、まず以下のコマンドを実行
 # cf. https://qiita.com/KenAra/items/f1976caa69468323c29d -Qiita
 (venv)$ docker-compose build
-
 # Docker起動
 (venv)$ docker-compose up -d
-
 # Docker停止
 (venv)$ docker-compose stop
 ```
