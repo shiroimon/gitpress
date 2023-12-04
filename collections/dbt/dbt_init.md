@@ -26,7 +26,7 @@ dbtはこの工程で役に立つ様々な機能を提供してくれます。
 
 ### | 導入
 
-    「#」は全てコメントコンソールに記述するものではない
+    「#」は全てコメント。コンソールに記述するものではないよ！
 
 1. STEP　✴️
 ```shell
@@ -35,28 +35,35 @@ $ mkdir sandbox
 $ cd sandbox
 $ mkdir dbt_training
 $ cd dbt_training
+
 # 仮想環境を用意
 $ python3 -m venv venv
+
 # 仮想環境を実行
 $ source venv/bin/activate
 (venv)$　pip install --upgrade pip
 (venv)$　pip install dbt-postgres
+
 # 仮想環境を停止からの再実行
 (venv)$　deactivate
 $ source venv/bin/activate
+
 # dbt環境が手元にあるか確認
 (venv)$　dbt --version
+
 # 必要なディレクトリ を準備
 (venv)% mkdir models analysis tests seeds macros snapshots target
+
 # dbt設定ファイルを作成（＊１後述のYAMLファイル）
 (venv)% touch dbt_project.yml
 (venv)% mkdir .dbt
 (venv)% cd .dbt
+
 # DWH接続ファイルを作成（＊2後述のYAMLファイル）
 (venv)% touch profiles.yml
 ```
 
-*１ `/touch dbt_project.yml`
+`*１` ：`/touch dbt_project.yml`
 ```yaml
 name: 'dbt_training'
 config-version: 2
@@ -78,10 +85,11 @@ models:
   dbt_training:
     example:
 ```
+
 ファイルの中身の詳細説明は[ここ](https://zenn.dev/foursue/books/31456a86de5bb4/viewer/7fce02#%E5%90%84%E3%82%BF%E3%82%B0%E3%81%AE%E8%AA%AC%E6%98%8E)がわかりやすい。
 
 
-*2 `~/.dbt/profiles.yml`
+`*2`、 `~/.dbt/profiles.yml`
 ```yaml
 dbt_training_dw:
   target: dev
@@ -98,12 +106,17 @@ dbt_training_dw:
       keepalives_idle: 0 
       connect_timeout: 10
 ```
-上記は「PostgreSQL」に接続させる設定ファイル。（cf.[公式](https://docs.getdbt.com/docs/core/connect-data-platform/postgres-setup)）
-dbt はデータウェアハウス（DWH）の接続設定を `~/.dbt/profiles.yml` に書く。　`~/.dbt/profiles.yml` は各DWH毎にプロファイルを書く。
+
+上記は「PostgreSQL」に接続させる設定ファイル。
+（cf.[公式](https://docs.getdbt.com/docs/core/connect-data-platform/postgres-setup)）
+
+dbt はデータウェアハウス（DWH）の接続設定を `~/.dbt/profiles.yml` に書く。
+`~/.dbt/profiles.yml` は各DWH毎にプロファイルを書く。
 DWの種類(PostgreSQL, Snowflake...etc.) 毎にアダプターがあり、プロファイルはアダプターごとに設定の書き方が異なる。
 
 
 (step2)　に入る前に `docker-compose.yml`を作成して下記を記述
+
 ```yaml
 version: '3'
 services:
@@ -126,18 +139,21 @@ services:
 # 先のファイル用意があるなら「Docker」から
 (venv)$　touch docker-compose.yml
 (venv)$　vim docker-compose.yml
-#　　　　　　　　　　↓
-#　　　　　　　　　　#vimの説明は割愛
-#　　　　　　　　　　[esc][I]押して、でさっきのファイルの内容コピペ
-#     [esc][:wq!]押して、抜ける。
+#　　　　↓
+#　　　　#vimの説明は割愛
+#　　　　[esc][I]押して、さっきのファイルの内容コピペ
+#        [esc][:wq!]押して、抜ける。
 
 # Dockerいるか確認
 (venv)$　docker --version
+
 # gemを新規で導入するときには、まず以下のコマンドを実行
 # cf. https://qiita.com/KenAra/items/f1976caa69468323c29d -Qiita
 (venv)$ docker-compose build
+
 # Docker起動
 (venv)$ docker-compose up -d
+
 # Docker停止
 (venv)$ docker-compose stop
 ```
@@ -147,7 +163,8 @@ services:
 ```sell
 (venv)$ dbt run
 ```
-※モデル作成していないから、「WARNING」出ているが気にせず。`logs/`ディレクトリができていることを確認。
+※モデル作成していないから、「WARNING」出ているが気にせず。
+`logs/`ディレクトリができていることを確認。
 
 
 4. STEP モデル作成
