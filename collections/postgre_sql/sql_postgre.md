@@ -1,13 +1,13 @@
 ---
 date    : 2021-09-18
-title   : 🐘 PostgreSQL - 環境構築 - 
-excerpt : CUI操作による、PostgreSQLのインストールから、データベースへアクセスまで。
-tags    : ["PostgreSQL", "OSS-DB", "SQL", "環境構築", "iTearm2"]
+title   : 🐘 PostgreSQL 
+excerpt : 環境構築
+tags    : ["🐘", "PostgreSQL", "OSS-DB", "SQL", "環境構築", "iTearm2"]
 ---
 
 ![img](https://i.gyazo.com/8bb756a9d2e944bba0e29344976093bd.jpg)
 
-## || PostgreSQL
+## || PostgreSQL とは？
 > PostgreSQLは、拡張性とSQL準拠を強調するフリーでオープンソースの関係データベース管理システムである。
 > Postgresとしても知られている。もともとは、カリフォルニア大学バークレー校で開発されたIngresデータベースの後継としてその起源を根拠としたPOSTGRESという名前であった。
 > 1996年に、プロジェクトはSQLのサポートを反映してPostgreSQLに改名された。2007年の検討の結果、開発チームはPostgreSQLという名前とPostgresという別名を維持することを決定した。
@@ -19,25 +19,22 @@ tags    : ["PostgreSQL", "OSS-DB", "SQL", "環境構築", "iTearm2"]
 
 
 ## || 環境構築
-早速、環境構築するとして、お決まりの黒い画面（ターミナル or iTear2）を使っていく。
 
-1. インストール
+### | インストール
+* インストール
 ```shell
 $ brew install postgresql
 ```
-
-2. バージョン確認
+* バージョン確認
 ```shell
 $ psql --version
-psql (PostgreSQL) 12.3
+psql (PostgreSQL) 12.3 # `⚠︎` ここで表示が `not found` なら、パスを通すこと！
 ```
-
-*⚠︎* ここで表示が `not found` なら、パスを通すこと！
 * `locate`コマンド=マッチした条件のファイルを一覧表示
 ```shell
 $ locate psql | grep /bin
 ```
-*  `.bash_profile` （or `.zchrc`）の有無を確認
+*  `.bash_profile` （or `.zshrc`）の有無を確認
 ```shell
 $ ls - la
 ```
@@ -51,21 +48,22 @@ $ vi ~/.bash_profile    （or .zchrc）
 ```
 `export` から記入。（パスを通す作業）
 ```shell
-[i] 入力モード
+# [i] 入力モード
 export PATH=$PATH:/Library/PostgreSQL/{バージョン}/bin
-[esc] > [:wq] 保存  > [Enter]
+# [esc] > [:wq] 保存  > [Enter]
 ```
 * `.bash_profile` をリロード
 ```shell
-$ source ~/ .bash_profile
-（$ exec $SHELL -l）
+$ source ~/ .bash_profile # $ exec $SHELL -l
 ```
 最後にパスが通ったか確認で、もう一度バージョン確認してみる。
 通過していればバージョンが返ってくる。
 
 cf. [Mac psqlコマンドのPATHを通す - テンプレ部](https://awesomecatsis.com/mac-psql-path/)
 
-3. ログイン、ログアウト
+
+### |  ログイン、ログアウト
+* ログイン
 ```shell
 $ psql -h ホスト名 -p ポート番号(5432) -U ロール名 -d データベース名
 ```
@@ -78,10 +76,10 @@ $ psql -h ホスト名 -p ポート番号(5432) -U ロール名 -d データベ�
 |-W|||起動の完了を待たずにコマンド発行元に制御を戻すオプション|
 
 * PostgreSQLログイン
-```SHELL
-psql -h localhost -p 5432 -U postgres -d postgres
+```shell
+$ psql -h localhost -p 5432 -U postgres -d postgres
 Password for user postgres:🗝
-postres＝♯
+postgres＝♯
 ```
 省略パターン
 ```shell
@@ -89,16 +87,40 @@ $ psql -U postgres
 ```
 ※ 文頭に `postgres=#` と出ていれば起動成功。
 
-* PostgreSQLログアウト
+* ログアウト
 ```shell
 postgres＝♯ \q
 ```
-Cf. [PostgreSQLへの接続と切断 - DBOnline](https://www.dbonline.jp/postgresql/connect/index2.html)
+
+cf. [PostgreSQLへの接続と切断 - DBOnline](https://www.dbonline.jp/postgresql/connect/index2.html)
+
+
+* エラーが出る
+```txt
+psql: error: connection to server on socket "/tmp/.s.PGSQL.5432" failed: No such file or directory
+	Is the server running locally and accepting connections on that socket?
+```
+
+```shell
+# 
+$ psql -l                                                                                                     (git)-[main]
+psql: error: connection to server on socket "/tmp/.s.PGSQL.5432" failed: No such file or directory
+	Is the server running locally and accepting connections on that socket?
+$ brew services start postgresql
+$ brew services list
+#
+$ psql -l
+                                        List of databases
+   Name    |      Owner      | Encoding | Collate | Ctype |            Access privileges
+-----------+-----------------+----------+---------+-------+-----------------------------------------
+ postgres  | cont-t-hirukawa | UTF8     | C       | C     |
+```
+
+cf. [PostgreSQL接続時に「psql: error: connection to server on socket "/tmp/.s.PGSQL.5432" failed:」エラーが出た時の解消](https://qiita.com/zazaza/items/02d4ac1499ed671d3b93) - Qiita
 
 
 
-
-**Cf.**
+**cf.**
 * [PostgreSQLの使い方 - DBOnline](https://www.dbonline.jp/postgresql/#section_ini)
 * [実際のSQL環境のシミュレーション - ICHI.PRO](https://ichi.pro/jissai-no-sql-kankyo-no-shimyure-shon-109368380962734)
 * [Hands-on SQL in PostgreSQL - DatabaseJournal](https://www.databasejournal.com/features/postgresql/hands-on-sql-in-postgresql.html)
