@@ -68,7 +68,7 @@ cf. [Mac psqlコマンドのPATHを通す - テンプレ部](https://awesomecats
 $ psql -h ホスト名 -p ポート番号(5432) -U ロール名 -d データベース名
 ```
 |||||
-|-|-|-|-|
+|:-:|:-|:-|:-|
 |-h|ホスト名|localhost|localhostであれば省略可|
 |-p|ポート番号|5432|基本であれば省略可|
 |-U|ロール名|postgres|インストール直後のsuper user|
@@ -85,7 +85,6 @@ postgres＝♯
 ```shell
 $ psql -U postgres
 ```
-※ 文頭に `postgres=#` と出ていれば起動成功。
 
 * ログアウト
 ```shell
@@ -95,29 +94,33 @@ postgres＝♯ \q
 cf. [PostgreSQLへの接続と切断 - DBOnline](https://www.dbonline.jp/postgresql/connect/index2.html)
 
 
-* エラーが出る
+* ログイン前にエラーが出る
 ```txt
 psql: error: connection to server on socket "/tmp/.s.PGSQL.5432" failed: No such file or directory
 	Is the server running locally and accepting connections on that socket?
 ```
 
 ```shell
-# 
-$ psql -l                                                                                                     (git)-[main]
+# PostgreSQLがインストールされているか確認
+$ psql --version
+psql (PostgreSQL) 14.10 (Homebrew)
+# (1度目) DB一覧を確認
+$ psql -l
 psql: error: connection to server on socket "/tmp/.s.PGSQL.5432" failed: No such file or directory
 	Is the server running locally and accepting connections on that socket?
+# 
 $ brew services start postgresql
 $ brew services list
-#
+# (2度目)DB一覧を確認
 $ psql -l
                                         List of databases
    Name    |      Owner      | Encoding | Collate | Ctype |            Access privileges
 -----------+-----------------+----------+---------+-------+-----------------------------------------
- postgres  | cont-t-hirukawa | UTF8     | C       | C     |
+ postgres  | XXX             | UTF8     | C       | C     |
 ```
 
 cf. [PostgreSQL接続時に「psql: error: connection to server on socket "/tmp/.s.PGSQL.5432" failed:」エラーが出た時の解消](https://qiita.com/zazaza/items/02d4ac1499ed671d3b93) - Qiita
-
+cf. [PostgreSQLでFATAL: role “postgres” does not existが発生した場合の原因と対処法](https://lifehack.world/postgresql-fatal-role-postgres-does-not-exist/) - Hoehoe Blog
 
 
 **cf.**
