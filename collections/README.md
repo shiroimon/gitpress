@@ -1,3 +1,0 @@
-# 📖 COLLECTIONS
-## || TIL用途
-
