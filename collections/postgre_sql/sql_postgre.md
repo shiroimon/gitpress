@@ -99,7 +99,6 @@ cf. [PostgreSQLへの接続と切断 - DBOnline](https://www.dbonline.jp/postgre
 psql: error: connection to server on socket "/tmp/.s.PGSQL.5432" failed: No such file or directory
 	Is the server running locally and accepting connections on that socket?
 ```
-
 ```shell
 # PostgreSQLがインストールされているか確認
 $ psql --version
@@ -119,8 +118,13 @@ $ psql -l
  postgres  | XXX             | UTF8     | C       | C     |
 ```
 
-cf. [PostgreSQL接続時に「psql: error: connection to server on socket "/tmp/.s.PGSQL.5432" failed:」エラーが出た時の解消](https://qiita.com/zazaza/items/02d4ac1499ed671d3b93) - Qiita
-cf. [PostgreSQLでFATAL: role “postgres” does not existが発生した場合の原因と対処法](https://lifehack.world/postgresql-fatal-role-postgres-does-not-exist/) - Hoehoe Blog
+`cf.`
+* [PostgreSQL接続時に「psql: error: connection to server on socket "/tmp/.s.PGSQL.5432" failed:」エラーが出た時の解消](https://qiita.com/zazaza/items/02d4ac1499ed671d3b93) - Qiita
+* [PostgreSQLでFATAL: role “postgres” does not existが発生した場合の原因と対処法](https://lifehack.world/postgresql-fatal-role-postgres-does-not-exist/) - Hoehoe Blog
+* [MacでPostgreSQLをインストールする](https://zenn.dev/eguchi244_dev/articles/sql-postresql-install-20230620) - Zenn 
+
+
+
 
 
 **cf.**
@@ -130,6 +134,7 @@ cf. [PostgreSQLでFATAL: role “postgres” does not existが発生した場合
 * [SQLの練習に最適！ブラウザ上で実行できる初心者向け学習サービス5選 - paiza](https://paiza.hatenablog.com/entry/2019/12/22/SQL%E3%81%AE%E7%B7%B4%E7%BF%92%E3%81%AB%E6%9C%80%E9%81%A9%EF%BC%81%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E4%B8%8A%E3%81%A7%E5%AE%9F%E8%A1%8C%E3%81%A7%E3%81%8D%E3%82%8B%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91)
 * [[PostgreSQL] サンプルのデータベースを用意する - DevelopersIO](https://dev.classmethod.jp/articles/postgresql-create-sample-database/)
 * [「WARNING: psql version 9.2, server version 11.0.　Some psql features might not work.」エラー対処(AWSLinux(EC2)からpsql11のインストール) - Qiita](https://qiita.com/aomo_study/items/cab07f00a349bf68dee3)
+
 
 
 
