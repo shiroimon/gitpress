@@ -15,7 +15,7 @@ tags    : ["✴️", "dbt", "ETL/ELT", "MDS"]
 
 ### | ChatGPTにも聞いてみた
 
-🤖<「[・・・](https://chat.openai.com/share/ef4f8048-2329-4dba-bde4-5f3b0161b8b6)!!!」]
+🤖<「[・・・!!!](https://chat.openai.com/share/ef4f8048-2329-4dba-bde4-5f3b0161b8b6)」
 
 `cf.`
 
@@ -59,24 +59,21 @@ $ source venv/bin/activate
 # dbt設定ファイルを作成（＊１: 後述のYAMLファイル）
 (venv)% touch dbt_project.yml
 ```
+
 `*１` ：`/touch dbt_project.yml`
 ```yaml
 name: 'dbt_training'
 config-version: 2
 version: '1.0.0'
-
 profile: 'dbt_training_dw'
-
 model-paths: ["models"]
 analysis-paths: ["analysis"]
 test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
-
 target-path: "target"
 clean-targets: [target, dbt_packages]
-
 models:
     dbt_training:
          example:
