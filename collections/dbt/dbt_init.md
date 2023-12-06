@@ -30,10 +30,12 @@ tags    : ["✴️", "dbt", "ETL/ELT", "MDS"]
     dbtプロダクトへの貢献を目的に活動をしています。
 
 
+
 ## || 導入
 
     コンソール内の「#」は全てコメント。
     コンソールに直に記述するものではない。
+
 
 1. STEP　✴️
 ```shell
@@ -59,7 +61,6 @@ $ source venv/bin/activate
 # dbt設定ファイルを作成（＊１: 後述のYAMLファイル）
 (venv)% touch dbt_project.yml
 ```
-
 `*１` ：`/touch dbt_project.yml`
 ```yaml
 name: 'dbt_training'
@@ -79,8 +80,6 @@ models:
          example:
 ```
 YAMLファイルの中身の詳細説明は[ここ](https://zenn.dev/foursue/books/31456a86de5bb4/viewer/7fce02#%E5%90%84%E3%82%BF%E3%82%B0%E3%81%AE%E8%AA%AC%E6%98%8E)がわかりやすい。
-
-
 ```shell
 # 上位階層に不可視ディレクトリ作成
 $ mkdir .dbt
@@ -88,7 +87,6 @@ $ cd .dbt
 # DWH接続ファイルを作成（＊２: 後述のYAMLファイル）
 $ touch profiles.yml
 ```
-
 `*2`、 `~/.dbt/profiles.yml`
 ```yaml
 dbt_training_dw:
@@ -109,11 +107,11 @@ dbt_training_dw:
 上記は「PostgreSQL」に接続させる設定ファイル。（cf.[公式](https://docs.getdbt.com/docs/core/connect-data-platform/postgres-setup)）
 dbt はデータウェアハウス（DWH）の接続設定を `~/.dbt/profiles.yml` に書く。
 `~/.dbt/profiles.yml` は各DWH毎にプロファイルを書く。
+また、DWHの種類(PostgreSQL, Snowflake...etc.) 毎にアダプターがあり、プロファイルはアダプターごとに設定の書き方が異なる。
 
-DWHの種類(PostgreSQL, Snowflake...etc.) 毎にアダプターがあり、プロファイルはアダプターごとに設定の書き方が異なる。
 
 2. STEP 🐘 
-`(step2)`に入る前に `docker-compose.yml`を作成して下記を記述
+  `(step2)`に入る前に `docker-compose.yml`を作成
 ```yaml
 version: '3'
 services:
@@ -130,31 +128,30 @@ services:
 ```
 ```shell
 # データベース（PostgreSQL）を用意
-# 先のファイル用意があるなら「Docker」確認から
 (venv)$ touch docker-compose.yml
 (venv)$ vim docker-compose.yml
 #　　　　↓
 #　　　　#vimの説明は割愛
 #　　　　[esc][I]押して、さっきのファイルの内容コピペ
 #        [esc][:wq!]押して、抜ける。
-# Dockerいるか確認
-(venv)$　docker --version
+#
+(venv)$　docker --version # Dockerインストールされているか確認
 # gemを新規で導入するときには、まず以下のコマンドを実行
 # cf. https://qiita.com/KenAra/items/f1976caa69468323c29d -Qiita
 (venv)$ docker-compose build
 (venv)$ docker-compose up -d d # Docker起動
 (venv)$ docker-compose stop    # Docker停止
 ```
-もしここで`Docker`でつまいづいたら[コマンド参照](https://gitpress.io/c/docker_/mw_docker)してやり直し。
+    もしここで`Docker`でつまいづいたら[🐳コマンド参照](https://gitpress.io/c/docker_/mw_docker)。
 
 
 3. STEP dbt実行
 ```sell
 (venv)$ dbt run
 ```
-※モデル作成していないから、「WARNING」出ているが気にせず。
+    ※モデル作成していないから、「WARNING」出ているが気にせず。
+    　実行後 `logs/` ディレクトリができていることを確認。
 
-実行後 `logs/` ディレクトリができていることを確認。
 
 
 
