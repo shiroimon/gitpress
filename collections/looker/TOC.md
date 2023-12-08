@@ -1,4 +1,4 @@
-[HOME / Collections TOP / ](https://gitpress.io/@shi6ma/collections)
+[📚 ~/ HOME/ Collections (TOP)/](https://gitpress.io/@sh16ma/collections)
 
 ## 【🫧LOOKER】
 - - [Looker導入](looker_init)
