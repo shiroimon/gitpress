@@ -1,4 +1,4 @@
-[📚 ~/ HOME/ Collections (TOP)/](https://gitpress.io/@sh16ma/collections)
+[📚 ~/ HOME/ Collections/](https://gitpress.io/@sh16ma/collections)
 
 ## 【CLI : OS】　
 #### ⚫︎ Linux　COMMAND
