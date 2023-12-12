@@ -1,4 +1,4 @@
 [🔗 ~/ HOME/ Collections/](https://gitpress.io/@sh16ma/collections)
 
-## 【Terraform】
-- - [導入](tf_init.md)
+## 【🐚SHELL: CLI】　
+- - [Zsh / Oh-My-Zsh](mw_zsh)

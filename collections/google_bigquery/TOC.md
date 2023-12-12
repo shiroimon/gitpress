@@ -1,4 +1,4 @@
-[📚 ~/ HOME/ Collections (TOP)/](https://gitpress.io/@sh16ma/collections)
+[🔗 ~/ HOME/ Collections (TOP)/](https://gitpress.io/@sh16ma/collections)
 
 ## 【🔍BIGQUERY: 分析入門】 
 1. - [Sect.1 はじめに](google_bigquery)
