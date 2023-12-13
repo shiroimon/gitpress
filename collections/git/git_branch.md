@@ -5,6 +5,8 @@ excerpt: ブランチのあれこれ操作
 tags   : ["📍", "github", "CLI"]
 ---
 
+![branch](https://github.com/sh16ma/gitpress/assets/150888300/ba0c75c6-a2da-4804-b2c5-621ea674b5b5)
+
 ## || ブランチとは
 
 
