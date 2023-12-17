@@ -6,7 +6,7 @@ tags    : ["✴️", "dbt", "ETL/ELT", "MDS"]
 ---
 
 ## || モデリング
-
+### | データソースの準備
 ```shell
 # PostgreSQLログイン
 (venv)$ psql -U postgres # PostgreSQLログイン
@@ -64,8 +64,27 @@ postgres=# \q
 ```
 🐘[PostgreSQL](https://gitpress.io/c/postgresql/sql_postgre)のコマンド参照。
 
+### | モデル作成
+
+```shell
+(venv)$ touch models/employee_names.sql)
+```
+
+```sql
+select
+	"employee_id"
+	, concat("first_name", ' ', "last_name") as full_name
+from
+	"dbt_training"."raw"."employees"
+```
+
+```shell
+(venv)$ dbt run 
+```
+
 
 
 ## || REFERENCE 
+- [モデルを作ろう](https://zenn.dev/foursue/books/31456a86de5bb4/viewer/6037e5) -Zenn
 - []() -
 -
