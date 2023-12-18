@@ -1,4 +1,4 @@
-[HOME / Collections TOP / ](https://gitpress.io/@shi6ma/collections)
+[🔗 ~/ HOME/ Collections/](https://gitpress.io/@sh16ma/collections)
 
 ## 【JUPYTER】
 - [jupyter](jupyter.md)
