@@ -82,9 +82,20 @@ from
 (venv)$ dbt run 
 ```
 
+### | マテリアライゼーション
+
+|種類|説明|
+|:-|:-|
+|view||
+|table||
+|incremental||
+|ephemeral||
+
 
 
 ## || REFERENCE 
 - [モデルを作ろう](https://zenn.dev/foursue/books/31456a86de5bb4/viewer/6037e5) -Zenn
-- []() -
+- [SQL models](https://docs.getdbt.com/docs/build/sql-models) -dbt official
+- [Materializations](https://docs.getdbt.com/docs/build/materializations) -dbt official
+- [Incremental models](https://docs.getdbt.com/docs/build/incremental-models) -dbt official
 -
