@@ -1,6 +1,8 @@
 [🔗 ~/ HOME/ Collections/](https://gitpress.io/@sh16ma/collections)
 
-## 【📗Vim】
+## [▼📗Vim](https://gitpress.io/@sh16ma/collections/v_i_m)
 - - [導入](vim_init.mdt)
-- - [コマンド](vim_commands.md)
-- - [拡張](vim_extensions.md)
+- - [基本コマンド](vim_commands.md)
+- - [（一括）コメントアウト](vim_commentout.md)
+- - [（一括）置換](vim_replace.md)
+- - [](vim_extensions.md)
