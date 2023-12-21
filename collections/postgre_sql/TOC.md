@@ -1,12 +1,14 @@
 [🔗 ~/ HOME/ Collections/](https://gitpress.io/@sh16ma/collections)
 
-## 【🐘PostgreSQL: OSSDB】
+
+
+## [▼ 🐘PostgreSQL](https://gitpress.io/c/postgresql/): OSSDB
 - - [RDBMS](db_rdbms.md)
 - - [環境構築](sql_postgre.md)
 - - [OSSDB](db_oss_silver.md)
 
 
-<!-- ## 【OSSDB : SQL】
+## 【OSSDB : SQL】
 #### ■ DDL (Defination = 定義)
 + [CREATE](sql_ddl_crate)
 + [ALTER](sql_ddl_alter)
@@ -32,4 +34,4 @@
 + [REVOKE](sql_dcl_revoke)
 
 #### ■ DQL (Query)
-+ [SELECT](sql_dql_select) -->
++ [SELECT](sql_dql_select)

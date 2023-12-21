@@ -1,8 +1,8 @@
 ---
 date    : 2023-3-23
 title   : 🐳 Dockerfile
-excerpt : 
-tags    : ["docker_file", "CLI",]
+excerpt : XXX
+tags    : ["🐳", "docker_file", "CLI", ""]
 ---
 
 ![publicdomainq-0020603gmd](https://user-images.githubusercontent.com/28585421/194487142-42f7189e-b156-453c-b4e2-e39c9445f75a.jpg)
@@ -16,17 +16,17 @@ cf. https://publicdomainq.net/container-ship-0020603/
 
 
 #### 1. FROM
-```
+```txt
 FROM {dockerimage} # OS等々指定する。
 ```
 
 #### 2. RUN
-```
+```txt
 RUN {linux comand} # やりたいこと
 ```
 
 * ig.
-```
+```txt
 RUN touch test
 RUN echo `hello world` > test
 ```
@@ -39,6 +39,7 @@ RUN echo `hello world` > test
     - `RUN apt-get install {package}`
 * `RUN apt-get update`: 最新版取得
 * レイヤー数削減（`n.b.` ４→２→１と削減）
+
 ```txt
 # (Layer数:4)
 FROM ubuntu:latest
@@ -47,12 +48,14 @@ RUN apt-get install XXX
 RUN apt-get install YYY
 RUN apt-get install ZZZ
 ```
+
 ```txt
 # (Layer数:2)
 FROM ubuntu:latest
 RUN apt-get update
 RUN apt-get install XXX YYY ZZZ
 ```
+
 ```txt
 # (Layer:1)
 # コマンドをまとめ、改行で見やすく
@@ -65,7 +68,7 @@ RUN  apt-get update && apt-get install \
 
 #### 3. CMD
 * コンテナのデフォルトコマンドを指定。
-```
+```txt
 CMD ["executable", "param1", "param2"]
 ```
 * Dockerfileの最後に記述（原則）

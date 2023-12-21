@@ -5,6 +5,8 @@ excerpt :
 tags    : ["Anki", "学習ツール"]
 ---
 
+
+
 ## || Anki
 ```
 https://apps.ankiweb.net/ (公式)
@@ -24,12 +26,15 @@ Ankiのデッキのバックアップのためにデータを書き出すと不�
 
 [.colpkg拡張子の詳細](https://www.filedesc.com/ja/file/colpkg) - FileDesc.com
 
+
+
 ## || 使い方
 フラッシュカードのスタイル変更について
 → *1
 
 CSVファイルをGASで自動生成について
 → *2
+
 
 
 ## || REFERENCE

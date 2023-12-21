@@ -1,6 +1,6 @@
 ---
 date    : 2021-02-11
-title   : 【🐱 GitHub】 SSH接続
+title   : [GitHub] SSH接続
 excerpt : SSH接続？ 公開鍵? ってなったので備忘録
 tags    : ["GitHub", "SSH", "CLI"]
 ---

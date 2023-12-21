@@ -12,4 +12,5 @@ tags   : ["📗", "CLI", "Vim", ""]
 ## || 拡張（お洒落に！）
 
 ## || REFERENCE
+- [VimConf 2023 Tiny](https://vimconf2023-ticket.peatix.com/) -Petix
 - []() - 

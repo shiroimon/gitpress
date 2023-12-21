@@ -19,7 +19,6 @@ tags    : ["🐘", "PostgreSQL", "OSS-DB", "SQL", "環境構築", "iTearm2"]
 
 
 ## || 環境構築
-
 ### | インストール
 * インストール
 ```shell
@@ -236,7 +235,6 @@ CREATE TABLE
 
 # スキーマ内のテーブル一覧
 mydb＝♯ \dt myschema.*
-
 ```
 
       ※ point型は、PostgreSQL独自のデータ型
@@ -362,17 +360,15 @@ Role name  |                         Attributes                         | Member
 -----------+------------------------------------------------------------+-----------
 postgres   | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
 new_roal   |                                                            | {}
-
 postres＝♯ \q
 $ psql -U new_roal -d mydb    #新しいロール（user）再接続
 Password for user new_roal:🗝     #passwordと入力
 psql(12.3)
-
 msdb＝＞
-
 ```
+
 |||
-|-|-|
+|:-|:-|
 |ロール一覧|`\du`|
 |ロール新規作成|`CREATE ROLE {ロール名} WITH LOGIN PASSWORD {password};`|
 |ロール新規作成(オプション指定)|`CREATE ROLE {ロール名} WITH {Option} LOGIN PASSWORD {password};`|
@@ -387,7 +383,9 @@ msdb＝＞
 ```shell
 postres＝♯ CREATE ROAL momo WITH createdb createrole LOGIN PASSWORD 'peach';
 ```
+
 ※ オプションの数は割と多いので、使用したら適宜追記。
+
 |||
 |-|-|
 |Superuser|スーパーユーザーはほとんどの権限を持つことになるので作成する場合は注意が必要。尚 PostgreSQL インストール時に自動で作成される `postgres ロール`はスーパーユーザー。 `NOSUPERUSER` を指定した場合はスーパーユーザーではないロールを作成可能。|
@@ -406,4 +404,10 @@ postres＝♯ CREATE ROAL momo WITH createdb createrole LOGIN PASSWORD 'peach';
 |USER {ロール名}||
 |SYSID uid||
 
-Cf. [ロールを作成する(CREATE ROLE)](https://www.dbonline.jp/postgresql/role/index2.html)
+cf. [ロールを作成する(CREATE ROLE)](https://www.dbonline.jp/postgresql/role/index2.html)
+
+
+
+## || REFERNCE
+- [PostgreSQLのロール・権限のここがわかりづらい](https://speakerdeck.com/tameguro/postgresqlnororuquan-xian-nokokogawakaridurai) - speakerdeck
+- [PostgreSQL で時系列データの扱いを考える](https://zenn.dev/hasegawasatoshi/articles/7659dc2b9a0081) - Zenn

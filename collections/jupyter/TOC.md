@@ -1,5 +1,6 @@
 [🔗 ~/ HOME/ Collections/](https://gitpress.io/@sh16ma/collections)
 
+
 ## 【JUPYTER】
 - [jupyter](jupyter.md)
 - [ｼｮｰﾄｶｯﾄ](jupyter_shortcut)
