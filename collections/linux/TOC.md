@@ -1,24 +1,24 @@
 [🔗 ~/ HOME/ Collections/](https://gitpress.io/@sh16ma/collections)
 
 
-## 【CLI : OS】　
-#### ⚫︎ Linux　COMMAND
-- - [$sort](linux_sort)
-- - [$split](linux_split)
 
+## 🐧Linux CLI: OS
 #### ⚫︎ Linux Distribution
-- - [Ubuntu](os_ubuntu)
+- - [Ubuntu](os_ubuntu.md)
 - - [CentOS](os_centos)
 
-#### ⚫︎ Linux 用途別
-- - [ファイル分割したい](want_)
-- - [ファイル検索したい](want_)
 
 
+## 🐧Linux CLI: Middleware
+#### ⚫︎EDITER
+- - [Vim](mw_vim)
+- - [Neovim](mw_nvim)
 
-## 【CLI : Middleware】
-- - [Vim / NeoVim](mw_vim)
+#### ⚫︎SHELL
 - - [Zsh / Oh-My-Zsh](mw_zsh)
+- - [Bash](mw_bash)
+
+#### ⚫︎FILE
 - - [YAML](mw_yaml.md)
 
 #### ⚫︎ PCS (PackageControlSystem)
