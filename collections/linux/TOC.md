@@ -11,11 +11,11 @@
 
 ## 🐧Linux CLI: Middleware
 #### ⚫︎EDITER
-- - [Vim](mw_vim)
+- - [Vim](mw_vim.md)
 - - [Neovim](mw_nvim)
 
 #### ⚫︎SHELL
-- - [Zsh / Oh-My-Zsh](mw_zsh)
+- - [Zsh / Oh-My-Zsh](mw_zsh.md)
 - - [Bash](mw_bash)
 
 #### ⚫︎FILE
