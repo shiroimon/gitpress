@@ -1,4 +1,8 @@
----
+----
+date    : 2024-12-30
+title   : 🐰Ubuntu
+excerpt : 
+tags    : ["Ubuntu", "環境構築", "Linux", "Mac"]
 ---
 
 
