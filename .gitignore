@@ -1,5 +1,5 @@
-*.png
+# *.png
 Icon
 .DS_Store
-TMP.md
+# TMP.md
 "Icon\r"
