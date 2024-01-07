@@ -1,8 +1,8 @@
 ---
 date    : 2024-12-30
-title   : 🐰Ubuntu
-excerpt : 
-tags    : ["Ubuntu", "環境構築", "Linux", "Mac"]
+title   : 🐰 Ubuntu
+excerpt : MacBoook air 2015の延命に
+tags    : ["Ubuntu", "環境構築", "Linux", "Mac",]
 ---
 
 
@@ -39,12 +39,13 @@ tags    : ["Ubuntu", "環境構築", "Linux", "Mac"]
 
 
 ## || Reference
-### | 全体概要、インストール前後にお世話になる
+### | 全体概要、OSインストール前後にお世話になる
 - [古い 11 インチ MacBook Air を Ubuntu にして現役化](https://qiita.com/suzukiplan/items/87fd32fe8e94b5a9bde5) - Qiita
 - [MacにUbuntuをインストール](https://www.maclab.tokyo/document/ubuntu-install/6827/) - Maclab
 - [Ubuntu推奨のEtcherでUSBメモリに起動イメージを焼く](https://kinneko.fanbox.cc/posts/2415122) - PIXIVFANBOX
 - [Create a bootable USB stick on macOS](https://ubuntu.com/tutorials/create-a-usb-stick-on-macos#1-overview) - Ubuntu
-### | インストール後の細かな設定でお世話になる
+
+### | OSインストール後の細かな設定でお世話になる
 - [MacBook Air(Mid 2011)へubuntuをインストールする](https://qiita.com/krile136/items/0a8db8437ca9081a1e1e) - Qiita
 - [サポート切れのmacbookairにubuntuを入れるメモ](https://zenn.dev/bowz/articles/1ea75e3b692399) - Zenn
 - [Linuxが分からないので古いMBA：MacBook Air (11-inch, Early 2014)にUbuntu Desktop 22.04.2 LTSを入れてみる。](https://note.com/0375/n/nf6cc8242cc3d#4cc4fa31-58b7-4c38-b47b-c68a622b13cb) - note
