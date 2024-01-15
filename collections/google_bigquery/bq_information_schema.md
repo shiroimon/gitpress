@@ -84,3 +84,4 @@ ORDER BY
 + [INFORMATION_SCHEMAでBigQueryの利用状況を確認](https://www.niandc.co.jp/sol/tech/date20200923_1893.php) - PlanB
 + [BigQueryのメタ情報を見てみた＆使ってみた](https://qiita.com/CraveOwl/items/809b70f2c49c28012f2a) - Qiita
 + [[bigquery]特定のカラム名を持っているテーブル情報を探す方法](https://apl-py.com/tec/bigquery%E7%89%B9%E5%AE%9A%E3%81%AE%E3%82%AB%E3%83%A9%E3%83%A0%E5%90%8D%E3%82%92%E6%8C%81%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E6%83%85%E5%A0%B1%E3%82%92%E6%8E%A2) - 目黒で働く分析担当の作業メモ
++ [INFORMATION_SCHEMA.JOBS_BY_* ビューで BigQuery のテーブルの利用状況を把握する](https://medium.com/google-cloud-jp/bigquery-table-usage-investigation-836c31eafe4b) - Medium
