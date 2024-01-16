@@ -1,11 +1,11 @@
-[🔗 ~/ HOME/ Collections/](https://gitpress.io/@sh16ma/collections)
+[▶︎ HOME/ Collections/](https://gitpress.io/@sh16ma/collections)
 
 
-
-## [▼ 🔍BIGQUERY](https://gitpress.io/c/bigquery/): SQL
+## [▼ 🔍BIGQUERY](https://gitpress.io/c/bigquery/)
+### ⚫︎ GoogleSQL
 - - [SQL歴史](sql_history.md)
 
-#### ⚫︎SQL - 句（節）
+#### 句（節）
 - - [EXISTS句](sql_exists.md)
 - - [LIMIT / OFFSET句](sql_limit_offset.md)
 - - [QUALIFY句](sql_qualify.md)
@@ -13,15 +13,16 @@
 - - [OVER句 / WINDOW FRAME句](sql_over_window_frame.md)
 - - [TABLESAMPLE SYSTEM句](sql_tablesample.md)
 
-#### ⚫︎SQL - 演算子
+#### 演算子
 - - [UNION](sql_union.md)
 - - [EXCEPT](sql_except.md)
 - - [INTERSECT](sql_intersect.md)
 - - [PIVOT / UNPIVOT](sql_pivot_unpivot.md)
 - - [UNNEST](sql_unnest.md)
 
-#### ⚫︎SQL - 関数
+#### 関数
 - - [approx_count_distinct()](sql_approx_count_distinct.md)
+- - [array_agg()](sql_array_agg.md)
 - - [coalesce()](sql_coalesce.md)
 - - [countif()](sql_countif.md)
 - - [extract()](sql_extract.md)
@@ -36,25 +37,19 @@
 - - [row_number()](sql_row_number.md)
 - - [safe_cast()](sql_safe_cast.md)
 - - [split()](sql_split.md)
+- - [struct()](sql_struct.md)
 - - [st_distance()](sql_st_distance.md)
 - - [nth_value()](sql_nth_value.md)
 - - [first_value() / last_value()](-)
 - - [percentile_()](sql_percentile.md)
 
-#### ⚫︎SQL - データ型
-- - [STRUCT()](sql_struct.md)
-- - [array_agg()](sql_array_agg.md)
 
-
-
-
-## [▼ 🔍BIGQUERY](https://gitpress.io/c/bigquery/): CLI
+### ⚫︎ CLI
 - - [$bq](cli_bq_init.md)
 
 
 
-
-## [▼ 🔍BIGQUERY](https://gitpress.io/c/bigquery/): ADVANCE
+### ⚫︎ ADVANCE
 - - [BigQueryScriptting](sql_bqscripting.md)
 - - [_TABLE_](bq_meta_table.md)
 - - [INFORMATION_SCHEMA](bq_information_schema.md)
@@ -62,23 +57,33 @@
 - - [BQカスタムクエリ](sql_custom_query.md)
 - - [BQクエリパラメータ](sql_queryparameter.md)
 
-#### ⚫︎技
+#### 技
 - - [BQもっと速くしたい](bq_faster.md)
 - - [BQ裏技法](bq_underhanded.md)
 - - [BQエクスポート](bq_export.md)
 - - [BQ擬似中間テーブル](bq_table.md)
 
-#### ⚫︎エラー
-- - [BQエラー文集](bq_error.md)
+#### ML
+- - [BigQuery MLについて](ml_index.md)
+- - [AutoML](ml_automl.md)
+- - [ハイパラチューニング](ml_hyperpara.md)
+- - [ロジスティック回帰](ml_logreg.md)
+- - [時系列モデルの予測](ml_time_series.md)
+- - [RFM分析、K平均クラスタリング](ml_rfm_k-means.md)
+- - [Jupyter⇔BigQuery](ds_jupyter_bigquery.md)
 
-#### ⚫︎アクセス解析
+#### アクセス解析
 - - [_TABLE_SUFFIX](sql_table_suffix.md)
 - - [GA4](ga_ga4.md)
 - - [GA4 データフラット化](ga_ga4_get_flaten.md)
 
+#### エラー
+- - [BQエラー文集](bq_error.md)
 
 
-## [▼ 🔍BIGQUERY](https://gitpress.io/c/bigquery/): 分析入門
+
+### ⚫︎ 分析
+#### Udemy
 1. - [Sect.1 はじめに](google_bigquery.md)
 2. - [Sect.2~3 基本設定](google_bigquery_2_3.md)
 3. - [Sect.4 基計文法](google_bigquery_4.md)
@@ -91,10 +96,7 @@
 10. - [Sect.11練習問題](google_bigquery_11.md)
 11. - [Sect.12 おまけ](google_bigquery_12.md)
 
-
-
-## [▼ 🔍BIGQUERY](https://gitpress.io/c/bigquery/): DS
-#### ⚫︎　DS100ノック
+#### DS100ノック
 - - [概要](ds_100knock.md)
 - - [挑戦](ds_100knock_sql.md)
 - - [1~10](ds_100knock_sql_to10.md)
@@ -107,12 +109,3 @@
 - - [71~80](ds_100knock_sql_to80.md)
 - - [81~90](ds_100knock_sql_to90.md)
 - - [91~100](ds_100knock_sql_to100.md)
-
-#### ⚫︎　ML
-- - [BigQuery MLについて](ml_index.md)
-- - [AutoML](ml_automl.md)
-- - [ハイパラチューニング](ml_hyperpara.md)
-- - [ロジスティック回帰](ml_logreg.md)
-- - [時系列モデルの予測](ml_time_series.md)
-- - [RFM分析、K平均クラスタリング](ml_rfm_k-means.md)
-- - [Jupyter⇔BigQuery](ds_jupyter_bigquery.md)

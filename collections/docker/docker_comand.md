@@ -1,7 +1,7 @@
 ---
 date    : 2023-3-23
-title   : 🐳 Dockerコマンド一覧
-excerpt : XXX
+title   : 🐳 Docker
+excerpt : コマンド一覧
 tags    : ["🐳", "docker", "comand", "CLI"]
 ---
 

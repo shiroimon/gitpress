@@ -1,4 +1,4 @@
-[🔗 ~/ HOME/ Collections/](https://gitpress.io/@sh16ma/collections)
+[▶︎ HOME/ Collections/](https://gitpress.io/@sh16ma/collections)
 
 
 ## [▼ 🆔 Terraform](https://gitpress.io/c/terraform/)

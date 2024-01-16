@@ -1,7 +1,7 @@
 ---
 date    : 2023-3-23
 title   : 🐳 Dockerfile
-excerpt : XXX
+excerpt : Dockerの真髄
 tags    : ["🐳", "docker_file", "CLI", ""]
 ---
 
@@ -9,6 +9,9 @@ tags    : ["🐳", "docker_file", "CLI", ""]
 cf. https://publicdomainq.net/container-ship-0020603/
 
 ## || Dockerfile
+
+
+## || 書き方
 ### | instraction (基本)
 1. **FROM** : `FROM {dockerimage} # OS等々指定` 
 2. **RUN** : `RUN {linux comand} # やりたいこと`
