@@ -1,7 +1,7 @@
 ---
 date   : 2022-03-01
-title  : EXCEPT演算子
-excerpt:
+title  : 🔍 EXCEPT演算子
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "except"]
 ---
 

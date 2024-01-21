@@ -1,6 +1,6 @@
 ---
 date   : 2022-03-02
-title  : 時系列
+title  : 🔍 時系列
 excerpt: BigQueryのユーザー定義関数について
 tags   : ["Google BigQuery", "SQL", "time series", "時系列"]
 ---

@@ -17,11 +17,12 @@ with
             , category_medium_cd
             , category_small_cd
             , trunc(case unit_price is null
-                when true then (select mean from(select avg(unit_price)over() as mean from `prj-test3.100knocks.product`)group by mean)
+                when true then (select mean from (select avg(unit_price) over() as mean from `prj-test3.100knocks.product`)group by mean)
                 else unit_price
             end) as unit_cost
-            , trunc(case unit_cost is null
-                when true then (select mean from(select avg(unit_cost)over() as mean from `prj-test3.100knocks.product`)group by mean)
+            , trunc(
+                case unit_cost is null
+                when true then (select mean from (select avg(unit_cost) over() as mean from `prj-test3.100knocks.product`)group by mean)
                 else unit_cost
             end) as unit_cost
         from
@@ -130,9 +131,9 @@ with prep_tb as (
     select
         format_date('%Y', parse_date('%Y%m%d', cast(sales_ymd as string))) as sales_y
         , *
-    from `prj-test3.100knocks.receipt`
-        left join `prj-test3.100knocks.customer`
-            using(customer_id)
+    from 
+        `prj-test3.100knocks.receipt`
+        left join `prj-test3.100knocks.customer` using(customer_id)
 )
 -- (select sum(amount) as ttl_amount from prep_tb)
 select

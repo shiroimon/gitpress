@@ -1,7 +1,7 @@
 ---
 date    : 2022-01-01
-title   : BQML ロジステック回帰
-excerpt : 
+title   : 🔍 BQML ロジステック回帰
+excerpt : ---
 tags    : ["Google BigQuery", "BigQuery ML"]
 ---
 ## || ロジステック回帰

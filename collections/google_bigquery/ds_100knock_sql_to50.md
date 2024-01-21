@@ -1,8 +1,8 @@
 ---
 date    : 2021-11-15
-title   : 41〜5０本ノック
-excerpt : 
-tags    : ["DataScientist", "SQL", "BigQuery"]
+title   : 🔍 100本ノック
+excerpt : 41〜5０本ノック
+tags    : ["🔍", "DataScientist", "SQL", "BigQuery"]
 ---
 
 ## || データサイエンス100本ノック（構造化データ加工編） SQL編
@@ -99,43 +99,32 @@ with
             , amount
         from
             `100knocks.receipt`
-        left join
-            `100knocks.customer` using(customer_id)
+            left join `100knocks.customer` using(customer_id)
         where 
             gender is not null
     )
-select
-    *
-from
-    (select
-        age_category
-        , sum(amount) as male
-    from 
-        tb
-    where 
-        gender = "男性"
-    group by 
-        age_category) as m
-left join
-    (select
-        age_category
-        , sum(amount) as female
-    from 
-        tb
-    where 
-        gender = "女性"
-    group by 
-        age_category) as f using(age_category)
-left join
-    (select
-        age_category
-        , sum(amount) as unknown
-    from 
-        tb
-    where 
-        gender = "不明"
-    group by 
-        age_category) as u using(age_category)
+select * from
+    (select age_category, sum(amount) as male
+     from tb
+     where gender = "男性"
+     group by age_category) as m
+
+    left join (
+        select
+            age_category
+            , sum(amount) as female
+        from tb
+        where gender = "女性"
+        group by age_category) as f using(age_category)
+
+    left join (
+        select
+            age_category
+            , sum(amount) as unknown
+        from tb
+        where gender = "不明"
+        group by age_category) as u using(age_category)
+
 order by 
     age_category
 ;
@@ -179,26 +168,22 @@ with
             , gender
             , age
             , case  
-                when age < 20 then "10's"
-                when age between 20 and 29 then "20's"
-                when age between 30 and 39 then "30's"
-                when age between 40 and 49 then "40's"
-                when age between 50 and 59 then "50's"
-                when age between 60 and 69 then "60's"
-                when age between 70 and 79 then "70's"
-                else "Over80's"
-             end as age_category
+                  when age < 20              then "10's"
+                  when age between 20 and 29 then "20's"
+                  when age between 30 and 39 then "30's"
+                  when age between 40 and 49 then "40's"
+                  when age between 50 and 59 then "50's"
+                  when age between 60 and 69 then "60's"
+                  when age between 70 and 79 then "70's"
+                  else "Over80's"
+              end as age_category
             , amount
         from
             `prj-test3.100knocks.receipt`
-        left join
-            `prj-test3.100knocks.customer`
-            using(customer_id)
+            left join `prj-test3.100knocks.customer` using(customer_id)
         where gender is not null
     )
-select
-    *
-from
+select * from
     (select
         '00' as gender_cd
         , age_category

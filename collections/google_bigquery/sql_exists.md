@@ -1,7 +1,7 @@
 ---
 date   : 2022-03-01
-title  : EXISTS句（式）
-excerpt:
+title  : 🔍 EXISTS句（式）
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "exists"]
 ---
 

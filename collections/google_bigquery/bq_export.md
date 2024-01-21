@@ -1,7 +1,7 @@
 ---
 date    : 2023-03-24
 title   : 🔍 エクスポート機能
-excerpt : 
+excerpt : ---
 tags    : ["Google BigQuery", "export"]
 ---
 

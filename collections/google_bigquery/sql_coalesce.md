@@ -1,7 +1,7 @@
 ---
 date   : 2022-02-25
-title  : COALESCE関数
-excerpt: 
+title  : 🔍 COALESCE関数
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "分析", "coalesce"]
 ---
 

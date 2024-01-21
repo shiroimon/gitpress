@@ -1,7 +1,7 @@
 ---
 date   : 2021-09-11
-title  : 分析入門 - Session2~3
-excerpt: BigQuery基本設定
+title  : 🔍 分析入門
+excerpt: - Session2~3
 tags   : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 ---
 

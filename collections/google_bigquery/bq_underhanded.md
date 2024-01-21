@@ -1,7 +1,7 @@
 ---
 date    : 2023-01-01
 title   : 🔍裏技法 
-excerpt : XXXX
+excerpt : ---
 tags    : ["🔍", "BigQuery", "GoogleCloud"]
 ---
 

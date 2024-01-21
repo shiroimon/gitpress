@@ -1,7 +1,7 @@
 ---
 date    : 2021-09-24
-title   : PARSE_DATE関数
-excerpt : 
+title   : 🔍 PARSE_DATE関数
+excerpt : ---
 tags    : ["Google BigQuery", "SQL", "parse_date", "日付変換"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 date    : 2022-08-25
-title   : LAST_DAY関数
-excerpt : 
+title   : 🔍 LAST_DAY関数
+excerpt : ---
 tags    : ["Google BigQuery", "last_day"]
 ---
 ## || last_day()

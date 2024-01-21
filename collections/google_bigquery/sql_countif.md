@@ -1,7 +1,7 @@
 ---
 date   : 2022-02-29
-title  : COUNTIF関数
-excerpt: 
+title  : 🔍 COUNTIF関数
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "分析", "countif"]
 ---
 

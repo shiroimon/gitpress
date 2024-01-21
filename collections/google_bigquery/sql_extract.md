@@ -1,7 +1,7 @@
 ---
 date   : 2022-05-11
-title  : EXTRUCT関数
-excerpt:
+title  : 🔍 EXTRUCT関数
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "extruct"]
 ---
 

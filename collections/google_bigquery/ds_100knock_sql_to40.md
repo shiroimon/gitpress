@@ -1,8 +1,8 @@
 ---
 date    : 2021-11-15
-title   : 3１〜4０本ノック
-excerpt : 
-tags    : ["DataScientist", "SQL", "BigQuery"]
+title   : 🔍 100本ノック
+excerpt : 3１〜4０本ノック
+tags    : ["🔍 ", "DataScientist", "SQL", "BigQuery"]
 ---
 
 ## || データサイエンス100本ノック（構造化データ加工編） SQL編
@@ -149,8 +149,7 @@ select
     , store.store_name
 from
     `100knocks.receipt` receipt
-left join
-    (select distinct store_cd, store_name from `100knocks.store`) as store using(store_cd)
+    left join (select distinct store_cd, store_name from `100knocks.store`) as store using(store_cd)
 limit 10
 ;
 ```

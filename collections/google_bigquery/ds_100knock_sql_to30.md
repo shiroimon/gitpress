@@ -1,8 +1,8 @@
 ---
 date    : 2021-11-15
-title   : 2１〜3０本ノック
-excerpt : 
-tags    : ["DataScientist", "SQL", "BigQuery"]
+title   : 🔍 100本ノック
+excerpt : 2１〜3０本ノック
+tags    : ["🔍", "DataScientist", "SQL", "BigQuery"]
 ---
 
 ## || データサイエンス100本ノック（構造化データ加工編） SQL編
@@ -209,18 +209,14 @@ with
             , pow(cast(amount as float64) - m.mean, 2) as deviation_square
         from 
             `100knocks.receipt`
-        left join 
-            mean_tb m using(store_cd)
+            left join mean_tb m using(store_cd)
     )
 select
     store_cd
     , avg(deviation_square) as variance
-from 
-    diff_tb
-group by 
-    store_cd
-order by    
-    variance desc
+from  diff_tb
+group by store_cd
+order by variance desc
 limit 5
 ;
 ```

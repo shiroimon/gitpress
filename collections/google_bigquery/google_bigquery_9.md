@@ -1,7 +1,7 @@
 ---
 date   : 2021-09-05
-title  : 分析入門 - Section9
-excerpt: BigQueryサブクエリ
+title  : 🔍 分析入門 
+excerpt: - Section9: サブクエリ
 tags   : ["Google BigQuery", "SQL", "分析", "サブクエリ", "Udemy講座"]
 ---
 

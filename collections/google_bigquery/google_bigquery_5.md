@@ -1,7 +1,7 @@
 ---
 date   : 2021-09-09
-title  : 分析入門 - Section5
-excerpt: BigQuery集計関数
+title  : 🔍 分析入門
+excerpt: - Section5
 tags   : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 ---
 

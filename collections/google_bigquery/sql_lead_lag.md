@@ -1,7 +1,7 @@
 ---
 date   : 2022-03-02
-title  : LEAD関数 / LAG関数
-excerpt: 
+title  : 🔍 LEAD関数 / LAG関数
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "分析関数", "lead", "lag"]
 ---
 

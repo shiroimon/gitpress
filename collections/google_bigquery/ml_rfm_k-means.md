@@ -1,7 +1,7 @@
 ---
 date    : 2022-01-01
-title   : RFM分析結果からk-平均クラスタリング
-excerpt : 
+title   : 🔍 RFM分析結果からk-平均クラスタリング
+excerpt : ---
 tags    : ["Google BigQuery", "BQML", "RFM", "k-means"]
 ---
 ## || RFM分析

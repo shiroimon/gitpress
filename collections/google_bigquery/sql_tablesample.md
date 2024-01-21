@@ -2,7 +2,7 @@
 date    : 2023-01-01
 title   : 🔍 TABLESAMPLE SYSTEM句
 excerpt : ランダムサンプリング抽出
-tags    : ["🔍", "BigQuery", "GoogleCloud"]
+tags    : ["🔍", "BigQuery", "GoogleCloud", "データ分析"]
 ---
 
 ## || TABLESAMPLE SYSTEM句

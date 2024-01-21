@@ -1,7 +1,7 @@
 ---
 date   : 2021-09-10
-title  : 分析入門 - Section4
-excerpt: BigQuery基本文法
+title  : 🔍 分析入門
+excerpt:  - Section4
 tags   : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 ---
 

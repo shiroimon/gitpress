@@ -1,7 +1,7 @@
 ---
 date    : 2022-01-01
 title   : 🔍 ERROR
-excerpt : エラー集
+excerpt : ---
 tags    : ["🔍", "Google BigQuery", "error"]
 ---
 

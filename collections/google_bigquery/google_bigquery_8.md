@@ -1,7 +1,7 @@
 ---
 date   : 2021-09-06
-title  : 分析入門 - Section8
-excerpt: BigQueryテーブル結合
+title  : 🔍 分析入門 
+excerpt: - Section8: テーブル結合
 tags   : ["Google BigQuery", "SQL", "分析", "ER図", "join", "Udemy講座"]
 ---
 

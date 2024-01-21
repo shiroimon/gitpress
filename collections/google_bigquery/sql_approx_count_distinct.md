@@ -1,7 +1,7 @@
 ---
 date   : 2022-03-01
-title  : 近似集計関数
-excerpt: 
+title  : 🔍 近似集計関数
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "分析", "approx_count_distinct"]
 ---
 

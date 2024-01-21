@@ -1,11 +1,11 @@
 ---
 date    : 2021-09-24
-title   : 概要
-excerpt : 
-tags    : ["DataScientist", "GitHub", "Docker", "SQL", "R", "Python"]
+title   : 🔍 100本ノック
+excerpt : 概要
+tags    : ["🔍", "DataScientist", "GitHub", "Docker", "SQL", "R", "Python"]
 ---
 
-## || なにこれ
+## || なにこれ。。。？
 > 一般社団法人データサイエンティスト協会（所在地：東京都港区、代表理事：草野 隆史、以下データサイエンティスト協会）は、構造化データの加工について実践的に学ぶことができる無料の学習環境「データサイエンス100本ノック（構造化データ加工編）」をGitHubに公開しました。
 >
 >「データサイエンス100本ノック（構造化データ加工編）」は、データサイエンス初学者を対象に、データの加工・集計、統計学や機械学習を駆使したモデリングの前処理等を学べるよう、データと実行環境構築スクリプト、演習問題をワンセットにしています。
@@ -40,7 +40,7 @@ $ jupyter lab
 ```
 
 
-## || cf.
+## || Reference
 + [【データサイエンス】データサイエンス100本ノック！実装までの道程](https://www.youtube.com/watch?v=mh8Z5d0-0PU) - Youtube
 + [Macでデータサイエンス100本ノックを動かす方法](https://qiita.com/karaage0703/items/1b18b1f4ab65d35afb5f)- Qiita
 + [データサイエンス100本ノックを、Google ColabとAzure Notebooksで気軽に行いたい！](https://qiita.com/noguhiro2002/items/de49db61b69c3dbc9282)- Qiita

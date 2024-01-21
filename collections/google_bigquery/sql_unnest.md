@@ -1,7 +1,7 @@
 ---
 date   : 2022-03-02
-title  : UNNEST関数
-excerpt: 
+title  : 🔍 UNNEST関数
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "unnest()"]
 ---
 

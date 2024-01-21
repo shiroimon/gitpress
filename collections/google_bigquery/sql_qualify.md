@@ -1,6 +1,6 @@
 ---
 date   : 2022-04-22
-title  : QUALIFY句
+title  : 🔍 QUALIFY句
 excerpt: 分析関数の結果をフィルタリング
 tags   : ["Google BigQuery", "QUALIFY"]
 ---

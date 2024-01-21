@@ -1,8 +1,8 @@
 ---
 date    : 2021-11-15
-title   : 7１〜8０本ノック
-excerpt : 
-tags    : ["DataScientist", "SQL", "BigQuery"]
+title   : 🔍 100本ノック
+excerpt : 7１〜8０本ノック
+tags    : ["🔍", "DataScientist", "SQL", "BigQuery"]
 ---
 
 ## || データサイエンス100本ノック（構造化データ加工編） SQL編
@@ -15,16 +15,15 @@ with tb as (
         , parse_date('%Y%m%d', cast(sales_ymd as string)) as sales_ymd
         , parse_date('%Y%m%d', cast(application_date as string)) as application_date
         , date_diff(
-            parse_date('%Y%m%d', cast(sales_ymd as string))
-            , parse_date('%Y%m%d', cast(application_date as string))
-            , month
+                parse_date('%Y%m%d', cast(sales_ymd as string))
+              , parse_date('%Y%m%d', cast(application_date as string))
+              , month
           ) as month_diff
-    from `prj-test3.100knocks.receipt`
-        join `prj-test3.100knocks.customer`
-            using(customer_id)
+    from 
+        `prj-test3.100knocks.receipt`
+        join `prj-test3.100knocks.customer` using(customer_id)
     )
-select
-    *
+select *
 from tb
 where month_diff > 1
 limit 10
@@ -65,25 +64,25 @@ with tb as (
         , sales_ymd
         , application_date
         , datetime(
-            -- , format_date('%Y', parse_date('%Y%m%d', cast(sales_ymd as string)))
-            cast(substr(cast(sales_ymd as string), 1, 4) as int64)
-            , cast(substr(cast(sales_ymd as string), 5, 2) as int64)
-            , cast(substr(cast(sales_ymd as string), 7, 2) as int64)
-            , 0
-            , 0
-            , 0
-        ) as sales_ymd_time
+              -- , format_date('%Y', parse_date('%Y%m%d', cast(sales_ymd as string)))
+              cast(substr(cast(sales_ymd as string), 1, 4) as int64)
+              , cast(substr(cast(sales_ymd as string), 5, 2) as int64)
+              , cast(substr(cast(sales_ymd as string), 7, 2) as int64)
+              , 0
+              , 0
+              , 0
+          ) as sales_ymd_time
         , datetime(
-            cast(substr(cast(application_date as string), 1, 4) as int64)
-            , cast(substr(cast(application_date as string), 5, 2) as int64)
-            , cast(substr(cast(application_date as string), 7, 2) as int64)
-            , 0
-            , 0
-            , 0
-        )as application_date_time
-    from `prj-test3.100knocks.receipt`
-        join `prj-test3.100knocks.customer`
-            using(customer_id)
+              cast(substr(cast(application_date as string), 1, 4) as int64)
+              , cast(substr(cast(application_date as string), 5, 2) as int64)
+              , cast(substr(cast(application_date as string), 7, 2) as int64)
+              , 0
+              , 0
+              , 0
+          ) as application_date_time
+    from 
+        `prj-test3.100knocks.receipt`
+        join `prj-test3.100knocks.customer` using(customer_id)
 )
 select
     customer_id
@@ -110,9 +109,9 @@ select
         , parse_date('%Y%m%d', cast(sales_ymd as string))
         , day
     ) as date_diff
-from `prj-test3.100knocks.receipt`
-    join `prj-test3.100knocks.customer`
-        using(customer_id)
+from 
+    `prj-test3.100knocks.receipt`
+    join `prj-test3.100knocks.customer` using(customer_id)
 limit 10
 ;
 ```

@@ -37,6 +37,7 @@
 - - [row_number()](sql_row_number.md)
 - - [safe_cast()](sql_safe_cast.md)
 - - [split()](sql_split.md)
+- - [starts_with() / ends_with()](sql_starts_ends_with.md)
 - - [struct()](sql_struct.md)
 - - [st_distance()](sql_st_distance.md)
 - - [nth_value()](sql_nth_value.md)
@@ -45,17 +46,17 @@
 
 
 ### ⚫︎ CLI
-- - [$bq](cli_bq_init.md)
+- - [$bq](bq_init.md)
 
 
 
 ### ⚫︎ ADVANCE
-- - [BigQueryScriptting](sql_bqscripting.md)
+- - [BigQueryScriptting](bq_bqscripting.md)
 - - [_TABLE_](bq_meta_table.md)
 - - [INFORMATION_SCHEMA](bq_information_schema.md)
 - - [BQクエリ関数化（UDF）](bq_udf.md)
-- - [BQカスタムクエリ](sql_custom_query.md)
-- - [BQクエリパラメータ](sql_queryparameter.md)
+- - [BQカスタムクエリ](bq_custom_query.md)
+- - [BQクエリパラメータ](bq_query_parameter.md)
 
 #### 技
 - - [BQもっと速くしたい](bq_faster.md)

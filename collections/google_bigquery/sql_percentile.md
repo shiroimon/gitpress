@@ -1,7 +1,7 @@
 ---
 date   : 2022-03-14
-title  : PERCENTAILE_CONT関数 / PERCENTAIL_DISC関数
-excerpt: 
+title  : 🔍 PERCENTAILE_CONT関数 / PERCENTAIL_DISC関数
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "window関数", "percentile_cont()", "percentile_disc()"]
 ---
 

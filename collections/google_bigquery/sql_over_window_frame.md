@@ -1,7 +1,7 @@
 ---
 date    : 2023-11-06
 title   : 🔍 OVER句
-excerpt : XXXX
+excerpt : ---
 tags    : ["🔍", "BigQuery", "GoogleCloud", "over()"]
 ---
 

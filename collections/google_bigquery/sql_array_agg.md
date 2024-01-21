@@ -1,7 +1,7 @@
 ---
 date    : 2023-09-21
-title   : ARRAY_AGG関数
-excerpt : 
+title   : 🔍 ARRAY_AGG関数
+excerpt : ---
 tags    : ["Google BigQuery", "array_agg"]
 ---
 ## || array_agg()

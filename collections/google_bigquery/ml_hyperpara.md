@@ -1,7 +1,7 @@
 ---
 date    : 2022-01-01
-title   : BigQueryMlでハイパラチューニング
-excerpt : 
+title   : 🔍 BigQueryMlでハイパラチューニング
+excerpt : ---
 tags    : ["Google BigQuery", "Hyperparameters"]
 ---
 ## || BigQueryMlでハイパラチューニング

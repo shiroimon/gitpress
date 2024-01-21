@@ -1,7 +1,7 @@
 ---
 date   : 2021-09-02
-title  : 分析入門 - Section12
-excerpt: BigQueryおまけ（可視化）
+title  : 🔍 分析入門 
+excerpt: - Section12: 可視化（おまけ）
 tags   : ["Google BigQuery", "SQL", "分析", "DataPortal", "Udemy講座"]
 ---
 

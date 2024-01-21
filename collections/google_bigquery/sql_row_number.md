@@ -1,7 +1,7 @@
 ---
 date   : 2021-09-12
-title  : ROW_NUMBER関数
-excerpt: 
+title  : 🔍 ROW_NUMBER関数
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "分析", "row_number"]
 ---
 

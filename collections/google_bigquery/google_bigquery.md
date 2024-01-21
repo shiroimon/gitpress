@@ -1,7 +1,7 @@
 ---
 date   : 2021-09-12
-title  : 分析入門 - Section1
-excerpt: BigQuery基本の「き」
+title  : 🔍 分析入門 
+excerpt: - Section1：BigQuery
 tags   : ["BigQuery", "SQL", "分析", "Udemy講座", "基本"]
 ---
 

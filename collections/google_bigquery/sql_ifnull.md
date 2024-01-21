@@ -1,7 +1,7 @@
 ---
 date   : 2022-05-11
-title  : IFNULL関数
-excerpt: 
+title  : 🔍 IFNULL関数
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "ifnull"]
 ---
 

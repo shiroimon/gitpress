@@ -1,7 +1,7 @@
 ---
 date   : 2022-04-11
-title  : SAFE_CAST関数
-excerpt: 
+title  : 🔍 SAFE_CAST関数
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "safe_cast"]
 ---
 

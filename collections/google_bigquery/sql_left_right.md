@@ -1,7 +1,7 @@
 ---
 date   : 2022-03-02
-title  : LEFT関数 / RIGHT関数
-excerpt:
+title  : 🔍 LEFT関数 / RIGHT関数
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "left()", "right()"]
 ---
 

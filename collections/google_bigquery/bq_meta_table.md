@@ -1,8 +1,8 @@
 ---
 date    : 2022-08-09
-title   : __TABLE__
-excerpt : 
-tags    : ["Google BigQuery", ""]
+title   : 🔍 __TABLE__
+excerpt : ---
+tags    : ["🔍", "Google BigQuery", ""]
 ---
 ## ||__TABLE__ メタテーブルからの取得
 ### | 

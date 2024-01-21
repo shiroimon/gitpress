@@ -1,7 +1,7 @@
 ---
 date    : 2024-01-01
-title   : 🔍 BigQuery
-excerpt : XXXX
+title   : 🔍 BigQueryCLI
+excerpt : ---
 tags    : ["🔍", "BigQuery", "GoogleCloud", "SDK", "CLI"]
 ---
 

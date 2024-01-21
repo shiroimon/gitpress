@@ -1,8 +1,8 @@
 ---
 date    : 2022-06-13
-title   : GA4
+title   : 🔍 GA4
 excerpt :
-tags    : ["Google BigQuery", "GA4"]
+tags    : ["🔍", "Google BigQuery", "GA4"]
 ---
 
 ## || GA4

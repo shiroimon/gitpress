@@ -1,7 +1,7 @@
 ---
 date    : 2022-01-01
-title   : 🔍疑似中間テーブル作成
-excerpt : too many subqueries or query is too complex　の回避
+title   : 🔍 疑似中間テーブル作成
+excerpt : too many subqueries or query is too complex の回避
 tags    : ["🔍", "Google BigQuery", ""]
 ---
 ## || よく出るコイツ

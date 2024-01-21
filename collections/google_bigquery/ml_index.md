@@ -1,7 +1,7 @@
 ---
 date    : 2022-06-14
-title   : BigQuery ML
-excerpt : 
+title   : 🔍 BigQuery ML
+excerpt : ---
 tags    : ["Google BigQuery", "BigQuery ML"]
 ---
 

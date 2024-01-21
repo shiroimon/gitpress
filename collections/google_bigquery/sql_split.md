@@ -1,7 +1,7 @@
 ---
 date   : 2022-05-14
-title  : SPLIT関数
-excerpt: 
+title  : 🔍 SPLIT関数
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "split"]
 ---
 

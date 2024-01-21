@@ -1,8 +1,8 @@
 ---
 date    : 2022-01-01
-title   : 効率よく使いたい　速く、安く
-excerpt : 
-tags    : ["Google BigQuery", ""]
+title   : 🔍 効率よく使いたい　速く、安く
+excerpt : ---
+tags    : ["🔍", "Google BigQuery", ""]
 ---
 ## || 効率化（安くしたい）
 ## || 効率化（速くしたい）
