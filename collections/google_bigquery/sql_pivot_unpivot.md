@@ -1,6 +1,6 @@
 ---
 date    : 2022-11-15
-title   : 🔍 PIVOT / UNPIVOT演算子
+title   : 🔍 PIVOT / UNPIVOT 演算子
 excerpt : ---
 tags    : ["Google BigQuery", "pivot", "unpivot", "横持ち変換"]
 ---

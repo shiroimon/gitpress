@@ -6,16 +6,11 @@ tags    : ["✴️", "dbt", "ETL/ELT", "MDS"]
 ---
 
 ## || dbt とは
-> dbtとは `data build tool` の略で、データ統合を行う際のプロセスであるELT(抽出, 変換, 格納)のうちTransform(変換)の役割を担うツールです。
+> dbtとは `data build tool` の略で、データ統合を行う際のプロセスであるELT(抽出, 変換, 格納)のうち`Transform(変換)`の役割を担うツールです。
 > Transformのプロセスでは一般的にデータウェアハウスなどに抽出したデータを下流の分析ツールやデータベースで利用できる形式に変換・加工する処理を行います。
 > dbtはこの工程で役に立つ様々な機能を提供してくれます。
 > 
 > 引用先：[はじめて理解するdbt](https://www.isoroot.jp/blog/6054/) - isoroot 
-
-
-### | ChatGPTにも聞いてみた
-
-🤖<「[・・・!!!](https://chat.openai.com/share/ef4f8048-2329-4dba-bde4-5f3b0161b8b6)」
 
 `cf.`
 
@@ -29,6 +24,10 @@ tags    : ["✴️", "dbt", "ETL/ELT", "MDS"]
     dbt-tokyoはdbtの日本におけるdbtの普及と、
     dbtプロダクトへの貢献を目的に活動をしています。
 
+### | ChatGPTにも聞いてみた
+
+🤖<「[・・・!!!](https://chat.openai.com/share/ef4f8048-2329-4dba-bde4-5f3b0161b8b6)」
+
 
 
 ## || 導入
@@ -37,19 +36,17 @@ tags    : ["✴️", "dbt", "ETL/ELT", "MDS"]
     コンソールに直に記述するものではない。
 
 
-1. STEP　✴️
+1. STEP　✴️ dbt 導入
 ```shell
-# dbtを用意
-$ mkdir sandbox
-$ cd sandbox
-$ mkdir dbt_training
+# 作業場用意
+$ mkdir -p sandbox/dbt_training
 $ cd dbt_training
 #
 # 仮想環境(venv)を用意
 $ python3 -m venv venv
 $ source venv/bin/activate        # 仮想環境を実行
-(venv)$ pip install --upgrade pip #
-(venv)$ pip install dbt-postgres  # dbtをインストール
+(venv)$ pip install --upgrade pip # pip更新
+(venv)$ pip install dbt-postgres  # dbtインストール
 (venv)$ deactivate                # 仮想環境を停止 
 $ 
 #
@@ -63,6 +60,7 @@ $ source venv/bin/activate
 ```
 `*１` ：`/touch dbt_project.yml`
 ```yaml
+---
 name: 'dbt_training'
 config-version: 2
 version: '1.0.0'
@@ -90,29 +88,30 @@ $ touch profiles.yml
 `*2`、 `~/.dbt/profiles.yml`
 ```yaml
 dbt_training_dw:
-  target: dev
-  outputs:
-    dev:
-      type: postgres
-      host: localhost
-      user: admin
-      password: admin
-      port: 5432
-      dbname: postgres
-      schema: public
-      threads: 1
-      keepalives_idle: 0 
-      connect_timeout: 10
+    target: dev
+    outputs:
+        dev:
+            type: postgres
+            host: localhost
+            user: admin
+            password: admin
+            port: 5432
+            dbname: postgres
+            schema: public
+            threads: 1
+            keepalives_idle: 0 
+            connect_timeout: 10
 ```
 上記は「PostgreSQL」に接続させる設定ファイル。（cf.[公式](https://docs.getdbt.com/docs/core/connect-data-platform/postgres-setup)）
 dbt はデータウェアハウス（DWH）の接続設定を `~/.dbt/profiles.yml` に書く。
-`~/.dbt/profiles.yml` は各DWH毎にプロファイルを書く。
-また、DWHの種類(PostgreSQL, Snowflake...etc.) 毎にアダプターがあり、プロファイルはアダプターごとに設定の書き方が異なる。
+また、`~/.dbt/profiles.yml` は各DWH毎にプロファイルを書く。
+そのため、DWHの種類(PostgreSQL, Snowflake...etc.) 毎にアダプターがあり、プロファイルはアダプターごとに設定の書き方が異なる。
 
 
-2. STEP 🐘 
-  `(step2)`に入る前に `docker-compose.yml`を作成
+2. STEP 🐘 DB（PostgreSQL）設定
+`(step2)`に入る前に `docker-compose.yml`を作成
 ```yaml
+---
 version: '3'
 services:
     postgres:
@@ -130,10 +129,10 @@ services:
 # データベース（PostgreSQL）を用意
 (venv)$ touch docker-compose.yml
 (venv)$ vim docker-compose.yml
-#　　　　↓
-#　　　　#vimの説明は割愛
-#　　　　[esc][I]押して、さっきのファイルの内容コピペ
-#        [esc][:wq!]押して、抜ける。
+#　 ↓
+#　 #vimの説明は割愛
+#　  [esc][I]押して、さっきのファイルの内容コピペ
+#　  [esc][:wq]押して、抜ける。
 #
 (venv)$　docker --version # Dockerインストールされているか確認
 # gemを新規で導入するときには、まず以下のコマンドを実行
@@ -142,16 +141,15 @@ services:
 (venv)$ docker-compose up -d d # Docker起動
 (venv)$ docker-compose stop    # Docker停止
 ```
-    もしここで`Docker`でつまいづいたら[🐳コマンド参照](https://gitpress.io/c/docker_/mw_docker)。
+もしここで`Docker`でつまいづいたら🐳[コマンド参照](https://gitpress.io/c/docker_/mw_docker)。
 
 
-3. STEP dbt実行
+3. STEP　✴️ dbt 実行
 ```sell
 (venv)$ dbt run
 ```
-    ※モデル作成していないから、「WARNING」出ているが気にせず。
-    　実行後 `logs/` ディレクトリができていることを確認。
-
+※モデル作成していないから、「`WARNING`」出ているが気にせず。
+逆に実行後 `logs/` ディレクトリができていることを確認。
 
 
 
