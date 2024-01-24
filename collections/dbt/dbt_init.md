@@ -5,6 +5,8 @@ excerpt : 導入から実行まで
 tags    : ["✴️", "dbt", "ETL/ELT", "MDS"]
 ---
 
+![image](https://github.com/sh16ma/gitpress/assets/150888300/d3b2fdbc-417f-4145-8f6b-d9e2ab58c483)
+
 ## || dbt とは
 > dbtとは `data build tool` の略で、データ統合を行う際のプロセスであるELT(抽出, 変換, 格納)のうち`Transform(変換)`の役割を担うツールです。
 > Transformのプロセスでは一般的にデータウェアハウスなどに抽出したデータを下流の分析ツールやデータベースで利用できる形式に変換・加工する処理を行います。
