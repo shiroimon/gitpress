@@ -21,8 +21,8 @@ tags    : ["✴️", "dbt", "ETL/ELT", "MDS"]
 |GitHub|https://github.com/dbt-labs/dbt-core|
 |dbt tokyo - Japan dbt User Group|https://dbt-ug.tokyo/|
 
-    dbt-tokyoはdbtの日本におけるdbtの普及と、
-    dbtプロダクトへの貢献を目的に活動をしています。
+    dbt-tokyoはdbtの日本におけるdbtの普及と,
+    dbtプロダクトへの貢献を目的に活動をしています.
 
 ### | ChatGPTにも聞いてみた
 
@@ -32,8 +32,8 @@ tags    : ["✴️", "dbt", "ETL/ELT", "MDS"]
 
 ## || 導入
 
-    コンソール内の「#」は全てコメント。
-    コンソールに直に記述するものではない。
+    コンソール内の「#」は全てコメント.
+    コンソールに直に記述するものではない.
 
 
 1. STEP　✴️ dbt 導入
@@ -58,7 +58,7 @@ $ source venv/bin/activate
 # dbt設定ファイルを作成（＊１: 後述のYAMLファイル）
 (venv)% touch dbt_project.yml
 ```
-`*１` ：`/touch dbt_project.yml`
+** *１** ：`/touch dbt_project.yml`.
 ```yaml
 ---
 name: 'dbt_training'
@@ -77,7 +77,7 @@ models:
     dbt_training:
          example:
 ```
-YAMLファイルの中身の詳細説明は[ここ](https://zenn.dev/foursue/books/31456a86de5bb4/viewer/7fce02#%E5%90%84%E3%82%BF%E3%82%B0%E3%81%AE%E8%AA%AC%E6%98%8E)がわかりやすい。
+YAMLファイルの中身の詳細説明は[ここ](https://zenn.dev/foursue/books/31456a86de5bb4/viewer/7fce02#%E5%90%84%E3%82%BF%E3%82%B0%E3%81%AE%E8%AA%AC%E6%98%8E)がわかりやすい.
 ```shell
 # 上位階層に不可視ディレクトリ作成
 $ mkdir .dbt
@@ -85,8 +85,9 @@ $ cd .dbt
 # DWH接続ファイルを作成（＊２: 後述のYAMLファイル）
 $ touch profiles.yml
 ```
-`*2`、 `~/.dbt/profiles.yml`
+** *2 **, `~/.dbt/profiles.yml`.
 ```yaml
+---
 dbt_training_dw:
     target: dev
     outputs:
@@ -102,14 +103,12 @@ dbt_training_dw:
             keepalives_idle: 0 
             connect_timeout: 10
 ```
-上記は「PostgreSQL」に接続させる設定ファイル。（cf.[公式](https://docs.getdbt.com/docs/core/connect-data-platform/postgres-setup)）
-dbt はデータウェアハウス（DWH）の接続設定を `~/.dbt/profiles.yml` に書く。
-また、`~/.dbt/profiles.yml` は各DWH毎にプロファイルを書く。
-そのため、DWHの種類(PostgreSQL, Snowflake...etc.) 毎にアダプターがあり、プロファイルはアダプターごとに設定の書き方が異なる。
-
-
+上記は「PostgreSQL」に接続させる設定ファイル（cf.[公式](https://docs.getdbt.com/docs/core/connect-data-platform/postgres-setup)）.
+dbt はデータウェアハウス（DWH）の接続設定を `~/.dbt/profiles.yml` に書く.
+また, `~/.dbt/profiles.yml` は各DWH毎にプロファイルを書く.
+そのため, DWHの種類(PostgreSQL, Snowflake...etc.) 毎にアダプターがあり, プロファイルはアダプターごとに設定の書き方が異なる.
 2. STEP 🐘 DB（PostgreSQL）設定
-`(step2)`に入る前に `docker-compose.yml`を作成
+`docker-compose.yml`を作成.
 ```yaml
 ---
 version: '3'
@@ -141,15 +140,15 @@ services:
 (venv)$ docker-compose up -d d # Docker起動
 (venv)$ docker-compose stop    # Docker停止
 ```
-もしここで`Docker`でつまいづいたら🐳[コマンド参照](https://gitpress.io/c/docker_/mw_docker)。
+もしここで`Docker`でつまいづいたら🐳 [コマンド参照](https://gitpress.io/c/docker_/mw_docker).
 
 
 3. STEP　✴️ dbt 実行
 ```sell
 (venv)$ dbt run
 ```
-※モデル作成していないから、「`WARNING`」出ているが気にせず。
-逆に実行後 `logs/` ディレクトリができていることを確認。
+※モデル作成していないから, 「`WARNING`」出ているが気にせず.
+逆に実行後 `logs/` ディレクトリができていることを確認.
 
 
 
