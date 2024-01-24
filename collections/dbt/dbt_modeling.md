@@ -1,9 +1,11 @@
 ---
 date    : 2023-12-06
 title   : ✴️ dbt
-excerpt : モデル作成からモデリング
+excerpt : モデル作成とモデル機能
 tags    : ["✴️", "dbt", "ETL/ELT", "MDS"]
 ---
+
+![image](https://github.com/sh16ma/gitpress/assets/150888300/d3b2fdbc-417f-4145-8f6b-d9e2ab58c483)
 
 ## || モデリング
 ### | Step1 データソースの準備
