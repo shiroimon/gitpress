@@ -5,7 +5,9 @@ excerpt : Z Shell
 tags    : ["🐚", "shell", "cli", "zsh"]
 ---
 
-## || Z Shell って
+![zsh](https://github.com/sh16ma/gitpress/assets/150888300/6e226d99-cc58-42c0-a307-fc221b258455)
+
+## || Z Shell
 ### | 
 
 
