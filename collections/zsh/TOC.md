@@ -2,4 +2,5 @@
 
 
 ## [▼🐚Zsh](https://gitpress.io/c/zsh__/)
-- - [Zsh / Oh-My-Zsh](mw_zsh)
+- - [Z Shell](zsh_init.md)
+- - [Oh-My-Zsh](mw_zsh.md)
