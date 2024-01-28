@@ -1,6 +1,6 @@
 ---
 data    : 2021-12-24
-title   : 【🐚iTerm】パーミッション
+title   : 🐚 iTerm パーミッション
 excerpt : 権限について
 tags    : ["permission", "iTerm"]
 ---
