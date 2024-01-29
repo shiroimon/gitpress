@@ -1,19 +1,21 @@
 ---
 date   : 2024-01-01
-title  : Git 
-excerpt: Git
-tags   : ["CLI", "Git", ""]
+title  : 📍Git 
+excerpt: リポジトリの更新
+tags   : ["📍", "CLI", "Git", ""]
 ---
 
 ![img](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/300px-Git-logo.svg.png)
 
 cf. https://ja.wikipedia.org/wiki/Git
 
-## || $git pull 
+## || git pull 
 
 
+## || Pull Request
 
-## || warnig 
+
+## || Warnigs
 ```shell
 warning: Pulling without specifying how to reconcile divergent branches is
 discouraged. You can squelch this message by running one of the following

@@ -1,6 +1,6 @@
 ---
 date   : 2024-01-01
-title  : Git 
+title  : GitHub Certifications
 excerpt: GitHub Certifications
 tags   : ["CLI", "Git", "certifications"]
 ---
