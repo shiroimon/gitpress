@@ -9,7 +9,11 @@ tags   : ["CLI", "Git", ""]
 
 cf. https://ja.wikipedia.org/wiki/Git
 
-## || - 
+## || 
+### | MOTIVATION
+### |
+`cf.`
+- []() - 
 
 ## || REFERENCE
-- []() - 
+- []() -

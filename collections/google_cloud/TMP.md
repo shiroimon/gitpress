@@ -6,7 +6,10 @@ tags    : ["🌩 ", "GoogleCloudPlatform"]
 ---
 
 ## || 
-
-## || REFERRENCE
-- []() - GoogleCloud
+### | MOTIVATION
+### |
+`cf.`
 - []() - 
+
+## || REFERENCE
+- []() -

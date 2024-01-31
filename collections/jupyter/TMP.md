@@ -6,7 +6,10 @@ tags    : ["🪐 ", "Jupyter", "Jupyterlab", "JupyterNotebook"]
 ---
 
 ## || 
+### | MOTIVATION
 ### |
+`cf.`
+- []() - 
 
 ## || REFERENCE
 - []() -

@@ -6,12 +6,15 @@ tags   : ["🐧", "Linux", ""]
 ---
 
 ## || 
-### | 
+### | MOTIVATION
 
 ## || $---
 \```shell
 $---
 \```
 
-## || REFERENCE
+`cf.`
 - []() - 
+
+## || REFERENCE
+- []() -

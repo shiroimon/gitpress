@@ -9,7 +9,10 @@ tags    : ["🫧", "Looker", "BI", "GoogleCloud"]
 
 
 ## || 
+### | MOTIVATION
 ### |
+`cf.`
+- []() - 
 
 ## || REFERENCE
 - []() -
