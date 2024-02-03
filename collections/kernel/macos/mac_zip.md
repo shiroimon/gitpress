@@ -2,7 +2,7 @@
 date    : 2024-01-01
 title   : 🍏 
 excerpt : XXXX
-tags    : ["", "", ""]
+tags    : ["zip", "", ""]
 ---
 
 ## || 
@@ -13,6 +13,7 @@ tags    : ["", "", ""]
 ```sh
 $ zip -e -r {directory_name}.zip {directory_name/}
 Enter password:
+Verify password:
 ```
 
 `cf.`
