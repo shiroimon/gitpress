@@ -11,7 +11,7 @@ tags    : ["", "", ""]
 
 ### | ディレクトリにパスを設定
 ```sh
-$ zip -e -r {directory}
+$ zip -e -r {directory_name}.zip {directory_name/}
 Enter password:
 ```
 
