@@ -2,14 +2,14 @@
 
 
 ## [▼🩶 kernel ](https://gitpress.io/c/kernel/)
-### Command
-- - [基本コマンド](.md)
-- - [歴史](.md)
-- - [](.md)
-- - [](.md)
+### % Command
+- - [% echo](command_echo.md)
+- - [% ](.md)
+- - [% ](.md)
+- - [% ](.md)
 
-### UNIX / MacOS
-- - [](.md)
+### UNIX /  MacOS
+- - [歴史](unix_history.md)
 - - [](.md)
 - - [](.md)
 - - [](.md)
