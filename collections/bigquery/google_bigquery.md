@@ -1,8 +1,8 @@
 ---
-date   : 2021-09-12
-title  : 🔍 分析入門 
-excerpt: - Section1：BigQuery
-tags   : ["BigQuery", "SQL", "分析", "Udemy講座", "基本"]
+date    : 2021-09-12
+title   : 🔍 分析入門 
+excerpt : - Section1：BigQuery
+tags    : ["BigQuery", "SQL", "分析", "Udemy講座", "基本"]
 ---
 
 ## || はじめに

@@ -1,25 +1,26 @@
 ---
 date    : 2022-01-01
-title   : BigQuery Scripting
-excerpt : 
-tags    : ["Google BigQuery", ""]
+title   : 🔍BigQuery Scripting
+excerpt : 変数宣言
+tags    : ["🔍", "Google BigQuery", ""]
 ---
-## || BigQuery Scripting
 
+## || BigQuery Scripting
 ### | 変数宣言
-```SQL
-# 集計期間
-decleare TERM_START string default '2020-01-01';
-decleare TERM_END   string default '2020-12-31';
-decleare PREP_TS string;
+```sql
+# config
+decleare TERM_START string default '2020-01-01'; --集計期間開始値
+decleare TERM_END   string default '2020-12-31'; --集計期間終了値
+decleare PREP_TS string;                         --Tablea Suffixの処理
 
 set PREP_TS = (
     select format_date('%Y%m%d', current_date('Asia/Tokyo')) as TODAY
 );
 
+
 with
     , rsv as (
-        select * from `pj.ds.hoge_reservation_*` where _TABLE_SUFFIX = PREP_TABLE_SUFFIX
+        select * from `pj.ds.hoge_reservation_*` where _TABLE_SUFFIX = PREP_TS
     )
     , output as (
         select

@@ -7,6 +7,7 @@ tags    : ["🔍", "Google BigQuery", "error"]
 
 ![image](https://github.com/polar-beer/gitpress/assets/28585421/5f209bcf-ceb5-45da-9502-0535582d4b0b)
 cf. https://dic.pixiv.net/a/%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E3%81%95%E3%82%93
+
 ## || BigQueryのエラー集
 実務で幾度となく現れるアイツ（≒リセットさん:エラー文）。
 

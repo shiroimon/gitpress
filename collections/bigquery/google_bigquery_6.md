@@ -1,8 +1,8 @@
 ---
-date   : 2021-09-08
-title  : 🔍 分析入門
-excerpt: - Section6: 四則演算、条件分岐
-tags   : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
+date    : 2021-09-08
+title   : 🔍 分析入門
+excerpt : - Section6: 四則演算、条件分岐
+tags    : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 ---
 
 ## || Section6

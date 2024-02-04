@@ -1,7 +1,7 @@
 ---
 date    : 2021-11-15
-title   : 8１〜9０本ノック
-excerpt : 
+title   : 🔍 100本ノック
+excerpt : 8１〜9０本ノック
 tags    : ["DataScientist", "SQL", "BigQuery"]
 ---
 
@@ -16,15 +16,16 @@ with
             , category_major_cd
             , category_medium_cd
             , category_small_cd
-            , trunc(case unit_price is null
-                when true then (select mean from (select avg(unit_price) over() as mean from `prj-test3.100knocks.product`)group by mean)
-                else unit_price
-            end) as unit_cost
+            , trunc(
+                case unit_price is null
+                    when true then (select mean from (select avg(unit_price) over () as ttl_mean from `prj-test3.100knocks.product`) group by mean)
+                    else unit_price
+                end) as unit_cost
             , trunc(
                 case unit_cost is null
-                when true then (select mean from (select avg(unit_cost) over() as mean from `prj-test3.100knocks.product`)group by mean)
-                else unit_cost
-            end) as unit_cost
+                    when true then (select mean from (select avg(unit_cost) over () as ttl_mean from `prj-test3.100knocks.product`) group by mean)
+                    else unit_cost
+                end) as unit_cost
         from
             `prj-test3.100knocks.product`
         -- where unit_price is null
@@ -45,14 +46,16 @@ with
             , category_major_cd
             , category_medium_cd
             , category_small_cd
-            , trunc(case unit_price is null
-                when true then (select q from(select percentile_cont(unit_price, 0.5)over() as q from `prj-test3.100knocks.product`)group by q)
-                else unit_price
-            end) as unit_price
-            , trunc(case unit_cost is null
-                when true then (select q from(select percentile_cont(unit_cost, 0.5)over() as q from `prj-test3.100knocks.product`)group by q)
-                else unit_cost
-            end) as unit_cost
+            , trunc(
+                case unit_price is null
+                    when true then (select q from(select percentile_cont(unit_price, 0.5) over () as q from `prj-test3.100knocks.product`) group by q)
+                   else unit_price
+                end) as unit_price
+            , trunc(
+                case unit_cost is null
+                    when true then (select q from(select percentile_cont(unit_cost, 0.5) over () as q from `prj-test3.100knocks.product`) group by q)
+                    else unit_cost
+                end) as unit_cost
         from
             `prj-test3.100knocks.product`
         -- where unit_price is null
@@ -85,32 +88,18 @@ with
             , category_small_cd
             , trunc(
                 case unit_price is null
-                    when true then (select
-                                        q
-                                    from
-                                        (select
-                                            round(percentile_cont(unit_price, 0.5) over()) as q
-                                         from
-                                            category_small_cd_gr
-                                         )
-                                    group by
-                                        q
-                                    )
+                    when true 
+                    then (select q
+                          from (select round(percentile_cont(unit_price, 0.5) over ()) as q from category_small_cd_gr)
+                          group by q )
                     else unit_price
                 end) as unit_price
             , trunc(
                 case unit_cost is null
-                    when true then (select
-                                        q
-                                    from
-                                        (select
-                                            round(percentile_cont(unit_cost, 0.5) over()) as q
-                                         from
-                                            category_small_cd_gr
-                                         )
-                                    group by
-                                        q
-                                    )
+                    when true 
+                    then (select q
+                          from (select round(percentile_cont(unit_cost, 0.5) over ()) as q from category_small_cd_gr)
+                          group by q )
                     else unit_cost
                 end) as unit_cost
         from
@@ -139,7 +128,7 @@ with prep_tb as (
 select
     sum(amount) as ttl_amount_2019
     , (select sum(amount) from prep_tb) as ttl_amount
-    , (sum(amount) / (select sum(amount) from prep_tb))*100 as ratio
+    , (sum(amount) / (select sum(amount) from prep_tb)) * 100 as ratio
 from
     prep_tb
 where
