@@ -3,8 +3,8 @@
 
 ## [▼ 🫧LOOKER](https://gitpress.io/c/looker/)
 #### ⚫︎ Google Looker
-- - [Looker導入](looker_init.md)
-- - [LookML](lookml.md)
+- - [Looker](looker_init.md)
+- - [LookML](looker_lookml.md)
 - - []()
 
 #### ⚫︎ LOOKER STUDIO
