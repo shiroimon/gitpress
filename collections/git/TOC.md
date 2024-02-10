@@ -13,8 +13,5 @@
 - - [GitHubPages](git_github_pages.md)
 - - [GitPress](git_github_gitpress.md)
 - - [Certifications](git_github_certifications.md)
-
-
-
-
+- - [GitHub Actions](git_github_actions.md)
 

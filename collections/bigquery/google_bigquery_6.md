@@ -5,8 +5,10 @@ excerpt : - Section6: 四則演算、条件分岐
 tags    : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 ---
 
-## || Section6
 
+
+
+## || Section6
 ### | 四則演算
 e.g. `BigQueryは計算機的機能を持っている`
 ```SQL

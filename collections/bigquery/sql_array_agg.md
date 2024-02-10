@@ -4,9 +4,12 @@ title   : 🔍 ARRAY_AGG関数
 excerpt : ---
 tags    : ["Google BigQuery", "array_agg"]
 ---
+
+
+
 ## || array_agg()
 ### | 基本
-```SQL
+```sql
 #standardSQL
 select
     user_id
@@ -40,7 +43,7 @@ cf.【GCP】BigQueryのARRAY_AGG関数
 e.g 
 
 ### | JS利用
-```SQL
+```sql
 #standardSQL
 --UDF関数（配列データを1つの文字列に変換する--
 CREATE TEMP FUNCTION concatString(pathList ARRAY<string>)
@@ -68,3 +71,4 @@ group by user_id
 - [9.20. 集約関数](https://www.postgresql.jp/document/9.6/html/functions-aggregate.html) - PostgreSQL 9.6.5文書
 - [Big QueryでWindow関数を用いて、累積和を計算する](https://ex-ture.com/blog/2019/09/04/bigquery_window_sum/) - エクスチュア株式会社ブログ
 - [【GCP】BigQueryのARRAY_AGG関数](https://yosshiblog.jp/gcp_bigquery-arrayagg/) - Yosshi Labo.
+
