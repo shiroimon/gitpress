@@ -1,7 +1,7 @@
 ---
 date    : 2023-11-03
-title   : ✴️ dbt
-excerpt : 導入から実行まで
+title   : ✴️ dbt 導入・実行
+excerpt : ---
 tags    : ["✴️", "dbt", "ETL/ELT", "MDS"]
 ---
 

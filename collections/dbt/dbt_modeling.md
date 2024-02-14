@@ -1,7 +1,7 @@
 ---
 date    : 2023-12-06
-title   : ✴️ dbt
-excerpt : モデル作成とモデル機能
+title   : ✴️ dbt Model作成 / 機能
+excerpt : ---
 tags    : ["✴️", "dbt", "ETL/ELT", "MDS"]
 ---
 
@@ -180,6 +180,7 @@ cf. [Custom aliases](https://docs.getdbt.com/docs/build/custom-aliases)
 -- hogehoge.sql
 {{ config(alias='fugafuga') }}
 ```
+
 モデル名(ビュー名)は`hogehoge`. 一方DBに作成されるテーブル名は`fugafuga`.
 
 ### | カスタムスキーマ機能
@@ -191,12 +192,14 @@ cf. [Custom schemas](https://docs.getdbt.com/docs/build/custom-schemas)
 {{ config(schema='piyopiyo') }}
 ```
 このように作られる=> `public_piyopiyo`
+
 2. 利用シーン
 ```SQL
 -- hogehoge.sql
 {{ config(alias='fugafuga', schema='piyopiyo') }}
 ```
 このように作られる=> `public_piyopiyo.fugafuga`
+
 3. 利用シーン
 ```yaml
 ---
@@ -205,6 +208,7 @@ models:
     piyo:
       +schema: piyopiyo
 ```
+
 `models/piyo` ディレクトリ配下のモデルは `<target_shema>_piyopiyo` スキーマに保存できる.
 
 ### | カスタムデータベース機能
@@ -218,3 +222,5 @@ cf. [Project variables](https://docs.getdbt.com/docs/build/project-variables)
 ## || REFERENCE 
 - [モデルを作ろう](https://zenn.dev/foursue/books/31456a86de5bb4/viewer/6037e5) -Zenn
 - [モデルをもう少し深く使おう](https://zenn.dev/foursue/books/31456a86de5bb4/viewer/4201af#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E6%A9%9F%E8%83%BD) -Zenn
+
+

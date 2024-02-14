@@ -1,7 +1,7 @@
 ---
 date   : 2023-12-13
-title  : 📍GitHub
-excerpt: ブランチのあれこれ操作
+title  : 📍GitHub Branch
+excerpt: ---
 tags   : ["📍", "github", "CLI"]
 ---
 
@@ -9,6 +9,12 @@ tags   : ["📍", "github", "CLI"]
 
 ## || ブランチとは
 
+
+### | GitHub FLow
+
+ブランチを知る上で、何故ブランチを切るのか？
+
+> [コチラ]()
 
 
 ## || 作りたい
@@ -42,9 +48,21 @@ $ git branch --merged | egrep -v "(^\*|main|master|develop)" | xargs git branch 
 コマンド内容詳細は[reference先](Gitブランチの一括削除!煩雑な作業を一行で解決する方法)へ！
 
 
+cf. [Gitブランチの一括削除! 煩雑な作業を一行で解決する方法](https://qiita.com/itinerant_programmer/items/dbf7cdba08a5403234ea) -Qiita
 
-## || REFERENCE
-- []() -
-- []() -
-- []() -
-- [Gitブランチの一括削除! 煩雑な作業を一行で解決する方法](https://qiita.com/itinerant_programmer/items/dbf7cdba08a5403234ea) -Qiita
+
+
+## | リネームしたい
+1. 名前を変更したいブランチに移動
+```shell
+$ git checkout {(old) 変更前ブランチ名}
+```
+2. リネーム
+```shell
+$ git branch -m {(new) 変更後ブランチ名}
+```
+
+cf. [「git rename」を使用してGitのブランチ名を変更する方法](https://kinsta.com/jp/knowledgebase/git-rename-branch/#git-1) -Kinsta 
+
+
+

@@ -1,7 +1,7 @@
 ---
 date    : 2024-01-01
-title   : ✴️ dbt
-excerpt : XXXX
+title   : ✴️ dbt 
+excerpt : ---
 tags    : ["✴️", "dbt", "ETL"]
 ---
 
