@@ -83,8 +83,13 @@
 
 
 
-### ⚫︎ 分析
-#### Udemy
+### ⚫︎データ分析・解析
+データとは
+情報とは
+分析とは
+解析とは
+
+#### 入門 @Udemy
 1. - [Sect.1 はじめに](google_bigquery.md)
 2. - [Sect.2~3 基本設定](google_bigquery_2_3.md)
 3. - [Sect.4 基計文法](google_bigquery_4.md)
@@ -97,7 +102,7 @@
 10. - [Sect.11練習問題](google_bigquery_11.md)
 11. - [Sect.12 おまけ](google_bigquery_12.md)
 
-#### DS100ノック
+#### 練習 @ﾃﾞｰﾀｻｲｴﾝﾃｨｽﾄ教会(DS100本ノック)
 - - [概要](ds_100knock.md)
 - - [挑戦](ds_100knock_sql.md)
 - - [1~10](ds_100knock_sql_to10.md)
@@ -110,3 +115,16 @@
 - - [71~80](ds_100knock_sql_to80.md)
 - - [81~90](ds_100knock_sql_to90.md)
 - - [91~100](ds_100knock_sql_to100.md)
+
+
+#### 実践 @分析手法
+- - [SQLによる分析](sqlbook_chaptre1_init.md)
+- - [前処理](sqlbook_chaptre2_preparing.md)
+- - [時系列解析](sqlbook_chaptre3_timeserises.md)
+- - [コホート分析](sqlbook_chaptre4_cohorts.md)
+- - [テキスト分析](sqlbook_chaptre5_text_analysis.md)
+- - [異常検知](sqlbook_chaptre6_anomaly_detection.md)
+- - [実験分析](sqlbook_chaptre7_experiment.md)
+- - [Chapter8](sqlbook_chaptre8_complex_datasets.md)
+- - [Chapter9](sqlbook_chaptre9_conclusion.md)
+
