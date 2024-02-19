@@ -4,7 +4,8 @@
 ## [▼📍Git](https://gitpress.io/c/git__/)
 - - [コトハジメ](git_init.md)
 - - [ブランンチ操作](git_cli_branch.md)
-- - [リポジトリ更新](git_cli_pull.md)
+- - [リモートリポジトリ更新](git_cli_commit.md)
+- - [ローカルリポジトリ更新](git_cli_pull.md)
 - - [取消したい](git_cli_reset.md)
 
 

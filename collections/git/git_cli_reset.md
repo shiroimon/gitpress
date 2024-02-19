@@ -23,6 +23,9 @@ $ git reset HEAAD
 $ git reset HEAD {ファイル名}
 ```
 
+- [git add を取り消す](https://qiita.com/yukure/items/89562e5eb1d03995dc5b) -Qiita
+
+
 #### 初回addはこれ
 ```shell
 # init 直後の add に対して
@@ -35,9 +38,6 @@ $ git rm --cached -r {ファイル名}
 $ git reset {コミットID}
 ```
 
-
-## || reference
-- [git add を取り消す](https://qiita.com/yukure/items/89562e5eb1d03995dc5b) -Qiita
 - [【Git入門】git commitを取り消したい、元に戻す方法まとめ](https://tech-blog.rakus.co.jp/entry/20210528/git) -Hatenablog
-- []() -
+
 
