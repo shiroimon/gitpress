@@ -1,9 +1,12 @@
 ---
 date    : 2022-01-01
 title   : 🔍 疑似中間テーブル作成
-excerpt : too many subqueries or query is too complex の回避
+excerpt : ---
 tags    : ["🔍", "Google BigQuery", ""]
 ---
+
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || よく出るコイツ
 ```
 Resources exceeded during query execution: Not enough resources for query planning - too many subqueries or query is too complex

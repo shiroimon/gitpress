@@ -2,10 +2,26 @@
 
 
 ## [▼ 🔍BIGQUERY](https://gitpress.io/c/bigquery/)
-### ⚫︎ GoogleSQL
-- - [SQL歴史](sql_history.md)
+- - [BigQuery料金体系](bq_billing.md)
+- - [$bq](bq_init.md)
+- - [BigQueryScriptting](bq_bqscripting.md)
+- - [_TABLE_](bq_meta_table.md)
+- - [INFORMATION_SCHEMA](bq_information_schema.md)
+- - [BQクエリ関数化（UDF）](bq_udf.md)
+- - [BQカスタムクエリ](bq_custom_query.md)
+- - [BQクエリパラメータ](bq_query_parameter.md)
+- - [BQもっと速くしたい](bq_faster.md)
+- - [BQ裏技法](bq_underhanded.md)
+- - [BQエクスポート](bq_export.md)
+- - [BQ擬似中間テーブル](bq_table.md)
+- - [BQエラー文集](bq_error.md)
 
-#### 句（節）
+
+### GoogleSQL
+- - [SQL歴史](sql_history.md)
+- - [DML](sql_dml.md)
+
+#### - 句（節）
 - - [EXISTS句](sql_exists.md)
 - - [LIMIT / OFFSET句](sql_limit_offset.md)
 - - [QUALIFY句](sql_qualify.md)
@@ -13,14 +29,14 @@
 - - [OVER句 / WINDOW FRAME句](sql_over_window_frame.md)
 - - [TABLESAMPLE SYSTEM句](sql_tablesample.md)
 
-#### 演算子
+#### - 演算子
 - - [UNION](sql_union.md)
 - - [EXCEPT](sql_except.md)
 - - [INTERSECT](sql_intersect.md)
 - - [PIVOT / UNPIVOT](sql_pivot_unpivot.md)
 - - [UNNEST](sql_unnest.md)
 
-#### 関数
+#### - 関数
 - - [approx_count_distinct()](sql_approx_count_distinct.md)
 - - [array_agg()](sql_array_agg.md)
 - - [coalesce()](sql_coalesce.md)
@@ -45,51 +61,13 @@
 - - [percentile_()](sql_percentile.md)
 
 
-### ⚫︎ CLI
-- - [$bq](bq_init.md)
+### データ分析・解析
+- - [データとは](.md)
+- - [情報とは](.md)
+- - [分析とは](.md)
+- - [解析とは](.md)
 
-
-
-### ⚫︎ ADVANCE
-- - [BigQueryScriptting](bq_bqscripting.md)
-- - [_TABLE_](bq_meta_table.md)
-- - [INFORMATION_SCHEMA](bq_information_schema.md)
-- - [BQクエリ関数化（UDF）](bq_udf.md)
-- - [BQカスタムクエリ](bq_custom_query.md)
-- - [BQクエリパラメータ](bq_query_parameter.md)
-
-#### 技
-- - [BQもっと速くしたい](bq_faster.md)
-- - [BQ裏技法](bq_underhanded.md)
-- - [BQエクスポート](bq_export.md)
-- - [BQ擬似中間テーブル](bq_table.md)
-
-#### ML
-- - [BigQuery MLについて](ml_index.md)
-- - [AutoML](ml_automl.md)
-- - [ハイパラチューニング](ml_hyperpara.md)
-- - [ロジスティック回帰](ml_logreg.md)
-- - [時系列モデルの予測](ml_time_series.md)
-- - [RFM分析、K平均クラスタリング](ml_rfm_k-means.md)
-- - [Jupyter⇔BigQuery](ds_jupyter_bigquery.md)
-
-#### アクセス解析
-- - [_TABLE_SUFFIX](sql_table_suffix.md)
-- - [GA4](ga_ga4.md)
-- - [GA4 データフラット化](ga_ga4_get_flaten.md)
-
-#### エラー
-- - [BQエラー文集](bq_error.md)
-
-
-
-### ⚫︎データ分析・解析
-データとは
-情報とは
-分析とは
-解析とは
-
-#### 入門 @Udemy
+#### - 入門 @Udemy
 1. - [Sect.1 はじめに](google_bigquery.md)
 2. - [Sect.2~3 基本設定](google_bigquery_2_3.md)
 3. - [Sect.4 基計文法](google_bigquery_4.md)
@@ -102,8 +80,7 @@
 10. - [Sect.11練習問題](google_bigquery_11.md)
 11. - [Sect.12 おまけ](google_bigquery_12.md)
 
-<<<<<<< HEAD
-#### DS100ノック
+#### - DS100ノック
 1. - [概要](ds_100knock.md)
 2. - [挑戦](ds_100knock_sql.md)
 3. - [1~10](ds_100knock_sql_to10.md)
@@ -116,31 +93,17 @@
 10. - [71~80](ds_100knock_sql_to80.md)
 11. - [81~90](ds_100knock_sql_to90.md)
 12. - [91~100](ds_100knock_sql_to100.md)
-=======
-#### 練習 @ﾃﾞｰﾀｻｲｴﾝﾃｨｽﾄ教会(DS100本ノック)
-- - [概要](ds_100knock.md)
-- - [挑戦](ds_100knock_sql.md)
-- - [1~10](ds_100knock_sql_to10.md)
-- - [11~20](ds_100knock_sql_to20.md)
-- - [21~30](ds_100knock_sql_to30.md)
-- - [31~40](ds_100knock_sql_to40.md)
-- - [41~50](ds_100knock_sql_to50.md)
-- - [51~60](ds_100knock_sql_to60.md)
-- - [61~70](ds_100knock_sql_to70.md)
-- - [71~80](ds_100knock_sql_to80.md)
-- - [81~90](ds_100knock_sql_to90.md)
-- - [91~100](ds_100knock_sql_to100.md)
 
+#### - ML
+- - [BigQuery MLについて](ml_index.md)
+- - [AutoML](ml_automl.md)
+- - [ハイパラチューニング](ml_hyperpara.md)
+- - [ロジスティック回帰](ml_logreg.md)
+- - [時系列モデルの予測](ml_time_series.md)
+- - [RFM分析、K平均クラスタリング](ml_rfm_k-means.md)
+- - [Jupyter⇔BigQuery](ds_jupyter_bigquery.md)
 
-#### 実践 @分析手法
-- - [SQLによる分析](sqlbook_chaptre1_init.md)
-- - [前処理](sqlbook_chaptre2_preparing.md)
-- - [時系列解析](sqlbook_chaptre3_timeserises.md)
-- - [コホート分析](sqlbook_chaptre4_cohorts.md)
-- - [テキスト分析](sqlbook_chaptre5_text_analysis.md)
-- - [異常検知](sqlbook_chaptre6_anomaly_detection.md)
-- - [実験分析](sqlbook_chaptre7_experiment.md)
-- - [Chapter8](sqlbook_chaptre8_complex_datasets.md)
-- - [Chapter9](sqlbook_chaptre9_conclusion.md)
->>>>>>> 8217c1fbd265340b8bea81633d658eddc4c7c016
-
+#### - アクセス解析
+- - [_TABLE_SUFFIX](sql_table_suffix.md)
+- - [GA4](ga_ga4.md)
+- - [GA4 データフラット化](ga_ga4_get_flaten.md)
