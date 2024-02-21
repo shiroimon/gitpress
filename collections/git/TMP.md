@@ -1,7 +1,7 @@
 ---
 date   : 2024-01-01
 title  : Git 
-excerpt: Git
+excerpt: ---
 tags   : ["CLI", "Git", ""]
 ---
 
@@ -17,3 +17,4 @@ cf. https://ja.wikipedia.org/wiki/Git
 
 ## || REFERENCE
 - []() -
+

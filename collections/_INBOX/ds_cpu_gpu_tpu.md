@@ -1,21 +1,27 @@
 ---
 date    : 2021-09-17
-title   : 【📊 DS】CPU GPU TPU
-excerpt : PC内部で行われる処理機関について。（ちょいメモ）
+title   : CPU, GPU, TPU
+excerpt : ---
 tags    : ["CPU", "GPU", "GPU", "機械学習"]
 ---
 
-## || CPU
+
+## ||
+
+Kaggler界隈でやらたとマシンスペック部分で度々登場するので、メモ程度に理解。
+
+## ||
+### | CPU
 ```
 連続計算処理に向いている奴
 ```
 
-## || GPU
+### | GPU
 ```
 並列処理に向いている奴
 ```
 
-## || TPU
+### | TPU
 ```
 機械学習に特化した演算処理装置（Google独自開発）
 ```
@@ -23,5 +29,7 @@ tags    : ["CPU", "GPU", "GPU", "機械学習"]
 
 それぞれが、それぞれの役割を持って仲良くやってくれてるんだな〜💻
 
+
 ## || 参考
-* [CPU、GPU、TPU | 知っておきたいIT用語シリーズ - Youtube](https://www.youtube.com/watch?v=YWgvxqw3JWY)
+- [CPU、GPU、TPU | 知っておきたいIT用語シリーズ](https://www.youtube.com/watch?v=YWgvxqw3JWY) -Youtube
+
