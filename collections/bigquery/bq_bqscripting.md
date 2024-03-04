@@ -1,9 +1,11 @@
 ---
 date    : 2022-01-01
 title   : 🔍BigQuery Scripting
-excerpt : 変数宣言
-tags    : ["🔍", "Google BigQuery", ""]
+excerpt : ---
+tags    : ["🔍", "Google BigQuery", "Scripting"]
 ---
+
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
 
 ## || BigQuery Scripting
 ### | 変数宣言

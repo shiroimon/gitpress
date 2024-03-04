@@ -5,6 +5,8 @@ excerpt: ---
 tags   : ["Google BigQuery", "SQL", "分析", "row_number"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || row_number()
 
 テーブルに順番（レコードの連番）を振りなおしたい時にも使える。

@@ -4,6 +4,9 @@ title   : 🔍 効率よく使いたい　速く、安く
 excerpt : ---
 tags    : ["🔍", "Google BigQuery", ""]
 ---
+
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || 効率化（安くしたい）
 ## || 効率化（速くしたい）
 ## || REFERENCE

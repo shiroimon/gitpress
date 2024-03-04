@@ -5,6 +5,8 @@ excerpt : ---
 tags    : ["🔍", "BigQuery", "GoogleCloud", "SDK", "CLI"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || BigQueryCLI
 ### | 導入
 ### | 

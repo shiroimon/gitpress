@@ -1,11 +1,11 @@
 ---
 date   : 2021-09-29
 title  : 【🥈Silver Ver.2.0】
-excerpt:
+excerpt: ---
 tags   : ["OSS-DB", "Silver", "PostgreSQL"]
 ---
 
-
+![img](https://i.gyazo.com/8bb756a9d2e944bba0e29344976093bd.jpg)
 
 ## || INDEX
 

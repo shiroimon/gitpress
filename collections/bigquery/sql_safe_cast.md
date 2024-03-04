@@ -5,6 +5,8 @@ excerpt: ---
 tags   : ["Google BigQuery", "SQL", "safe_cast"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || safe_cast()
 
 型変換なのだが、通常の'cast()'変換とは異なる。

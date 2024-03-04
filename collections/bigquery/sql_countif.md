@@ -5,6 +5,8 @@ excerpt: ---
 tags   : ["Google BigQuery", "SQL", "分析", "countif"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || countif（）
 
 Excelや、Spreadsheetではお馴染み、`countif()`。

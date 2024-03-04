@@ -4,22 +4,18 @@ title   : 🔍 LIMIT句 OFFSET句
 excerpt : ---
 tags    : ["Google BigQuery", ""]
 ---
+
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || LIMIT句 OFFSET句
 ### | LIMIT句
 
-
-
 ### | OFFSET句
-
-
 
 ### | コンビネーション
 
 ```sql
-select 
-    * 
-from 
-    rawdata
+select *  from rawdata
 order by 
     USERID
 limit 1000000 -- 1~1000000迄

@@ -5,6 +5,8 @@ excerpt: ---
 tags   : ["Google BigQuery", "SQL", "unnest()"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || unnest()
 
 [配列型](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types?hl=ja#array_type)

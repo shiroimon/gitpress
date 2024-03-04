@@ -5,11 +5,12 @@ excerpt: ---
 tags   : ["🔍", "Google BigQuery", "SQL", "INFORMATION_SCHEMA"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || INFORMATION_SCHEMA 
 > BigQuery INFORMATION_SCHEMA ビューは、BigQuery オブジェクトに関するメタデータ情報を提供するシステム定義の読み取り専用ビューです。
 >
 >『 [BigQuery INFORMATION_SCHEMA の概要](https://cloud.google.com/bigquery/docs/information-schema-intro?hl=ja)』より
-
 
 
 ## || テーブル確認（カラム）

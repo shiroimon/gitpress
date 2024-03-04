@@ -5,12 +5,13 @@ excerpt : ---
 tags    : ["Google BigQuery", "GA4"]
 ---
 
-## || 
-とんでもなく勉強になるクエリを記述する最強の人を真似て写経兼してみた。（参考記事は「REFERENCE」へ）
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
 
-GA4（Firebase）のデータ構造は、初見〇し過ぎる。。
+## || motivation 
+とんでもなく勉強になるクエリを記述する最強の人を真似て写経兼してみた。（参考記事は「REFERENCE」へ）<br>
+GA4（Firebase）のデータ構造は、初見〇し過ぎる。。<br>
+都度、データをこねくり回して抽出もいいが、、、手間過ぎる。そんな時に出会った最強の人。感謝m()m✨<br>
 
-都度、データをこねくり回して抽出もいいが、、、手間過ぎる。そんな時に出会った最強の人。感謝m()m✨
 
 「スケジュールドクエリ」「UDF」にしても有用そう。
 

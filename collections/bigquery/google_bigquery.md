@@ -1,30 +1,33 @@
 ---
 date    : 2021-09-12
-title   : 🔍 分析入門 
+title   : 🔍 分析入門
 excerpt : - Section1：BigQuery
-tags    : ["BigQuery", "SQL", "分析", "Udemy講座", "基本"]
+tags    : ["🔍", "BigQuery", "GoogleCloud", "SQL", "分析", "Udemy講座", "基本"]
 ---
 
+![img](https://img-c.udemycdn.com/course/240x135/2394060_adbb_4.jpg)
+
 ## || はじめに
+この記事は、Udemyにて学習をした際のメモです。<br>
+コース受講したい場合は、ページ最下部に参考リンクとして掲載いたします。<br>>
 
-この記事は、Udemyにて学習をした際のメモです。
-
-コース受講したい場合は、ページ最下部に参考リンクとして掲載いたします。
 
 （アフィリエイトリンク等ではなく、純粋に学習を通して大変参考になったのでm(__)m ）
 
 
 
 ## || 学習メモ
-次章からは、完全個人メモです。（後に自分で見返すようになっております。）
-
-どんな考え方（ロジック）でクエリを書き上げたのか、どこで躓いたのか、
-
+次章からは、完全個人メモです。（後に自分で見返すようになっております。）<br>>
+どんな考え方（ロジック）でクエリを書き上げたのか、どこで躓いたのか、<br>>
 後に俯瞰したいためにお恥ずかしながら演習問題で間違えてしまったクエリはそのまま（コメントアウト）記載してます。
 悪しからず...
 
 
+
 ### | セクションの構成
+
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 - [SECTION2~3：基本設定](google_bigquery_2_3)
 - [SECTION4  ：基本文法](google_bigquery_4)
 - [SECTION5  ：集計関数](google_bigquery_5)
@@ -37,17 +40,17 @@ tags    : ["BigQuery", "SQL", "分析", "Udemy講座", "基本"]
 - [SECTION12 ：おまけ](google_bigquery_12)
 
 
+
 ## || おわりに
-はじめて BigQueryに触れましたが、
+はじめて BigQueryに触れましたが、<br>
+標準SQLの奥の深さ、データを抽出することの難しさに新たな課題感を感じております。<br>
 
-標準SQLの奥の深さ、データを抽出することの難しさに新たな課題感を感じております。
-
-ですが、本講座を通して、BigQueryの仕様や、SQLの基本的な文法は体得したのではないのかな？と思います。
+ですが、本講座を通して、BigQueryの仕様や、SQLの基本的な文法は体得したのではないのかな？と思います。<br>
 （自分でも手が動くのに驚きを隠せませんでした。）
 
-前半は、基礎文法と地道ではありましたが、
-
+前半は、基礎文法と地道ではありましたが、<br>
 後半はパズルゲームを解く感覚に近くとても楽しんで取り組むことができました。
+
 
 
 ## || REFERENCE
@@ -58,10 +61,7 @@ tags    : ["BigQuery", "SQL", "分析", "Udemy講座", "基本"]
 
 
 
----
 ## || Udemy講座
-
-![img](https://img-c.udemycdn.com/course/240x135/2394060_adbb_4.jpg)
 [BigQuery で学ぶ非エンジニアのための SQL データ分析入門](https://www.udemy.com/share/102kOc3@Jm55eXaV2GdLXwnNAoEOPHhXUleiQK0EG6JQboecG715rn2_tpL6jBbg8kL1nsqw/) - Udemy
 
----
+

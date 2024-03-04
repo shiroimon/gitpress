@@ -5,6 +5,8 @@ excerpt : ランダムサンプリング抽出
 tags    : ["🔍", "BigQuery", "GoogleCloud", "データ分析"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || TABLESAMPLE SYSTEM句
 ### | こう書く
 ```SQL

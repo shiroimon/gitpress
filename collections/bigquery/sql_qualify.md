@@ -1,9 +1,11 @@
 ---
 date   : 2022-04-22
 title  : 🔍 QUALIFY句
-excerpt: 分析関数の結果をフィルタリング
+excerpt: ---
 tags   : ["Google BigQuery", "QUALIFY"]
 ---
+
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
 
 ## || QUALIFY 句
 

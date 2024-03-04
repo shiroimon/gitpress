@@ -1,13 +1,12 @@
 ---
 date    : 2023-3-23
-title   : 🐳 Docker
-excerpt : コマンド一覧
-tags    : ["🐳", "docker", "comand", "CLI"]
+title   : 🐋 Docker Command
+excerpt : ---
+tags    : ["🐋", "docker", "comand", "CLI"]
 ---
 
 ![publicdomainq-0020603gmd](https://user-images.githubusercontent.com/28585421/194487142-42f7189e-b156-453c-b4e2-e39c9445f75a.jpg)
-https://publicdomainq.net/container-ship-0020603/
-
+cf. https://publicdomainq.net/container-ship-0020603/
 
 ## || Docker コマンド一覧
 * `brew install docker `: インストール

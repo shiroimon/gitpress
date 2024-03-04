@@ -5,6 +5,8 @@ excerpt : - Section8: テーブル結合
 tags    : ["Google BigQuery", "SQL", "分析", "ER図", "join", "Udemy講座"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || Section8
 ### | ER図
 

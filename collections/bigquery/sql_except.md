@@ -5,6 +5,8 @@ excerpt: ---
 tags   : ["Google BigQuery", "SQL", "except"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || except
 
 差集合を取得できる。

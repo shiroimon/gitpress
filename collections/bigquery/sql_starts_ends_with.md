@@ -5,6 +5,8 @@ excerpt : 文頭、文尾の判定
 tags    : ["🔍", "BigQuery", "GoogleCloud"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || [starts|ends]_with()
 ### | こんな感じ
 ```sql

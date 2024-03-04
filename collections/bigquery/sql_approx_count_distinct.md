@@ -5,6 +5,8 @@ excerpt: ---
 tags   : ["Google BigQuery", "SQL", "分析", "approx_count_distinct"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || approx_count_distinct()　近似集計関数
 
 EDA時や、ざっくり特徴量のカウント等に厳密な結果を求めていない時

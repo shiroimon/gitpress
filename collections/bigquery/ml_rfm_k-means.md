@@ -4,6 +4,9 @@ title   : 🔍 RFM分析結果からk-平均クラスタリング
 excerpt : ---
 tags    : ["Google BigQuery", "BQML", "RFM", "k-means"]
 ---
+
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || RFM分析
 
 ## || K平均クラスタリング

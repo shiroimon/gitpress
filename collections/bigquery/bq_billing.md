@@ -2,11 +2,10 @@
 date    : 2024-01-01
 title   : 🔍 Billing
 excerpt : ---
-tags    : ["🔍", "BigQuery", "GoogleCloud"]
+tags    : ["🔍", "BigQuery", "GoogleCloud", "biling", "fee"]
 ---
 
 ![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
-
 
 ## || MOTIVATION
 

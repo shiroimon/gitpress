@@ -5,6 +5,8 @@ excerpt : - Section9: サブクエリ
 tags    : ["Google BigQuery", "SQL", "分析", "サブクエリ", "Udemy講座"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || Section9
 ### | サブクエリ（= 副問い合わせ）
 何ができるの？

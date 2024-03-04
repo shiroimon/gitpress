@@ -1,12 +1,13 @@
 ---
 date    : 2023-3-23
-title   : 🐳 Dockerfile
-excerpt : Dockerの真髄
-tags    : ["🐳", "docker_file", "CLI", ""]
+title   : 🐋 Dockerfile
+excerpt : ---
+tags    : ["🐋", "docker_file", "CLI"]
 ---
 
-![publicdomainq-0020603gmd](https://user-images.githubusercontent.com/28585421/194487142-42f7189e-b156-453c-b4e2-e39c9445f75a.jpg)
+![img](https://user-images.githubusercontent.com/28585421/194487142-42f7189e-b156-453c-b4e2-e39c9445f75a.jpg)
 cf. https://publicdomainq.net/container-ship-0020603/
+
 
 ## || Dockerfile
 
@@ -33,7 +34,7 @@ RUN {linux comand} # やりたいこと
 RUN touch test
 RUN echo `hello world` > test
 ```
-(注意)　RUN を複数書きすぎてファイルが重くなる問題　→ Dockerimageのレイヤー数は最小に！
+(注意) RUN を複数書きすぎてファイルが重くなる問題　→ Dockerimageのレイヤー数は最小に！
 
 * `RUN`の他に、`COPY`、`ADD`がレイヤーを作成するインストラクション
 * `&&`: コマンド結合
@@ -92,7 +93,3 @@ RUN  apt-get install -y \
 
 https://github.com/polar-beer/my_docker
 
-
-
-## || REFERRENCE
-- []() - 

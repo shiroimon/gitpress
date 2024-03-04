@@ -5,6 +5,8 @@ excerpt : ---
 tags    : ["Google BigQuery", "BigQuery ML"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || BigQueryMLでサポートされるモデル
 ![image](https://user-images.githubusercontent.com/28585421/173488664-3a6221c8-cb19-4d2b-ac11-58a8b40b15dc.png)
 ([チートシートのDL](https://cloud.google.com/bigquery-ml/images/ml-model-cheatsheet.pdf) - Google)

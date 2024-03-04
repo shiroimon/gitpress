@@ -5,6 +5,8 @@ excerpt: ---
 tags   : ["Google BigQuery", "SQL", "分析関数", "lead", "lag"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || lead()
 ```sql
 LEAD ( scalar_expression [ ,offset(1) ] , [ default(null) ] )   

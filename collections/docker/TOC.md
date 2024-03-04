@@ -2,5 +2,5 @@
 
 
 ## [▼ 🐋 Docker](https://gitpress.io/c/docker_/)
-- - [docker Command](docker_comand.md)
+- - [Command](docker_comand.md)
 - - [dockerfile](dockerfile.md)

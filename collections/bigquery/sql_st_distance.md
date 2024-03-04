@@ -5,6 +5,8 @@ excerpt: 緯度・経度を用いて分析したい時に使える関数
 tags   : ["Google BigQuery", "SQL", "地理関数"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || st_distance()
 
 緯度・経度を用いて、位置関係を調査したい。

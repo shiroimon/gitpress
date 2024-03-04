@@ -5,8 +5,7 @@ excerpt : - Section6: 四則演算、条件分岐
 tags    : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 ---
 
-
-
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
 
 ## || Section6
 ### | 四則演算

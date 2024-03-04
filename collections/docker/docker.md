@@ -1,7 +1,7 @@
 ---
 date    : 2021-12-15
-title   : 🐳 Docker
-excerpt : 基本操作
+title   : 🐋 Docker
+excerpt : ---
 tags    : ["docker", "iTearm", "CLI"]
 ---
 

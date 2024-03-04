@@ -1,7 +1,7 @@
 ---
 date    : 2021-09-18
 title   : 🐘 PostgreSQL 
-excerpt : 環境構築
+excerpt : ---
 tags    : ["🐘", "PostgreSQL", "OSS-DB", "SQL", "環境構築", "iTearm2"]
 ---
 

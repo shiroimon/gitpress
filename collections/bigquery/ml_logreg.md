@@ -4,6 +4,9 @@ title   : 🔍 BQML ロジステック回帰
 excerpt : ---
 tags    : ["Google BigQuery", "BigQuery ML"]
 ---
+
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || ロジステック回帰
 
 GoogleCLoud内部に、*BigQueryML*のチュートリアルが用意されている。（なんて親切！）

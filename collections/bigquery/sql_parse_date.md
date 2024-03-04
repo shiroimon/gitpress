@@ -5,6 +5,8 @@ excerpt : ---
 tags    : ["Google BigQuery", "SQL", "parse_date", "日付変換"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || parse_date()
 
 文字型（STRING）の日付データを日付型（DATE）にしたい時に使える。

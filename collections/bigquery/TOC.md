@@ -1,7 +1,7 @@
 [▶︎ HOME/ Collections/](https://gitpress.io/@sh16ma/collections)
 
 
-## [▼ 🔍BIGQUERY](https://gitpress.io/c/bigquery/)
+## [▼ 🔍BIGQUERY](https://gitpress.io/c/bq___/)
 - - [BigQuery料金体系](bq_billing.md)
 - - [$bq](bq_init.md)
 - - [BigQueryScriptting](bq_bqscripting.md)
@@ -14,14 +14,14 @@
 - - [BQ裏技法](bq_underhanded.md)
 - - [BQエクスポート](bq_export.md)
 - - [BQ擬似中間テーブル](bq_table.md)
-- - [BQエラー文集](bq_error.md)
+- - [BQエラー文](bq_error.md)
 
 
-### GoogleSQL
+## [▼ 🔍GoogleSQL](https://gitpress.io/c/bq___/)
 - - [SQL歴史](sql_history.md)
 - - [DML](sql_dml.md)
 
-#### - 句（節）
+#### 句（節）
 - - [EXISTS句](sql_exists.md)
 - - [LIMIT / OFFSET句](sql_limit_offset.md)
 - - [QUALIFY句](sql_qualify.md)
@@ -29,14 +29,14 @@
 - - [OVER句 / WINDOW FRAME句](sql_over_window_frame.md)
 - - [TABLESAMPLE SYSTEM句](sql_tablesample.md)
 
-#### - 演算子
+#### 演算子
 - - [UNION](sql_union.md)
 - - [EXCEPT](sql_except.md)
 - - [INTERSECT](sql_intersect.md)
 - - [PIVOT / UNPIVOT](sql_pivot_unpivot.md)
 - - [UNNEST](sql_unnest.md)
 
-#### - 関数
+#### 関数
 - - [approx_count_distinct()](sql_approx_count_distinct.md)
 - - [array_agg()](sql_array_agg.md)
 - - [coalesce()](sql_coalesce.md)
@@ -61,13 +61,13 @@
 - - [percentile_()](sql_percentile.md)
 
 
-### データ分析・解析
+## [▼ 🔍データ分析・解析](https://gitpress.io/c/bq___/)
 - - [データとは](.md)
 - - [情報とは](.md)
 - - [分析とは](.md)
 - - [解析とは](.md)
 
-#### - 入門 @Udemy
+#### 入門 @Udemy
 1. - [Sect.1 はじめに](google_bigquery.md)
 2. - [Sect.2~3 基本設定](google_bigquery_2_3.md)
 3. - [Sect.4 基計文法](google_bigquery_4.md)
@@ -80,7 +80,7 @@
 10. - [Sect.11練習問題](google_bigquery_11.md)
 11. - [Sect.12 おまけ](google_bigquery_12.md)
 
-#### - DS100ノック
+#### DS100ノック
 1. - [概要](ds_100knock.md)
 2. - [挑戦](ds_100knock_sql.md)
 3. - [1~10](ds_100knock_sql_to10.md)
@@ -94,7 +94,7 @@
 11. - [81~90](ds_100knock_sql_to90.md)
 12. - [91~100](ds_100knock_sql_to100.md)
 
-#### - ML
+#### ML
 - - [BigQuery MLについて](ml_index.md)
 - - [AutoML](ml_automl.md)
 - - [ハイパラチューニング](ml_hyperpara.md)
@@ -103,7 +103,7 @@
 - - [RFM分析、K平均クラスタリング](ml_rfm_k-means.md)
 - - [Jupyter⇔BigQuery](ds_jupyter_bigquery.md)
 
-#### - アクセス解析
+#### アクセス解析
 - - [_TABLE_SUFFIX](sql_table_suffix.md)
 - - [GA4](ga_ga4.md)
 - - [GA4 データフラット化](ga_ga4_get_flaten.md)

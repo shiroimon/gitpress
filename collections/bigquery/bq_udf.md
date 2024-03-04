@@ -5,9 +5,9 @@ excerpt: ユーザー定義関数（UDF）
 tags   : ["🔍", "Google BigQuery", "SQL", "UDF", "自作関数", "TEMPORARY FUNCTION"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || ユーザー定義関数（UDF）
-
-
 ### | メリット
 1. コーディングのコストを低減できる
 2. コードを理解しやすくできる

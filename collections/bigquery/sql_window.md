@@ -1,9 +1,11 @@
 ---
 date   : 2022-03-02
 title  : 🔍 WINDOW句
-excerpt: 分析関数の拡張
+excerpt: ---
 tags   : ["Google BigQuery", "SQL", "window句"]
 ---
+
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
 
 ## || WINDOW句
 > WINDOW句は名前付きウィンドウのリストを定義します。
@@ -60,5 +62,5 @@ group by
 ;
 ```
 
-## || cf.
-+ [WINDOW句](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax?hl=ja#window_clause) -GoogleCloud
+cf.
+- [WINDOW句](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax?hl=ja#window_clause) -GoogleCloud

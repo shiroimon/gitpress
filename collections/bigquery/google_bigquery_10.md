@@ -5,6 +5,8 @@ excerpt : - Section10: 集合演算、ビュー
 tags    : ["Google BigQuery", "SQL", "分析", "union", "Udemy講座"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || Section10
 ### | テーブル同士の集合演算
 

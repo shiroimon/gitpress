@@ -5,9 +5,9 @@ excerpt : ---
 tags    : ["🔍", "Google BigQuery", "クエリパラメータ"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || クエリパラメータ（クエリストリング）
-
-
 
 ## || BigQueryで使う
 ### | CLI (基本コッチでしか使えないみたい...)

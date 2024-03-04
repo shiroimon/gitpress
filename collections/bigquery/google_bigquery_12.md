@@ -5,6 +5,8 @@ excerpt : - Section12: 可視化（おまけ）
 tags    : ["Google BigQuery", "SQL", "分析", "DataPortal", "Udemy講座"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ### ● Section12 : おまけ（可視化）
 ![Google DataPortal](https://i.gyazo.com/625fcf38f301105c0dbc76da5b9951ff.png)
 

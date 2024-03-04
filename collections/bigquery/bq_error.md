@@ -5,13 +5,14 @@ excerpt : ---
 tags    : ["🔍", "Google BigQuery", "error"]
 ---
 
-![image](https://github.com/polar-beer/gitpress/assets/28585421/5f209bcf-ceb5-45da-9502-0535582d4b0b)
-cf. https://dic.pixiv.net/a/%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E3%81%95%E3%82%93
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
 
 ## || BigQueryのエラー集
-実務で幾度となく現れるアイツ（≒リセットさん:エラー文）。
-
+実務で幾度となく現れるアイツ（≒リセットさん:エラー文）。<br>
 次回怒られないように、躓いた内容を適宜メモしていく...同じ轍を踏まないように！
+
+![image](https://github.com/polar-beer/gitpress/assets/28585421/5f209bcf-ceb5-45da-9502-0535582d4b0b)
+cf. https://dic.pixiv.net/a/%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E3%81%95%E3%82%93
 
 
 ### | ⛑️ 「予算足らんがな！でかい作業したきゃ金積みませ！若くは作業量減らせーｺﾗｰ」

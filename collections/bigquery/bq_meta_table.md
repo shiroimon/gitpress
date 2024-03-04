@@ -4,6 +4,9 @@ title   : 🔍 __TABLE__
 excerpt : ---
 tags    : ["🔍", "Google BigQuery", ""]
 ---
+
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## ||__TABLE__ メタテーブルからの取得
 ### | 
 ```sql

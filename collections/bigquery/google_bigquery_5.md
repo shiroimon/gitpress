@@ -5,8 +5,9 @@ excerpt : - Section5
 tags    : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 ---
 
-## || Section5
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
 
+## || Section5
 ### | COUNT(*) - 行数集計
 e.g.
 ```SQL

@@ -5,6 +5,8 @@ excerpt : - Section7: 分析関数
 tags    : ["Google BigQuery", "SQL", "分析", "window関数", "Udemy講座"]
 ---
 
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 ## || Section7
 ### | 分析関数(ウィンドウ関数)
 分析関数（ウィンドウ関数）とは、行レベル関数、集計関数よりも、複雑で高度な計算ができる関数の種類。

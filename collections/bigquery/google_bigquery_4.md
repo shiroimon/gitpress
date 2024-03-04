@@ -5,10 +5,9 @@ excerpt : - Section4
 tags    : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 ---
 
-
+![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
 
 ## || Section4
-
 ### | SELECT句 - かラム指定
 ex.【4.2 演習問題1(1:00)】
 
