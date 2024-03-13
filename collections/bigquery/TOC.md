@@ -1,6 +1,7 @@
 [▶︎ HOME/ Collections/](https://gitpress.io/@sh16ma/collections)
 
 
+
 ## [▼ 🔍BIGQUERY](https://gitpress.io/c/bq___/)
 - - [BigQuery料金体系](bq_billing.md)
 - - [$bq](bq_init.md)
@@ -15,6 +16,7 @@
 - - [BQエクスポート](bq_export.md)
 - - [BQ擬似中間テーブル](bq_table.md)
 - - [BQエラー文](bq_error.md)
+
 
 
 ## [▼ 🔍GoogleSQL](https://gitpress.io/c/bq___/)
@@ -61,11 +63,11 @@
 - - [percentile_()](sql_percentile.md)
 
 
+
 ## [▼ 🔍データ分析・解析](https://gitpress.io/c/bq___/)
-- - [データとは](.md)
-- - [情報とは](.md)
-- - [分析とは](.md)
-- - [解析とは](.md)
+- - [CTE](da_cte.md)
+- - [データ・情報・知識・知恵](da_data_info_know_wisdom.md)
+- - [分析・解析](da_analysis.md)
 
 #### 入門 @Udemy
 1. - [Sect.1 はじめに](google_bigquery.md)
@@ -107,3 +109,6 @@
 - - [_TABLE_SUFFIX](sql_table_suffix.md)
 - - [GA4](ga_ga4.md)
 - - [GA4 データフラット化](ga_ga4_get_flaten.md)
+
+
+
