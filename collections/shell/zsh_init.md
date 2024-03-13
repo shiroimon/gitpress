@@ -1,7 +1,7 @@
 ---
 date    : 2024-01-01
-title   : 🐚 Zsh
-excerpt : Z Shell
+title   : 🐚 Z Shell
+excerpt : ---
 tags    : ["🐚", "shell", "cli", "zsh"]
 ---
 

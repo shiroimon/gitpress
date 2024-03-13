@@ -1,14 +1,14 @@
 ---
 date   : 2024-01-01
-title  : 📗Vim 
-excerpt: 一括コメントアウト
+title  : 📗一括コメントアウト
+excerpt: ---
 tags   : ["📗", "CLI", "Vim", ""]
 ---
 
 
-## || Howto
+## || 一括コメントアウト
 #### vim で
-1. `Ctrl + v`：[矩形](https://kotobank.jp/word/%E7%9F%A9%E5%BD%A2-482930)選択
+1. `Ctrl + v`：[矩形（くけい）](https://kotobank.jp/word/%E7%9F%A9%E5%BD%A2-482930)選択
 2. 一括でやりたい行をバッと選択
 3. `Shift + i`：
 4. コメントアウト文字を入力（e.g. `#`、`--`、`//`...etc.）

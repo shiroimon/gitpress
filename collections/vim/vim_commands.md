@@ -1,7 +1,7 @@
 ---
 date    : 2024-01-01
-title   : 📗Vim 
-excerpt : コマンドあれこれ
+title   : 📗Command
+excerpt : ---
 tags    : ["📗", "vim", "editer", "ide"]
 ---
 

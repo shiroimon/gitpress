@@ -1,7 +1,7 @@
 ---
 date   : 2024-01-01
 title  : 📗 q でSQL操作
-excerpt: Vim Plugin 
+excerpt: ---
 tags   : ["📗", "CLI", "Vim", "Plugin", ".csv", ".tsv"]
 ---
 
