@@ -66,6 +66,7 @@
 
 ## [▼ 🔍データ分析・解析](https://gitpress.io/c/bq___/)
 - - [CTE](da_cte.md)
+- - [UTC / JST](da_utc_jst_.md)
 - - [データ・情報・知識・知恵](da_data_info_know_wisdom.md)
 - - [分析・解析](da_analysis.md)
 
