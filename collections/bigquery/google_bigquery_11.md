@@ -1,8 +1,8 @@
 ---
-date    : 2021-09-03
+date    : 2021-09-19
 title   : 🔍 分析入門 Section11: 練習問題
 excerpt : ---
-tags    : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
+tags    : ["🔍", "BigQuery", "Udemy"]
 ---
 
 

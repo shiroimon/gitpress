@@ -1,8 +1,8 @@
 ---
 date    : 2021-09-11
-title   : 🔍 分析入門 Session2~3
+title   : 🔍 分析入門 Session2~3: BigQuery
 excerpt : ---
-tags    : ["🔍", "BigQuery", "GoogleCloud", "biling", "fee"]
+tags    : ["🔍", "BigQuery", "Udemy"]
 ---
 
 

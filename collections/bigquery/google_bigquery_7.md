@@ -1,8 +1,8 @@
 ---
-date    : 2021-09-07
+date    : 2021-09-15
 title   : 🔍 分析入門 Section7: 分析関数
 excerpt : ---
-tags    : ["Google BigQuery", "SQL", "分析", "window関数", "Udemy講座"]
+tags    : ["🔍", "BigQuery", "Udemy"]
 ---
 
 

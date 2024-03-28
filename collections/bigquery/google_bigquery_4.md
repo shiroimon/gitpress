@@ -1,8 +1,8 @@
 ---
-date    : 2021-09-10
-title   : 🔍 分析入門 Section4: 
+date    : 2021-09-12
+title   : 🔍 分析入門 Session4: SQL基本文法
 excerpt : ---
-tags    : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
+tags    : ["🔍", "BigQuery", "Udemy"]
 ---
 
 
