@@ -1,22 +1,26 @@
 ---
 date    : 2021-01-05
 title   : GitPress
-excerpt : GitPress始め方
+excerpt : ---
 tags    : ["GitHub", "GitPress", "Weblog"]
 ---
 
+
 <img width="80%" alt="topスクショ" src="https://user-images.githubusercontent.com/28585421/155921826-8799b723-b71d-4edb-88b0-45e8219b2967.png">
 
-## || GitPress
+
+## || GitPress（ブログサービス）
+
+名前が「WordPress」みたいでなかなか攻めているw
 
     https://gitpress.io/
+
 
 🤖（ChatGPT-3.5)「 https://chat.openai.com/share/4dc0ba9d-119e-4fff-bf83-fe9e8011d87f 」
 
 とのこと。
 
-🐻‍❄️「GitHubアカウント持ってて、リポジトリ管理できて。マークダウン形式で記述できるブログみたいなヤ〜ツってことか。」
-
+GitHubアカウント持ってて、リポジトリ管理できて。マークダウン形式で記述できるブログみたいなヤ〜ツってことか。
 
 
 ## || 導入
@@ -72,3 +76,7 @@ $ git push -u origin main {or master}
 - [GitPress 事始め](https://asaitoshiya.com/getting-started-with-gitpress/) - Asai Toshiya
 - [gitpressでブログを作るときに詰まった話（Windows10）](https://qiita.com/chicken_data_analyst/items/eb2dc5bf5cae9cef91cf) - Qiita
 - [Pushするだけ！GitHubのリポジトリを個人ブログに変えてくれる【GitPress】を使ってみた！](https://paiza.hatenablog.com/entry/2019/06/19/Push%E3%81%99%E3%82%8B%E3%81%A0%E3%81%91%EF%BC%81GitHub%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%82%92%E5%80%8B%E4%BA%BA%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AB%E5%A4%89%E3%81%88%E3%81%A6) - paiza.hatenablog
+-
+
+
+

@@ -1,7 +1,7 @@
 ---
 date   : 2024-01-17
-title  : GitHub flow
-excerpt: GitHub flowという考え方
+title  : GitHub flow / git-flow
+excerpt: ---
 tags   : ["CLI", "Git", "GitHub_flow", ""]
 ---
 
@@ -9,7 +9,7 @@ tags   : ["CLI", "Git", "GitHub_flow", ""]
 
 cf. https://ja.wikipedia.org/wiki/Git
 
-## || ワークフロー
+## || ワークフローという哲学
 掲題の「`GitHub flow`」とは、チームでGitHubを用いて開発するなら知っておきたいもはや空気みたいに流れている基本事項的なところがある。
 ので、概念を知っておくだけでだいぶ生き易い。
 

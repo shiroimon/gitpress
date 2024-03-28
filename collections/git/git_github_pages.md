@@ -1,23 +1,20 @@
 ---
 date   : 2024-01-30
 title  : GitHub Pages
-excerpt: ペライチのWebページを簡単作成
+excerpt: ---
 tags   : ["Git", "GitHub", "github.io"]
 ---
 
 ![img](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/300px-Git-logo.svg.png)
-
 cf. https://ja.wikipedia.org/wiki/Git
+
 
 ## || GitHub Pages
 
-https://pages.github.com/
+  https://pages.github.com/
 
 
 ### | How to build
-
-
-
 
 
 ## || Mypage

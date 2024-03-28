@@ -1,7 +1,7 @@
 ---
 date   : 2023-10-28
-title  : Git 
-excerpt: Gitについて
+title  : $ git init 
+excerpt: ---
 tags   : ["CLI", "Git", ""]
 ---
 

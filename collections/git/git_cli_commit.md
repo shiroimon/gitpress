@@ -1,6 +1,6 @@
 ---
 date   : 2024-01-01
-title  : Git Commit 
+title  : $git commit 
 excerpt: ---
 tags   : ["CLI", "Git", "commit"]
 ---
@@ -9,7 +9,7 @@ tags   : ["CLI", "Git", "commit"]
 
 cf. https://ja.wikipedia.org/wiki/Git
 
-## || $ git commit 
+## || $git commit 
 
 
 

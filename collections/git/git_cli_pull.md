@@ -1,18 +1,18 @@
 ---
 date   : 2024-01-01
-title  : 📍Git 
-excerpt: リポジトリの更新
-tags   : ["📍", "CLI", "Git", ""]
+title  : $git pull
+excerpt: ---
+tags   : ["📍", "CLI", "Git", "pull"]
 ---
 
 ![img](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/300px-Git-logo.svg.png)
 
 cf. https://ja.wikipedia.org/wiki/Git
 
-## || git pull 
+## || $git pull
 
 
-## || Pull Request
+## || Pull-Request
 
 
 ## || Warnigs
@@ -38,3 +38,5 @@ invocation.
 
 ## || REFERENCE
 - [Git 2.27 での git pull 時の warning について](https://qiita.com/tearoom6/items/0237080aaf2ad46b1963#%E7%B5%90%E5%B1%80) -Qiita
+
+

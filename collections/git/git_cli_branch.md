@@ -1,6 +1,6 @@
 ---
 date   : 2023-12-13
-title  : 📍Branch
+title  : $git branch
 excerpt: ---
 tags   : ["📍", "Git", "github", "CLI", "gitbranch", "githubflow"]
 ---
@@ -9,7 +9,8 @@ tags   : ["📍", "Git", "github", "CLI", "gitbranch", "githubflow"]
 ![branch_img](https://github.com/sh16ma/gitpress/assets/150888300/ba0c75c6-a2da-4804-b2c5-621ea674b5b5)
 
 
-## || Branch（ブランチ）とは🌲
+## || $git branch
+### | Branch（ブランチ）とは🌲
 
 チームビルドや、個人開発でも容易に管理ができる。
 
