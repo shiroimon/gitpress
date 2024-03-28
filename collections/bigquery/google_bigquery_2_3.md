@@ -1,11 +1,13 @@
 ---
 date    : 2021-09-11
-title   : 🔍 分析入門
-excerpt : - Session2~3
-tags    : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
+title   : 🔍 分析入門 Session2~3
+excerpt : ---
+tags    : ["🔍", "BigQuery", "GoogleCloud", "biling", "fee"]
 ---
 
+
 ![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 
 ## || Google BigQueryとは？
 

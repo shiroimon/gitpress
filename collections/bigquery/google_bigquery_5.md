@@ -1,11 +1,13 @@
 ---
 date    : 2021-09-09
-title   : 🔍 分析入門
-excerpt : - Section5
+title   : 🔍 分析入門 Section5
+excerpt : ---
 tags    : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 ---
 
+
 ![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 
 ## || Section5
 ### | COUNT(*) - 行数集計

@@ -1,11 +1,13 @@
 ---
 date    : 2021-09-07
-title   : 🔍 分析入門 
-excerpt : - Section7: 分析関数
+title   : 🔍 分析入門 Section7: 分析関数
+excerpt : ---
 tags    : ["Google BigQuery", "SQL", "分析", "window関数", "Udemy講座"]
 ---
 
+
 ![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 
 ## || Section7
 ### | 分析関数(ウィンドウ関数)

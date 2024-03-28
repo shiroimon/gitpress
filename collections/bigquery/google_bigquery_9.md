@@ -1,11 +1,13 @@
 ---
 date    : 2021-09-05
-title   : 🔍 分析入門 
-excerpt : - Section9: サブクエリ
+title   : 🔍 分析入門 Section9: サブクエリ
+excerpt : ---
 tags    : ["Google BigQuery", "SQL", "分析", "サブクエリ", "Udemy講座"]
 ---
 
+
 ![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 
 ## || Section9
 ### | サブクエリ（= 副問い合わせ）

@@ -1,11 +1,13 @@
 ---
 date    : 2021-09-12
-title   : 🔍 分析入門
-excerpt : - Section1：BigQuery
+title   : 🔍 分析入門 Section1: BigQuery
+excerpt : ---
 tags    : ["🔍", "BigQuery", "GoogleCloud", "SQL", "分析", "Udemy講座", "基本"]
 ---
 
+
 ![img](https://img-c.udemycdn.com/course/240x135/2394060_adbb_4.jpg)
+
 
 ## || はじめに
 この記事は、Udemyにて学習をした際のメモです。<br>

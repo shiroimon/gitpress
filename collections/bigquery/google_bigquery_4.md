@@ -1,17 +1,20 @@
 ---
 date    : 2021-09-10
-title   : 🔍 分析入門
-excerpt : - Section4
+title   : 🔍 分析入門 Section4: 
+excerpt : ---
 tags    : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 ---
 
+
 ![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 
 ## || Section4
 ### | SELECT句 - かラム指定
 ex.【4.2 演習問題1(1:00)】
 
 shop_purchasesテーブルからpurchase_id,user_id,dateを取り出してください。
+
 ```SQL
 SELECT
     purchase_id,
@@ -29,9 +32,9 @@ FROM bq_sample.shop_purchases
 ex.【4.2 演習問題2(3:45)】
 
 shop_purchasesを利用して、固有のユーザーが何人いるかを取得。
+
 ```SQL
-SELECT
-    DISTINCT user_id
+SELECT DISTINCT user_id
 FROM bq_sample.shop_purchases
 ;
 

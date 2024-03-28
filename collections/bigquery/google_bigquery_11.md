@@ -1,11 +1,13 @@
 ---
 date    : 2021-09-03
-title   : 🔍 分析入門 
-excerpt : - Section11: 練習問題
+title   : 🔍 分析入門 Section11: 練習問題
+excerpt : ---
 tags    : ["Google BigQuery", "SQL", "分析", "Udemy講座"]
 ---
 
+
 ![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 
 ## | Section11
 ### | 難易度：低

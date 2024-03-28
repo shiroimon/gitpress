@@ -1,11 +1,13 @@
 ---
 date    : 2021-09-04
-title   : 🔍 分析入門 
-excerpt : - Section10: 集合演算、ビュー
+title   : 🔍 分析入門 Section10: 集合演算、ビュー
+excerpt : ---
 tags    : ["Google BigQuery", "SQL", "分析", "union", "Udemy講座"]
 ---
 
+
 ![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 
 ## || Section10
 ### | テーブル同士の集合演算

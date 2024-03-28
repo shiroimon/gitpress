@@ -1,11 +1,13 @@
 ---
 date    : 2021-09-06
-title   : 🔍 分析入門 
-excerpt : - Section8: テーブル結合
+title   : 🔍 分析入門 Section8: テーブル結合
+excerpt : ---
 tags    : ["Google BigQuery", "SQL", "分析", "ER図", "join", "Udemy講座"]
 ---
 
+
 ![BigQuery](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2020/09/gcp-eyecatch-bigquery_1200x630.png)
+
 
 ## || Section8
 ### | ER図
