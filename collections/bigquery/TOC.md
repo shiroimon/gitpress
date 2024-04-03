@@ -43,6 +43,7 @@
 - - [array_agg()](sql_array_agg.md)
 - - [coalesce()](sql_coalesce.md)
 - - [countif()](sql_countif.md)
+- - [date()](sql_date.md)
 - - [extract()](sql_extract.md)
 - - [greatest()](sql_greatest.md)
 - - [ifnull()](sql_ifnull.md)
@@ -59,7 +60,7 @@
 - - [struct()](sql_struct.md)
 - - [st_distance()](sql_st_distance.md)
 - - [nth_value()](sql_nth_value.md)
-- - [first_value() / last_value()](-)
+- - [first_value() / last_value()](sql_first_last_value)
 - - [percentile_()](sql_percentile.md)
 
 
