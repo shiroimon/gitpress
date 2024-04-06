@@ -2,7 +2,7 @@
 date    : 2024-01-01
 title   : 📗Command
 excerpt : ---
-tags    : ["📗", "vim", "editer", "ide"]
+tags    : ["📗", "vim", "editer", "IDE"]
 ---
 
 
@@ -127,6 +127,8 @@ tags    : ["📗", "vim", "editer", "ide"]
 
 ## || REFERENCE
 - [Vimの基本的なコマンドリスト](https://qiita.com/moko_Swallows/items/be918efda9cfebcbf6b6) -Qiita
+- [Vim幼稚園からVim小学校へ](https://qiita.com/hachi8833/items/7beeee825c11f7437f54) -Qiita
 - [はじめてのVim 〜 Vimはいいぞ！ゴリラと学ぶVim講座(1)](https://knowledge.sakura.ad.jp/21687/) -さくらのナレッジ
-- [Vim幼稚園からVim小学校へ](https://qiita.com/hachi8833/items/7beeee825c11f7437f54) -Qiita 
 - []() -
+
+
