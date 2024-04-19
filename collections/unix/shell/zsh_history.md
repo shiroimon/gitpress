@@ -13,7 +13,7 @@ tags    : ["🐚", "shell", "cli", "zsh"]
 # デフォルトで最新の16行が返される
 $ history
 # 0行目以降のhistoryを取得(= 全履歴表示)
-$ history 0 
+$ history 0
 ```
 ### | 構成
 ```sh
@@ -24,3 +24,4 @@ e.g `$ history 10 20` : 10行目から20行目までのhistoryを取得
 
 ## || REFERENCE
 - [[zsh]historyを全て表示する方法](https://rb-station.com/blogs/software/zsh-all-history) - RoboStation
+

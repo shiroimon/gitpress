@@ -11,16 +11,16 @@ tags    : ["✴️", "dbt", "ETL/ELT", "MDS"]
 > dbtとは `data build tool` の略で、データ統合を行う際のプロセスであるELT(抽出, 変換, 格納)のうち`Transform(変換)`の役割を担うツールです。
 > Transformのプロセスでは一般的にデータウェアハウスなどに抽出したデータを下流の分析ツールやデータベースで利用できる形式に変換・加工する処理を行います。
 > dbtはこの工程で役に立つ様々な機能を提供してくれます。
-> 
-> 引用先：[はじめて理解するdbt](https://www.isoroot.jp/blog/6054/) - isoroot 
+>
+> 引用先：[はじめて理解するdbt](https://www.isoroot.jp/blog/6054/) - isoroot
 
 `cf.`
 
-|TITLE|URL|
-|:-|:-|
+|TITLE   |URL|
+|:-      |:-|
 |Official|https://www.getdbt.com/|
 |Document|https://docs.getdbt.com/|
-|GitHub|https://github.com/dbt-labs/dbt-core|
+|GitHub  |https://github.com/dbt-labs/dbt-core|
 |dbt tokyo - Japan dbt User Group|https://dbt-ug.tokyo/|
 
     dbt-tokyoはdbtの日本におけるdbtの普及と,
@@ -48,8 +48,8 @@ $ python3 -m venv venv
 $ source venv/bin/activate        # 仮想環境を実行
 (venv)$ pip install --upgrade pip # pip更新
 (venv)$ pip install dbt-postgres  # dbtインストール
-(venv)$ deactivate                # 仮想環境を停止 
-$ 
+(venv)$ deactivate                # 仮想環境を停止
+$
 #
 # 再度仮想環境を実行
 $ source venv/bin/activate
@@ -104,9 +104,10 @@ dbt_training_dw:
             dbname: postgres
             schema: public
             threads: 1
-            keepalives_idle: 0 
+            keepalives_idle: 0
             connect_timeout: 10
 ```
+
 上記は「PostgreSQL」に接続させる設定ファイル（cf.[公式](https://docs.getdbt.com/docs/core/connect-data-platform/postgres-setup)）.
 dbt はデータウェアハウス（DWH）の接続設定を `~/.dbt/profiles.yml` に書く.
 また, `~/.dbt/profiles.yml` は各DWH毎にプロファイルを書く.
@@ -169,3 +170,5 @@ services:
 - [dbtとは？](https://zenn.dev/dbt_tokyo/books/537de43829f3a0/viewer/what_dbt) - Zenn
 - [dbt プロジェクトの始め方](https://zenn.dev/foursue/books/31456a86de5bb4/viewer/04bca4) - Zenn (村長)
 - [What Is DBT and Why You Should Use It?](https://www.aggua.io/blog/what-is-dbt-why-use-it) - aggua
+
+

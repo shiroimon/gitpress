@@ -14,12 +14,11 @@ tags    : ["git", "gitpress"]
 |🐋Docker      |https://gitpress.io/c/docker/  |#Infrastructure|
 |☁️Google Cloud |https://gitpress.io/c/gcp__/   |#Infrastructure|
 |📍Git         |https://gitpress.io/c/git__/   |#VCS|
-|🪐Jupyter     |https://gitpress.io/c/jupyter/ |#TOOL|
-|🩶Kernel      |https://gitpress.io/c/kernel/  |#Infrastructure|
+|🪐jupyter     |https://gitpress.io/c/jupyter/ |#TOOL|
 |🫧Looker      |https://gitpress.io/c/looker/  |#BI #DataMart|
 |✝️Terraform    |https://gitpress.io/c/tf___/   |#Infrastructure|
-|📗vim         |https://gitpress.io/c/vim__/   |#TOOL|
-|🐚Shell       |https://gitpress.io/c/shell/   |#Infrastructure|
+|🩶UNIX        |https://gitpress.io/c/unix/    |#OS #kernel #shell|
+|📗Vim         |https://gitpress.io/c/vim__/   |#TOOL|
 |🎉ENGLISH     |https://gitpress.io/c/en___/   |#TOOL|
 |📦INBOX       |https://gitpress.io/c/inbox/   |-|
 

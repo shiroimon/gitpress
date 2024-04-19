@@ -17,3 +17,4 @@ tags    : ["🐚", "shell", "cli", "zsh"]
 - [zsh、ghq、pecoを使って快適なターミナルの環境を用意する](https://zenn.dev/fendo181/articles/b3e6b00e3fcaed) - Zenn
 - [zsh使いこなしポイント即効編](https://gihyo.jp/dev/serial/01/zsh-book/0003) - gihyo.jp
 - [Z Shellを使いこなして最強になる 〜移行編〜](https://www.grandream.jp/blog/zsh-move/) - Grandream
+
