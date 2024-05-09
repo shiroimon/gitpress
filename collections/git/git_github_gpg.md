@@ -44,6 +44,14 @@ cf.https://ja.wikipedia.org/wiki/Github
     $`git config --global user.signingkey YOUR_GPG_KEY_ID`
 5. コミットに署名する設定:
     $`git config --global commit.gpgsign true`
+6. GPGエージェントの起動:
+    $`gpg-agent --daemon`
+7. GPG設定の更新:
+    $`echo "use-agent" >> ~/.gnupg/gpg.conf`
+8. エージェントのキャッシュタイム(８時間)の設定:
+    $`echo "default-cache-ttl 28800" >> ~/.gnupg/gpg-agent.conf`
+9. SSHエージェントにGPGキーを追加:
+    $`ssh-add -L | gpg --import`
 
 - cf. [新しい GPG キーを生成する](https://docs.github.com/ja/authentication/managing-commit-signature-verification/generating-a-new-gpg-key) -GitHub Docs
 
