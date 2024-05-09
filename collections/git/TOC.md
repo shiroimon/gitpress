@@ -14,9 +14,11 @@
 ## [▼GitHub](https://gitpress.io/c/git__/)
 - - [GitHub flow](git_github_flow.md)
 - - [SSH接続](git_github_ssh.md)
-- - [ダミーアカウント](git_github_dummy_account.md)
+- - [GPG署名](git_github_gpg.md)
+- - [Dummy Account](git_github_dummy_account.md)
 - - [GitHubPages](git_github_pages.md)
 - - [GitPress](git_github_gitpress.md)
+- - [Gist](git_github_gist.md)
 - - [Certifications](git_github_certifications.md)
 - - [GitHub Actions](git_github_actions.md)
 
