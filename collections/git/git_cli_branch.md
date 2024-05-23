@@ -11,23 +11,21 @@ tags   : ["📍", "Git", "github", "CLI", "gitbranch", "githubflow"]
 
 ## || $git branch
 ### | Branch（ブランチ）とは🌲
-
 チームビルドや、個人開発でも容易に管理ができる。
 
 ### | なぜ生やすのか？
-#### GitHub FLow
+- [GitHub FLow](https://gitpress.io/c/git__/git_github_flow)
 
-哲学に触れる。
 
 
 ## || 作りたい（枝生やし🪣）
 1. 現在のブランチ状況確認
 ```shell
-$ git branch 
+$ git branch
 ＊ main
 ```
 2. ブランチ作成
-```shell 
+```shell
 $ git branch {your branch name}
 ```
 ※こっちの方がよく使う。（ブランチ作成してそのブランチに入る）
@@ -49,7 +47,7 @@ $ git branch --merged | egrep -v "(^\*|main|master|develop)" | xargs git branch 
 ```
 cf. [Gitブランチの一括削除! 煩雑な作業を一行で解決する方法](https://qiita.com/itinerant_programmer/items/dbf7cdba08a5403234ea) -Qiita <br>
 cf. [gitでマージ済のブランチを一括で削除したい](https://gumfum.hatenablog.com/entry/2023/07/30/230000) -HatenaBlog
-2. `$ git branch -D hoge/*` としたい時 
+2. `$ git branch -D hoge/*` としたい時
 ```shell
 $ git branch --list 'hoge/*' | xargs -n 1 git branch -D
 ```
@@ -58,7 +56,8 @@ $ git branch --list 'hoge/*' | xargs -n 1 git branch -D
 > cf. [Git で複数のローカルブランチを一度に削除する方法](https://mahata.gitlab.io/post/2020-07-29-delete-multiple-git-branches/) -存在証明
 
 
-## | リネームしたい
+
+## || リネームしたい
 1. 名前を変更したいブランチに移動
 ```shell
 $ git checkout {(old) 変更前ブランチ名}
@@ -70,16 +69,18 @@ $ git branch -m {(new) 変更後ブランチ名}
 cf. [「git rename」を使用してGitのブランチ名を変更する方法](https://kinsta.com/jp/knowledgebase/git-rename-branch/#git-1) -Kinsta 
 
 
-## | ブランチ切替え(Switch)
+
+## || ブランチ切替え(Switch)
 ```shell
-$ git switch {branch}　　# ブランチ切替
-$ git switch -c {branch} # ブランチ切替（新規作成して）
-$ git switch -C {branch} # ブランチ切替（上書きして）
-$ git switch -d {branch} # ブランチ切替（変更保存せず）
-$ git switch -f {branch} # ブランチ切替（強制的に新規作成して）
-$ git switch - {branch} # ブランチ切替（一つ前に）
+$ git switch {branch}　　 # ブランチ切替
+$ git switch -c {branch}  # ブランチ切替（新規作成して）
+$ git switch -C {branch}  # ブランチ切替（上書きして）
+$ git switch -d {branch}  # ブランチ切替（変更保存せず）
+$ git switch -f {branch}  # ブランチ切替（強制的に新規作成して）
+$ git switch - {branch}   # ブランチ切替（一つ前に）
 ```
-cf. [え？まだgit checkoutしてるの？](https://zenn.dev/gmomedia/articles/d9366fa84aadfd) -Zenn
-<br>cf. []()https://git-scm.com/docs/git-switch -Official 
+cf. [え？まだgit checkoutしてるの？](https://zenn.dev/gmomedia/articles/d9366fa84aadfd) -Zenn <br>
+cf. [GitHub](https://git-scm.com/docs/git-switch) -Official <br>
+
 
 
