@@ -11,12 +11,9 @@
 
 
 ## [▼ ✴️ dbt Services](https://gitpress.io/c/dbt__/)
-- - [dbt Core](dbt_core.md)
-- - [dbt Cloud](dbt_cloud.md)
+- - [dbt Cloud / Core](dbt_cloud.md)
 - - [dbt Certification](dbt_certification.md)
 
 
 ## [▼ ✴️ dbt advance](https://gitpress.io/c/dbt__/)
 - - [ER図](dbt_er.md)
-
-
