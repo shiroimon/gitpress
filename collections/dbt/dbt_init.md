@@ -170,5 +170,6 @@ services:
 - [dbtとは？](https://zenn.dev/dbt_tokyo/books/537de43829f3a0/viewer/what_dbt) - Zenn
 - [dbt プロジェクトの始め方](https://zenn.dev/foursue/books/31456a86de5bb4/viewer/04bca4) - Zenn (村長)
 - [What Is DBT and Why You Should Use It?](https://www.aggua.io/blog/what-is-dbt-why-use-it) - aggua
+- [dbt導入によるデータマート整備](https://techblog.zozo.com/entry/dbt-adoption) - zozo
 
 
